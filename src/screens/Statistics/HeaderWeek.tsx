@@ -18,7 +18,7 @@ const HeaderDay = ({
         style={{
           fontSize: 14,
           fontWeight: '600',
-          color: colors.statisticsWeekdayText,
+          color: colors.muted,
           textAlign: 'center',
         }}
       >{children}</Text>
@@ -43,9 +43,9 @@ export const HeaderWeek = ({
       <View style={{
         flexDirection: "row",
         justifyContent: 'space-around',
-        borderTopColor: colors.statisticsWeekdayBorder,
+        borderTopColor: colors.border,
         borderTopWidth: 1,
-        borderBottomColor: colors.statisticsWeekdayBorder,
+        borderBottomColor: colors.border,
         borderBottomWidth: 1,
         paddingTop: 8,
         paddingBottom: 8,

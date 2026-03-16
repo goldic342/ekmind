@@ -36,7 +36,7 @@ export const EmotionButtonAdvanced = ({
         style={{
           width: '100%',
           // backgroundColor: colors.cardBackground,
-          backgroundColor: colors.logCardBackground,
+          backgroundColor: colors.surfaceMuted,
           borderRadius: 8,
           borderWidth: selected ? 2 : 1,
           borderColor: selected ? colors.tint : colorScheme === 'light' ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)',

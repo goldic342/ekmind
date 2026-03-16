@@ -28,7 +28,7 @@ export const SlideSleep = ({
   return (
     <View style={{
       flex: 1,
-      backgroundColor: colors.logBackground,
+      backgroundColor: colors.backgroundSecondary,
       width: '100%',
       position: 'relative',
       paddingHorizontal: 20,

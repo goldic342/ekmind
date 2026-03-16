@@ -477,7 +477,7 @@ export const Logger = ({
   return (
     <View style={{
       flex: 1,
-      backgroundColor: colors.logBackground,
+      backgroundColor: colors.backgroundSecondary,
       position: 'relative',
     }}>
       <View

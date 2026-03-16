@@ -51,7 +51,7 @@ export const CalendarBottomSheet = () => {
         elevation: 22,
       }}
       backgroundStyle={{
-        backgroundColor: colors.bottomSheetBackground,
+        backgroundColor: colors.backgroundSecondary,
       }}
       handleComponent={() => (
         <View

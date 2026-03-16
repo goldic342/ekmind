@@ -30,7 +30,7 @@ export function Radio({
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 10,
-        backgroundColor: colors.menuListItemBackground,
+        backgroundColor: colors.surface,
         padding: 16,
         borderRadius: 10,
         opacity: isDisabled ? 0.5 : pressed ? 0.8 : 1,

@@ -22,8 +22,8 @@ export const Header = () => {
         paddingBottom: 8,
         borderTopEndRadius: 20,
         borderTopStartRadius: 20,
-        backgroundColor: colors.bottomSheetHeaderBackground,
-        borderBottomColor: colors.bottomSheetHeaderBorder,
+        backgroundColor: colors.surface,
+        borderBottomColor: colors.border,
         borderBottomWidth: 1,
       }}
     >

@@ -50,7 +50,7 @@ const CalendarMonth = memo(function CalendarMonth({
     () => [
       styles.textStyles,
       {
-        color: colors.calendarMonthNameColor,
+        color: colors.muted,
       },
     ],
     [colors]

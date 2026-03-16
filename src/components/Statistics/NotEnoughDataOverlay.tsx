@@ -27,7 +27,7 @@ export const NotEnoughDataOverlay = ({
       left: -20,
       right: -20,
       bottom: -16,
-      backgroundColor: colors.statisticsNotEnoughDataBackdrop,
+      backgroundColor: colors.overlay,
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 8,
@@ -41,7 +41,7 @@ export const NotEnoughDataOverlay = ({
         🧟‍♀️
       </Text>
       <Text style={{
-        color: colors.statisticsNotEnoughDataTitle,
+        color: colors.text,
         fontSize: 17,
         fontWeight: 'bold',
         textAlign: 'center',
@@ -54,7 +54,7 @@ export const NotEnoughDataOverlay = ({
       </Text>
       {showSubtitle && (
         <Text style={{
-          color: colors.statisticsNotEnoughDataSubtitle,
+          color: colors.textSecondary,
           fontSize: 14,
           textAlign: 'center',
           paddingHorizontal: 20,

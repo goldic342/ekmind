@@ -40,10 +40,10 @@ const CalendarDay = memo(function CalendarDay({
 
   const backgroundColor = useMemo(() => (
     isFuture || _isFiltered || (!rating && isFiltering) ?
-      colors.calendarItemBackgroundFuture :
+      colors.background :
       (
         _isFiltered ? (
-          colors.calendarBackground
+          colors.background
         ) : (
           rating ?
             colors.scales[scaleType][rating].background :

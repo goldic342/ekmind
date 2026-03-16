@@ -6,7 +6,7 @@ export const EmotionAdvancedGradients = () => {
 
   return (
     <LinearGradient
-      colors={[colors.logBackgroundTransparent, colors.logBackground]}
+      colors={[colors.logBackgroundTransparent, colors.backgroundSecondary]}
       style={{
         position: 'absolute',
         height: 32,

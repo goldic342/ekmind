@@ -21,7 +21,7 @@ export const XAxis = () => {
           style={{
             fontSize: 12,
             fontWeight: 'bold',
-            color: colors.yearPixelsLegendText,
+            color: colors.muted,
           }}
         >{dayjs().month(i).format("MMM")[0]}</Text>
       </View>

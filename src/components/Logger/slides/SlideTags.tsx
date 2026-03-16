@@ -61,7 +61,7 @@ export const SlideTags = ({
       >
         <LinearGradient
           pointerEvents="none"
-          colors={[colors.logBackground, colors.logBackgroundTransparent]}
+          colors={[colors.backgroundSecondary, colors.logBackgroundTransparent]}
           style={{
             position: 'absolute',
             height: 24,
@@ -71,7 +71,7 @@ export const SlideTags = ({
           }}
         />
         <LinearGradient
-          colors={[colors.logBackgroundTransparent, colors.logBackground]}
+          colors={[colors.logBackgroundTransparent, colors.backgroundSecondary]}
           style={{
             position: 'absolute',
             height: 32,

@@ -18,7 +18,7 @@ export const Grid = ({
             y1={y - 1}
             x2={width}
             y2={y}
-            stroke={colors.statisticsGridLine}
+            stroke={colors.border}
             strokeWidth={1}
             strokeDasharray={[4, 4]}
           />

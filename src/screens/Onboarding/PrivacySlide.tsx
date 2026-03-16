@@ -86,7 +86,7 @@ export const PrivacySlide = ({
             </View>
             <Text
               style={{
-                color: colors.onboardingTitle,
+                color: colors.text,
                 fontSize: 24,
                 lineHeight: 32,
                 fontWeight: 'bold',

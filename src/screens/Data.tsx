@@ -31,19 +31,19 @@ export const DataScreen = ({ navigation }: RootStackScreenProps<'Data'>) => {
           <MenuListItem
             title={t('import')}
             onPress={() => datagate.openImportDialog()}
-            iconLeft={<Download width={18} color={colors.menuListItemIcon} />}
+            iconLeft={<Download width={18} color={colors.text} />}
           />
           {__DEV__ && (
             <MenuListItem
               title={'Dangerously Import Directly To AsyncStorage'}
               onPress={() => datagate.openDangerousImportDirectlyToAsyncStorageDialog()}
-              iconLeft={<Download width={18} color={colors.menuListItemIcon} />}
+              iconLeft={<Download width={18} color={colors.text} />}
             />
           )}
           <MenuListItem
             title={t('export')}
             onPress={() => datagate.openExportDialog()}
-            iconLeft={<Upload width={18} color={colors.menuListItemIcon} />}
+            iconLeft={<Upload width={18} color={colors.text} />}
             isLast
           />
         </MenuList>

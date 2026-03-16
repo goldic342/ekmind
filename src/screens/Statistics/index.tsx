@@ -87,7 +87,7 @@ export const StatisticsScreen = ({ navigation }: RootStackScreenProps<'Statistic
         ) : undefined
       }
       style={{
-        backgroundColor: colors.statisticsBackground,
+        backgroundColor: colors.background,
       }}
     >
       <View

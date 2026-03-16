@@ -71,7 +71,7 @@ export const LogList = ({ route, navigation }: RootStackScreenProps<'LogList'>) 
     <PageModalLayout
       style={{
         flex: 1,
-        backgroundColor: colors.logBackground,
+        backgroundColor: colors.backgroundSecondary,
         paddingBottom: insets.bottom,
       }}
     >

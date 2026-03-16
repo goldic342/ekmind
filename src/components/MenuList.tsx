@@ -14,7 +14,7 @@ export default ({
   return (
     <View
       style={[{
-        backgroundColor: colors.menuListItemBackground,
+        backgroundColor: colors.surface,
         borderRadius: 8,
       }, style]}
     >{children}</View>

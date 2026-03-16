@@ -53,7 +53,7 @@ const CardFeedbackEmoji = ({ image, onPress, selected }) => {
         paddingTop: 8,
         paddingBottom: 8,
         borderRadius: 8,
-        backgroundColor: colors.statisticsFeedbackEmojiBackground,
+        backgroundColor: colors.backgroundSecondary,
       }}
       onPress={async () => {
         await haptics.selection()
@@ -190,7 +190,7 @@ export const CardFeedback = ({
             <Text
               style={{
                 fontSize: 14,
-                color: colors.statisticsFeedbackText,
+                color: colors.textSecondary,
                 paddingTop: 8,
                 paddingBottom: 8,
               }}

@@ -38,7 +38,7 @@ export const Stepper = ({
             width: '100%',
             height: 8,
             borderRadius: 100,
-            backgroundColor: step === index ? colors.stepperBackgroundActive : colors.stepperBackground,
+            backgroundColor: step === index ? colors.stepperBackgroundActive : colors.surfaceMuted,
           }} />
         </Pressable>
       ))}

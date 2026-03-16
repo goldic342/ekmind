@@ -27,7 +27,7 @@ const EntryHeader = ({
       style={{
         flexDirection: 'row',
         alignItems: 'center',
-        borderBottomColor: colors.logCardBorder,
+        borderBottomColor: colors.borderStrong,
         borderBottomWidth: 1,
         paddingBottom: 12,
       }}
@@ -119,8 +119,8 @@ export const Entry = ({
           paddingHorizontal: 16,
           borderRadius: 12,
           borderWidth: 1,
-          borderColor: colors.logCardBorder,
-          backgroundColor: colors.logCardBackground,
+          borderColor: colors.borderStrong,
+          backgroundColor: colors.surfaceMuted,
           position: 'relative',
         }}
       >
@@ -166,7 +166,7 @@ export const Entry = ({
           </View>
         </ScrollView>
         <LinearGradient
-          colors={[colors.logCardBackground, colors.logCardBackgroundTransparent]}
+          colors={[colors.surfaceMuted, colors.logCardBackgroundTransparent]}
           style={{
             position: 'absolute',
             height: 24,
@@ -177,7 +177,7 @@ export const Entry = ({
           }}
           pointerEvents="none" />
         <LinearGradient
-          colors={[colors.logCardBackgroundTransparent, colors.logCardBackground]}
+          colors={[colors.logCardBackgroundTransparent, colors.surfaceMuted]}
           style={{
             position: 'absolute',
             height: 24,

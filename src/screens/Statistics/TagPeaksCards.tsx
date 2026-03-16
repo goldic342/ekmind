@@ -30,9 +30,9 @@ const DayDot = ({
   const calendarNavigation = useCalendarNavigation()
 
   const color = isHighlighted ? colors.tags[colorName] : {
-    background: colors.statisticsCalendarDotBackground,
+    background: colors.surfaceMuted,
     text: colors.statisticsCalendarDotText,
-    border: colors.statisticsCalendarDotBorder,
+    border: colors.borderStrong,
   };
 
   return (

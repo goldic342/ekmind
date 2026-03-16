@@ -8,7 +8,7 @@ export default function NotificationPreview() {
   return (
     <View style={{
       flexDirection: 'row',
-      backgroundColor: colors.notificationBackground,
+      backgroundColor: colors.surface,
       padding: 8,
       paddingTop: Platform.OS === 'android' ? 12 : 8,
       paddingBottom: Platform.OS === 'android' ? 12 : 8,
@@ -17,7 +17,7 @@ export default function NotificationPreview() {
       borderRadius: 16,
     }}>
       <View style={{
-        backgroundColor: colors.logCardBackground,
+        backgroundColor: colors.surfaceMuted,
         width: 48,
         height: 48,
         borderRadius: 10,

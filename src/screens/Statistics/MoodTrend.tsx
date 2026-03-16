@@ -69,7 +69,7 @@ const Chart = ({
               r="3"
               strokeWidth={2}
               stroke={item ? colors.statisticsLineMuted : 'red'}
-              fill={colors.statisticsCardBackground}
+              fill={colors.surface}
             />
           </>
         )

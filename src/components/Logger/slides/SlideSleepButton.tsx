@@ -34,7 +34,7 @@ export const SlideSleepButton = ({
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: colors.logCardBackground,
+          backgroundColor: colors.surfaceMuted,
           borderColor: selected ? colors.tint : colorScheme === 'light' ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)',
           borderWidth: selected ? 2 : 1,
           borderRadius: 8,

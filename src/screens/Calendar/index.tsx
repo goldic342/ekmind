@@ -80,7 +80,7 @@ const CalendarScreen = memo(function CalendarScreen() {
       )}
       <ScrollView
         style={{
-          backgroundColor: colors.calendarBackground,
+          backgroundColor: colors.background,
           paddingLeft: 16,
           paddingRight: 16,
           width: "100%",

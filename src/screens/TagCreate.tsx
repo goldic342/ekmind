@@ -53,7 +53,7 @@ export const TagCreate = ({ navigation }: RootStackScreenProps<'TagCreate'>) => 
       <View style={{
         flex: 1,
         justifyContent: 'flex-start',
-        backgroundColor: colors.logBackground,
+        backgroundColor: colors.backgroundSecondary,
         marginTop: Platform.OS === 'android' ? insets.top : 0,
       }}>
         <ModalHeader

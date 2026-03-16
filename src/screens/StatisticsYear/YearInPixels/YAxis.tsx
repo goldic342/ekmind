@@ -17,7 +17,7 @@ export const YAxis = ({ dayCount }) => {
         style={{
           fontSize: 12,
           fontWeight: 'bold',
-          color: colors.yearPixelsLegendText,
+          color: colors.muted,
         }}
       >{dayCount}</Text>
     </View>

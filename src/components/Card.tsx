@@ -82,7 +82,7 @@ export const Card = ({
           analyticsId={analyticsId!}
           analyticsData={analyticsData}
           style={{
-            borderTopColor: colors.logCardBorder,
+            borderTopColor: colors.borderStrong,
           }}
         />
       )}

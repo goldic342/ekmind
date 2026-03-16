@@ -25,11 +25,11 @@ export const BottomTabs = () => {
       backgroundColor: colors.background,
       shadowColor: 'transparent',
       borderBottomWidth: 1,
-      borderBottomColor: colors.headerBorder,
+      borderBottomColor: colors.borderStrong,
     },
     headerShadowVisible: Platform.OS !== 'web',
     tabBarStyle: {
-      borderTopColor: colors.headerBorder,
+      borderTopColor: colors.borderStrong,
     },
   };
 

@@ -35,7 +35,7 @@ const EmptryState = () => {
         padding: 16,
         paddingVertical: 32,
         borderWidth: 1,
-        borderColor: colors.statisticsNoDataBorder,
+        borderColor: colors.borderStrong,
         borderStyle: "dashed",
       }}
     >

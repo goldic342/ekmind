@@ -24,7 +24,7 @@ export const Day = ({
         borderRadius: 100,
         backgroundColor: rating ? scale.colors[rating].background : 'transparent',
         borderWidth: 2,
-        borderColor: rating ? scale.colors[rating].background : colors.yearPixelsEmptyDot,
+        borderColor: rating ? scale.colors[rating].background : colors.surfaceMuted,
         justifyContent: 'center',
         alignItems: 'center',
       }}
@@ -36,7 +36,7 @@ export const Day = ({
             width: 8,
             height: 8,
             borderRadius: 100,
-            backgroundColor: rating ? colors.cardBackground : colors.yearPixelsEmptyDot,
+            backgroundColor: rating ? colors.cardBackground : colors.surfaceMuted,
           }} />
       )}
     </View>

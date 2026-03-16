@@ -25,7 +25,7 @@ const Body = ({ index }: { index: number }) => {
     >
       <Text
         style={{
-          color: colors.onboardingTitle,
+          color: colors.text,
           fontSize: 20,
           fontWeight: 'bold',
           marginBottom: 8,

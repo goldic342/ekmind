@@ -51,7 +51,7 @@ export const IndexSlide = ({
           >
             <Text
               style={{
-                color: colors.onboardingTitle,
+                color: colors.text,
                 fontSize: 32,
                 fontWeight: 'bold',
                 marginBottom: 8,

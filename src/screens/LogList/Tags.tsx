@@ -27,7 +27,7 @@ const Tag = ({
         borderRadius: 100,
         marginRight: 8,
         marginBottom: 8,
-        backgroundColor: colors.tagBackground,
+        backgroundColor: colors.surface,
         borderColor: colorScheme === 'light' ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)',
         borderWidth: 1,
         paddingHorizontal: 12,
@@ -93,8 +93,8 @@ export const Tags = ({
               title={_tag.title}
               colorName={_tag.color}
               style={{
-                backgroundColor: colors.entryBackground,
-                borderColor: colors.entryItemBorder,
+                backgroundColor: colors.surfaceMuted,
+                borderColor: colors.borderStrong,
               }}
             />
           );

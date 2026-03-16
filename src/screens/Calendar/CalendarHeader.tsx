@@ -20,7 +20,7 @@ const HeaderDay = ({
         style={{
           fontSize: 12,
           fontWeight: 'bold',
-          color: colors.calendarWeekNameColor,
+          color: colors.muted,
           textAlign: 'center',
         }}
       >{children}</Text>
@@ -37,7 +37,7 @@ export default function CalendarHeader() {
         width: '100%',
         paddingLeft: 16,
         paddingRight: 16,
-        backgroundColor: colors.calendarBackground,
+        backgroundColor: colors.background,
 
         shadowColor: 'rgba(0, 0, 0, 0.6)',
         shadowOffset: {

@@ -28,7 +28,7 @@ export const StatisticsYearScreen = ({ route }: RootStackScreenProps<'Statistics
     <ScrollView
       style={{
         flex: 1,
-        backgroundColor: colors.statisticsBackground,
+        backgroundColor: colors.background,
       }}
     >
       <Header

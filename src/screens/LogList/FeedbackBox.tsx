@@ -24,7 +24,7 @@ export const FeedbackBox = ({
       <View
         style={{
           marginBottom: 24,
-          backgroundColor: colors.feedbackBoxBackground,
+          backgroundColor: colors.warning,
           borderWidth: 1,
           borderColor: colors.cardBorder,
           paddingVertical: 16,

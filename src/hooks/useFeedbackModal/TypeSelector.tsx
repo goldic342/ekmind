@@ -26,14 +26,14 @@ export function TypeSelector({
         style={({ pressed }) => ({
           opacity: pressed ? 0.8 : 1,
           borderRadius: 8,
-          backgroundColor: colors.feedbackSelectionBackground,
+          backgroundColor: colors.surfaceMuted,
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
           padding: 15,
           marginRight: 10,
           borderWidth: 2,
-          borderColor: selected === 'issue' ? colors.tint : colors.feedbackSelectionBackground,
+          borderColor: selected === 'issue' ? colors.tint : colors.surfaceMuted,
           maxHeight: 100,
         })}
         onPress={async () => {
@@ -44,7 +44,7 @@ export function TypeSelector({
       >
         <Text
           numberOfLines={1}
-          style={{ fontSize: 32, color: colors.feedbackSelectionText, textAlign: 'center' }}
+          style={{ fontSize: 32, color: colors.text, textAlign: 'center' }}
         >
           ⚠️
         </Text>
@@ -52,7 +52,7 @@ export function TypeSelector({
           numberOfLines={1}
           style={{
             fontSize: 17,
-            color: colors.feedbackSelectionText,
+            color: colors.text,
             marginTop: 5,
             textAlign: 'center'
           }}
@@ -64,14 +64,14 @@ export function TypeSelector({
         style={({ pressed }) => ({
           opacity: pressed ? 0.8 : 1,
           borderRadius: 8,
-          backgroundColor: colors.feedbackSelectionBackground,
+          backgroundColor: colors.surfaceMuted,
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
           padding: 15,
           marginRight: 10,
           borderWidth: 2,
-          borderColor: selected === 'idea' ? colors.tint : colors.feedbackSelectionBackground,
+          borderColor: selected === 'idea' ? colors.tint : colors.surfaceMuted,
           maxHeight: 100,
         })}
         onPress={async () => {
@@ -82,7 +82,7 @@ export function TypeSelector({
       >
         <Text
           numberOfLines={1}
-          style={{ fontSize: 32, color: colors.feedbackSelectionText, textAlign: 'center' }}
+          style={{ fontSize: 32, color: colors.text, textAlign: 'center' }}
         >
           💡
         </Text>
@@ -90,7 +90,7 @@ export function TypeSelector({
           numberOfLines={1}
           style={{
             fontSize: 17,
-            color: colors.feedbackSelectionText,
+            color: colors.text,
             marginTop: 5,
             textAlign: 'center'
           }}
@@ -102,13 +102,13 @@ export function TypeSelector({
         style={({ pressed }) => ({
           opacity: pressed ? 0.8 : 1,
           borderRadius: 8,
-          backgroundColor: colors.feedbackSelectionBackground,
+          backgroundColor: colors.surfaceMuted,
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
           padding: 15,
           borderWidth: 2,
-          borderColor: selected === 'other' ? colors.tint : colors.feedbackSelectionBackground,
+          borderColor: selected === 'other' ? colors.tint : colors.surfaceMuted,
           maxHeight: 100,
         })}
         onPress={async () => {
@@ -117,10 +117,10 @@ export function TypeSelector({
         }}
         testID='feedback-modal-other'
       >
-        <MoreHorizontal height={40} color={colors.feedbackSelectionText} />
+        <MoreHorizontal height={40} color={colors.text} />
         <Text
           numberOfLines={1}
-          style={{ fontSize: 17, color: colors.feedbackSelectionText, marginTop: 5, textAlign: 'center' }}
+          style={{ fontSize: 17, color: colors.text, marginTop: 5, textAlign: 'center' }}
         >
           {t('other')}
         </Text>

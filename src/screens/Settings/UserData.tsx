@@ -59,7 +59,7 @@ export const UserDataImportList = () => {
       <MenuList style={{}}>
         <MenuListItem
           title={"Reload"}
-          iconLeft={<Repeat width={18} color={colors.menuListItemIcon} />}
+          iconLeft={<Repeat width={18} color={colors.text} />}
           onPress={() => loadUsers()}
           isLast
         />
@@ -92,7 +92,7 @@ export const UserDataImportList = () => {
                 loadedUserIds.includes(user.id) ? (
                   <CheckCircle width={18} color={colors.palette.green[500]} />
                 ) : (
-                  <UploadCloud width={18} color={colors.menuListItemIcon} />
+                  <UploadCloud width={18} color={colors.text} />
                 )
               }
               onPress={() => onPress(user)}

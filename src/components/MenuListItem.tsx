@@ -33,7 +33,7 @@ export default ({
   iconRight = iconRight || null
 
   if (isLink) {
-    iconRight = <ChevronRight width={18} color={colors.menuListItemIcon} />;
+    iconRight = <ChevronRight width={18} color={colors.text} />;
   }
 
   const _onPress = useCallback(async () => {
@@ -47,7 +47,7 @@ export default ({
     <View
       style={{
         borderBottomWidth: isLast ? 0 : 1,
-        borderBottomColor: colors.menuListItemBorder,
+        borderBottomColor: colors.border,
         marginRight: 16,
         marginLeft: 16,
         opacity: deactivated ? 0.5 : 1,
@@ -83,7 +83,7 @@ export default ({
               style={{
                 flex: 1,
                 fontSize: 17,
-                color: style.color || colors.menuListItemText,
+                color: style.color || colors.text,
               }}
               numberOfLines={1}
             >{title}</Text>

@@ -28,12 +28,12 @@ const AnswerSelector = ({
       style={({ pressed }) => ({
         opacity: pressed ? 0.8 : 1,
         borderRadius: 8,
-        backgroundColor: colors.logActionBackground,
+        backgroundColor: colors.surfaceMuted,
         alignItems: 'center',
         justifyContent: 'center',
         padding: 8,
         borderWidth: 2,
-        borderColor: selected ? colors.logActionBorder : 'transparent',
+        borderColor: selected ? colors.primary : 'transparent',
         aspectRatio: 1,
         width: 150,
         marginHorizontal: 8,
@@ -70,7 +70,7 @@ const AnswerSelector = ({
           <Text
             style={{
               fontSize: 17,
-              color: colors.logActionText,
+              color: colors.textSecondary,
               textAlign: 'center',
             }}
           >

@@ -30,9 +30,9 @@ const DayDot = ({
     text: scale.colors[day.ratingAvg].text,
     border: scale.colors[day.ratingAvg].text,
   } : {
-    bg: colors.statisticsCalendarDotBackground,
+    bg: colors.surfaceMuted,
     text: colors.statisticsCalendarDotText,
-    border: colors.statisticsCalendarDotBorder,
+    border: colors.borderStrong,
   };
 
   const isFuture = dayjs(date).isAfter(dayjs(), 'day')

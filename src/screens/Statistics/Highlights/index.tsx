@@ -93,7 +93,7 @@ export const StatisticsHighlights = ({ navigation }) => {
     <View
       style={{
         flex: 1,
-        backgroundColor: colors.statisticsBackground
+        backgroundColor: colors.background
       }}
     >
       <ScrollView style={{

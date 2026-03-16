@@ -75,33 +75,33 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
         <MenuList>
           <MenuListItem
             title={t('data')}
-            iconLeft={<Database width={18} color={colors.menuListItemIcon} />}
+            iconLeft={<Database width={18} color={colors.text} />}
             onPress={() => navigation.navigate('Data')}
             testID='data'
             isLink
           />
           <MenuListItem
             title={t('reminder')}
-            iconLeft={<Bell width={18} color={colors.menuListItemIcon} />}
+            iconLeft={<Bell width={18} color={colors.text} />}
             onPress={() => navigation.navigate('Reminder')}
             testID='reminder'
             isLink
           />
           <MenuListItem
             title={t('colors')}
-            iconLeft={<Droplet width={18} color={colors.menuListItemIcon} />}
+            iconLeft={<Droplet width={18} color={colors.text} />}
             onPress={() => navigation.navigate('Colors')}
             isLink
           />
           <MenuListItem
             title={t('tags')}
-            iconLeft={<Tag width={18} color={colors.menuListItemIcon} />}
+            iconLeft={<Tag width={18} color={colors.text} />}
             onPress={() => navigation.navigate('SettingsTags')}
             isLink
           />
           <MenuListItem
             title={t('steps')}
-            iconLeft={<CheckCircle width={18} color={colors.menuListItemIcon} />}
+            iconLeft={<CheckCircle width={18} color={colors.text} />}
             onPress={() => navigation.navigate('Steps')}
             isLink
             isLast
@@ -111,8 +111,8 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
             deactivated={!passcodeSupported}
             iconLeft={
               passcodeEnabled ? 
-              <Lock width={18} color={colors.menuListItemIcon} /> :
-              <Unlock width={18} color={colors.menuListItemIcon} />
+              <Lock width={18} color={colors.text} /> :
+              <Unlock width={18} color={colors.text} />
             }
             iconRight={
               <Switch
@@ -146,7 +146,7 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
           <MenuListItem
             title={t('send_feedback')}
             onPress={() => showFeedbackModal({ type: 'issue' })}
-            iconLeft={<Flag width={18} color={colors.menuListItemIcon} />}
+            iconLeft={<Flag width={18} color={colors.text} />}
             testID='send_feedback'
             isLast
           />
@@ -164,7 +164,7 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
               analytics.track('settings_vote_features')
               await WebBrowser.openBrowserAsync(FEEDBACK_FEATURES_URL);
             }}
-            iconLeft={<ArrowUpCircle width={18} color={colors.menuListItemIcon} />}
+            iconLeft={<ArrowUpCircle width={18} color={colors.text} />}
             testID='vote_features'
           />
           <MenuListItem
@@ -173,18 +173,18 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
               analytics.track('settings_changelog')
               await WebBrowser.openBrowserAsync(CHANGELOG_URL);
             }}
-            iconLeft={<BookOpen width={18} color={colors.menuListItemIcon} />}
+            iconLeft={<BookOpen width={18} color={colors.text} />}
             testID='changelog'
           />
           <MenuListItem
             title={t('rate_this_app')}
             onPress={() => askToRateApp()}
-            iconLeft={<Star width={18} color={colors.menuListItemIcon} />}
+            iconLeft={<Star width={18} color={colors.text} />}
           />
           <MenuListItem
             title={t('privacy')}
             onPress={() => navigation.navigate('Privacy')}
-            iconLeft={<Shield width={18} color={colors.menuListItemIcon} />}
+            iconLeft={<Shield width={18} color={colors.text} />}
             isLink
           />
         </MenuList>
@@ -196,12 +196,12 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
         >
           <MenuListItem
             title={`${t('onboarding')}`}
-            iconLeft={<Smartphone width={18} color={colors.menuListItemIcon} />}
+            iconLeft={<Smartphone width={18} color={colors.text} />}
             onPress={() => navigation.navigate('Onboarding')}
           />
           <MenuListItem
             title={`${t('settings_development_statistics')}`}
-            iconLeft={<PieChart width={18} color={colors.menuListItemIcon} />}
+            iconLeft={<PieChart width={18} color={colors.text} />}
             onPress={() => navigation.navigate('DevelopmentTools')}
             isLink
           />
@@ -210,11 +210,11 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
             onPress={() => {
               Linking.openURL('https://github.com/mrzmyr/pixy-mood-tracker-app')
             }}
-            iconLeft={<Github width={18} color={colors.menuListItemIcon} />}
+            iconLeft={<Github width={18} color={colors.text} />}
           />
           <MenuListItem
             title={t('licenses')}
-            iconLeft={<Award width={18} color={colors.menuListItemIcon} />}
+            iconLeft={<Award width={18} color={colors.text} />}
             onPress={() => navigation.navigate('Licenses')}
             isLink
             isLast

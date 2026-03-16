@@ -175,7 +175,7 @@ export const SlideHeader = ({
                 alignItems: 'center',
                 paddingVertical: 6,
                 paddingHorizontal: 12,
-                backgroundColor: colors.logHeaderHighlight,
+                backgroundColor: colors.border,
                 borderRadius: 8,
               })}
             >

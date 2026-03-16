@@ -120,7 +120,7 @@ export const SlideEmotions = ({
   return (
     <View style={{
       flex: 1,
-      backgroundColor: colors.logBackground,
+      backgroundColor: colors.backgroundSecondary,
       width: '100%',
     }}>
       <View
@@ -154,7 +154,7 @@ export const SlideEmotions = ({
         >
           <LinearGradient
             pointerEvents="none"
-            colors={[colors.logBackground, colors.logBackgroundTransparent]}
+            colors={[colors.backgroundSecondary, colors.logBackgroundTransparent]}
             style={{
               position: 'absolute',
               height: 12,

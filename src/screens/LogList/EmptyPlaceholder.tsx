@@ -18,7 +18,7 @@ export const EmptyPlaceholder = ({ }: {}) => {
           justifyContent: 'center',
           alignItems: 'center',
           borderWidth: 1,
-          borderColor: colors.statisticsNoDataBorder,
+          borderColor: colors.borderStrong,
           borderStyle: 'dashed',
           padding: 16,
           borderRadius: 8,

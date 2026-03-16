@@ -94,7 +94,7 @@ export default function useFeedbackModal() {
               <View
                 style={{
                   flex: 1,
-                  backgroundColor: colors.feedbackBackground,
+                  backgroundColor: colors.backgroundSecondary,
                   top: 0,
                   left: 0,
                   right: 0,
@@ -115,7 +115,7 @@ export default function useFeedbackModal() {
               style={{
                 flex: 1,
                 justifyContent: "flex-start",
-                backgroundColor: colors.feedbackBackground,
+                backgroundColor: colors.backgroundSecondary,
               }}
             >
               <ModalHeader

@@ -20,7 +20,7 @@ export const PasscodePadButton = ({
         width: 80,
         height: 80,
         margin: 10,
-        backgroundColor: pressed ? colors.passcodePadBackgroundActive : colors.passcodePadBackground,
+        backgroundColor: pressed ? colors.passcodePadBackgroundActive : colors.surfaceMuted,
       })}
     >
       {typeof value === 'string' ?

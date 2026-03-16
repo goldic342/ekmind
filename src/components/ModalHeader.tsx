@@ -24,8 +24,8 @@ export default function ModalHeader({
         paddingLeft: 8,
         paddingRight: 8,
         paddingBottom: 8,
-        backgroundColor: colors.logHeaderBackground,
-        borderBottomColor: colors.logHeaderBorder,
+        backgroundColor: colors.surface,
+        borderBottomColor: colors.border,
         borderBottomWidth: 1,
       }, style]}
     >

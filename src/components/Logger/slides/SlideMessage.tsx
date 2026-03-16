@@ -112,7 +112,7 @@ const Tips = ({
       <Card
         title={t('log_message_hint_title')}
         style={{
-          backgroundColor: colors.logCardBackground,
+          backgroundColor: colors.surfaceMuted,
           marginTop: 16,
         }}
         onClose={onClose}
@@ -181,7 +181,7 @@ export const SlideMessage = forwardRef(({
         }}>
           <View style={{
             flex: 1,
-            backgroundColor: colors.logBackground,
+            backgroundColor: colors.backgroundSecondary,
             width: '100%',
             position: 'relative',
             paddingHorizontal: 20,
