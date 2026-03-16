@@ -43,6 +43,7 @@ These features will be implemented in first stable release:
 - [ ] Categorized tags
 - [ ] Updates exports
 - [ ] Community translations
+- [ ] General UI  enhancements
 
 ## Development
 

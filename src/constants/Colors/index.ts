@@ -7,7 +7,7 @@ import { buildCardTheme } from './components/cards';
 import { buildTabsTheme } from './components/tabs';
 import { darkSemanticColors } from './semantic/dark';
 import { lightSemanticColors, type SemanticColors } from './semantic/light';
-import { buildMaterialYouSemanticColors, type MaterialYouColors } from './semantic/materialYou';
+import { buildMaterialYouSemanticColors } from './semantic/materialYou';
 
 type TagColorKey = typeof TAG_COLOR_NAMES[number];
 
@@ -202,7 +202,6 @@ export const buildTheme = ({
 }) => {
   const semanticBase = scheme === 'dark' ? darkSemanticColors : lightSemanticColors;
   const semantic = materialColors ? buildMaterialYouSemanticColors(semanticBase, materialColors) : semanticBase;
-  console.log(materialColors)
 
   return {
     ...semantic,

@@ -78,24 +78,37 @@ const NAVIGATION_LINKING = {
 };
 
 export default function Navigation() {
-  const scheme = useColorScheme();
+  return (
+    <Providers>
+      <NavigationWithTheme />
+    </Providers>
+  );
+}
+
+function NavigationWithTheme() {
+  const systemScheme = useColorScheme();
   const { theme: dynamic } = useMaterial3Theme();
+  const { settings } = useSettings();
+
+  const resolvedScheme = settings.themeMode === 'auto'
+    ? (systemScheme === 'dark' ? 'dark' : 'light')
+    : settings.themeMode;
 
   return (
     <NavigationContainer
       linking={NAVIGATION_LINKING}
       // @ts-ignore
       theme={{
-        dark: scheme === 'dark',
+        dark: resolvedScheme === 'dark',
         colors: buildTheme({
-          scheme: scheme === 'dark' ? 'dark' : 'light',
-          materialColors: Platform.OS === 'android' ? (scheme === 'dark' ? dynamic.dark : dynamic.light) : undefined,
+          scheme: resolvedScheme,
+          materialColors: Platform.OS === 'android' && settings.androidColorScheme === 'materialYou'
+            ? (resolvedScheme === 'dark' ? dynamic.dark : dynamic.light)
+            : undefined,
         }),
       }}
     >
-      <Providers>
-        <RootNavigator />
-      </Providers>
+      <RootNavigator />
     </NavigationContainer>
   );
 }

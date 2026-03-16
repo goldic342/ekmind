@@ -21,6 +21,9 @@ const SCALE_TYPES = [
   "ColorBrew-BrBG",
 ];
 
+export const THEME_MODES = ["auto", "light", "dark"] as const;
+export const ANDROID_COLOR_SCHEMES = ["materialYou", "basic"] as const;
+
 // ATTENTION: If you change the settings state, you need to update
 // the export variables also in the DataGate
 export interface SettingsState {
@@ -32,6 +35,8 @@ export interface SettingsState {
   reminderEnabled: Boolean;
   reminderTime: string;
   analyticsEnabled: boolean;
+  themeMode: typeof THEME_MODES[number];
+  androidColorScheme: typeof ANDROID_COLOR_SCHEMES[number];
   actionsDone: IAction[];
   steps: LoggerStep[];
 
@@ -56,6 +61,8 @@ export const INITIAL_STATE: SettingsState = {
   reminderEnabled: false,
   reminderTime: "18:00",
   analyticsEnabled: true,
+  themeMode: "auto",
+  androidColorScheme: "materialYou",
   actionsDone: [],
   steps: [
     "rating",
