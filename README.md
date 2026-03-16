@@ -18,7 +18,7 @@
 
 ### Forked from
 
-Ekmind is forked from [Pixy](https://github.com/mrzmyr/pixy-mood-tracker-app) 
+Ekmind is a fork of [Pixy](https://github.com/mrzmyr/pixy-mood-tracker-app) originally created by [mrzmyr](https://github.com/mrzmyr)
 
 
 ### Built With
