@@ -1,5 +1,5 @@
 import { LogItem, RATING_KEYS } from "../useLogs";
-import { getLogDays } from '@/lib/utils';
+import { getLogDays } from '@/shared/utils/utils';
 
 export interface MoodAvgData {
   ratingHighestKey: LogItem["rating"];

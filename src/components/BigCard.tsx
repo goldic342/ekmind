@@ -1,5 +1,5 @@
-import { useAnalytics } from '@/hooks/useAnalytics';
-import useColors from "@/hooks/useColors";
+import { useAnalytics } from '@/shared/hooks/useAnalytics';
+import useColors from "@/shared/hooks/useColors";
 import * as Sharing from 'expo-sharing';
 import { useRef, useState } from "react";
 import { ActivityIndicator, Image, Text, View, ViewStyle } from "react-native";

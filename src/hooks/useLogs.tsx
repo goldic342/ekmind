@@ -1,5 +1,5 @@
-import { DATE_FORMAT } from "@/constants/Config";
-import { load, store } from "@/helpers/storage";
+import { DATE_FORMAT } from "@/shared/constants/Config";
+import { load, store } from "@/shared/utils/storage";
 import { LogItemSchema } from "@/types";
 import { Buffer } from "buffer";
 import dayjs from "dayjs";

@@ -1,4 +1,4 @@
-import { isISODate } from "@/lib/utils";
+import { isISODate } from "@/shared/utils/utils";
 import { z } from "zod";
 
 export const TagReferenceSchema = z.object({
@@ -74,3 +74,5 @@ export const LogItemSchema = z.object({
   emotions: z.array(EmotionKeySchema),
 });
 
+
+export type RootStackParamList = Record<string, object | undefined>;

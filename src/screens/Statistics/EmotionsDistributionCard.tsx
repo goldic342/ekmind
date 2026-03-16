@@ -1,7 +1,7 @@
 import { Card } from '@/components/Statistics/Card';
 import { CardFeedback } from '@/components/Statistics/CardFeedback';
-import { t } from '@/helpers/translation';
-import useColors from '@/hooks/useColors';
+import { t } from '@/shared/utils/translation';
+import useColors from '@/shared/hooks/useColors';
 import { EmotionsDistributionData } from '@/hooks/useStatistics/EmotionsDistributuon';
 import { Emotion } from '@/types';
 import { Text, View } from 'react-native';

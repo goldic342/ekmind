@@ -1,7 +1,7 @@
 import * as Localization from 'expo-localization';
 import { Alert, Platform } from 'react-native';
-import { FEEDBACK_URL } from '@/constants/API';
-import { t } from '@/helpers/translation';
+import { FEEDBACK_URL } from '@/shared/constants/API';
+import { t } from '@/shared/utils/translation';
 import pkg from '../../package.json';
 import { useAnalytics } from './useAnalytics';
 import { useSettings } from './useSettings';

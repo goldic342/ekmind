@@ -2,7 +2,7 @@ import React, { memo, useEffect, useRef, useState } from "react";
 import { ActivityIndicator, Platform, Text, useWindowDimensions, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { useCalendarFilters } from "@/hooks/useCalendarFilters";
-import useColors from "@/hooks/useColors";
+import useColors from "@/shared/hooks/useColors";
 import { useLogState } from "@/hooks/useLogs";
 import { useSettings } from "@/hooks/useSettings";
 import Calendar from "./Calendar";
@@ -11,7 +11,7 @@ import { Body } from "./CalendarBottomSheet/Body";
 import { CalendarFooter } from "./CalendarFooter";
 import CalendarHeader from "./CalendarHeader";
 import { ScrollToBottomButton } from "./ScrollToBottomButton";
-import { t } from "@/helpers/translation";
+import { t } from "@/shared/utils/translation";
 
 const CalendarScreen = memo(function CalendarScreen() {
   const colors = useColors();

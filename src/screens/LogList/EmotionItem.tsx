@@ -1,5 +1,5 @@
 import { EmotionIndicator } from '@/components/Logger/slides/SlideEmotions/EmotionsIndicator';
-import useColors from '@/hooks/useColors';
+import useColors from '@/shared/hooks/useColors';
 import { t } from 'i18n-js';
 import { Text, View } from 'react-native';
 

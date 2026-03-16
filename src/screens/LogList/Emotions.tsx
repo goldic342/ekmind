@@ -1,5 +1,5 @@
 import { EMOTIONS } from '@/components/Logger/config';
-import useColors from '@/hooks/useColors';
+import useColors from '@/shared/hooks/useColors';
 import { LogItem } from '@/hooks/useLogs';
 import { Emotion } from '@/types';
 import { useNavigation } from '@react-navigation/native';

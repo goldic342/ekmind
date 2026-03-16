@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import React from "react";
 import { View } from "react-native";
-import { DATE_FORMAT } from "@/constants/Config";
+import { DATE_FORMAT } from "@/shared/constants/Config";
 import useColors from "../../../hooks/useColors";
 import { LogItem } from "../../../hooks/useLogs";
 import useScale from "../../../hooks/useScale";

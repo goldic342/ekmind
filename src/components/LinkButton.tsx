@@ -6,8 +6,8 @@ import {
   ViewStyle
 } from "react-native";
 import * as FeatherIcons from "react-native-feather";
-import useColors from "@/hooks/useColors";
-import useHaptics from "@/hooks/useHaptics";
+import useColors from "@/shared/hooks/useColors";
+import useHaptics from "@/shared/hooks/useHaptics";
 
 const isString = (children: React.ReactNode): children is string => {
   if (_.isString(children)) {

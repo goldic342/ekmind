@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { View } from 'react-native';
-import { t } from '@/helpers/translation';
+import { t } from '@/shared/utils/translation';
 import { LogItem } from '../../hooks/useLogs';
 import { StatsCard } from "./StatsCard";
 

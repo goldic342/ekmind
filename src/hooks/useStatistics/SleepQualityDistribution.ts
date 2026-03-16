@@ -1,4 +1,4 @@
-import { getLogDays } from '@/lib/utils';
+import { getLogDays } from '@/shared/utils/utils';
 import dayjs from 'dayjs';
 import { LogItem } from '../useLogs';
 import _ from 'lodash';

@@ -5,9 +5,9 @@ import Clock from '@/components/Clock';
 import MenuList from '@/components/MenuList';
 import MenuListItem from '@/components/MenuListItem';
 import NotificationPreview from '@/components/NotificationPreview';
-import { t } from '@/helpers/translation';
-import { useAnalytics } from '@/hooks/useAnalytics';
-import useColors from '@/hooks/useColors';
+import { t } from '@/shared/utils/translation';
+import { useAnalytics } from '@/shared/hooks/useAnalytics';
+import useColors from '@/shared/hooks/useColors';
 import useNotification from '@/hooks/useNotifications';
 import { SettingsState, useSettings } from '@/hooks/useSettings';
 

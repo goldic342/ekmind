@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import useHaptics from "@/hooks/useHaptics";
+import useHaptics from "@/shared/hooks/useHaptics";
 import { LogItem } from "@/hooks/useLogs";
 import useScale from "@/hooks/useScale";
 import { SettingsState } from "@/hooks/useSettings";

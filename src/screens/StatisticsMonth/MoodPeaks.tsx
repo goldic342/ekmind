@@ -1,7 +1,7 @@
 import { BigCard } from '@/components/BigCard';
 import { NotEnoughDataOverlay } from '@/components/Statistics/NotEnoughDataOverlay';
-import { DATE_FORMAT } from '@/constants/Config';
-import { t } from '@/helpers/translation';
+import { DATE_FORMAT } from '@/shared/constants/Config';
+import { t } from '@/shared/utils/translation';
 import dayjs from 'dayjs';
 import { useAnonymizer } from '../../hooks/useAnonymizer';
 import { LogDay } from '../../hooks/useLogs';

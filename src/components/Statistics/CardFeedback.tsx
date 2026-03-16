@@ -1,8 +1,8 @@
-import { STATISTICS_FEEDBACK_URL } from '@/constants/API';
-import { locale, t } from '@/helpers/translation';
-import { useAnalytics } from '@/hooks/useAnalytics';
-import useColors from '@/hooks/useColors';
-import useHaptics from '@/hooks/useHaptics';
+import { STATISTICS_FEEDBACK_URL } from '@/shared/constants/API';
+import { locale, t } from '@/shared/utils/translation';
+import { useAnalytics } from '@/shared/hooks/useAnalytics';
+import useColors from '@/shared/hooks/useColors';
+import useHaptics from '@/shared/hooks/useHaptics';
 import { useSettings } from '@/hooks/useSettings';
 import * as StoreReview from 'expo-store-review';
 import { useState } from 'react';

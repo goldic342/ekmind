@@ -1,15 +1,15 @@
-import Indicator from '@/components/Indicator';
+import Indicator from '@/shared/components/Indicator';
 import LinkButton from '@/components/LinkButton';
-import { t } from '@/helpers/translation';
+import { t } from '@/shared/utils/translation';
 import { useCalendarFilters } from '@/hooks/useCalendarFilters';
-import useColors from '@/hooks/useColors';
+import useColors from '@/shared/hooks/useColors';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useNavigation } from '@react-navigation/native';
 import dayjs from 'dayjs';
 import * as Updates from 'expo-updates';
 import { Platform, Pressable, View } from 'react-native';
-import { SettingsScreen, StatisticsScreen } from '../screens';
-import CalendarScreen from '../screens/Calendar';
+import { SettingsScreen, StatisticsScreen } from '@/screens';
+import CalendarScreen from '@/screens/Calendar';
 import { MyTabBar } from "./MyTabBar";
 
 const Tab = createBottomTabNavigator();

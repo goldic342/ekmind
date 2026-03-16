@@ -1,11 +1,11 @@
-import useColors from '@/hooks/useColors';
+import useColors from '@/shared/hooks/useColors';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as Linking from 'expo-linking';
 import { useEffect } from 'react';
 import { Platform, View, useColorScheme } from 'react-native';
 import * as Sentry from 'sentry-expo';
-import { RootStackParamList } from '../../types';
+import { RootStackParamList } from '@/types';
 import {
   ColorsScreen,
   DataScreen,
@@ -16,25 +16,25 @@ import {
   NotFoundScreen,
   PrivacyScreen,
   ReminderScreen, SettingsScreen, StatisticsHighlights, TagCreate, TagEdit, SettingsTags, SettingsTagsArchive
-} from '../screens';
+} from '@/screens';
 
-import Providers from '@/components/Providers';
-import { buildTheme } from '@/constants/Colors';
-import { initializeDayjs, t } from '@/helpers/translation';
-import { useAnalytics } from '@/hooks/useAnalytics';
+import Providers from '@/app/providers';
+import { buildTheme } from '@/shared/constants/Colors';
+import { initializeDayjs, t } from '@/shared/utils/translation';
+import { useAnalytics } from '@/shared/hooks/useAnalytics';
 import { useAnonymizer } from '@/hooks/useAnonymizer';
 import { useLogState } from '@/hooks/useLogs';
 import { useSettings } from '@/hooks/useSettings';
 import { useTagsState } from '@/hooks/useTags';
-import { getItemsCountPerDayAverage, getItemsCoverage } from '@/lib/utils';
+import { getItemsCountPerDayAverage, getItemsCoverage } from '@/shared/utils/utils';
 import dayjs from 'dayjs';
 import { enableScreens } from 'react-native-screens';
-import { DevelopmentTools } from '../screens/DevelopmentTools';
-import { Onboarding } from '../screens/Onboarding';
-import { StatisticsMonthScreen } from '../screens/StatisticsMonth';
-import { StatisticsYearScreen } from '../screens/StatisticsYear';
-import { StepsScreen } from '../screens/Steps';
-import { Tags } from '../screens/Tags';
+import { DevelopmentTools } from '@/screens/DevelopmentTools';
+import { Onboarding } from '@/screens/Onboarding';
+import { StatisticsMonthScreen } from '@/screens/StatisticsMonth';
+import { StatisticsYearScreen } from '@/screens/StatisticsYear';
+import { StepsScreen } from '@/screens/Steps';
+import { Tags } from '@/screens/Tags';
 import { BackButton } from './BackButton';
 import { BottomTabs } from './BottomTabs';
 

@@ -1,13 +1,13 @@
 import dayjs from "dayjs";
 import { memo, useCallback, useMemo } from "react";
 import { StyleSheet, View } from "react-native";
-import { DATE_FORMAT } from "@/constants/Config";
+import { DATE_FORMAT } from "@/shared/constants/Config";
 
 import { useNavigation } from "@react-navigation/native";
 import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
 import { useCalendarFilters } from "../../hooks/useCalendarFilters";
 import { LogItem, useLogState } from "../../hooks/useLogs";
-import { getAverageMood } from "@/lib/utils";
+import { getAverageMood } from "@/shared/utils/utils";
 import CalendarDay from "./CalendarDay";
 import { useCalendarNavigation } from "@/hooks/useCalendarNavigation";
 

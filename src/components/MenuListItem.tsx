@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import { Pressable, Text, TextStyle, View, ViewStyle } from 'react-native';
 import { ChevronRight } from 'react-native-feather';
-import useColors from '@/hooks/useColors';
-import useHaptics from '@/hooks/useHaptics';
+import useColors from '@/shared/hooks/useColors';
+import useHaptics from '@/shared/hooks/useHaptics';
 
 export default ({
   title,

@@ -1,7 +1,7 @@
 import { BigCard } from "@/components/BigCard"
 import { NotEnoughDataOverlay } from "@/components/Statistics/NotEnoughDataOverlay"
-import { t } from "@/helpers/translation"
-import useColors from "@/hooks/useColors"
+import { t } from "@/shared/utils/translation"
+import useColors from "@/shared/hooks/useColors"
 import { RATING_MAPPING, useLogState } from "@/hooks/useLogs"
 import dayjs, { Dayjs } from "dayjs"
 import _ from 'lodash'

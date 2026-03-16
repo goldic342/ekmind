@@ -1,9 +1,9 @@
-import Indicator from '@/components/Indicator';
+import Indicator from '@/shared/components/Indicator';
 import { LoggerStep, STEP_OPTIONS } from '@/components/Logger/config';
 import MenuList from '@/components/MenuList';
 import MenuListItem from '@/components/MenuListItem';
-import { PageWithHeaderLayout } from '@/components/PageWithHeaderLayout';
-import { t } from '@/helpers/translation';
+import { PageWithHeaderLayout } from '@/shared/components/PageWithHeaderLayout';
+import { t } from '@/shared/utils/translation';
 import { BedDouble } from 'lucide-react-native';
 import { ReactElement } from 'react';
 import { ScrollView, Switch, Text, View } from 'react-native';

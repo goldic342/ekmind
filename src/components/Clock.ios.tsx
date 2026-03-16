@@ -1,6 +1,6 @@
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { ViewStyle } from 'react-native';
-import { locale } from '@/helpers/translation';
+import { locale } from '@/shared/utils/translation';
 
 const Clock = ({
   timeDate,

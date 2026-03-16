@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { Pressable, Text, ViewStyle } from "react-native";
-import useColors from "@/hooks/useColors";
+import useColors from "@/shared/hooks/useColors";
 
 const Clock = ({
   timeDate,

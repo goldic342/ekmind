@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Platform, ScrollView, Text, View } from 'react-native';
 import MenuListHeadline from '@/components/MenuListHeadline';
-import TextInfo from '@/components/TextInfo';
-import { t } from '@/helpers/translation';
+import TextInfo from '@/shared/components/TextInfo';
+import { t } from '@/shared/utils/translation';
 import { useAnalytics } from '../../hooks/useAnalytics';
 import useColors from '../../hooks/useColors';
 import { useSettings } from '../../hooks/useSettings';
 import { Radio } from './Radio';
 import { Scale } from './Scale';
-import { PageWithHeaderLayout } from '@/components/PageWithHeaderLayout';
+import { PageWithHeaderLayout } from '@/shared/components/PageWithHeaderLayout';
 
 export const ColorsScreen = () => {
   const { setSettings, settings } = useSettings()

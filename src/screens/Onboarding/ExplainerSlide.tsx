@@ -1,10 +1,10 @@
 import { Text, View } from 'react-native';
-import Button from '@/components/Button';
+import Button from '@/shared/components/Button';
 import useColors from '../../hooks/useColors';
 import { HeaderImage } from './HeaderImage';
 import { HeaderNavigation } from "./HeaderNavigation";
 import Animated, { FadeIn } from 'react-native-reanimated';
-import { t } from '@/helpers/translation';
+import { t } from '@/shared/utils/translation';
 
 const Body = ({ index }: { index: number }) => {
   const colors = useColors()

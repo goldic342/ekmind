@@ -1,5 +1,5 @@
 import { Pressable, Text, View } from 'react-native';
-import useColors from '@/hooks/useColors';
+import useColors from '@/shared/hooks/useColors';
 
 export const PasscodePadButton = ({
   value, onPress

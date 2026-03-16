@@ -1,4 +1,4 @@
-import { IScale } from '@/constants/Colors/scales';
+import { IScale } from '@/shared/constants/Colors/scales';
 import useColors from "./useColors";
 import { RATING_KEYS } from "./useLogs";
 import { SettingsState, useSettings } from "./useSettings";

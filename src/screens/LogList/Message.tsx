@@ -1,4 +1,4 @@
-import useColors from '@/hooks/useColors';
+import useColors from '@/shared/hooks/useColors';
 import { LogItem } from '@/hooks/useLogs';
 import { useNavigation } from '@react-navigation/native';
 import { t } from 'i18n-js';

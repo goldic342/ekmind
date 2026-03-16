@@ -1,11 +1,11 @@
-import { Card } from '@/components/Card';
-import { getLogEditMarginTop } from "@/helpers/responsive";
-import { language, t } from "@/helpers/translation";
-import { useAnalytics } from "@/hooks/useAnalytics";
-import useColors from "@/hooks/useColors";
+import { Card } from '@/shared/components/Card';
+import { getLogEditMarginTop } from "@/shared/utils/responsive";
+import { language, t } from "@/shared/utils/translation";
+import { useAnalytics } from "@/shared/hooks/useAnalytics";
+import useColors from "@/shared/hooks/useColors";
 import { LogItem, RATING_MAPPING, useLogState } from "@/hooks/useLogs";
 import { useTemporaryLog } from "@/hooks/useTemporaryLog";
-import { getAverageMood } from "@/lib/utils";
+import { getAverageMood } from "@/shared/utils/utils";
 import dayjs, { Dayjs } from "dayjs";
 import _ from "lodash";
 import { forwardRef, useEffect, useRef, useState } from "react";

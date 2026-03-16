@@ -1,6 +1,6 @@
-import { TAG_COLOR_NAMES } from '@/constants/Config';
-import { load, store } from '@/helpers/storage';
-import { t } from '@/helpers/translation';
+import { TAG_COLOR_NAMES } from '@/shared/constants/Config';
+import { load, store } from '@/shared/utils/storage';
+import { t } from '@/shared/utils/translation';
 import _ from 'lodash';
 import { createContext, useCallback, useContext, useEffect, useMemo, useReducer } from "react";
 import { useAnalytics } from './useAnalytics';

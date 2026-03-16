@@ -1,6 +1,6 @@
 import { Text } from 'react-native-svg';
 import { ScaleItem } from '.';
-import useColors from '@/hooks/useColors';
+import useColors from '@/shared/hooks/useColors';
 
 export const XLabels = ({
   items,

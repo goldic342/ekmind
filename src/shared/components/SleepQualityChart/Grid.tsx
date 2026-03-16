@@ -1,4 +1,4 @@
-import useColors from '@/hooks/useColors';
+import useColors from '@/shared/hooks/useColors';
 import { SLEEP_QUALITY_KEYS } from '@/hooks/useLogs';
 import { Line } from 'react-native-svg';
 

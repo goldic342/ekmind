@@ -1,5 +1,5 @@
-import { QUESTIONS_PULL_URL, QUESTION_SUBMIT_URL } from "@/constants/API"
-import { language, locale } from "@/helpers/translation"
+import { QUESTIONS_PULL_URL, QUESTION_SUBMIT_URL } from "@/shared/constants/API"
+import { language, locale } from "@/shared/utils/translation"
 import dayjs from "dayjs"
 import { useEffect, useRef, useState } from "react"
 import { Platform } from "react-native"

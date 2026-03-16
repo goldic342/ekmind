@@ -3,16 +3,16 @@ import { useState } from 'react';
 import { Platform, Text, View } from 'react-native';
 import { Bell } from 'react-native-feather';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import Button from '@/components/Button';
+import Button from '@/shared/components/Button';
 import Clock from '@/components/Clock';
 import LinkButton from '@/components/LinkButton';
-import useColors from '@/hooks/useColors';
+import useColors from '@/shared/hooks/useColors';
 import useNotification from '@/hooks/useNotifications';
-import { useAnalytics } from '@/hooks/useAnalytics';
+import { useAnalytics } from '@/shared/hooks/useAnalytics';
 import { SettingsState, useSettings } from '@/hooks/useSettings';
 import { SlideHeadline } from "../components/SlideHeadline";
-import { getLogEditMarginTop } from '@/helpers/responsive';
-import { t } from '@/helpers/translation';
+import { getLogEditMarginTop } from '@/shared/utils/responsive';
+import { t } from '@/shared/utils/translation';
 
 export const SlideReminder = ({
   onPress,

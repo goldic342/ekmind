@@ -1,4 +1,4 @@
-import { t } from "@/helpers/translation";
+import { t } from "@/shared/utils/translation";
 import { Emotion } from "@/types";
 
 export type LoggerStep = "rating" | "tags" | "message" | "feedback" | "reminder" | "emotions" | "sleep";

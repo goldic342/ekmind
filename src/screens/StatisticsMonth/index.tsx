@@ -1,7 +1,7 @@
 import { MoodCounts } from '@/components/Statistics/MoodCounts';
 import { TagDistribution } from '@/components/Statistics/TagDistribution';
-import { DATE_FORMAT } from '@/constants/Config';
-import { t } from '@/helpers/translation';
+import { DATE_FORMAT } from '@/shared/constants/Config';
+import { t } from '@/shared/utils/translation';
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { ScrollView, View } from 'react-native';

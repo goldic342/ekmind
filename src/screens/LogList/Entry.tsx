@@ -1,5 +1,5 @@
 import LinkButton from "@/components/LinkButton";
-import useColors from "@/hooks/useColors";
+import useColors from "@/shared/hooks/useColors";
 import { LogItem } from "@/hooks/useLogs";
 import dayjs from "dayjs";
 import { LinearGradient } from "expo-linear-gradient";

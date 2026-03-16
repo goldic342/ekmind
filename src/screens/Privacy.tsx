@@ -5,11 +5,11 @@ import Markdown from 'react-native-markdown-display';
 import LinkButton from '@/components/LinkButton';
 import useColors from '../hooks/useColors';
 import { useAnalytics } from '../hooks/useAnalytics';
-import { t } from '@/helpers/translation';
-import { PageWithHeaderLayout } from '@/components/PageWithHeaderLayout';
+import { t } from '@/shared/utils/translation';
+import { PageWithHeaderLayout } from '@/shared/components/PageWithHeaderLayout';
 import MenuList from '@/components/MenuList';
 import MenuListItem from '@/components/MenuListItem';
-import TextInfo from '@/components/TextInfo';
+import TextInfo from '@/shared/components/TextInfo';
 
 export const PrivacyScreen = () => {
   const colors = useColors()

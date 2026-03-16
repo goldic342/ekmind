@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import useColors from "@/hooks/useColors";
+import useColors from "@/shared/hooks/useColors";
 import { RATING_KEYS } from "@/hooks/useLogs";
 import { Bar } from "./Bar";
 

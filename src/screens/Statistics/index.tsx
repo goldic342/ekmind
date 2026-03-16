@@ -2,7 +2,7 @@ import { FeedbackBox } from '@/components/FeedbackBox';
 import MenuList from '@/components/MenuList';
 import MenuListHeadline from '@/components/MenuListHeadline';
 import MenuListItem from '@/components/MenuListItem';
-import { t } from '@/helpers/translation';
+import { t } from '@/shared/utils/translation';
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, Platform, RefreshControl, ScrollView, View } from 'react-native';
@@ -14,7 +14,7 @@ import { useStatistics } from '../../hooks/useStatistics';
 import { EmptyPlaceholder } from './EmptyPlaceholder';
 import { HighlightsSection } from './HighlightsSection';
 
-import { DATE_FORMAT, STATISTIC_MIN_LOGS } from '@/constants/Config';
+import { DATE_FORMAT, STATISTIC_MIN_LOGS } from '@/shared/constants/Config';
 import isBetween from 'dayjs/plugin/isBetween';
 import { RootStackScreenProps } from '../../../types';
 

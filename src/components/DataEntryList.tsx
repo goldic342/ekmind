@@ -1,5 +1,5 @@
 import { View } from "react-native"
-import useColors from "@/hooks/useColors"
+import useColors from "@/shared/hooks/useColors"
 
 export default function DataEntyList({ children }) {
   const colors = useColors()

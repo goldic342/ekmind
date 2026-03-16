@@ -1,8 +1,8 @@
-import { DATE_FORMAT } from '@/constants/Config';
+import { DATE_FORMAT } from '@/shared/constants/Config';
 import dayjs from 'dayjs';
 import _ from 'lodash';
 import { LogItem } from '../useLogs';
-import { getLogDays } from '@/lib/utils';
+import { getLogDays } from '@/shared/utils/utils';
 
 export const defaultStreaksData = {
   longest: 0,

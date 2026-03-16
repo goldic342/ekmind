@@ -1,9 +1,9 @@
 import { PromoCard } from "@/components/PromoCard";
 import { MONTH_REPORT_SLUG, PromoCardMonth } from "@/components/PromoCardMonth";
 import { PromoCardYear, YEAR_REPORT_SLUG } from "@/components/PromoCardYear";
-import { DATE_FORMAT, STATISTIC_MIN_LOGS } from "@/constants/Config";
-import { t } from "@/helpers/translation";
-import { useAnalytics } from "@/hooks/useAnalytics";
+import { DATE_FORMAT, STATISTIC_MIN_LOGS } from "@/shared/constants/Config";
+import { t } from "@/shared/utils/translation";
+import { useAnalytics } from "@/shared/hooks/useAnalytics";
 import { useSettings } from "@/hooks/useSettings";
 import { useNavigation } from "@react-navigation/native";
 import dayjs from "dayjs";

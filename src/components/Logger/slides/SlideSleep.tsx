@@ -1,7 +1,7 @@
 import LinkButton from "@/components/LinkButton";
-import { getLogEditMarginTop } from "@/helpers/responsive";
-import { t } from "@/helpers/translation";
-import useColors from "@/hooks/useColors";
+import { getLogEditMarginTop } from "@/shared/utils/responsive";
+import { t } from "@/shared/utils/translation";
+import useColors from "@/shared/hooks/useColors";
 import { LogItem, SLEEP_QUALITY_KEYS } from "@/hooks/useLogs";
 import { useTemporaryLog } from "@/hooks/useTemporaryLog";
 import { Text, View } from "react-native";

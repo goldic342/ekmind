@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { language, t } from "@/helpers/translation";
-import useColors from "@/hooks/useColors";
-import useHaptics from "@/hooks/useHaptics";
+import { language, t } from "@/shared/utils/translation";
+import useColors from "@/shared/hooks/useColors";
+import useHaptics from "@/shared/hooks/useHaptics";
 import { IQuestion, useQuestioner } from "@/hooks/useQuestioner";
 import LinkButton from "../../LinkButton";
 import { SlideHeadline } from "../components/SlideHeadline";

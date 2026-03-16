@@ -1,4 +1,4 @@
-import { getLogDays } from "@/lib/utils";
+import { getLogDays } from "@/shared/utils/utils";
 import { LogDay, LogItem } from "../useLogs";
 
 export interface MoodPeaksPositiveData {

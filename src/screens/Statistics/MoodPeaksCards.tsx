@@ -1,7 +1,7 @@
 import { Card } from '@/components/Statistics/Card';
 import { CardFeedback } from '@/components/Statistics/CardFeedback';
-import { DATE_FORMAT } from '@/constants/Config';
-import { t } from '@/helpers/translation';
+import { DATE_FORMAT } from '@/shared/constants/Config';
+import { t } from '@/shared/utils/translation';
 import { useCalendarNavigation } from '@/hooks/useCalendarNavigation';
 import dayjs, { Dayjs } from 'dayjs';
 import _ from 'lodash';

@@ -1,3 +1,1 @@
-import { palette } from './palette';
-
-export default palette;
+export * from '@/shared/constants/Colors/TailwindColors';

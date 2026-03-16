@@ -1,5 +1,5 @@
 import { Platform, Text } from "react-native"
-import useColors from "@/hooks/useColors"
+import useColors from "@/shared/hooks/useColors"
 
 const fontFamily = Platform.OS === 'ios' ? 'Courier New' : 'monospace'
 

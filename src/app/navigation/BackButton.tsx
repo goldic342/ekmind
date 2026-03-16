@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import { Pressable } from 'react-native';
 import { ArrowLeft } from 'react-native-feather';
-import useColors from '@/hooks/useColors';
+import useColors from '@/shared/hooks/useColors';
 
 export const BackButton = ({
   testID,

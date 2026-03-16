@@ -1,7 +1,7 @@
-import { DATE_FORMAT } from '@/constants/Config';
-import { askToCancel, askToDisableFeedbackStep, askToDisableStep, askToRemove } from '@/helpers/prompts';
-import { useAnalytics } from '@/hooks/useAnalytics';
-import useColors from '@/hooks/useColors';
+import { DATE_FORMAT } from '@/shared/constants/Config';
+import { askToCancel, askToDisableFeedbackStep, askToDisableStep, askToRemove } from '@/shared/utils/prompts';
+import { useAnalytics } from '@/shared/hooks/useAnalytics';
+import useColors from '@/shared/hooks/useColors';
 import { LogItem, useLogState, useLogUpdater } from '@/hooks/useLogs';
 import { IQuestion, useQuestioner } from '@/hooks/useQuestioner';
 import { useSettings } from '@/hooks/useSettings';

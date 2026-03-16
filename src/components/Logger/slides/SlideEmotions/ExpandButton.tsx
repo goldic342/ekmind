@@ -1,6 +1,6 @@
-import { t } from "@/helpers/translation";
-import useColors from "@/hooks/useColors";
-import useHaptics from "@/hooks/useHaptics";
+import { t } from "@/shared/utils/translation";
+import useColors from "@/shared/hooks/useColors";
+import useHaptics from "@/shared/hooks/useHaptics";
 import { Pressable, Text, View } from "react-native";
 import { Minus, Plus } from "react-native-feather";
 

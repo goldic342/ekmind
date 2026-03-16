@@ -1,6 +1,6 @@
-import { getLogEditMarginTop } from "@/helpers/responsive";
-import { t } from "@/helpers/translation";
-import useColors from "@/hooks/useColors";
+import { getLogEditMarginTop } from "@/shared/utils/responsive";
+import { t } from "@/shared/utils/translation";
+import useColors from "@/shared/hooks/useColors";
 import { useTagsState } from "@/hooks/useTags";
 import { useTemporaryLog } from "@/hooks/useTemporaryLog";
 import { TagReference } from "@/types";

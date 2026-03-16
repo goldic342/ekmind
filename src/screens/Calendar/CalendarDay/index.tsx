@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import { memo, useCallback, useMemo } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useStyle } from "react-native-style-utilities";
-import { DATE_FORMAT } from "@/constants/Config";
+import { DATE_FORMAT } from "@/shared/constants/Config";
 import useColors from "../../../hooks/useColors";
 import useHaptics from "../../../hooks/useHaptics";
 import { LogItem } from "../../../hooks/useLogs";

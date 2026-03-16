@@ -1,4 +1,4 @@
-import useColors from "@/hooks/useColors";
+import useColors from "@/shared/hooks/useColors";
 import { LinearGradient } from "expo-linear-gradient";
 
 export const EmotionBasicGradients = () => {

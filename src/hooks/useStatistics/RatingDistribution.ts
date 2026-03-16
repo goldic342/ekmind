@@ -1,4 +1,4 @@
-import { getLogDays } from '@/lib/utils';
+import { getLogDays } from '@/shared/utils/utils';
 import dayjs from 'dayjs';
 import { LogItem, RATING_MAPPING } from '../useLogs';
 

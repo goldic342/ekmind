@@ -21,7 +21,7 @@ import {
 import { getTagsPeaksData, TagsPeakData } from "./TagsPeaks";
 import { EmotionsDistributionData, defaultEmotionsDistributionData, getEmotionsDistributionData } from "./EmotionsDistributuon";
 import { SleepQualityDistributionData, defaultSleepQualityDistributionDataForXDays, getSleepQualityDistributionForXDays } from "./SleepQualityDistribution";
-import { DATE_FORMAT } from "@/constants/Config";
+import { DATE_FORMAT } from "@/shared/constants/Config";
 
 const DELAY_LOADING = 1 * 1000;
 

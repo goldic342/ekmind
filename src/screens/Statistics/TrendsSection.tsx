@@ -3,7 +3,7 @@ import { ActivityIndicator, View } from "react-native";
 import { TrendingUp } from "react-native-feather";
 import MenuList from "@/components/MenuList";
 import MenuListItem from "@/components/MenuListItem";
-import { t } from "@/helpers/translation";
+import { t } from "@/shared/utils/translation";
 import useColors from "../../hooks/useColors";
 import { useStatistics } from "../../hooks/useStatistics";
 import { MoodTrend } from "./MoodTrend";

@@ -1,10 +1,10 @@
 import { LinearGradient } from "expo-linear-gradient"
 import { Pressable, Text, View } from "react-native"
 import { ChevronRight, Moon, X } from "react-native-feather"
-import useColors from "@/hooks/useColors"
+import useColors from "@/shared/hooks/useColors"
 import { Motion } from "@legendapp/motion"
-import { t } from "@/helpers/translation"
-import useHaptics from "@/hooks/useHaptics"
+import { t } from "@/shared/utils/translation"
+import useHaptics from "@/shared/hooks/useHaptics"
 import { useSettings } from "@/hooks/useSettings"
 
 export const MONTH_REPORT_SLUG = `promo_month_report_${(new Date()).getFullYear()}_${(new Date()).getMonth()}_closed`

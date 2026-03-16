@@ -1,4 +1,4 @@
-import { DATE_FORMAT } from "@/constants/Config";
+import { DATE_FORMAT } from "@/shared/constants/Config";
 import dayjs, { Dayjs } from "dayjs";
 import React, { memo } from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";

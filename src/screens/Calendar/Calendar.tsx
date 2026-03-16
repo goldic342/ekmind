@@ -4,7 +4,7 @@ import { View } from "react-native";
 import { useLogState } from "../../hooks/useLogs";
 import CalendarMonth from "./CalendarMonth";
 
-import { DATE_FORMAT } from "@/constants/Config";
+import { DATE_FORMAT } from "@/shared/constants/Config";
 
 const MONTH_COUNT = 12;
 const MONTH_DATES: string[] = []

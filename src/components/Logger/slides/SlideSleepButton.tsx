@@ -1,7 +1,7 @@
-import useColors from "@/hooks/useColors";
+import useColors from "@/shared/hooks/useColors";
 import { LogItem, SLEEP_QUALITY_MAPPING } from "@/hooks/useLogs";
 import { Pressable, View, ViewStyle, useColorScheme } from "react-native";
-import useHaptics from "@/hooks/useHaptics";
+import useHaptics from "@/shared/hooks/useHaptics";
 
 export const SlideSleepButton = ({
   value,

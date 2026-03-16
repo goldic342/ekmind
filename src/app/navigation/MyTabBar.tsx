@@ -2,11 +2,11 @@ import { useCallback, useMemo } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { Calendar as CalendarIcon, PieChart, Settings as SettingsIcon } from 'react-native-feather';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { t } from '@/helpers/translation';
-import useColors from '@/hooks/useColors';
-import useHaptics from '@/hooks/useHaptics';
-import { SettingsScreen, StatisticsScreen } from '../screens';
-import CalendarScreen from '../screens/Calendar';
+import { t } from '@/shared/utils/translation';
+import useColors from '@/shared/hooks/useColors';
+import useHaptics from '@/shared/hooks/useHaptics';
+import { SettingsScreen, StatisticsScreen } from '@/screens';
+import CalendarScreen from '@/screens/Calendar';
 
 export const ROUTES: {
   name: string;

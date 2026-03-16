@@ -1,8 +1,8 @@
 import { PostHogProvider } from "posthog-react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { POSTHOG_API_KEY } from "@/constants/API";
-import { TRACKING_ENABLED } from "@/constants/Config";
-import { AnalyticsProvider } from "@/hooks/useAnalytics";
+import { POSTHOG_API_KEY } from "@/shared/constants/API";
+import { TRACKING_ENABLED } from "@/shared/constants/Config";
+import { AnalyticsProvider } from "@/shared/hooks/useAnalytics";
 import { CalendarFiltersProvider } from "@/hooks/useCalendarFilters";
 import { LogsProvider } from "@/hooks/useLogs";
 import { SettingsProvider } from "@/hooks/useSettings";

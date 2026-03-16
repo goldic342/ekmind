@@ -1,6 +1,6 @@
 import _ from "lodash"
 import { Text, View } from "react-native"
-import useColors from "@/hooks/useColors"
+import useColors from "@/shared/hooks/useColors"
 
 export const Card = ({
   subtitle,

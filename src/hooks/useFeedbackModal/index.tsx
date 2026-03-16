@@ -10,9 +10,9 @@ import {
 } from "react-native";
 import DismissKeyboard from "@/components/DismisKeyboard";
 import LinkButton from "@/components/LinkButton";
-import ModalHeader from "@/components/ModalHeader";
-import TextArea from "@/components/TextArea";
-import { t } from "@/helpers/translation";
+import ModalHeader from "@/shared/components/ModalHeader";
+import TextArea from "@/shared/components/TextArea";
+import { t } from "@/shared/utils/translation";
 import { useAnalytics } from "../useAnalytics";
 import useColors from "../useColors";
 import { FeedackType, useFeedback } from "../useFeedback";

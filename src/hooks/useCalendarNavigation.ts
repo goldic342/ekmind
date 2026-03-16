@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import { useLogState } from '@/hooks/useLogs';
 import dayjs from 'dayjs';
-import { DATE_FORMAT } from '@/constants/Config';
+import { DATE_FORMAT } from '@/shared/constants/Config';
 
 export const useCalendarNavigation = () => {
   const navigation = useNavigation();

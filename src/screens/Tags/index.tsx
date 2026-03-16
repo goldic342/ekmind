@@ -1,12 +1,12 @@
 import { RootStackScreenProps } from '../../../types';
 import useColors from '../../hooks/useColors';
 import { Tag, useTagsState } from '../../hooks/useTags';
-import Button from '@/components/Button';
+import Button from '@/shared/components/Button';
 import LinkButton from '@/components/LinkButton';
-import ModalHeader from '@/components/ModalHeader';
+import ModalHeader from '@/shared/components/ModalHeader';
 import { TagList } from '@/components/TagList';
-import { MAX_TAGS } from '@/constants/Config';
-import { t } from '@/helpers/translation';
+import { MAX_TAGS } from '@/shared/constants/Config';
+import { t } from '@/shared/utils/translation';
 import { LinearGradient } from 'expo-linear-gradient';
 import _ from 'lodash';
 import { Platform, ScrollView, View } from 'react-native';

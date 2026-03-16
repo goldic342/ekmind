@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
-import { t } from "@/helpers/translation";
-import useColors from "@/hooks/useColors";
+import { t } from "@/shared/utils/translation";
+import useColors from "@/shared/hooks/useColors";
 
 export const NotEnoughDataOverlay = ({
   limit,

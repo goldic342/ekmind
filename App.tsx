@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import useCachedResources from '@/hooks/useCachedResources';
-import Navigation from '@/navigation';
+import useCachedResources from '@/shared/hooks/useCachedResources';
+import Navigation from '@/app/navigation';
 
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 

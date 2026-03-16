@@ -1,12 +1,12 @@
 import dayjs, { Dayjs } from 'dayjs';
 import { Dimensions, View } from 'react-native';
-import { t } from '@/helpers/translation';
+import { t } from '@/shared/utils/translation';
 import { useLogState } from '../../hooks/useLogs';
 import { getRatingDistributionForYear } from '../../hooks/useStatistics/RatingDistribution';
 
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
 import { BigCard } from '@/components/BigCard';
-import { RatingChart } from '@/components/RatingChart';
+import { RatingChart } from '@/shared/components/RatingChart';
 import { CardFeedback } from '@/components/Statistics/CardFeedback';
 import { NotEnoughDataOverlay } from '@/components/Statistics/NotEnoughDataOverlay';
 import { useRef } from 'react';

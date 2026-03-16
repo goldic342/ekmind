@@ -1,9 +1,9 @@
-import { getLogEditMarginTop } from "@/helpers/responsive";
-import { t } from "@/helpers/translation";
-import useColors from "@/hooks/useColors";
+import { getLogEditMarginTop } from "@/shared/utils/responsive";
+import { t } from "@/shared/utils/translation";
+import useColors from "@/shared/hooks/useColors";
 import { useLogState } from "@/hooks/useLogs";
 import { useTemporaryLog } from "@/hooks/useTemporaryLog";
-import { getMostUsedEmotions } from "@/lib/utils";
+import { getMostUsedEmotions } from "@/shared/utils/utils";
 import { Emotion } from "@/types";
 import { LinearGradient } from "expo-linear-gradient";
 import _ from "lodash";
@@ -20,7 +20,7 @@ import { EmotionBasicGradients } from "./EmotionBasicGradients";
 import { EmotionBasicSelection } from "./EmotionBasicSelection";
 import { ExpandButton } from "./ExpandButton";
 import { Tooltip } from "./Tooltip";
-import { useAnalytics } from "@/hooks/useAnalytics";
+import { useAnalytics } from "@/shared/hooks/useAnalytics";
 
 type Mode = 'basic' | 'advanced'
 

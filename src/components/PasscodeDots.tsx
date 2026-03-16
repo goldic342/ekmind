@@ -1,6 +1,6 @@
 import React, { forwardRef, RefObject } from 'react';
 import { View } from 'react-native';
-import useColors from '@/hooks/useColors';
+import useColors from '@/shared/hooks/useColors';
 
 export const PasscodeDots = forwardRef(({
   code,

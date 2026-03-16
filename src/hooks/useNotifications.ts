@@ -2,7 +2,7 @@ import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
 import { NotificationContentInput, NotificationTriggerInput } from 'expo-notifications';
 import { Platform } from 'react-native';
-import { t } from '@/helpers/translation';
+import { t } from '@/shared/utils/translation';
 
 const isWeb = Platform.OS === 'web';
 

@@ -5,7 +5,7 @@ import LinkButton from '@/components/LinkButton';
 import useColors from '../hooks/useColors';
 import { usePasscode } from '../hooks/usePasscode';
 import { useAnalytics } from '../hooks/useAnalytics';
-import { t } from '@/helpers/translation';
+import { t } from '@/shared/utils/translation';
 
 export const PasscodeLocked = () => {
   const colors = useColors()
