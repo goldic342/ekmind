@@ -32,7 +32,7 @@ These features will be implemented in first stable release:
 
 - [ ] Calendar replaced with graph view
 - [x] Bot check-in removed 
-- [ ] Material you UI dynamic colors support
+- [x] Material you UI dynamic colors support
 - [ ] Mood select replaced with slider
 - [ ] Modifiable tags & moods
 - [ ] Updated icons
