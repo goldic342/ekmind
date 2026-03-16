@@ -146,10 +146,12 @@ Contributions are what make the open source community such an amazing place to l
 ## Licences
 Ekmind is a fork of [Pixy](https://github.com/mrzmyr/pixy-mood-tracker-app) originally created by [mrzmyr](https://github.com/mrzmyr)
 
-- Original code: [Pixy](https://github.com/mrzmyr/pixy-mood-tracker-app)
+### Original project
+- Source code: [Pixy](https://github.com/mrzmyr/pixy-mood-tracker-app)
 - Copyright (c) mrzmyr
 - Licensed under the [MIT License](./LICENSE-MIT.md).
 
-- Modifications: [Ekmind](https://github.com/goldic342/ekmind)
+### Modifications
+- Source code: [Ekmind](https://github.com/goldic342/ekmind)
 - Copyright (c) 2026 Goldic342 
 - Licensed under [GPL-2.0](./LICENSE.md).
