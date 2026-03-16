@@ -17,15 +17,32 @@
 </p>
 
 ### Forked from
+
 Ekmind is forked from [Pixy](https://github.com/mrzmyr/pixy-mood-tracker-app) 
 
 
 ### Built With
-
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
 - [React Native](https://reactnative.dev/)
 - [Expo](https://expo.dev/)
+
+### Upcoming features
+These features will be implemented in first stable release: 
+
+[] Calendar replaced with graph view
+[ ] Bot check-in removed 
+[ ] Material you UI dynamic colors support
+[ ] Mood select replaced with slider
+[ ] Modifiable tags & moods
+[ ] Updated icons
+[ ] Simpler data analytics: 
+	[ ] mood and tags correlation
+	[ ] Statistics of last month by default (with full view available)
+[ ] Customizable week start day
+[ ] Categorized tags
+[ ] Updates exports
+[ ] Community translations
 
 ## Development
 
