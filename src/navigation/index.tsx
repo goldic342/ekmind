@@ -44,7 +44,7 @@ enableScreens();
 
 const NAVIGATION_LINKING = {
   prefixes: [
-    'pixy://',
+    'ekmind://',
     Linking.createURL('/'),
   ],
   config: {

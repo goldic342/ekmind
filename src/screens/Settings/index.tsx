@@ -229,7 +229,7 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
             marginBottom: 40,
           }}
         >
-          <Text style={{ fontSize: 14, marginTop: 5, color: colors.textSecondary }}>Pixy v{pkg.version}</Text>
+          <Text style={{ fontSize: 14, marginTop: 5, color: colors.textSecondary }}>Ekmind v{pkg.version}</Text>
           {Updates.channel && <Text style={{ fontSize: 14, marginTop: 5, color: colors.textSecondary }}>{Updates.channel}</Text>}
         </View>
 
