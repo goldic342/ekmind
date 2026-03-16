@@ -7,7 +7,7 @@ import { Tag } from "@/hooks/useTags";
 
 declare global {
   namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList {}
+    interface RootParamList extends RootStackParamList { }
   }
 }
 
@@ -29,17 +29,6 @@ export type RootStackParamList = {
   Tags: undefined;
   DevelopmentTools: undefined;
 
-  BotLogger: {
-    dateTime: string;
-    emotions?: Emotion[];
-    tags?: TagReference[];
-  };
-  BotLoggerEmotions: {
-    onDone: (emotions: Emotion[]) => void;
-  };
-  BotLoggerTags: {
-    onDone: (tags: TagReference[]) => void;
-  };
   SettingsTags: undefined;
   SettingsTagsArchive: undefined;
 

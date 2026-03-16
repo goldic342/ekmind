@@ -31,7 +31,7 @@ This section should list any major frameworks that you built your project using.
 These features will be implemented in first stable release: 
 
 - [ ] Calendar replaced with graph view
-- [ ] Bot check-in removed 
+- [x] Bot check-in removed 
 - [ ] Material you UI dynamic colors support
 - [ ] Mood select replaced with slider
 - [ ] Modifiable tags & moods
