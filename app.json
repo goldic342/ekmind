@@ -46,6 +46,7 @@
     },
     "plugins": [
       "sentry-expo",
+      "expo-system-ui",
       "expo-notifications",
       "expo-localization",
       [

@@ -38,6 +38,8 @@ import { Tags } from '../screens/Tags';
 import { BackButton } from './BackButton';
 import { BottomTabs } from './BottomTabs';
 
+import { useMaterial3Theme } from "@pchmn/expo-material3-theme"
+
 enableScreens();
 
 const NAVIGATION_LINKING = {
@@ -77,19 +79,25 @@ const NAVIGATION_LINKING = {
 
 export default function Navigation() {
   const scheme = useColorScheme();
+  const { theme: dynamic } = useMaterial3Theme();
+  const baseColors = scheme === 'dark' ? Colors.dark : Colors.light
 
   return (
     <NavigationContainer
       linking={NAVIGATION_LINKING}
       // @ts-ignore
       theme={
-        scheme === 'dark' ? {
-          dark: true,
-          colors: Colors.dark,
-        } : {
-          dark: false,
-          colors: Colors.light,
-        }
+        Platform.OS === 'android' ?
+          {
+            dark: scheme === 'dark',
+            colors: {
+              ...baseColors, ...(scheme === 'dark' ? dynamic.dark : dynamic.light),
+            }
+          }
+          : {
+            dark: scheme === 'dark',
+            colors: baseColors
+          }
       }
     >
       <Providers>
