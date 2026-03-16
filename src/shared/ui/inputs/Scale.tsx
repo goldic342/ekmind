@@ -3,7 +3,7 @@ import useHaptics from "@/shared/hooks/useHaptics";
 import { LogItem } from "@/features/logging/hooks/useLogs";
 import useScale from "@/shared/hooks/useScale";
 import { SettingsState } from "@/features/settings/hooks/useSettings";
-import ScaleButton from "./ScaleButton";
+import ScaleButton from "../ScaleButton";
 
 export default function Scale({
   type,

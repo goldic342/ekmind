@@ -1,8 +1,8 @@
-import Indicator from '@/shared/components/Indicator';
+import Indicator from '@/shared/ui/Indicator';
 import { LoggerStep, STEP_OPTIONS } from '@/features/logging/components/logger/config';
-import MenuList from '@/shared/components/MenuList';
-import MenuListItem from '@/shared/components/MenuListItem';
-import { PageWithHeaderLayout } from '@/shared/components/PageWithHeaderLayout';
+import MenuList from '@/shared/ui/MenuList';
+import MenuListItem from '@/shared/ui/MenuListItem';
+import { PageWithHeaderLayout } from '@/shared/ui/PageWithHeaderLayout';
 import { t } from '@/shared/utils/translation';
 import { BedDouble } from 'lucide-react-native';
 import { ReactElement } from 'react';

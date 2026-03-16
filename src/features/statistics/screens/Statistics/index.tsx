@@ -1,7 +1,7 @@
-import { FeedbackBox } from '@/shared/components/FeedbackBox';
-import MenuList from '@/shared/components/MenuList';
-import MenuListHeadline from '@/shared/components/MenuListHeadline';
-import MenuListItem from '@/shared/components/MenuListItem';
+import { FeedbackBox } from '@/shared/ui/FeedbackBox';
+import MenuList from '@/shared/ui/MenuList';
+import MenuListHeadline from '@/shared/ui/MenuListHeadline';
+import MenuListItem from '@/shared/ui/MenuListItem';
 import { t } from '@/shared/utils/translation';
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';

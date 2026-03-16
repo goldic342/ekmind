@@ -1,4 +1,4 @@
-import { PageWithHeaderLayout } from '@/shared/components/PageWithHeaderLayout';
+import { PageWithHeaderLayout } from '@/shared/ui/PageWithHeaderLayout';
 import { Text, View, VirtualizedList } from 'react-native';
 import disclaimer from '../../../../disclaimer';
 import useColors from '@/shared/hooks/useColors';

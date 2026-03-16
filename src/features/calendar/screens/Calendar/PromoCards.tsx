@@ -1,6 +1,6 @@
-import { PromoCard } from "@/shared/components/PromoCard";
-import { MONTH_REPORT_SLUG, PromoCardMonth } from "@/shared/components/PromoCardMonth";
-import { PromoCardYear, YEAR_REPORT_SLUG } from "@/shared/components/PromoCardYear";
+import { PromoCard } from "@/shared/ui/PromoCard";
+import { MONTH_REPORT_SLUG, PromoCardMonth } from "@/shared/ui/PromoCardMonth";
+import { PromoCardYear, YEAR_REPORT_SLUG } from "@/shared/ui/PromoCardYear";
 import { DATE_FORMAT, STATISTIC_MIN_LOGS } from "@/shared/constants/Config";
 import { t } from "@/shared/utils/translation";
 import { useAnalytics } from "@/shared/hooks/useAnalytics";

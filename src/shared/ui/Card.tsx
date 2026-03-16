@@ -2,7 +2,7 @@ import useColors from "@/shared/hooks/useColors"
 import _ from "lodash"
 import { Text, View, ViewStyle } from "react-native"
 import { X } from "react-native-feather"
-import LinkButton from '@/shared/components/LinkButton'
+import LinkButton from '@/shared/ui/LinkButton'
 import { CardFeedback } from '@/features/statistics/components/Statistics/CardFeedback'
 
 export const Card = ({

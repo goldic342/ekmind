@@ -1,4 +1,4 @@
-import { BigCard } from "@/shared/components/BigCard"
+import { BigCard } from "@/shared/ui/BigCard"
 import { NotEnoughDataOverlay } from "@/features/statistics/components/Statistics/NotEnoughDataOverlay"
 import { t } from "@/shared/utils/translation"
 import useColors from "@/shared/hooks/useColors"

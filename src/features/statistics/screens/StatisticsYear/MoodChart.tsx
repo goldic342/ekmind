@@ -5,8 +5,8 @@ import { useLogState } from '@/features/logging/hooks/useLogs';
 import { getRatingDistributionForYear } from '@/features/statistics/hooks/useStatistics/RatingDistribution';
 
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
-import { BigCard } from '@/shared/components/BigCard';
-import { RatingChart } from '@/shared/components/RatingChart';
+import { BigCard } from '@/shared/ui/BigCard';
+import { RatingChart } from '@/shared/ui/RatingChart';
 import { CardFeedback } from '@/features/statistics/components/Statistics/CardFeedback';
 import { NotEnoughDataOverlay } from '@/features/statistics/components/Statistics/NotEnoughDataOverlay';
 import { useRef } from 'react';

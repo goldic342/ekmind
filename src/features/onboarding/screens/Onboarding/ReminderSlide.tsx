@@ -1,16 +1,16 @@
 import { Platform, Text, View } from 'react-native';
-import Button from '@/shared/components/Button';
+import Button from '@/shared/ui/Button';
 import useColors from '@/shared/hooks/useColors';
 import { HeaderImage } from './HeaderImage';
 import { HeaderNavigation } from "./HeaderNavigation";
 import Animated, { FadeIn } from 'react-native-reanimated';
-import Clock from '@/shared/components/Clock';
+import Clock from '@/shared/ui/Clock';
 import useNotification from '@/shared/hooks/useNotifications';
 import { useState } from 'react';
 import dayjs from 'dayjs';
 import { SettingsState, useSettings } from '@/features/settings/hooks/useSettings';
 import { useAnalytics } from '@/shared/hooks/useAnalytics';
-import LinkButton from '@/shared/components/LinkButton';
+import LinkButton from '@/shared/ui/LinkButton';
 import { t } from '@/shared/utils/translation';
 
 const Body = ({ index }: { index: number }) => {

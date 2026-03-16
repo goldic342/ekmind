@@ -8,10 +8,10 @@ import {
   TextInput,
   View
 } from "react-native";
-import DismissKeyboard from "@/shared/components/DismisKeyboard";
-import LinkButton from "@/shared/components/LinkButton";
-import ModalHeader from "@/shared/components/ModalHeader";
-import TextArea from "@/shared/components/TextArea";
+import DismissKeyboard from "@/shared/ui/DismisKeyboard";
+import LinkButton from "@/shared/ui/LinkButton";
+import ModalHeader from "@/shared/ui/ModalHeader";
+import TextArea from "@/shared/ui/inputs/TextArea";
 import { t } from "@/shared/utils/translation";
 import { useAnalytics } from "../useAnalytics";
 import useColors from "../useColors";

@@ -1,5 +1,5 @@
-import MenuList from "@/shared/components/MenuList";
-import MenuListItem from "@/shared/components/MenuListItem";
+import MenuList from "@/shared/ui/MenuList";
+import MenuListItem from "@/shared/ui/MenuListItem";
 import { DATE_FORMAT } from "@/shared/constants/Config";
 import { t } from "@/shared/utils/translation";
 import { useNavigation } from "@react-navigation/native";

@@ -4,7 +4,7 @@ import { Keyboard, Platform, View } from "react-native"
 import { ArrowRight, Check } from "react-native-feather"
 import useColors from "@/shared/hooks/useColors"
 import useHaptics from "@/shared/hooks/useHaptics"
-import { FloatButton } from "@/shared/components/FloatButton"
+import { FloatButton } from "@/shared/ui/FloatButton"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 
 const ON_EVENT_NAME = Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow'

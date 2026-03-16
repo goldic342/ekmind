@@ -2,14 +2,14 @@ import * as WebBrowser from 'expo-web-browser';
 import { ScrollView, Switch, View } from 'react-native';
 import { Shield } from 'react-native-feather';
 import Markdown from 'react-native-markdown-display';
-import LinkButton from '@/shared/components/LinkButton';
+import LinkButton from '@/shared/ui/LinkButton';
 import useColors from '@/shared/hooks/useColors';
 import { useAnalytics } from '@/shared/hooks/useAnalytics';
 import { t } from '@/shared/utils/translation';
-import { PageWithHeaderLayout } from '@/shared/components/PageWithHeaderLayout';
-import MenuList from '@/shared/components/MenuList';
-import MenuListItem from '@/shared/components/MenuListItem';
-import TextInfo from '@/shared/components/TextInfo';
+import { PageWithHeaderLayout } from '@/shared/ui/PageWithHeaderLayout';
+import MenuList from '@/shared/ui/MenuList';
+import MenuListItem from '@/shared/ui/MenuListItem';
+import TextInfo from '@/shared/ui/TextInfo';
 
 export const PrivacyScreen = () => {
   const colors = useColors()

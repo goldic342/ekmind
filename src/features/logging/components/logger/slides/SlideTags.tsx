@@ -8,9 +8,9 @@ import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from 'expo-linear-gradient';
 import { ScrollView, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import LinkButton from "@/shared/components/LinkButton";
-import { MiniButton } from "@/shared/components/MiniButton";
-import Tag from "@/shared/components/Tag";
+import LinkButton from "@/shared/ui/LinkButton";
+import { MiniButton } from "@/shared/ui/MiniButton";
+import Tag from "@/shared/ui/Tag";
 import { SlideHeadline } from "../SlideHeadline";
 import { Footer } from "./Footer";
 

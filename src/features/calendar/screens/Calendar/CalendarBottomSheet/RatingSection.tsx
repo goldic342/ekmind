@@ -1,6 +1,6 @@
 import { View } from 'react-native';
-import Scale from '@/shared/components/Scale';
-import TextHeadline from '@/shared/components/TextHeadline';
+import Scale from '@/shared/ui/inputs/Scale';
+import TextHeadline from '@/shared/ui/TextHeadline';
 import { t } from '@/shared/utils/translation';
 import { LogItem } from '@/features/logging/hooks/useLogs';
 import { useSettings } from '@/features/settings/hooks/useSettings';

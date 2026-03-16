@@ -1,4 +1,4 @@
-import LinkButton from "@/shared/components/LinkButton";
+import LinkButton from "@/shared/ui/LinkButton";
 import { t } from "@/shared/utils/translation";
 import useFeedbackModal from "@/shared/hooks/useFeedbackModal";
 import { Emotion } from "@/types";

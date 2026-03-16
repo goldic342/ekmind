@@ -1,4 +1,4 @@
-import LinkButton from "@/shared/components/LinkButton";
+import LinkButton from "@/shared/ui/LinkButton";
 import { getLogEditMarginTop } from "@/shared/utils/responsive";
 import { t } from "@/shared/utils/translation";
 import useColors from "@/shared/hooks/useColors";

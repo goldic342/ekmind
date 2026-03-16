@@ -1,10 +1,10 @@
 import { Text, View } from 'react-native';
-import MenuList from '@/shared/components/MenuList';
+import MenuList from '@/shared/ui/MenuList';
 import { MAX_TAGS } from '@/shared/constants/Config';
 import { t } from '@/shared/utils/translation';
 import useColors from '@/shared/hooks/useColors';
 import { Tag } from '@/features/tags/hooks/useTags';
-import { TagListItem } from '@/shared/components/TagListItem';
+import { TagListItem } from '@/shared/ui/TagListItem';
 import { useNavigation } from '@react-navigation/native';
 
 export const TagList = ({ tags }: { tags: Tag[]; }) => {

@@ -1,6 +1,6 @@
-import MenuList from "@/shared/components/MenuList";
-import MenuListHeadline from "@/shared/components/MenuListHeadline";
-import MenuListItem from "@/shared/components/MenuListItem";
+import MenuList from "@/shared/ui/MenuList";
+import MenuListHeadline from "@/shared/ui/MenuListHeadline";
+import MenuListItem from "@/shared/ui/MenuListItem";
 import { ImportData } from "@/shared/utils/Import";
 import { useEffect, useState } from "react";
 import { ActivityIndicator, View } from "react-native";

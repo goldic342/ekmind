@@ -1,5 +1,5 @@
-import Button from "@/shared/components/Button"
-import { PageModalLayout } from "@/shared/components/PageModalLayout"
+import Button from "@/shared/ui/Button"
+import { PageModalLayout } from "@/shared/ui/PageModalLayout"
 import { askToRemove } from "@/shared/utils/prompts"
 import { t } from "@/shared/utils/translation"
 import { useAnalytics } from "@/shared/hooks/useAnalytics"

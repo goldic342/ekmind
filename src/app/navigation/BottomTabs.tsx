@@ -1,5 +1,5 @@
-import Indicator from '@/shared/components/Indicator';
-import LinkButton from '@/shared/components/LinkButton';
+import Indicator from '@/shared/ui/Indicator';
+import LinkButton from '@/shared/ui/LinkButton';
 import { t } from '@/shared/utils/translation';
 import { useCalendarFilters } from '@/features/calendar/hooks/useCalendarFilters';
 import useColors from '@/shared/hooks/useColors';

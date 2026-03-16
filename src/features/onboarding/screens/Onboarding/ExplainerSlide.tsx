@@ -1,5 +1,5 @@
 import { Text, View } from 'react-native';
-import Button from '@/shared/components/Button';
+import Button from '@/shared/ui/Button';
 import useColors from '@/shared/hooks/useColors';
 import { HeaderImage } from './HeaderImage';
 import { HeaderNavigation } from "./HeaderNavigation";

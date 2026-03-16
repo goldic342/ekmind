@@ -1,10 +1,10 @@
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import { Platform, Switch, Text, View } from 'react-native';
-import Clock from '@/shared/components/Clock';
-import MenuList from '@/shared/components/MenuList';
-import MenuListItem from '@/shared/components/MenuListItem';
-import NotificationPreview from '@/shared/components/NotificationPreview';
+import Clock from '@/shared/ui/Clock';
+import MenuList from '@/shared/ui/MenuList';
+import MenuListItem from '@/shared/ui/MenuListItem';
+import NotificationPreview from '@/shared/ui/NotificationPreview';
 import { t } from '@/shared/utils/translation';
 import { useAnalytics } from '@/shared/hooks/useAnalytics';
 import useColors from '@/shared/hooks/useColors';

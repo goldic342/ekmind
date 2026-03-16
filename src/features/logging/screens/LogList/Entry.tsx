@@ -1,4 +1,4 @@
-import LinkButton from "@/shared/components/LinkButton";
+import LinkButton from "@/shared/ui/LinkButton";
 import useColors from "@/shared/hooks/useColors";
 import { LogItem } from "@/features/logging/hooks/useLogs";
 import dayjs from "dayjs";

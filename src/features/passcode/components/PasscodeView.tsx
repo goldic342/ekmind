@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { Text, View } from 'react-native';
 import { t } from '@/shared/utils/translation';
 import useColors from '@/shared/hooks/useColors';
-import LinkButton from '@/shared/components/LinkButton';
+import LinkButton from '@/shared/ui/LinkButton';
 import { PasscodeDots } from './PasscodeDots';
 import { PasscodePad } from './PasscodePad';
 

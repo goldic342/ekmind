@@ -1,4 +1,4 @@
-import { Card } from '@/shared/components/Card';
+import { Card } from '@/shared/ui/Card';
 import { getLogEditMarginTop } from "@/shared/utils/responsive";
 import { language, t } from "@/shared/utils/translation";
 import { useAnalytics } from "@/shared/hooks/useAnalytics";
@@ -12,9 +12,9 @@ import { forwardRef, useEffect, useRef, useState } from "react";
 import { Keyboard, KeyboardAvoidingView, Platform, Text, View } from "react-native";
 import { HelpCircle } from "react-native-feather";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import DismissKeyboard from "@/shared/components/DismisKeyboard";
-import LinkButton from "@/shared/components/LinkButton";
-import TextArea from "@/shared/components/TextArea";
+import DismissKeyboard from "@/shared/ui/DismisKeyboard";
+import LinkButton from "@/shared/ui/LinkButton";
+import TextArea from "@/shared/ui/inputs/TextArea";
 import { SlideHeadline } from "../SlideHeadline";
 import { EMOTIONS } from "../config";
 import { Footer } from "./Footer";

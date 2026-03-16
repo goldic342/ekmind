@@ -8,8 +8,8 @@ import * as StoreReview from 'expo-store-review';
 import { useState } from 'react';
 import { ActivityIndicator, Image, Platform, Pressable, Text, View, ViewStyle } from 'react-native';
 import pkg from '../../../../../package.json';
-import Button from '@/shared/components/Button';
-import TextArea from '@/shared/components/TextArea';
+import Button from '@/shared/ui/Button';
+import TextArea from '@/shared/ui/inputs/TextArea';
 
 const EMOJI_SCALE_IMAGES_DEFAULT = [{
   emoji: '😍',

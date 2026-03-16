@@ -3,7 +3,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Dimensions, Text, View } from 'react-native';
 import { ArrowLeft, Moon } from 'react-native-feather';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import LinkButton from '@/shared/components/LinkButton';
+import LinkButton from '@/shared/ui/LinkButton';
 import useColors from '@/shared/hooks/useColors';
 
 export const Header = ({

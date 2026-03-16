@@ -2,7 +2,7 @@ import { Dayjs } from "dayjs";
 import _ from "lodash";
 import React, { ReactNode } from "react";
 import { View } from "react-native";
-import { BigCard } from "@/shared/components/BigCard";
+import { BigCard } from "@/shared/ui/BigCard";
 import { DATE_FORMAT } from "@/shared/constants/Config";
 import { t } from "@/shared/utils/translation";
 import { LogItem, RATING_KEYS, useLogState } from "@/features/logging/hooks/useLogs";

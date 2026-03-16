@@ -1,8 +1,8 @@
 import _ from 'lodash';
 import { useRef } from 'react';
 import { Dimensions } from 'react-native';
-import { BigCard } from '@/shared/components/BigCard';
-import { RatingChart } from '@/shared/components/RatingChart';
+import { BigCard } from '@/shared/ui/BigCard';
+import { RatingChart } from '@/shared/ui/RatingChart';
 import { t } from '@/shared/utils/translation';
 import { getRatingDistributionForXDays } from '@/features/statistics/hooks/useStatistics/RatingDistribution';
 import { NotEnoughDataOverlay } from '@/features/statistics/components/Statistics/NotEnoughDataOverlay';

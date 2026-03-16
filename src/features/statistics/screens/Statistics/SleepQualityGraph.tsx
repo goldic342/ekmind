@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import { Dimensions, View } from 'react-native';
 import { useLogState } from '@/features/logging/hooks/useLogs';
 
-import { SleepQualityChart } from '@/shared/components/SleepQualityChart';
+import { SleepQualityChart } from '@/shared/ui/SleepQualityChart';
 import { CardFeedback } from '@/features/statistics/components/Statistics/CardFeedback';
 import { getSleepQualityDistributionForXDays } from '@/features/statistics/hooks/useStatistics/SleepQualityDistribution';
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';

@@ -1,4 +1,4 @@
-import Button from '@/shared/components/Button';
+import Button from '@/shared/ui/Button';
 import { locale, t } from '@/shared/utils/translation';
 import useColors from "@/shared/hooks/useColors";
 import useFeedbackModal from '@/shared/hooks/useFeedbackModal';

@@ -1,7 +1,7 @@
 import { View } from "react-native"
-import { ActionCard } from "@/shared/components/ActionCard"
-import { Crown } from "@/shared/components/icons/Crown"
-import { Fire } from "@/shared/components/icons/Fire"
+import { ActionCard } from "@/shared/ui/ActionCard"
+import { Crown } from "@/shared/ui/icons/Crown"
+import { Fire } from "@/shared/ui/icons/Fire"
 import useColors from "@/shared/hooks/useColors"
 import { useStatistics } from "@/features/statistics/hooks/useStatistics"
 

@@ -1,8 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import { ActivityIndicator, View } from "react-native";
 import { TrendingUp } from "react-native-feather";
-import MenuList from "@/shared/components/MenuList";
-import MenuListItem from "@/shared/components/MenuListItem";
+import MenuList from "@/shared/ui/MenuList";
+import MenuListItem from "@/shared/ui/MenuListItem";
 import { t } from "@/shared/utils/translation";
 import useColors from "@/shared/hooks/useColors";
 import { useStatistics } from "@/features/statistics/hooks/useStatistics";

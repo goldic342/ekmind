@@ -1,10 +1,10 @@
-import Button from "@/shared/components/Button";
-import LinkButton from "@/shared/components/LinkButton";
-import MenuList from "@/shared/components/MenuList";
-import MenuListHeadline from "@/shared/components/MenuListHeadline";
-import MenuListItem from "@/shared/components/MenuListItem";
-import { PageWithHeaderLayout } from "@/shared/components/PageWithHeaderLayout";
-import TextInfo from "@/shared/components/TextInfo";
+import Button from "@/shared/ui/Button";
+import LinkButton from "@/shared/ui/LinkButton";
+import MenuList from "@/shared/ui/MenuList";
+import MenuListHeadline from "@/shared/ui/MenuListHeadline";
+import MenuListItem from "@/shared/ui/MenuListItem";
+import { PageWithHeaderLayout } from "@/shared/ui/PageWithHeaderLayout";
+import TextInfo from "@/shared/ui/TextInfo";
 import { t } from "@/shared/utils/translation";
 import dayjs from "dayjs";
 import { ScrollView, Text, View, ViewStyle } from "react-native";

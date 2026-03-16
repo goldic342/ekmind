@@ -5,7 +5,7 @@ import { language, t } from "@/shared/utils/translation";
 import useColors from "@/shared/hooks/useColors";
 import useHaptics from "@/shared/hooks/useHaptics";
 import { IQuestion, useQuestioner } from "@/shared/hooks/useQuestioner";
-import LinkButton from "@/shared/components/LinkButton";
+import LinkButton from "@/shared/ui/LinkButton";
 import { SlideHeadline } from "../SlideHeadline";
 import { Footer } from "./Footer";
 

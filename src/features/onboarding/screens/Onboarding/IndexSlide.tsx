@@ -1,6 +1,6 @@
 import { Text, View } from 'react-native';
 import Animated, { FadeInUp } from 'react-native-reanimated';
-import Button from '@/shared/components/Button';
+import Button from '@/shared/ui/Button';
 import { t } from '@/shared/utils/translation';
 import useColors from '@/shared/hooks/useColors';
 import { HeaderImage } from './HeaderImage';

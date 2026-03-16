@@ -1,6 +1,6 @@
 import { Text, View } from 'react-native';
 import { Edit2 } from 'react-native-feather';
-import MenuListItem from '@/shared/components/MenuListItem';
+import MenuListItem from '@/shared/ui/MenuListItem';
 import useColors from '@/shared/hooks/useColors';
 import { Tag } from '@/features/tags/hooks/useTags';
 

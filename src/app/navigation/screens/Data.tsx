@@ -1,14 +1,14 @@
 import { ScrollView, Switch, View } from 'react-native';
 import { Download, Trash, Upload } from 'react-native-feather';
-import MenuList from '@/shared/components/MenuList';
-import MenuListItem from '@/shared/components/MenuListItem';
-import TextInfo from '@/shared/components/TextInfo';
+import MenuList from '@/shared/ui/MenuList';
+import MenuListItem from '@/shared/ui/MenuListItem';
+import TextInfo from '@/shared/ui/TextInfo';
 import { t } from '@/shared/utils/translation';
 import { useAnalytics } from "@/shared/hooks/useAnalytics";
 import useColors from '@/shared/hooks/useColors';
 import { useDatagate } from '@/shared/hooks/useDatagate';
 import { RootStackScreenProps } from '@/types';
-import { PageWithHeaderLayout } from '@/shared/components/PageWithHeaderLayout';
+import { PageWithHeaderLayout } from '@/shared/ui/PageWithHeaderLayout';
 
 export const DataScreen = ({ navigation }: RootStackScreenProps<'Data'>) => {
   const colors = useColors()

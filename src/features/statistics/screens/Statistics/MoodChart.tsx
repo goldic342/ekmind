@@ -6,7 +6,7 @@ import { useLogState } from '@/features/logging/hooks/useLogs';
 import { getRatingDistributionForXDays } from '@/features/statistics/hooks/useStatistics/RatingDistribution';
 
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
-import { RatingChart } from '@/shared/components/RatingChart';
+import { RatingChart } from '@/shared/ui/RatingChart';
 import { CardFeedback } from '@/features/statistics/components/Statistics/CardFeedback';
 
 dayjs.extend(isSameOrAfter);

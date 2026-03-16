@@ -10,7 +10,7 @@ import _ from "lodash";
 import { useRef, useState } from "react";
 import { ScrollView, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import LinkButton from '@/shared/components/LinkButton';
+import LinkButton from '@/shared/ui/LinkButton';
 import { SlideHeadline } from "../../SlideHeadline";
 import { EMOTIONS } from "../../config";
 import { Footer } from "../Footer";

@@ -1,7 +1,7 @@
 import { LogItem } from '@/features/logging/hooks/useLogs';
 import { dummyEmotionsDistributionData, getEmotionsDistributionData } from '@/features/statistics/hooks/useStatistics/EmotionsDistributuon';
 import { EmotionsDistributionContent } from '@/features/statistics/screens/Statistics/EmotionsDistributionCard';
-import { BigCard } from '@/shared/components/BigCard';
+import { BigCard } from '@/shared/ui/BigCard';
 import { NotEnoughDataOverlay } from './NotEnoughDataOverlay';
 
 const MIN_TAGS = 5;

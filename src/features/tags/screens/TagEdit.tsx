@@ -3,11 +3,11 @@ import { Platform, Switch, TextInput, TouchableOpacity, View } from 'react-nativ
 import { Check } from 'react-native-feather';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { v4 as uuidv4 } from 'uuid';
-import Alert from '@/shared/components/Alert';
-import Button from '@/shared/components/Button';
-import DismissKeyboard from '@/shared/components/DismisKeyboard';
-import LinkButton from '@/shared/components/LinkButton';
-import ModalHeader from '@/shared/components/ModalHeader';
+import Alert from '@/shared/ui/Alert';
+import Button from '@/shared/ui/Button';
+import DismissKeyboard from '@/shared/ui/DismisKeyboard';
+import LinkButton from '@/shared/ui/LinkButton';
+import ModalHeader from '@/shared/ui/ModalHeader';
 import { MAX_TAG_LENGTH, MIN_TAG_LENGTH, TAG_COLOR_NAMES } from '@/shared/constants/Config';
 import { t } from '@/shared/utils/translation';
 import { useAnalytics } from '@/shared/hooks/useAnalytics';
@@ -15,9 +15,9 @@ import useColors from '@/shared/hooks/useColors';
 import useHaptics from '@/shared/hooks/useHaptics';
 import { Tag as ITag, useTagsState, useTagsUpdater } from '@/features/tags/hooks/useTags';
 import { RootStackScreenProps } from '@/types';
-import MenuList from '@/shared/components/MenuList';
-import MenuListItem from '@/shared/components/MenuListItem';
-import TextInfo from '@/shared/components/TextInfo';
+import MenuList from '@/shared/ui/MenuList';
+import MenuListItem from '@/shared/ui/MenuListItem';
+import TextInfo from '@/shared/ui/TextInfo';
 
 const REGEX_EMOJI = /\p{Emoji}/u;
 

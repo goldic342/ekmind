@@ -1,11 +1,11 @@
 import { RootStackScreenProps } from '@/types';
-import { TagList } from '@/shared/components/TagList';
+import { TagList } from '@/shared/ui/TagList';
 import useColors from '@/shared/hooks/useColors';
 import { Tag, useTagsState } from '@/features/tags/hooks/useTags';
-import Button from '@/shared/components/Button';
-import MenuList from '@/shared/components/MenuList';
-import MenuListItem from '@/shared/components/MenuListItem';
-import { TagListItem } from '@/shared/components/TagListItem';
+import Button from '@/shared/ui/Button';
+import MenuList from '@/shared/ui/MenuList';
+import MenuListItem from '@/shared/ui/MenuListItem';
+import { TagListItem } from '@/shared/ui/TagListItem';
 import { MAX_TAGS } from '@/shared/constants/Config';
 import { t } from '@/shared/utils/translation';
 import { LinearGradient } from 'expo-linear-gradient';
