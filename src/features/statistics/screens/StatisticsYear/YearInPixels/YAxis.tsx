@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View } from "react-native";
-import useColors from "@/hooks/useColors";
+import useColors from "@/shared/hooks/useColors";
 
 export const YAxis = ({ dayCount }) => {
   const colors = useColors();

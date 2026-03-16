@@ -1,6 +1,6 @@
 import _ from "lodash";
-import { LogItem } from "@/hooks/useLogs";
-import { Tag } from "@/hooks/useTags";
+import { LogItem } from "@/features/logging/hooks/useLogs";
+import { Tag } from "@/features/tags/hooks/useTags";
 
 export interface TagsPeakData {
   tags: (Tag & {

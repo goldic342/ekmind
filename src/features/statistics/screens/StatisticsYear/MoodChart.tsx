@@ -1,14 +1,14 @@
 import dayjs, { Dayjs } from 'dayjs';
 import { Dimensions, View } from 'react-native';
 import { t } from '@/shared/utils/translation';
-import { useLogState } from '@/hooks/useLogs';
-import { getRatingDistributionForYear } from '@/hooks/useStatistics/RatingDistribution';
+import { useLogState } from '@/features/logging/hooks/useLogs';
+import { getRatingDistributionForYear } from '@/features/statistics/hooks/useStatistics/RatingDistribution';
 
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
-import { BigCard } from '@/components/BigCard';
+import { BigCard } from '@/shared/components/BigCard';
 import { RatingChart } from '@/shared/components/RatingChart';
-import { CardFeedback } from '@/components/Statistics/CardFeedback';
-import { NotEnoughDataOverlay } from '@/components/Statistics/NotEnoughDataOverlay';
+import { CardFeedback } from '@/features/statistics/components/Statistics/CardFeedback';
+import { NotEnoughDataOverlay } from '@/features/statistics/components/Statistics/NotEnoughDataOverlay';
 import { useRef } from 'react';
 import _ from 'lodash';
 

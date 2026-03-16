@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'react';
 import { Modal, Platform, SafeAreaView } from 'react-native';
-import { PasscodeView } from '@/components/PasscodeView';
+import { PasscodeView } from '@/features/passcode/components/PasscodeView';
 import useColors from '@/shared/hooks/useColors';
-import { useAnalytics } from '@/hooks/useAnalytics';
+import { useAnalytics } from '@/shared/hooks/useAnalytics';
 
 export default function usePasscodeModal({
   mode,

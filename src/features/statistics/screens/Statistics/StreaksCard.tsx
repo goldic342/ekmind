@@ -1,9 +1,9 @@
 import { View } from "react-native"
-import { ActionCard } from "@/components/ActionCard"
-import { Crown } from "@/components/icons/Crown"
-import { Fire } from "@/components/icons/Fire"
-import useColors from "@/hooks/useColors"
-import { useStatistics } from "@/hooks/useStatistics"
+import { ActionCard } from "@/shared/components/ActionCard"
+import { Crown } from "@/shared/components/icons/Crown"
+import { Fire } from "@/shared/components/icons/Fire"
+import useColors from "@/shared/hooks/useColors"
+import { useStatistics } from "@/features/statistics/hooks/useStatistics"
 
 export const StreaksCard = () => {
   const statistics = useStatistics()

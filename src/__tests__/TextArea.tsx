@@ -1,5 +1,5 @@
 import { render, fireEvent } from '@testing-library/react-native'
-import TextArea from '../components/TextArea'
+import TextArea from '../shared/components/TextArea'
 
 xdescribe('<TextArea>', () => {
   

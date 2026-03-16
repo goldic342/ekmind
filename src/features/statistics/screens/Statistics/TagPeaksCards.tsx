@@ -1,18 +1,18 @@
 import { useNavigation } from '@react-navigation/native';
 import dayjs, { Dayjs } from 'dayjs';
 import { Pressable, Text, View } from 'react-native';
-import { Card } from '@/components/Statistics/Card';
-import { CardFeedback } from '@/components/Statistics/CardFeedback';
+import { Card } from '@/features/statistics/components/Statistics/Card';
+import { CardFeedback } from '@/features/statistics/components/Statistics/CardFeedback';
 import { DATE_FORMAT } from '@/shared/constants/Config';
 import { t } from '@/shared/utils/translation';
-import useColors from '@/hooks/useColors';
-import useHaptics from '@/hooks/useHaptics';
-import { LogItem } from '@/hooks/useLogs';
-import { TagsPeakData } from '@/hooks/useStatistics/TagsPeaks';
-import { Tag as ITag } from '@/hooks/useTags';
+import useColors from '@/shared/hooks/useColors';
+import useHaptics from '@/shared/hooks/useHaptics';
+import { LogItem } from '@/features/logging/hooks/useLogs';
+import { TagsPeakData } from '@/features/statistics/hooks/useStatistics/TagsPeaks';
+import { Tag as ITag } from '@/features/tags/hooks/useTags';
 import { HeaderWeek } from './HeaderWeek';
 import _ from 'lodash';
-import { useCalendarNavigation } from '@/hooks/useCalendarNavigation';
+import { useCalendarNavigation } from '@/features/calendar/hooks/useCalendarNavigation';
 
 const DayDot = ({
   date,

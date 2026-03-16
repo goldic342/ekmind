@@ -1,4 +1,4 @@
-import Alert from "@/components/Alert";
+import Alert from "@/shared/components/Alert";
 import { t } from "./translation";
 
 export const askToCancel = () => {

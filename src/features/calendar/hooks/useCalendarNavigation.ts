@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import { useLogState } from '@/hooks/useLogs';
+import { useLogState } from '@/features/logging/hooks/useLogs';
 import dayjs from 'dayjs';
 import { DATE_FORMAT } from '@/shared/constants/Config';
 

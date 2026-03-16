@@ -1,8 +1,8 @@
 import React from "react";
 import { ChevronDown } from "react-native-feather";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
-import { FloatButton } from "@/components/FloatButton";
-import useColors from "@/hooks/useColors";
+import { FloatButton } from "@/shared/components/FloatButton";
+import useColors from "@/shared/hooks/useColors";
 
 export const ScrollToBottomButton = ({ onPress }: { onPress: () => void; }) => {
   const colors = useColors();

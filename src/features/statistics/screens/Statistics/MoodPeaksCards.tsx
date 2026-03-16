@@ -1,16 +1,16 @@
-import { Card } from '@/components/Statistics/Card';
-import { CardFeedback } from '@/components/Statistics/CardFeedback';
+import { Card } from '@/features/statistics/components/Statistics/Card';
+import { CardFeedback } from '@/features/statistics/components/Statistics/CardFeedback';
 import { DATE_FORMAT } from '@/shared/constants/Config';
 import { t } from '@/shared/utils/translation';
-import { useCalendarNavigation } from '@/hooks/useCalendarNavigation';
+import { useCalendarNavigation } from '@/features/calendar/hooks/useCalendarNavigation';
 import dayjs, { Dayjs } from 'dayjs';
 import _ from 'lodash';
 import { Pressable, Text, View } from 'react-native';
-import useColors from '@/hooks/useColors';
-import useHaptics from '@/hooks/useHaptics';
-import { LogDay } from '@/hooks/useLogs';
-import useScale from '@/hooks/useScale';
-import { MoodPeaksNegativeData, MoodPeaksPositiveData } from '@/hooks/useStatistics/MoodPeaks';
+import useColors from '@/shared/hooks/useColors';
+import useHaptics from '@/shared/hooks/useHaptics';
+import { LogDay } from '@/features/logging/hooks/useLogs';
+import useScale from '@/shared/hooks/useScale';
+import { MoodPeaksNegativeData, MoodPeaksPositiveData } from '@/features/statistics/hooks/useStatistics/MoodPeaks';
 import { HeaderWeek } from './HeaderWeek';
 
 const DayDot = ({

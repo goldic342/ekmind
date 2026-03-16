@@ -1,11 +1,11 @@
-import { Card } from '@/components/Statistics/Card';
-import { CardFeedback } from '@/components/Statistics/CardFeedback';
+import { Card } from '@/features/statistics/components/Statistics/Card';
+import { CardFeedback } from '@/features/statistics/components/Statistics/CardFeedback';
 import { t } from '@/shared/utils/translation';
 import useColors from '@/shared/hooks/useColors';
-import { EmotionsDistributionData } from '@/hooks/useStatistics/EmotionsDistributuon';
+import { EmotionsDistributionData } from '@/features/statistics/hooks/useStatistics/EmotionsDistributuon';
 import { Emotion } from '@/types';
 import { Text, View } from 'react-native';
-import { EmotionItem } from '@/screens/LogList/EmotionItem';
+import { EmotionItem } from '@/features/logging/screens/LogList/EmotionItem';
 
 const EmotionBar = ({
   emotion,

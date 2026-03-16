@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { AppState } from "react-native";
-import { useSettings } from '@/hooks/useSettings';
+import { useSettings } from '@/features/settings/hooks/useSettings';
 import * as LocalAuthentication from 'expo-local-authentication';
 
 interface PasscodeState {

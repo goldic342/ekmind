@@ -1,4 +1,4 @@
-import { LogItem, RATING_KEYS } from "@/hooks/useLogs";
+import { LogItem, RATING_KEYS } from "@/features/logging/hooks/useLogs";
 import { getLogDays } from '@/shared/utils/utils';
 
 export interface MoodAvgData {

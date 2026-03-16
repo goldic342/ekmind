@@ -8,9 +8,9 @@ import {
 } from "react";
 import "react-native-get-random-values";
 import { v4 as uuidv4 } from "uuid";
-import { LoggerStep, STEP_OPTIONS } from "@/components/Logger/config";
+import { LoggerStep, STEP_OPTIONS } from "@/features/logging/components/logger/config";
 import { load, store } from "@/shared/utils/storage";
-import { Tag } from '@/hooks/useTags';
+import { Tag } from '@/features/tags/hooks/useTags';
 
 export const STORAGE_KEY = "PIXEL_TRACKER_SETTINGS";
 

@@ -2,16 +2,16 @@ import { Dayjs } from "dayjs";
 import _ from "lodash";
 import React, { ReactNode } from "react";
 import { View } from "react-native";
-import { BigCard } from "@/components/BigCard";
+import { BigCard } from "@/shared/components/BigCard";
 import { DATE_FORMAT } from "@/shared/constants/Config";
 import { t } from "@/shared/utils/translation";
-import { LogItem, RATING_KEYS, useLogState } from "@/hooks/useLogs";
-import { CardFeedback } from "@/components/Statistics/CardFeedback";
-import { NotEnoughDataOverlay } from "@/components/Statistics/NotEnoughDataOverlay";
+import { LogItem, RATING_KEYS, useLogState } from "@/features/logging/hooks/useLogs";
+import { CardFeedback } from "@/features/statistics/components/Statistics/CardFeedback";
+import { NotEnoughDataOverlay } from "@/features/statistics/components/Statistics/NotEnoughDataOverlay";
 
 import { Row } from "./Row";
 import { XAxis } from "./XAxis";
-import { useAnonymizer } from "@/hooks/useAnonymizer";
+import { useAnonymizer } from "@/shared/hooks/useAnonymizer";
 
 const MIN_ITEMS = 30;
 

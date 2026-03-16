@@ -1,8 +1,8 @@
 import _ from "lodash";
-import { ImportData } from "../helpers/Import";
-import { migrateImportData } from "../helpers/migration";
-import { INITIAL_STATE } from "../hooks/useSettings";
-import { Tag } from "../hooks/useTags";
+import { ImportData } from "../shared/utils/Import";
+import { migrateImportData } from "../shared/utils/migration";
+import { INITIAL_STATE } from "@/features/settings/hooks/useSettings";
+import { Tag } from "@/features/tags/hooks/useTags";
 import { _generateItem } from "./utils";
 
 const testTags: Tag[] = [

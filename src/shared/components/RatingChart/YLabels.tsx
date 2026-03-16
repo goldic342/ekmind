@@ -1,5 +1,5 @@
 import { RATING_KEYS } from '@/features/logging/hooks/useLogs';
-import useScale from '@/hooks/useScale';
+import useScale from '@/shared/hooks/useScale';
 import { Rect } from 'react-native-svg';
 
 export const YLabels = ({

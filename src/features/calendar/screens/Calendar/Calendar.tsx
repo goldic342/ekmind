@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import React, { forwardRef, memo } from "react";
 import { View } from "react-native";
-import { useLogState } from "@/hooks/useLogs";
+import { useLogState } from "@/features/logging/hooks/useLogs";
 import CalendarMonth from "./CalendarMonth";
 
 import { DATE_FORMAT } from "@/shared/constants/Config";

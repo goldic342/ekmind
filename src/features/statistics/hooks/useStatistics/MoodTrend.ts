@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { LogItem, RATING_MAPPING } from "@/hooks/useLogs";
+import { LogItem, RATING_MAPPING } from "@/features/logging/hooks/useLogs";
 
 type PeriodDataPoint = {
   date: Date;

@@ -1,10 +1,10 @@
 import * as LocalAuthentication from 'expo-local-authentication';
 import { Alert, SafeAreaView, ScrollView, StatusBar, Text, View } from 'react-native';
 import { Lock } from 'react-native-feather';
-import LinkButton from '@/components/LinkButton';
+import LinkButton from '@/shared/components/LinkButton';
 import useColors from '@/shared/hooks/useColors';
 import { usePasscode } from '../hooks/usePasscode';
-import { useAnalytics } from '@/hooks/useAnalytics';
+import { useAnalytics } from '@/shared/hooks/useAnalytics';
 import { t } from '@/shared/utils/translation';
 
 export const PasscodeLocked = () => {

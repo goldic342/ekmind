@@ -1,8 +1,8 @@
 import dayjs from "dayjs";
 import _ from "lodash";
 import { createContext, useContext, useState } from "react";
-import { LogItem, useLogState } from "@/hooks/useLogs";
-import { useTagsState } from "@/hooks/useTags";
+import { LogItem, useLogState } from "@/features/logging/hooks/useLogs";
+import { useTagsState } from "@/features/tags/hooks/useTags";
 import { defaultMoodAvgData, getMoodAvgData, MoodAvgData } from "./MoodAvg";
 import {
   defaultMoodPeaksNegativeData,

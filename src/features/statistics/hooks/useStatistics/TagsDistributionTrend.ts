@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import _ from "lodash";
-import { LogItem } from "@/hooks/useLogs";
-import { Tag } from "@/hooks/useTags";
+import { LogItem } from "@/features/logging/hooks/useLogs";
+import { Tag } from "@/features/tags/hooks/useTags";
 
 interface DistributionTag extends Tag {
   periode1Count: number;

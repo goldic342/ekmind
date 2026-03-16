@@ -4,17 +4,17 @@ import * as DocumentPicker from "expo-document-picker";
 import * as FileSystem from "expo-file-system";
 import * as Sharing from "expo-sharing";
 import { Alert } from 'react-native';
-import { AnalyticsProvider } from "../hooks/useAnalytics";
-import { useDatagate } from "../hooks/useDatagate";
+import { AnalyticsProvider } from "@/shared/hooks/useAnalytics";
+import { useDatagate } from "@/shared/hooks/useDatagate";
 
 import _ from "lodash";
 import {
   LogsProvider,
   LogsState, useLogState,
   useLogUpdater
-} from "../hooks/useLogs";
-import { ExportSettings, INITIAL_STATE, SettingsProvider, useSettings } from "../hooks/useSettings";
-import { Tag, TagsProvider, useTagsState, useTagsUpdater } from "../hooks/useTags";
+} from "@/features/logging/hooks/useLogs";
+import { ExportSettings, INITIAL_STATE, SettingsProvider, useSettings } from "@/features/settings/hooks/useSettings";
+import { Tag, TagsProvider, useTagsState, useTagsUpdater } from "@/features/tags/hooks/useTags";
 import { _generateItem } from "./utils";
 
 const wrapper = ({ children }) => (

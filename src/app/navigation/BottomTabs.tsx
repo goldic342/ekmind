@@ -1,5 +1,5 @@
 import Indicator from '@/shared/components/Indicator';
-import LinkButton from '@/components/LinkButton';
+import LinkButton from '@/shared/components/LinkButton';
 import { t } from '@/shared/utils/translation';
 import { useCalendarFilters } from '@/features/calendar/hooks/useCalendarFilters';
 import useColors from '@/shared/hooks/useColors';
@@ -8,7 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 import dayjs from 'dayjs';
 import * as Updates from 'expo-updates';
 import { Platform, Pressable, View } from 'react-native';
-import { SettingsScreen, StatisticsScreen } from '@/screens';
+import { SettingsScreen, StatisticsScreen } from '@/app/navigation/screens';
 import CalendarScreen from '@/features/calendar/screens/Calendar';
 import { MyTabBar } from "./MyTabBar";
 

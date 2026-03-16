@@ -1,8 +1,8 @@
 import { Text, View, ViewStyle } from "react-native";
-import LinkButton from "@/components/LinkButton";
+import LinkButton from "@/shared/components/LinkButton";
 import { t } from "@/shared/utils/translation";
-import useColors from "@/hooks/useColors";
-import useFeedbackModal from "@/hooks/useFeedbackModal";
+import useColors from "@/shared/hooks/useColors";
+import useFeedbackModal from "@/shared/hooks/useFeedbackModal";
 
 export const FeedbackBox = ({
   prefix,

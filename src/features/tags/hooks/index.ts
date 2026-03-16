@@ -1,1 +1,1 @@
-export * from '@/hooks/useTags';
+export * from './useTags';

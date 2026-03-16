@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import React, { ReactNode } from "react";
 import { Text, View } from "react-native";
-import useColors from "@/hooks/useColors";
+import useColors from "@/shared/hooks/useColors";
 
 export const XAxis = () => {
   const months: ReactNode[] = [];

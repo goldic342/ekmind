@@ -1,20 +1,20 @@
 import { useEffect } from 'react';
 import { ActivityIndicator, ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import useColors from '@/hooks/useColors';
-import { useAnalytics } from '@/hooks/useAnalytics';
-import { useStatistics } from '@/hooks/useStatistics';
+import useColors from '@/shared/hooks/useColors';
+import { useAnalytics } from '@/shared/hooks/useAnalytics';
+import { useStatistics } from '@/features/statistics/hooks/useStatistics';
 import { MoodAvgCard } from '../MoodAvgCard';
 import { MoodPeaksCard } from '../MoodPeaksCards';
 import { TagPeaksCard } from '../TagPeaksCards';
 import { TagsDistributionCard } from '../TagsDistributionCard';
 import { Title } from '../Title';
-import { MoodAvgData } from '@/hooks/useStatistics/MoodAvg';
+import { MoodAvgData } from '@/features/statistics/hooks/useStatistics/MoodAvg';
 import { t } from '@/shared/utils/translation';
 import dayjs from 'dayjs';
 import { DATE_FORMAT } from '@/shared/constants/Config';
 import { MoodChart } from '../MoodChart';
-import { useLogState } from '@/hooks/useLogs';
+import { useLogState } from '@/features/logging/hooks/useLogs';
 import { SleepQualityChartCard } from '../SleepQualityGraph';
 
 export const StatisticsHighlights = ({ navigation }) => {

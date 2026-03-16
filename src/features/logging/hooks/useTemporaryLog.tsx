@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { LogItem } from '@/hooks/useLogs';
+import { LogItem } from '@/features/logging/hooks/useLogs';
 
 export type TemporaryLogState = Omit<LogItem, 'rating' | 'sleep'> & {
   rating: LogItem['rating'] | null,

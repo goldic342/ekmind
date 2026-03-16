@@ -1,10 +1,10 @@
 import { RootStackScreenProps } from '@/types';
-import useColors from '@/hooks/useColors';
-import { Tag, useTagsState } from '@/hooks/useTags';
+import useColors from '@/shared/hooks/useColors';
+import { Tag, useTagsState } from '@/features/tags/hooks/useTags';
 import Button from '@/shared/components/Button';
-import LinkButton from '@/components/LinkButton';
+import LinkButton from '@/shared/components/LinkButton';
 import ModalHeader from '@/shared/components/ModalHeader';
-import { TagList } from '@/components/TagList';
+import { TagList } from '@/shared/components/TagList';
 import { MAX_TAGS } from '@/shared/constants/Config';
 import { t } from '@/shared/utils/translation';
 import { LinearGradient } from 'expo-linear-gradient';

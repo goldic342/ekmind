@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import { Delete, X } from 'react-native-feather';
-import { PasscodeEmptyPad } from '@/components/PasscodeEmptyPad';
+import { PasscodeEmptyPad } from '@/features/passcode/components/PasscodeEmptyPad';
 import useColors from '@/shared/hooks/useColors';
 import { PasscodePadButton } from './PasscodePadButton';
 import { PasscodePadIcon } from './PasscodePadIcon';

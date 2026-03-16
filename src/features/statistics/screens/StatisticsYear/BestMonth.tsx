@@ -1,8 +1,8 @@
-import { BigCard } from "@/components/BigCard"
-import { NotEnoughDataOverlay } from "@/components/Statistics/NotEnoughDataOverlay"
+import { BigCard } from "@/shared/components/BigCard"
+import { NotEnoughDataOverlay } from "@/features/statistics/components/Statistics/NotEnoughDataOverlay"
 import { t } from "@/shared/utils/translation"
 import useColors from "@/shared/hooks/useColors"
-import { RATING_MAPPING, useLogState } from "@/hooks/useLogs"
+import { RATING_MAPPING, useLogState } from "@/features/logging/hooks/useLogs"
 import dayjs, { Dayjs } from "dayjs"
 import _ from 'lodash'
 import { Text, View } from "react-native"

@@ -1,5 +1,5 @@
 import { Text, View, ViewStyle } from 'react-native';
-import useColors from '@/hooks/useColors';
+import useColors from '@/shared/hooks/useColors';
 
 
 export const StatsCard = ({

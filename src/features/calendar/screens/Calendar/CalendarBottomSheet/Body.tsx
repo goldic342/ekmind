@@ -1,8 +1,8 @@
 import _ from "lodash";
 import { useCallback, useState } from "react";
 import { View } from "react-native";
-import { useCalendarFilters } from "@/hooks/useCalendarFilters";
-import { useTagsState } from "@/hooks/useTags";
+import { useCalendarFilters } from "@/features/calendar/hooks/useCalendarFilters";
+import { useTagsState } from "@/features/tags/hooks/useTags";
 import { Header } from "./Header";
 import { RatingSection } from "./RatingSection";
 import { ResultsSection } from "./ResultsSection";

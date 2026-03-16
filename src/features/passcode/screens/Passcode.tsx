@@ -1,7 +1,7 @@
-import { PasscodeView } from '@/components/PasscodeView';
+import { PasscodeView } from '@/features/passcode/components/PasscodeView';
 import { usePasscode } from '../hooks/usePasscode';
-import { useAnalytics } from '@/hooks/useAnalytics';
-import { useSettings } from '@/hooks/useSettings';
+import { useAnalytics } from '@/shared/hooks/useAnalytics';
+import { useSettings } from '@/features/settings/hooks/useSettings';
 
 export const PasscodeScreen = () => {
   const passcode = usePasscode()

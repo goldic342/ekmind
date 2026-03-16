@@ -5,7 +5,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { t } from '@/shared/utils/translation';
 import useColors from '@/shared/hooks/useColors';
 import useHaptics from '@/shared/hooks/useHaptics';
-import { SettingsScreen, StatisticsScreen } from '@/screens';
+import { SettingsScreen, StatisticsScreen } from '@/app/navigation/screens';
 import CalendarScreen from '@/features/calendar/screens/Calendar';
 
 export const ROUTES: {

@@ -1,6 +1,6 @@
-import { EMOTIONS } from '@/components/Logger/config';
+import { EMOTIONS } from '@/features/logging/components/logger/config';
 import useColors from '@/shared/hooks/useColors';
-import { LogItem } from '@/hooks/useLogs';
+import { LogItem } from '@/features/logging/hooks/useLogs';
 import { Emotion } from '@/types';
 import { useNavigation } from '@react-navigation/native';
 import { t } from 'i18n-js';

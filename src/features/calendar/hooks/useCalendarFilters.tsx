@@ -1,8 +1,8 @@
 import _ from "lodash";
 import { createContext, useCallback, useContext, useMemo, useState } from "react";
-import { useAnalytics } from '@/hooks/useAnalytics';
-import { LogItem, useLogState } from '@/hooks/useLogs';
-import { Tag } from '@/hooks/useTags';
+import { useAnalytics } from '@/shared/hooks/useAnalytics';
+import { LogItem, useLogState } from '@/features/logging/hooks/useLogs';
+import { Tag } from '@/features/tags/hooks/useTags';
 
 
 interface FiltersData {

@@ -1,6 +1,6 @@
-import { useAnonymizer } from "../hooks/useAnonymizer";
-import { LogsState } from "../hooks/useLogs";
-import { Tag } from "../hooks/useTags";
+import { useAnonymizer } from "../shared/hooks/useAnonymizer";
+import { LogsState } from "@/features/logging/hooks/useLogs";
+import { Tag } from "@/features/tags/hooks/useTags";
 import { _generateItem } from "./utils";
 
 const testTags: Tag[] = [

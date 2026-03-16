@@ -16,8 +16,8 @@ import * as Sentry from "sentry-expo";
 import { v4 as uuidv4 } from "uuid";
 import z from "zod";
 import { AtLeast } from "@/types";
-import { useAnalytics } from '@/hooks/useAnalytics';
-import { useFeedback } from '@/hooks/useFeedback';
+import { useAnalytics } from '@/shared/hooks/useAnalytics';
+import { useFeedback } from '@/shared/hooks/useFeedback';
 
 export const STORAGE_KEY = "PIXEL_TRACKER_LOGS";
 

@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import useColors from '@/hooks/useColors';
-import { useAnalytics } from "@/hooks/useAnalytics";
-import { useSettings } from '@/hooks/useSettings';
+import useColors from '@/shared/hooks/useColors';
+import { useAnalytics } from "@/shared/hooks/useAnalytics";
+import { useSettings } from '@/features/settings/hooks/useSettings';
 import { RootStackScreenProps } from '@/types';
 import { ExplainerSlide } from './ExplainerSlide';
 import { IndexSlide } from './IndexSlide';

@@ -1,6 +1,6 @@
 import { View } from "react-native";
-import { RATING_KEYS } from "@/hooks/useLogs";
-import useScale from "@/hooks/useScale";
+import { RATING_KEYS } from "@/features/logging/hooks/useLogs";
+import useScale from "@/shared/hooks/useScale";
 
 
 export const Bar = ({

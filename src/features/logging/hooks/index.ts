@@ -1,2 +1,2 @@
-export * from '@/hooks/useLogs';
+export * from './useLogs';
 export * from './useTemporaryLog';

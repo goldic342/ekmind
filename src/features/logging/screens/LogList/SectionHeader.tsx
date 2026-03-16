@@ -1,4 +1,4 @@
-import LinkButton from "@/components/LinkButton";
+import LinkButton from "@/shared/components/LinkButton";
 import useColors from "@/shared/hooks/useColors";
 import { Edit } from "lucide-react-native";
 import { Text, View } from "react-native";

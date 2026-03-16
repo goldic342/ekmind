@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { load, store } from '../helpers/storage';
+import { load, store } from '../shared/utils/storage';
 
 const TEST_KEY = 'test-key';
 

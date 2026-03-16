@@ -1,8 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { act, renderHook } from '@testing-library/react-hooks'
-import { AnalyticsProvider } from '../hooks/useAnalytics'
-import { LogsProvider, LogsState, STORAGE_KEY, useLogState, useLogUpdater } from '../hooks/useLogs'
-import { SettingsProvider } from '../hooks/useSettings'
+import { AnalyticsProvider } from '@/shared/hooks/useAnalytics'
+import { LogsProvider, LogsState, STORAGE_KEY, useLogState, useLogUpdater } from '@/features/logging/hooks/useLogs'
+import { SettingsProvider } from '@/features/settings/hooks/useSettings'
 import { _generateItem } from './utils'
 
 const wrapper = ({ children }) => (

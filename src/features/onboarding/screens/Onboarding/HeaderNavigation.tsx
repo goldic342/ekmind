@@ -1,8 +1,8 @@
 import { Text, TouchableOpacity, View } from 'react-native';
 import { ArrowLeft } from 'react-native-feather';
 import { t } from '@/shared/utils/translation';
-import useColors from '@/hooks/useColors';
-import useHaptics from '@/hooks/useHaptics';
+import useColors from '@/shared/hooks/useColors';
+import useHaptics from '@/shared/hooks/useHaptics';
 import { HeaderPagination } from "./HeaderPagination";
 
 export const HeaderNavigation = ({

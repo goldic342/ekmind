@@ -3,40 +3,40 @@ import { locale, t } from '@/shared/utils/translation';
 import { useAnalytics } from '@/shared/hooks/useAnalytics';
 import useColors from '@/shared/hooks/useColors';
 import useHaptics from '@/shared/hooks/useHaptics';
-import { useSettings } from '@/hooks/useSettings';
+import { useSettings } from '@/features/settings/hooks/useSettings';
 import * as StoreReview from 'expo-store-review';
 import { useState } from 'react';
 import { ActivityIndicator, Image, Platform, Pressable, Text, View, ViewStyle } from 'react-native';
 import pkg from '../../../../../package.json';
-import Button from '@/components/Button';
-import TextArea from '@/components/TextArea';
+import Button from '@/shared/components/Button';
+import TextArea from '@/shared/components/TextArea';
 
 const EMOJI_SCALE_IMAGES_DEFAULT = [{
   emoji: '😍',
-  active: require(`../../../assets/images/emojis/smiling-face-with-heart-eyes_1f60d.png`),
-  disabled: require(`../../../assets/images/emojis/smiling-face-with-heart-eyes_1f60d-disabled.png`)
+  active: require(`../../../../../assets/images/emojis/smiling-face-with-heart-eyes_1f60d.png`),
+  disabled: require(`../../../../../assets/images/emojis/smiling-face-with-heart-eyes_1f60d-disabled.png`)
 }, {
   emoji: '🎉',
-  active: require(`../../../assets/images/emojis/party-popper.png`),
-  disabled: require(`../../../assets/images/emojis/party-popper-disabled.png`)
+  active: require(`../../../../../assets/images/emojis/party-popper.png`),
+  disabled: require(`../../../../../assets/images/emojis/party-popper-disabled.png`)
 }, {
   emoji: '😴',
-  active: require(`../../../assets/images/emojis/sleeping-face_1f634.png`),
-  disabled: require(`../../../assets/images/emojis/sleeping-face_1f634-disabled.png`)
+  active: require(`../../../../../assets/images/emojis/sleeping-face_1f634.png`),
+  disabled: require(`../../../../../assets/images/emojis/sleeping-face_1f634-disabled.png`)
 }, {
   emoji: '👎',
-  active: require(`../../../assets/images/emojis/thumbs-down_1f44e.png`),
-  disabled: require(`../../../assets/images/emojis/thumbs-down_1f44e-disabled.png`)
+  active: require(`../../../../../assets/images/emojis/thumbs-down_1f44e.png`),
+  disabled: require(`../../../../../assets/images/emojis/thumbs-down_1f44e-disabled.png`)
 }]
 
 const EMOJI_SCALE_IMAGES_MINIMAL = [{
   emoji: '👍',
-  active: require(`../../../assets/images/emojis/thumbs-up_1f44d.png`),
-  disabled: require(`../../../assets/images/emojis/thumbs-up_1f44d-disabled.png`)
+  active: require(`../../../../../assets/images/emojis/thumbs-up_1f44d.png`),
+  disabled: require(`../../../../../assets/images/emojis/thumbs-up_1f44d-disabled.png`)
 }, {
   emoji: '👎',
-  active: require(`../../../assets/images/emojis/thumbs-down_1f44e.png`),
-  disabled: require(`../../../assets/images/emojis/thumbs-down_1f44e-disabled.png`)
+  active: require(`../../../../../assets/images/emojis/thumbs-down_1f44e.png`),
+  disabled: require(`../../../../../assets/images/emojis/thumbs-down_1f44e-disabled.png`)
 }]
 
 const CardFeedbackEmoji = ({ image, onPress, selected }) => {

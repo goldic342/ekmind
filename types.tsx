@@ -1,9 +1,9 @@
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
 import { CompositeScreenProps } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { LoggerStep } from "@/components/Logger/config";
+import { LoggerStep } from "@/features/logging/components/logger/config";
 import { Emotion, TagReference } from "@/types";
-import { Tag } from "@/hooks/useTags";
+import { Tag } from "@/features/tags/hooks/useTags";
 
 declare global {
   namespace ReactNavigation {

@@ -1,3 +1,3 @@
-export * from './Log/Create';
-export * from './Log/Edit';
+export * from './Create';
+export * from './Edit';
 export * from './LogList';

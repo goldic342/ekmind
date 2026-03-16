@@ -1,19 +1,19 @@
-import { MoodCounts } from '@/components/Statistics/MoodCounts';
+import { MoodCounts } from '@/features/statistics/components/Statistics/MoodCounts';
 import { t } from '@/shared/utils/translation';
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { RootStackScreenProps } from '@/types';
-import useColors from '@/hooks/useColors';
-import { useLogState } from '@/hooks/useLogs';
+import useColors from '@/shared/hooks/useColors';
+import { useLogState } from '@/features/logging/hooks/useLogs';
 import { BestMonth } from './BestMonth';
 import { Header } from './Header';
 import { MoodChart } from './MoodChart';
 import { WorstMonth } from './WorstMonth';
 import YearInPixels from './YearInPixels';
-import { TagDistribution } from '@/components/Statistics/TagDistribution';
-import { EmotionsDistribution } from '@/components/Statistics/EmotionsDistribution';
+import { TagDistribution } from '@/features/statistics/components/Statistics/TagDistribution';
+import { EmotionsDistribution } from '@/features/statistics/components/Statistics/EmotionsDistribution';
 
 export const StatisticsYearScreen = ({ route }: RootStackScreenProps<'StatisticsYear'>) => {
   const insets = useSafeAreaInsets();

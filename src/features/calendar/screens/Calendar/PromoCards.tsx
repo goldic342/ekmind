@@ -1,16 +1,16 @@
-import { PromoCard } from "@/components/PromoCard";
-import { MONTH_REPORT_SLUG, PromoCardMonth } from "@/components/PromoCardMonth";
-import { PromoCardYear, YEAR_REPORT_SLUG } from "@/components/PromoCardYear";
+import { PromoCard } from "@/shared/components/PromoCard";
+import { MONTH_REPORT_SLUG, PromoCardMonth } from "@/shared/components/PromoCardMonth";
+import { PromoCardYear, YEAR_REPORT_SLUG } from "@/shared/components/PromoCardYear";
 import { DATE_FORMAT, STATISTIC_MIN_LOGS } from "@/shared/constants/Config";
 import { t } from "@/shared/utils/translation";
 import { useAnalytics } from "@/shared/hooks/useAnalytics";
-import { useSettings } from "@/hooks/useSettings";
+import { useSettings } from "@/features/settings/hooks/useSettings";
 import { useNavigation } from "@react-navigation/native";
 import dayjs from "dayjs";
 import React, { ReactElement, useEffect, useState } from "react";
 import { View } from "react-native";
-import useColors from "@/hooks/useColors";
-import { useLogState } from "@/hooks/useLogs";
+import useColors from "@/shared/hooks/useColors";
+import { useLogState } from "@/features/logging/hooks/useLogs";
 import * as rssParser from 'react-native-rss-parser';
 import * as WebBrowser from 'expo-web-browser';
 

@@ -1,8 +1,8 @@
 import { Text, View } from "react-native"
-import LinkButton from "@/components/LinkButton"
+import LinkButton from "@/shared/components/LinkButton"
 import { t } from "@/shared/utils/translation"
-import { useCalendarFilters } from "@/hooks/useCalendarFilters"
-import useColors from "@/hooks/useColors"
+import { useCalendarFilters } from "@/features/calendar/hooks/useCalendarFilters"
+import useColors from "@/shared/hooks/useColors"
 
 export const Header = () => {
   const calendarFilters = useCalendarFilters()

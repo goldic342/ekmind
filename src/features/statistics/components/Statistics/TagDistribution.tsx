@@ -1,9 +1,9 @@
-import { useAnonymizer } from '@/hooks/useAnonymizer';
-import { LogItem } from '@/hooks/useLogs';
-import { dummyTagsDistributionData, getTagsDistributionData } from '@/hooks/useStatistics/TagsDistribution';
-import { useTagsState } from '@/hooks/useTags';
+import { useAnonymizer } from '@/shared/hooks/useAnonymizer';
+import { LogItem } from '@/features/logging/hooks/useLogs';
+import { dummyTagsDistributionData, getTagsDistributionData } from '@/features/statistics/hooks/useStatistics/TagsDistribution';
+import { useTagsState } from '@/features/tags/hooks/useTags';
 import { TagDistributionContent } from '@/features/statistics/screens/Statistics/TagsDistributionCard';
-import { BigCard } from '@/components/BigCard';
+import { BigCard } from '@/shared/components/BigCard';
 import { NotEnoughDataOverlay } from './NotEnoughDataOverlay';
 
 const MIN_TAGS = 5;

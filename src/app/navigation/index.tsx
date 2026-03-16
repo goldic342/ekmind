@@ -16,24 +16,24 @@ import {
   NotFoundScreen,
   PrivacyScreen,
   ReminderScreen, SettingsScreen, StatisticsHighlights, TagCreate, TagEdit, SettingsTags, SettingsTagsArchive
-} from '@/screens';
+} from '@/app/navigation/screens';
 
 import Providers from '@/app/providers';
 import { buildTheme } from '@/shared/constants/Colors';
 import { initializeDayjs, t } from '@/shared/utils/translation';
 import { useAnalytics } from '@/shared/hooks/useAnalytics';
-import { useAnonymizer } from '@/hooks/useAnonymizer';
+import { useAnonymizer } from '@/shared/hooks/useAnonymizer';
 import { useLogState } from '@/features/logging/hooks/useLogs';
 import { useSettings } from '@/features/settings/hooks/useSettings';
 import { useTagsState } from '@/features/tags/hooks/useTags';
 import { getItemsCountPerDayAverage, getItemsCoverage } from '@/shared/utils/utils';
 import dayjs from 'dayjs';
 import { enableScreens } from 'react-native-screens';
-import { DevelopmentTools } from '@/screens/DevelopmentTools';
+import { DevelopmentTools } from '@/app/navigation/screens/DevelopmentTools';
 import { Onboarding } from '@/features/onboarding/screens/Onboarding';
 import { StatisticsMonthScreen } from '@/features/statistics/screens/StatisticsMonth';
 import { StatisticsYearScreen } from '@/features/statistics/screens/StatisticsYear';
-import { StepsScreen } from '@/screens/Steps';
+import { StepsScreen } from '@/app/navigation/screens/Steps';
 import { Tags } from '@/features/tags/screens/Tags';
 import { BackButton } from './BackButton';
 import { BottomTabs } from './BottomTabs';

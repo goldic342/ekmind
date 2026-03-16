@@ -3,9 +3,9 @@ import { load, store } from '@/shared/utils/storage';
 import { t } from '@/shared/utils/translation';
 import _ from 'lodash';
 import { createContext, useCallback, useContext, useEffect, useMemo, useReducer } from "react";
-import { useAnalytics } from '@/hooks/useAnalytics';
-import { useLogState, useLogUpdater } from '@/hooks/useLogs';
-import { useSettings } from '@/hooks/useSettings';
+import { useAnalytics } from '@/shared/hooks/useAnalytics';
+import { useLogState, useLogUpdater } from '@/features/logging/hooks/useLogs';
+import { useSettings } from '@/features/settings/hooks/useSettings';
 
 export const STORAGE_KEY = 'PIXEL_TRACKER_TAGS'
 

@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 import { TAG_COLOR_NAMES } from "@/shared/constants/Config";
-import useColors from "@/hooks/useColors";
+import useColors from "@/shared/hooks/useColors";
 
 export const TagBar = ({
   children,

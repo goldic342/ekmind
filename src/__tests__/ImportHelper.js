@@ -1,6 +1,6 @@
-import { getJSONSchemaType } from "../helpers/Import";
-import { migrateImportData } from "../helpers/migration";
-import { INITIAL_STATE } from "../hooks/useSettings";
+import { getJSONSchemaType } from "../shared/utils/Import";
+import { migrateImportData } from "../shared/utils/migration";
+import { INITIAL_STATE } from "../features/settings/hooks/useSettings";
 
 describe("getJSONSchemaType", () => {
   test("pixy schema: valid", async () => {

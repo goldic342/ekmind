@@ -1,8 +1,8 @@
 import BottomSheet, { BottomSheetBackdrop, BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { useEffect, useMemo, useRef } from 'react';
 import { Keyboard, View } from 'react-native';
-import { useCalendarFilters } from '@/hooks/useCalendarFilters';
-import useColors from '@/hooks/useColors';
+import { useCalendarFilters } from '@/features/calendar/hooks/useCalendarFilters';
+import useColors from '@/shared/hooks/useColors';
 import { Body } from './Body';
 
 export const CalendarBottomSheet = () => {

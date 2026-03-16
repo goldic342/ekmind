@@ -1,6 +1,6 @@
 import { Text, View } from 'react-native';
 import { t } from '@/shared/utils/translation';
-import useColors from '@/hooks/useColors';
+import useColors from '@/shared/hooks/useColors';
 import { Subtitle } from './Subtitle';
 import { Title } from './Title';
 

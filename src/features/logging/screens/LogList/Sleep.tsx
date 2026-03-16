@@ -1,5 +1,5 @@
-import { SlideSleepButton } from '@/components/Logger/slides/SlideSleepButton';
-import { LogItem } from '@/hooks/useLogs';
+import { SlideSleepButton } from '@/features/logging/components/logger/slides/SlideSleepButton';
+import { LogItem } from '@/features/logging/hooks/useLogs';
 import { useNavigation } from '@react-navigation/native';
 import { t } from 'i18n-js';
 import { View } from 'react-native';

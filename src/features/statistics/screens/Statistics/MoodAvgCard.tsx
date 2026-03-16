@@ -1,9 +1,9 @@
 import { View } from 'react-native';
-import { Card } from '@/components/Statistics/Card';
+import { Card } from '@/features/statistics/components/Statistics/Card';
 import { t } from '@/shared/utils/translation';
-import useScale from '@/hooks/useScale';
-import { MoodAvgData } from '@/hooks/useStatistics/MoodAvg';
-import { CardFeedback } from '@/components/Statistics/CardFeedback';
+import useScale from '@/shared/hooks/useScale';
+import { MoodAvgData } from '@/features/statistics/hooks/useStatistics/MoodAvg';
+import { CardFeedback } from '@/features/statistics/components/Statistics/CardFeedback';
 
 export const MoodAvgCard = ({
   data,

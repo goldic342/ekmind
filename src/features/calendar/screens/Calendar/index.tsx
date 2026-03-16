@@ -1,10 +1,10 @@
 import React, { memo, useEffect, useRef, useState } from "react";
 import { ActivityIndicator, Platform, Text, useWindowDimensions, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { useCalendarFilters } from "@/hooks/useCalendarFilters";
+import { useCalendarFilters } from "@/features/calendar/hooks/useCalendarFilters";
 import useColors from "@/shared/hooks/useColors";
-import { useLogState } from "@/hooks/useLogs";
-import { useSettings } from "@/hooks/useSettings";
+import { useLogState } from "@/features/logging/hooks/useLogs";
+import { useSettings } from "@/features/settings/hooks/useSettings";
 import Calendar from "./Calendar";
 import { CalendarBottomSheet } from "./CalendarBottomSheet";
 import { Body } from "./CalendarBottomSheet/Body";

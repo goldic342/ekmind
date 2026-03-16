@@ -1,5 +1,5 @@
 import MockDate from "mockdate";
-import { getCurrentStreak, getLongestStreak } from "../hooks/useStatistics/Streaks";
+import { getCurrentStreak, getLongestStreak } from "../features/statistics/hooks/useStatistics/Streaks";
 import { _generateItem } from './utils';
 
 const testItems = [

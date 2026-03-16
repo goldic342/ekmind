@@ -1,11 +1,11 @@
-import { BigCard } from '@/components/BigCard';
-import { NotEnoughDataOverlay } from '@/components/Statistics/NotEnoughDataOverlay';
+import { BigCard } from '@/shared/components/BigCard';
+import { NotEnoughDataOverlay } from '@/features/statistics/components/Statistics/NotEnoughDataOverlay';
 import { DATE_FORMAT } from '@/shared/constants/Config';
 import { t } from '@/shared/utils/translation';
 import dayjs from 'dayjs';
-import { useAnonymizer } from '@/hooks/useAnonymizer';
-import { LogDay } from '@/hooks/useLogs';
-import { getMoodPeaksNegativeData, getMoodPeaksPositiveData } from '@/hooks/useStatistics/MoodPeaks';
+import { useAnonymizer } from '@/shared/hooks/useAnonymizer';
+import { LogDay } from '@/features/logging/hooks/useLogs';
+import { getMoodPeaksNegativeData, getMoodPeaksPositiveData } from '@/features/statistics/hooks/useStatistics/MoodPeaks';
 import { MoodPeaksContent } from '../Statistics/MoodPeaksCards';
 
 const MIN_ITEMS = 1;

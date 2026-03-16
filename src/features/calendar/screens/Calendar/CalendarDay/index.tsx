@@ -4,10 +4,10 @@ import { memo, useCallback, useMemo } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useStyle } from "react-native-style-utilities";
 import { DATE_FORMAT } from "@/shared/constants/Config";
-import useColors from "@/hooks/useColors";
-import useHaptics from "@/hooks/useHaptics";
-import { LogItem } from "@/hooks/useLogs";
-import { useSettings } from "@/hooks/useSettings";
+import useColors from "@/shared/hooks/useColors";
+import useHaptics from "@/shared/hooks/useHaptics";
+import { LogItem } from "@/features/logging/hooks/useLogs";
+import { useSettings } from "@/features/settings/hooks/useSettings";
 
 const CalendarDay = memo(function CalendarDay({
   dateString,

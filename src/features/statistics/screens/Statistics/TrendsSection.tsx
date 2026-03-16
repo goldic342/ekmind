@@ -1,11 +1,11 @@
 import { useNavigation } from "@react-navigation/native";
 import { ActivityIndicator, View } from "react-native";
 import { TrendingUp } from "react-native-feather";
-import MenuList from "@/components/MenuList";
-import MenuListItem from "@/components/MenuListItem";
+import MenuList from "@/shared/components/MenuList";
+import MenuListItem from "@/shared/components/MenuListItem";
 import { t } from "@/shared/utils/translation";
-import useColors from "@/hooks/useColors";
-import { useStatistics } from "@/hooks/useStatistics";
+import useColors from "@/shared/hooks/useColors";
+import { useStatistics } from "@/features/statistics/hooks/useStatistics";
 import { MoodTrend } from "./MoodTrend";
 import { Subtitle } from "./Subtitle";
 import { TagsDistributionTrend } from "./TagsDistributionTrend";

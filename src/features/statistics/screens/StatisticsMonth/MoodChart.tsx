@@ -1,12 +1,12 @@
 import _ from 'lodash';
 import { useRef } from 'react';
 import { Dimensions } from 'react-native';
-import { BigCard } from '@/components/BigCard';
+import { BigCard } from '@/shared/components/BigCard';
 import { RatingChart } from '@/shared/components/RatingChart';
 import { t } from '@/shared/utils/translation';
-import { getRatingDistributionForXDays } from '@/hooks/useStatistics/RatingDistribution';
-import { NotEnoughDataOverlay } from '@/components/Statistics/NotEnoughDataOverlay';
-import { CardFeedback } from '@/components/Statistics/CardFeedback';
+import { getRatingDistributionForXDays } from '@/features/statistics/hooks/useStatistics/RatingDistribution';
+import { NotEnoughDataOverlay } from '@/features/statistics/components/Statistics/NotEnoughDataOverlay';
+import { CardFeedback } from '@/features/statistics/components/Statistics/CardFeedback';
 
 const MIN_ITEMS = 5;
 

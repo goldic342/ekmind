@@ -1,12 +1,12 @@
-import MenuList from "@/components/MenuList";
-import MenuListHeadline from "@/components/MenuListHeadline";
-import MenuListItem from "@/components/MenuListItem";
+import MenuList from "@/shared/components/MenuList";
+import MenuListHeadline from "@/shared/components/MenuListHeadline";
+import MenuListItem from "@/shared/components/MenuListItem";
 import { ImportData } from "@/shared/utils/Import";
 import { useEffect, useState } from "react";
 import { ActivityIndicator, View } from "react-native";
 import { CheckCircle, Repeat, UploadCloud } from "react-native-feather";
-import useColors from "@/hooks/useColors";
-import { useDatagate } from "@/hooks/useDatagate";
+import useColors from "@/shared/hooks/useColors";
+import { useDatagate } from "@/shared/hooks/useDatagate";
 
 interface User {
   id: string;

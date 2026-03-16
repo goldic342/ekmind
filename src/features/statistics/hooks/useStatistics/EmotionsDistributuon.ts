@@ -1,7 +1,7 @@
-import { EMOTIONS } from "@/components/Logger/config";
+import { EMOTIONS } from "@/features/logging/components/logger/config";
 import { Emotion } from "@/types";
 import _ from "lodash";
-import { LogItem } from "@/hooks/useLogs";
+import { LogItem } from "@/features/logging/hooks/useLogs";
 
 export interface EmotionsDistributionData {
   emotions: {

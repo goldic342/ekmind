@@ -1,6 +1,6 @@
 import useColors from '@/shared/hooks/useColors';
-import { LogItem } from '@/hooks/useLogs';
-import { useTagsState } from '@/hooks/useTags';
+import { LogItem } from '@/features/logging/hooks/useLogs';
+import { useTagsState } from '@/features/tags/hooks/useTags';
 import { useNavigation } from '@react-navigation/native';
 import { t } from 'i18n-js';
 import { Text, View, useColorScheme } from 'react-native';

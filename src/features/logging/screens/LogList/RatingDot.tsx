@@ -1,6 +1,6 @@
 import useColors from '@/shared/hooks/useColors';
-import { LogItem } from '@/hooks/useLogs';
-import { useSettings } from '@/hooks/useSettings';
+import { LogItem } from '@/features/logging/hooks/useLogs';
+import { useSettings } from '@/features/settings/hooks/useSettings';
 import { View } from 'react-native';
 
 export const RatingDot = ({

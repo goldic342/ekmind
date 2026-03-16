@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { View } from 'react-native';
 import { t } from '@/shared/utils/translation';
-import { LogItem } from '@/hooks/useLogs';
+import { LogItem } from '@/features/logging/hooks/useLogs';
 import { StatsCard } from "./StatsCard";
 
 export const Stats = ({

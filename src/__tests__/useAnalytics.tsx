@@ -1,13 +1,13 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { act, renderHook } from "@testing-library/react-hooks";
 import { PostHogProvider } from "posthog-react-native";
-import { AnalyticsProvider, useAnalytics } from "../hooks/useAnalytics";
+import { AnalyticsProvider, useAnalytics } from "@/shared/hooks/useAnalytics";
 import {
   INITIAL_STATE,
   SettingsProvider,
   STORAGE_KEY,
   useSettings
-} from "../hooks/useSettings";
+} from "@/features/settings/hooks/useSettings";
 
 const wrapper = ({ children }) => (
   <SettingsProvider>
