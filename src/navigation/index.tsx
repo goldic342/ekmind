@@ -19,7 +19,7 @@ import {
 } from '../screens';
 
 import Providers from '@/components/Providers';
-import Colors from '@/constants/Colors';
+import { buildTheme } from '@/constants/Colors';
 import { initializeDayjs, t } from '@/helpers/translation';
 import { useAnalytics } from '@/hooks/useAnalytics';
 import { useAnonymizer } from '@/hooks/useAnonymizer';
@@ -80,25 +80,18 @@ const NAVIGATION_LINKING = {
 export default function Navigation() {
   const scheme = useColorScheme();
   const { theme: dynamic } = useMaterial3Theme();
-  const baseColors = scheme === 'dark' ? Colors.dark : Colors.light
 
   return (
     <NavigationContainer
       linking={NAVIGATION_LINKING}
       // @ts-ignore
-      theme={
-        Platform.OS === 'android' ?
-          {
-            dark: scheme === 'dark',
-            colors: {
-              ...baseColors, ...(scheme === 'dark' ? dynamic.dark : dynamic.light),
-            }
-          }
-          : {
-            dark: scheme === 'dark',
-            colors: baseColors
-          }
-      }
+      theme={{
+        dark: scheme === 'dark',
+        colors: buildTheme({
+          scheme: scheme === 'dark' ? 'dark' : 'light',
+          materialColors: Platform.OS === 'android' ? (scheme === 'dark' ? dynamic.dark : dynamic.light) : undefined,
+        }),
+      }}
     >
       <Providers>
         <RootNavigator />

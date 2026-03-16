@@ -1,5 +1,5 @@
 import chroma from 'chroma-js';
-import colors from './TailwindColors';
+import { palette } from './palette';
 
 interface IScaleMood {
   background: string;
@@ -51,14 +51,14 @@ const getScale = (scale: string[]): IScale => {
 
 const light: IScaleColors = {
   'ColorBrew-RdYlGn': getScale([
-    colors.emerald[600],
-    colors.emerald[400],
-    colors.emerald[200],
-    colors.neutral[200],
-    colors.orange[100],
-    colors.orange[300],
-    colors.red[500],
-    colors.neutral[100],
+    palette.emerald[600],
+    palette.emerald[400],
+    palette.emerald[200],
+    palette.neutral[200],
+    palette.orange[100],
+    palette.orange[300],
+    palette.red[500],
+    palette.neutral[100],
   ]),
   'ColorBrew-RdYlGn-old': getScale(['#006837',
     '#1a9850',
@@ -67,50 +67,50 @@ const light: IScaleColors = {
     '#fee08b',
     '#fc8d59',
     '#d73027',
-    colors.neutral[100],
+    palette.neutral[100],
   ]),
   'ColorBrew-PuOr': getScale([
     '#542788',
     '#998ec3',
     '#d8daeb',
-    colors.neutral[200],
+    palette.neutral[200],
     '#fee0b6',
     '#f1a340',
     '#b35806',
-    colors.neutral[100],
+    palette.neutral[100],
   ]),
   'ColorBrew-BrBG': getScale([
     '#01665e',
     '#5ab4ac',
     '#c7eae5',
-    colors.neutral[200],
+    palette.neutral[200],
     '#f6e8c3',
     '#d8b365',
     '#8c510a',
-    colors.neutral[100],
+    palette.neutral[100],
   ]),
   'ColorBrew-RdYG': getScale([
     '#4d9221',
     '#a1d76a',
     '#e6f5d0',
-    colors.neutral[200],
+    palette.neutral[200],
     '#fddbc7',
     '#ef8a62',
     '#b2182b',
-    colors.neutral[100],
+    palette.neutral[100],
   ])
 };
 
 const dark: IScaleColors = {
   'ColorBrew-RdYlGn': getScale([
-    colors.emerald[600],
-    colors.emerald[400],
-    colors.emerald[200],
-    colors.neutral[100],
-    colors.orange[100],
-    colors.orange[300],
-    colors.red[500],
-    colors.neutral[800],
+    palette.emerald[600],
+    palette.emerald[400],
+    palette.emerald[200],
+    palette.neutral[100],
+    palette.orange[100],
+    palette.orange[300],
+    palette.red[500],
+    palette.neutral[800],
   ]),
   'ColorBrew-RdYlGn-old': getScale(['#006837',
     '#1a9850',
@@ -119,41 +119,43 @@ const dark: IScaleColors = {
     '#fee08b',
     '#fc8d59',
     '#d73027',
-    colors.neutral[800],
+    palette.neutral[800],
   ]),
   'ColorBrew-PuOr': getScale([
     '#542788',
     '#998ec3',
     '#d8daeb',
-    colors.neutral[200],
+    palette.neutral[200],
     '#fee0b6',
     '#f1a340',
     '#b35806',
-    colors.neutral[800],
+    palette.neutral[800],
   ]),
   'ColorBrew-BrBG': getScale([
     '#01665e',
     '#5ab4ac',
     '#c7eae5',
-    colors.neutral[200],
+    palette.neutral[200],
     '#f6e8c3',
     '#d8b365',
     '#8c510a',
-    colors.neutral[800],
+    palette.neutral[800],
   ]),
   'ColorBrew-RdYG': getScale([
     '#4d9221',
     '#a1d76a',
     '#e6f5d0',
-    colors.neutral[200],
+    palette.neutral[200],
     '#fddbc7',
     '#ef8a62',
     '#b2182b',
-    colors.neutral[800],
+    palette.neutral[800],
   ])
 };
 
-export default {
+export const scales = {
   dark,
   light,
 };
+
+export default scales;
