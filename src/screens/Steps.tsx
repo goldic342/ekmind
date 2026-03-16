@@ -1,5 +1,5 @@
 import Indicator from '@/shared/components/Indicator';
-import { LoggerStep, STEP_OPTIONS } from '@/components/Logger/config';
+import { LoggerStep, STEP_OPTIONS } from '@/features/logging/components/Logger/config';
 import MenuList from '@/components/MenuList';
 import MenuListItem from '@/components/MenuListItem';
 import { PageWithHeaderLayout } from '@/shared/components/PageWithHeaderLayout';

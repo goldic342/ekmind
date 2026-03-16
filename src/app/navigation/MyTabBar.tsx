@@ -6,7 +6,7 @@ import { t } from '@/shared/utils/translation';
 import useColors from '@/shared/hooks/useColors';
 import useHaptics from '@/shared/hooks/useHaptics';
 import { SettingsScreen, StatisticsScreen } from '@/screens';
-import CalendarScreen from '@/screens/Calendar';
+import CalendarScreen from '@/features/calendar/screens/Calendar';
 
 export const ROUTES: {
   name: string;

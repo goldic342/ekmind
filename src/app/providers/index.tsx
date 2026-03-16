@@ -3,12 +3,12 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { POSTHOG_API_KEY } from "@/shared/constants/API";
 import { TRACKING_ENABLED } from "@/shared/constants/Config";
 import { AnalyticsProvider } from "@/shared/hooks/useAnalytics";
-import { CalendarFiltersProvider } from "@/hooks/useCalendarFilters";
-import { LogsProvider } from "@/hooks/useLogs";
-import { SettingsProvider } from "@/hooks/useSettings";
-import { StatisticsProvider } from "@/hooks/useStatistics";
-import { TagsProvider } from "@/hooks/useTags";
-import { TemporaryLogProvider } from "@/hooks/useTemporaryLog";
+import { CalendarFiltersProvider } from "@/features/calendar/hooks/useCalendarFilters";
+import { LogsProvider } from "@/features/logging/hooks/useLogs";
+import { SettingsProvider } from "@/features/settings/hooks/useSettings";
+import { StatisticsProvider } from "@/features/statistics/hooks/useStatistics";
+import { TagsProvider } from "@/features/tags/hooks/useTags";
+import { TemporaryLogProvider } from "@/features/logging/hooks/useTemporaryLog";
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (

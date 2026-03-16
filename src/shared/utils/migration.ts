@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { LogItem } from "@/hooks/useLogs";
+import { LogItem } from "@/features/logging/hooks/useLogs";
 import { ImportData } from "./Import";
 
 interface MigratedData extends ImportData {

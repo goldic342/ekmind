@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import _ from 'lodash';
 import { t } from '@/shared/utils/translation';
 import { DATE_FORMAT } from '@/shared/constants/Config';
-import { LogDay, LogItem, RATING_MAPPING, SLEEP_QUALITY_MAPPING } from '@/hooks/useLogs';
+import { LogDay, LogItem, RATING_MAPPING, SLEEP_QUALITY_MAPPING } from '@/features/logging/hooks/useLogs';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 

@@ -3,7 +3,7 @@ import * as Localization from "expo-localization";
 import { usePostHog } from "posthog-react-native";
 import { createContext, useContext, useEffect, useState } from "react";
 import pkg from '../../../package.json';
-import { useSettings } from '@/hooks/useSettings';
+import { useSettings } from '@/features/settings/hooks/useSettings';
 
 
 interface AnaylticsState {

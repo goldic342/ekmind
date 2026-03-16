@@ -5,7 +5,7 @@ import useColors from "@/shared/hooks/useColors"
 import { Motion } from "@legendapp/motion"
 import { t } from "@/shared/utils/translation"
 import useHaptics from "@/shared/hooks/useHaptics"
-import { useSettings } from "@/hooks/useSettings"
+import { useSettings } from "@/features/settings/hooks/useSettings"
 
 export const MONTH_REPORT_SLUG = `promo_month_report_${(new Date()).getFullYear()}_${(new Date()).getMonth()}_closed`
 

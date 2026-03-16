@@ -3,7 +3,7 @@ import _ from "lodash"
 import { Text, View, ViewStyle } from "react-native"
 import { X } from "react-native-feather"
 import LinkButton from '@/components/LinkButton'
-import { CardFeedback } from '@/components/Statistics/CardFeedback'
+import { CardFeedback } from '@/features/statistics/components/Statistics/CardFeedback'
 
 export const Card = ({
   title,

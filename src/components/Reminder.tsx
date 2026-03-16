@@ -9,7 +9,7 @@ import { t } from '@/shared/utils/translation';
 import { useAnalytics } from '@/shared/hooks/useAnalytics';
 import useColors from '@/shared/hooks/useColors';
 import useNotification from '@/hooks/useNotifications';
-import { SettingsState, useSettings } from '@/hooks/useSettings';
+import { SettingsState, useSettings } from '@/features/settings/hooks/useSettings';
 
 const Reminder = () => {
   const { setSettings, settings } = useSettings()

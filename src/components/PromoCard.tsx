@@ -1,6 +1,6 @@
 import useColors from "@/shared/hooks/useColors"
 import useHaptics from "@/shared/hooks/useHaptics"
-import { useSettings } from "@/hooks/useSettings"
+import { useSettings } from "@/features/settings/hooks/useSettings"
 import { Pressable, Text, View } from "react-native"
 import { X } from "react-native-feather"
 import Indicator from "./Indicator"
