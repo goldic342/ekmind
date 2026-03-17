@@ -1,13 +1,11 @@
 import * as Linking from 'expo-linking';
-import * as StoreReview from 'expo-store-review';
 import * as WebBrowser from 'expo-web-browser';
 import { ScrollView, Text, View } from 'react-native';
-import { ArrowUpCircle, Award, Bell, BookOpen, CheckCircle, Database, Droplet, Flag, PieChart, Shield, Smartphone, Star } from 'react-native-feather';
+import { ArrowUpCircle, Award, Bell, BookOpen, CheckCircle, Database, Droplet, PieChart, Shield, Smartphone, Star } from 'react-native-feather';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import MenuList from '@/shared/ui/MenuList';
 import MenuListHeadline from '@/shared/ui/MenuListHeadline';
 import MenuListItem from '@/shared/ui/MenuListItem';
-import TextInfo from '@/shared/ui/TextInfo';
 import { CHANGELOG_URL, FEEDBACK_FEATURES_URL } from '@/shared/constants/Config';
 import { t } from '@/shared/utils/translation';
 import useColors from '@/shared/hooks/useColors';
@@ -146,11 +144,6 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
             }}
             iconLeft={<BookOpen width={18} color={colors.text} />}
             testID='changelog'
-          />
-          <MenuListItem
-            title={t('rate_this_app')}
-            onPress={() => askToRateApp()}
-            iconLeft={<Star width={18} color={colors.text} />}
           />
           <MenuListItem
             title={t('privacy')}
