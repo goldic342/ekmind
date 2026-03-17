@@ -1,7 +1,4 @@
-import { PostHogProvider } from "posthog-react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { POSTHOG_API_KEY } from "@/shared/constants/API";
-import { TRACKING_ENABLED } from "@/shared/constants/Config";
 import { AnalyticsProvider } from "@/shared/hooks/useAnalytics";
 import { CalendarFiltersProvider } from "@/features/calendar/hooks/useCalendarFilters";
 import { LogsProvider } from "@/features/logging/hooks/useLogs";
@@ -15,30 +12,17 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
     <SafeAreaProvider>
       <SettingsProvider>
         {/* <PasscodeProvider> */}
-        <PostHogProvider
-          apiKey={POSTHOG_API_KEY}
-          options={{
-            host: "https://app.posthog.com",
-            enable: TRACKING_ENABLED,
-          }}
-          autocapture={{
-            captureTouches: false,
-            captureLifecycleEvents: TRACKING_ENABLED,
-            captureScreens: TRACKING_ENABLED,
-          }}
-        >
-          <AnalyticsProvider options={{ enabled: TRACKING_ENABLED }}>
-            <LogsProvider>
-              <TagsProvider>
-                <TemporaryLogProvider>
-                  <CalendarFiltersProvider>
-                    <StatisticsProvider>{children}</StatisticsProvider>
-                  </CalendarFiltersProvider>
-                </TemporaryLogProvider>
-              </TagsProvider>
-            </LogsProvider>
-          </AnalyticsProvider>
-        </PostHogProvider>
+        <AnalyticsProvider>
+          <LogsProvider>
+            <TagsProvider>
+              <TemporaryLogProvider>
+                <CalendarFiltersProvider>
+                  <StatisticsProvider>{children}</StatisticsProvider>
+                </CalendarFiltersProvider>
+              </TemporaryLogProvider>
+            </TagsProvider>
+          </LogsProvider>
+        </AnalyticsProvider>
         {/* </PasscodeProvider> */}
       </SettingsProvider>
     </SafeAreaProvider>

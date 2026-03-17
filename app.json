@@ -45,7 +45,6 @@
       "playStoreUrl": "https://play.google.com/store/apps/details?id=com.devmood.pixymoodtracker"
     },
     "plugins": [
-      "sentry-expo",
       "expo-system-ui",
       "expo-notifications",
       "expo-localization",

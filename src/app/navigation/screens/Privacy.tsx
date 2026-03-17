@@ -1,5 +1,5 @@
 import * as WebBrowser from 'expo-web-browser';
-import { ScrollView, Switch, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { Shield } from 'react-native-feather';
 import Markdown from 'react-native-markdown-display';
 import LinkButton from '@/shared/ui/LinkButton';
@@ -7,9 +7,6 @@ import useColors from '@/shared/hooks/useColors';
 import { useAnalytics } from '@/shared/hooks/useAnalytics';
 import { t } from '@/shared/utils/translation';
 import { PageWithHeaderLayout } from '@/shared/ui/PageWithHeaderLayout';
-import MenuList from '@/shared/ui/MenuList';
-import MenuListItem from '@/shared/ui/MenuListItem';
-import TextInfo from '@/shared/ui/TextInfo';
 
 export const PrivacyScreen = () => {
   const colors = useColors()
@@ -55,33 +52,6 @@ export const PrivacyScreen = () => {
           >
             {t('privacy_content')}
           </Markdown>
-
-          <MenuList
-            style={{
-              marginTop: 16,
-            }}
-          >
-            <MenuListItem
-              title={t('behavioral_data')}
-              iconRight={
-                <Switch
-                  ios_backgroundColor={colors.backgroundSecondary}
-                  onValueChange={() => {
-                    analytics.track('analytics_toggle', { enabled: !analytics.isEnabled })
-                    if (!analytics.isEnabled) {
-                      analytics.enable()
-                    } else {
-                      analytics.disable()
-                    }
-                  }}
-                  value={analytics.isEnabled}
-                  testID={`behavioral-data-enabled`}
-                />
-              }
-              isLast
-            />
-          </MenuList>
-          <TextInfo>{t('behavioral_data_help')}</TextInfo>
 
           <LinkButton
             style={{
