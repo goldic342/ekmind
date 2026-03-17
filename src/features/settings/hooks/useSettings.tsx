@@ -34,11 +34,13 @@ export interface SettingsState {
   scaleType: typeof SCALE_TYPES[number];
   reminderEnabled: Boolean;
   reminderTime: string;
-  analyticsEnabled: boolean;
   themeMode: typeof THEME_MODES[number];
-  androidColorScheme: typeof ANDROID_COLOR_SCHEMES[number];
+  androidColorScheme: typeof ANDROID_COLOR_SCHEMES[number]; // Doesn't matter for non android devices
   actionsDone: IAction[];
   steps: LoggerStep[];
+
+  // Removed in ekmind
+  analyticsEnabled?: boolean;
 
   // removed in previous version
   trackBehaviour?: boolean; // replaced with analyticsEnabled
@@ -60,7 +62,6 @@ export const INITIAL_STATE: SettingsState = {
   scaleType: "ColorBrew-RdYlGn",
   reminderEnabled: false,
   reminderTime: "18:00",
-  analyticsEnabled: true,
   themeMode: "auto",
   androidColorScheme: "materialYou",
   actionsDone: [],

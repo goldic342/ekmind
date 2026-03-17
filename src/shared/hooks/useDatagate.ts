@@ -129,6 +129,8 @@ export const useDatagate = (): {
       items: logState.items,
       tags: tags,
       settings: {
+        themeMode: settings.themeMode,
+        androidColorScheme: settings.androidColorScheme,
         passcodeEnabled: settings.passcodeEnabled,
         passcode: settings.passcode,
         scaleType: settings.scaleType,
