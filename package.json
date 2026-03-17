@@ -75,7 +75,6 @@
     "expo-updates": "~0.16.4",
     "expo-web-browser": "~12.1.1",
     "i18n-js": "^3.8.0",
-    "jotai": "^2.0.2",
     "lodash": "^4.17.21",
     "lucide-react-native": "^0.104.0",
     "react": "18.2.0",
