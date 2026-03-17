@@ -1,5 +1,4 @@
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { AnalyticsProvider } from "@/shared/hooks/useAnalytics";
 import { CalendarFiltersProvider } from "@/features/calendar/hooks/useCalendarFilters";
 import { LogsProvider } from "@/features/logging/hooks/useLogs";
 import { SettingsProvider } from "@/features/settings/hooks/useSettings";
@@ -12,17 +11,15 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
     <SafeAreaProvider>
       <SettingsProvider>
         {/* <PasscodeProvider> */}
-        <AnalyticsProvider>
-          <LogsProvider>
-            <TagsProvider>
-              <TemporaryLogProvider>
-                <CalendarFiltersProvider>
-                  <StatisticsProvider>{children}</StatisticsProvider>
-                </CalendarFiltersProvider>
-              </TemporaryLogProvider>
-            </TagsProvider>
-          </LogsProvider>
-        </AnalyticsProvider>
+        <LogsProvider>
+          <TagsProvider>
+            <TemporaryLogProvider>
+              <CalendarFiltersProvider>
+                <StatisticsProvider>{children}</StatisticsProvider>
+              </CalendarFiltersProvider>
+            </TemporaryLogProvider>
+          </TagsProvider>
+        </LogsProvider>
         {/* </PasscodeProvider> */}
       </SettingsProvider>
     </SafeAreaProvider>

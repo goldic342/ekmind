@@ -3,7 +3,6 @@ import { Alert, Platform } from 'react-native';
 import { FEEDBACK_URL } from '@/shared/constants/API';
 import { t } from '@/shared/utils/translation';
 import pkg from '../../../package.json';
-import { useAnalytics } from './useAnalytics';
 import { useSettings } from '@/features/settings/hooks/useSettings';
 import * as Updates from 'expo-updates';
 
@@ -12,7 +11,6 @@ export type FeedbackSource = 'tags' | 'modal' | 'statistics' | 'bot' | 'error';
 
 export const useFeedback = () => {
   const { settings } = useSettings();
-  const analytics = useAnalytics()
 
   const send = async ({
     type,
@@ -46,7 +44,6 @@ export const useFeedback = () => {
       email,
     }
 
-    analytics.track('feedback_send', body)
 
     return fetch(FEEDBACK_URL, {
       method: 'POST',

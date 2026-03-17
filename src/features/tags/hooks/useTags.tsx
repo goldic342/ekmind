@@ -3,7 +3,6 @@ import { load, store } from '@/shared/utils/storage';
 import { t } from '@/shared/utils/translation';
 import _ from 'lodash';
 import { createContext, useCallback, useContext, useEffect, useMemo, useReducer } from "react";
-import { useAnalytics } from '@/shared/hooks/useAnalytics';
 import { useLogState, useLogUpdater } from '@/features/logging/hooks/useLogs';
 import { useSettings } from '@/features/settings/hooks/useSettings';
 

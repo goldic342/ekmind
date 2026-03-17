@@ -20,7 +20,6 @@ import {
 import Providers from '@/app/providers';
 import { buildTheme } from '@/shared/constants/Colors';
 import { initializeDayjs, t } from '@/shared/utils/translation';
-import { useAnalytics } from '@/shared/hooks/useAnalytics';
 import { useAnonymizer } from '@/shared/hooks/useAnonymizer';
 import { useLogState } from '@/features/logging/hooks/useLogs';
 import { useSettings } from '@/features/settings/hooks/useSettings';
@@ -118,10 +117,6 @@ function RootNavigator() {
   const colors = useColors();
   const { settings, hasActionDone } = useSettings()
   const navigation = useNavigation()
-  const analytics = useAnalytics()
-  const logState = useLogState();
-  const { tags } = useTagsState();
-  const { anonymizeTag } = useAnonymizer();
   // const passcode = usePasscode()
 
   const defaultOptions = {
@@ -135,16 +130,6 @@ function RootNavigator() {
   useEffect(() => {
     if (settings.loaded && !hasActionDone('onboarding')) {
       navigation.navigate('Onboarding')
-    }
-    if (settings.loaded && !analytics.isIdentified) {
-      analytics.identify({
-        tags: tags.map(tag => anonymizeTag(tag)),
-        tagsCount: tags.length,
-
-        itemsCount: logState.items.length,
-        itemsCoverage: getItemsCoverage(logState.items),
-        itemsCountPerDayAverage: getItemsCountPerDayAverage(logState.items),
-      })
     }
 
     initializeDayjs();

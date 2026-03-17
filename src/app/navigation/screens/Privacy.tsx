@@ -4,19 +4,16 @@ import { Shield } from 'react-native-feather';
 import Markdown from 'react-native-markdown-display';
 import LinkButton from '@/shared/ui/LinkButton';
 import useColors from '@/shared/hooks/useColors';
-import { useAnalytics } from '@/shared/hooks/useAnalytics';
 import { t } from '@/shared/utils/translation';
 import { PageWithHeaderLayout } from '@/shared/ui/PageWithHeaderLayout';
 
 export const PrivacyScreen = () => {
   const colors = useColors()
-  const analytics = useAnalytics()
 
   const _handlePressButtonAsync = async () => {
     await WebBrowser.openBrowserAsync('https://pixy.day/privacy', {
       readerMode: true
     });
-    analytics.track('privacy_policy_opened')
   };
 
   return (

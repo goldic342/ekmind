@@ -1,4 +1,3 @@
-import { useAnalytics } from '@/shared/hooks/useAnalytics';
 import useColors from "@/shared/hooks/useColors";
 import * as Sharing from 'expo-sharing';
 import { useRef, useState } from "react";
@@ -83,20 +82,15 @@ export const BigCard = ({
   children,
   isShareable,
   hasFeedback,
-  analyticsId,
-  analyticsData = {},
 }: {
   title?: string,
   subtitle?: string,
   children: React.ReactNode,
   isShareable?: boolean,
   hasFeedback?: boolean,
-  analyticsId: string,
-  analyticsData?: any,
 }) => {
   const colors = useColors();
   const viewRef = useRef(null)
-  const analytics = useAnalytics();
   const [shareLoading, setShareLoading] = useState(false);
 
   const share = () => {
@@ -109,9 +103,7 @@ export const BigCard = ({
           dialogTitle: 'Hey I use this app called "Pixy Mood Tracker" and I wanted to share this with you!',
         })
           .then(() => {
-            analytics.track('statstics_shared', {
-              type: analyticsId,
-            });
+
           })
           .catch((error) => {
             console.log(error)
@@ -163,12 +155,6 @@ export const BigCard = ({
         {subtitle && <SubTitle>{subtitle}</SubTitle>}
         {children}
 
-        {hasFeedback && (
-          <CardFeedback
-            analyticsId={analyticsId}
-            analyticsData={analyticsData}
-          />
-        )}
       </Container>
       {/* Share copy */}
       {isShareable && (

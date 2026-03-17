@@ -10,7 +10,6 @@ import LinkButton from '@/shared/ui/LinkButton';
 import ModalHeader from '@/shared/ui/ModalHeader';
 import { MAX_TAG_LENGTH, MIN_TAG_LENGTH, TAG_COLOR_NAMES } from '@/shared/constants/Config';
 import { t } from '@/shared/utils/translation';
-import { useAnalytics } from '@/shared/hooks/useAnalytics';
 import useColors from '@/shared/hooks/useColors';
 import useHaptics from '@/shared/hooks/useHaptics';
 import { Tag as ITag, useTagsState, useTagsUpdater } from '@/features/tags/hooks/useTags';
@@ -27,7 +26,6 @@ export const TagEdit = ({ navigation, route }: RootStackScreenProps<'TagEdit'>) 
   const insets = useSafeAreaInsets();
   const tagState = useTagsState()
   const tagsUpdater = useTagsUpdater()
-  const analytics = useAnalytics()
 
   const tagExists = tagState.tags.find(tag => tag.id === route.params.id)
   const defaultTag = tagExists ? tagExists : {
@@ -41,12 +39,6 @@ export const TagEdit = ({ navigation, route }: RootStackScreenProps<'TagEdit'>) 
   const askToDelete = async (tag: ITag) => {
     await haptics.selection()
 
-    analytics.track('delete_tag_ask', {
-      titleLength: tag.title,
-      color: tag.color,
-      containsEmoji: REGEX_EMOJI.test(tag.title),
-    })
-
     Alert.alert(
       t('delete_tag_confirm_title'),
       t('delete_tag_confirm_message'),
@@ -54,20 +46,12 @@ export const TagEdit = ({ navigation, route }: RootStackScreenProps<'TagEdit'>) 
         {
           text: t('delete'),
           onPress: () => {
-            analytics.track('tag_delete_success', {
-              titleLength: tag.title,
-              color: tag.color,
-              containsEmoji: REGEX_EMOJI.test(tag.title),
-            })
             onDelete(tag)
           },
           style: "destructive"
         },
         {
           text: t('cancel'),
-          onPress: () => {
-            analytics.track('tag_delete_cancelled')
-          },
           style: "cancel"
         }
       ],

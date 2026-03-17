@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { ActivityIndicator, ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import useColors from '@/shared/hooks/useColors';
-import { useAnalytics } from '@/shared/hooks/useAnalytics';
 import { useStatistics } from '@/features/statistics/hooks/useStatistics';
 import { MoodAvgCard } from '../MoodAvgCard';
 import { MoodPeaksCard } from '../MoodPeaksCards';
@@ -20,7 +19,6 @@ import { SleepQualityChartCard } from '../SleepQualityGraph';
 export const StatisticsHighlights = ({ navigation }) => {
   const insets = useSafeAreaInsets();
   const colors = useColors()
-  const analytics = useAnalytics();
   const statistics = useStatistics()
 
   const showMoodAvg = statistics.isAvailable("mood_avg")
@@ -83,10 +81,6 @@ export const StatisticsHighlights = ({ navigation }) => {
       cards.mood_chart_item_count = logState.items.filter((item) => dayjs(item.dateTime).isAfter(dayjs().subtract(14, "day"))).length
     }
 
-    analytics.track('statistics_all_highlights', {
-      itemsCount: statistics.state.itemsCount,
-      ...cards
-    })
   }, [JSON.stringify(statistics.state)])
 
   return (

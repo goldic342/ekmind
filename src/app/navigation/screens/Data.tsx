@@ -4,7 +4,6 @@ import MenuList from '@/shared/ui/MenuList';
 import MenuListItem from '@/shared/ui/MenuListItem';
 import TextInfo from '@/shared/ui/TextInfo';
 import { t } from '@/shared/utils/translation';
-import { useAnalytics } from "@/shared/hooks/useAnalytics";
 import useColors from '@/shared/hooks/useColors';
 import { useDatagate } from '@/shared/hooks/useDatagate';
 import { RootStackScreenProps } from '@/types';
@@ -12,7 +11,6 @@ import { PageWithHeaderLayout } from '@/shared/ui/PageWithHeaderLayout';
 
 export const DataScreen = ({ navigation }: RootStackScreenProps<'Data'>) => {
   const colors = useColors()
-  const analytics = useAnalytics()
   const datagate = useDatagate()
 
   return (

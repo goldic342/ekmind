@@ -1,6 +1,5 @@
 import { STATISTICS_FEEDBACK_URL } from '@/shared/constants/API';
 import { locale, t } from '@/shared/utils/translation';
-import { useAnalytics } from '@/shared/hooks/useAnalytics';
 import useColors from '@/shared/hooks/useColors';
 import useHaptics from '@/shared/hooks/useHaptics';
 import { useSettings } from '@/features/settings/hooks/useSettings';
@@ -69,17 +68,12 @@ const CardFeedbackEmoji = ({ image, onPress, selected }) => {
   )
 }
 export const CardFeedback = ({
-  analyticsId,
-  analyticsData = {},
   variant = 'default',
   style = {},
 }: {
-  analyticsId: string,
-  analyticsData?: any;
   variant?: 'default' | 'minimal',
   style?: ViewStyle,
 }) => {
-  const analytics = useAnalytics();
   const colors = useColors();
   const { settings } = useSettings()
 
@@ -113,16 +107,13 @@ export const CardFeedback = ({
     }
 
     const body = {
-      type: analyticsId,
       emoji,
       comment,
-      details: analyticsData,
       ...metaData,
     }
 
     console.log('Sending statistics feedback', body);
 
-    analytics.track('statistics_feedback', body);
 
     return fetch(STATISTICS_FEEDBACK_URL, {
       method: 'POST',
@@ -150,11 +141,8 @@ export const CardFeedback = ({
     } else {
       send(emoji);
       if (await StoreReview.hasAction() && variant === 'default') {
-        analytics.track('statistics_feedback_store_review_request');
         StoreReview.requestReview().then(() => {
-          analytics.track('statistics_feedback_store_review_done');
         }).catch(() => {
-          analytics.track('statistics_feedback_store_review_error');
         })
       }
     }

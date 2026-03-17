@@ -9,19 +9,16 @@ import LinkButton from '@/shared/ui/LinkButton';
 import ModalHeader from '@/shared/ui/ModalHeader';
 import { MAX_TAG_LENGTH, MIN_TAG_LENGTH, TAG_COLOR_NAMES } from '@/shared/constants/Config';
 import { t } from '@/shared/utils/translation';
-import { useAnalytics } from '@/shared/hooks/useAnalytics';
 import useColors from '@/shared/hooks/useColors';
 import useHaptics from '@/shared/hooks/useHaptics';
 import { Tag as ITag, useTagsUpdater } from '@/features/tags/hooks/useTags';
 import { RootStackScreenProps } from '@/types';
 
-const REGEX_EMOJI = /\p{Emoji}/u;
 
 export const TagCreate = ({ navigation }: RootStackScreenProps<'TagCreate'>) => {
   const colors = useColors()
   const haptics = useHaptics()
   const insets = useSafeAreaInsets();
-  const analytics = useAnalytics()
   const tagsUpdater = useTagsUpdater()
 
   const [tempTag, setTempTag] = useState<ITag>({
@@ -31,12 +28,6 @@ export const TagCreate = ({ navigation }: RootStackScreenProps<'TagCreate'>) => 
   });
 
   const onCreate = () => {
-    analytics.track('tag_create', {
-      titleLength: tempTag.title.length,
-      color: tempTag.color,
-      containsEmoji: REGEX_EMOJI.test(tempTag.title)
-    })
-
     setTempTag({
       id: uuidv4(),
       title: '',

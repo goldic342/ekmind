@@ -1,6 +1,5 @@
 import { DATE_FORMAT } from '@/shared/constants/Config';
 import { askToCancel, askToDisableFeedbackStep, askToDisableStep, askToRemove } from '@/shared/utils/prompts';
-import { useAnalytics } from '@/shared/hooks/useAnalytics';
 import useColors from '@/shared/hooks/useColors';
 import { LogItem, useLogState, useLogUpdater } from '@/features/logging/hooks/useLogs';
 import { IQuestion, useQuestioner } from '@/shared/hooks/useQuestioner';
@@ -195,7 +194,6 @@ export const Logger = ({
 }) => {
   const navigation = useNavigation();
   const colors = useColors()
-  const analytics = useAnalytics()
   const insets = useSafeAreaInsets();
 
   const logState = useLogState()
@@ -232,17 +230,13 @@ export const Logger = ({
     }
 
     if (data.rating === null) {
-      analytics.track('log_saved_without_rating', eventData)
       data.rating = 'neutral'
     }
 
-    analytics.track('log_saved', eventData)
 
     if (mode === 'edit') {
-      analytics.track('log_changed', eventData)
       logUpdater.editLog(data as LogItem)
     } else {
-      analytics.track('log_created', eventData)
       logUpdater.addLog(data as LogItem)
 
       const itemsOnDate = logState.items.filter(item => dayjs(item.dateTime).isSame(dayjs(data.dateTime), 'day'))
@@ -258,13 +252,11 @@ export const Logger = ({
   }
 
   const remove = () => {
-    analytics.track('log_deleted')
     logUpdater.deleteLog(tempLog.data.id)
     close()
   }
 
   const cancel = () => {
-    analytics.track('log_cancled')
     close()
   }
 

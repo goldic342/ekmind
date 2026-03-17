@@ -1,6 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { renderHook, act } from "@testing-library/react-hooks";
-import { AnalyticsProvider } from "@/shared/hooks/useAnalytics";
 import {
   LogsProvider,
   useLogState,
@@ -25,11 +24,9 @@ import { _generateItem } from "./utils";
 
 const wrapper = ({ children }) => (
   <SettingsProvider>
-    <AnalyticsProvider>
-      <LogsProvider>
-        <TagsProvider>{children}</TagsProvider>
-      </LogsProvider>
-    </AnalyticsProvider>
+    <LogsProvider>
+      <TagsProvider>{children}</TagsProvider>
+    </LogsProvider>
   </SettingsProvider>
 );
 

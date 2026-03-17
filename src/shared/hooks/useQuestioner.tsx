@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from "react"
 import { Platform } from "react-native"
 import semver from 'semver'
 import pkg from '../../../package.json'
-import { useAnalytics } from "./useAnalytics"
 import { useSettings } from "@/features/settings/hooks/useSettings"
 
 export interface IQuestion {
@@ -27,7 +26,6 @@ export interface IQuestion {
 }
 
 export const useQuestioner = () => {
-  const analytics = useAnalytics()
   const { hasActionDone, addActionDone, settings } = useSettings()
   const isMounted = useRef(true)
 
@@ -104,7 +102,6 @@ export const useQuestioner = () => {
       ...metaData,
     }
 
-    analytics.track('questioner_submit', body)
 
     console.log('Sending Question Feedback', body)
 

@@ -4,7 +4,6 @@ import * as DocumentPicker from "expo-document-picker";
 import * as FileSystem from "expo-file-system";
 import * as Sharing from "expo-sharing";
 import { Alert } from 'react-native';
-import { AnalyticsProvider } from "@/shared/hooks/useAnalytics";
 import { useDatagate } from "@/shared/hooks/useDatagate";
 
 import _ from "lodash";
@@ -19,11 +18,9 @@ import { _generateItem } from "./utils";
 
 const wrapper = ({ children }) => (
   <SettingsProvider>
-    <AnalyticsProvider>
-      <LogsProvider>
-        <TagsProvider>{children}</TagsProvider>
-      </LogsProvider>
-    </AnalyticsProvider>
+    <LogsProvider>
+      <TagsProvider>{children}</TagsProvider>
+    </LogsProvider>
   </SettingsProvider>
 );
 

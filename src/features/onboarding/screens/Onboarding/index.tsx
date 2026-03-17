@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import useColors from '@/shared/hooks/useColors';
-import { useAnalytics } from "@/shared/hooks/useAnalytics";
 import { useSettings } from '@/features/settings/hooks/useSettings';
 import { RootStackScreenProps } from '@/types';
 import { ExplainerSlide } from './ExplainerSlide';
@@ -23,36 +22,27 @@ const FiltersSlide = ({ ...props }: SlideProps) => <ExplainerSlide {...props} />
 export const Onboarding = ({ navigation }: RootStackScreenProps<'Onboarding'>) => {
   const { addActionDone } = useSettings()
   const colors = useColors()
-  const analytics = useAnalytics()
   const insets = useSafeAreaInsets()
 
   const [index, _setIndex] = useState(0)
 
   const setIndex = (index: number) => {
     _setIndex(index)
-    analytics.track('onboarding_slide', { index })
   }
 
   const finish = () => {
     addActionDone('onboarding')
-    analytics.track('onboarding_finished')
     navigation.popToTop()
   }
 
   const skip = () => {
     addActionDone('onboarding')
     navigation.popToTop()
-    analytics.track('onboarding_skipped', { index })
   }
 
   const slides = [
     <IndexSlide
       onPress={(answer) => {
-        analytics.track('onboarding_question_1', {
-          answer: answer === 0 ?
-            'used_mood_tracker_before' :
-            'never_used_mood_tracker'
-        })
         setIndex(1)
       }}
     />,

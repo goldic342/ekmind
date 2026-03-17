@@ -1,7 +1,6 @@
 import { Card } from '@/shared/ui/Card';
 import { getLogEditMarginTop } from "@/shared/utils/responsive";
 import { language, t } from "@/shared/utils/translation";
-import { useAnalytics } from "@/shared/hooks/useAnalytics";
 import useColors from "@/shared/hooks/useColors";
 import { LogItem, RATING_MAPPING, useLogState } from "@/features/logging/hooks/useLogs";
 import { useTemporaryLog } from "@/features/logging/hooks/useTemporaryLog";
@@ -117,10 +116,7 @@ const Tips = ({
         }}
         onClose={onClose}
         hasFeedback
-        analyticsId="log_message_hint"
-        analyticsData={{
-          questions: questions,
-        }}
+
       >
         {questions.map((q, index) => (
           <Text
@@ -146,7 +142,6 @@ export const SlideMessage = forwardRef(({
   onDisableStep: () => void
   showDisable: boolean
 }, ref: any) => {
-  const analytics = useAnalytics();
   const insets = useSafeAreaInsets();
   const colors = useColors();
   const tempLog = useTemporaryLog();
@@ -205,7 +200,6 @@ export const SlideMessage = forwardRef(({
                 <SlideHeadline>{t('log_note_question')}</SlideHeadline>
                 <LinkButton
                   onPress={() => {
-                    analytics.track('log_message_tips_open')
                     setShowTips(!showTips)
                   }}
                   style={{

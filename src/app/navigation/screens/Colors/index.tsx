@@ -3,7 +3,6 @@ import { Platform, ScrollView, Text, View } from 'react-native';
 import MenuListHeadline from '@/shared/ui/MenuListHeadline';
 import TextInfo from '@/shared/ui/TextInfo';
 import { t } from '@/shared/utils/translation';
-import { useAnalytics } from '@/shared/hooks/useAnalytics';
 import useColors from '@/shared/hooks/useColors';
 import { useSettings } from '@/features/settings/hooks/useSettings';
 import { Radio } from './Radio';
@@ -13,7 +12,6 @@ import { PageWithHeaderLayout } from '@/shared/ui/PageWithHeaderLayout';
 export const ColorsScreen = () => {
   const { setSettings, settings } = useSettings()
   const colors = useColors()
-  const analytics = useAnalytics()
 
   const [scaleType, setScaleType] = useState(settings.scaleType)
   const [themeMode, setThemeMode] = useState(settings.themeMode)
@@ -38,17 +36,14 @@ export const ColorsScreen = () => {
 
   useEffect(() => {
     setSettings(settings => ({ ...settings, scaleType }))
-    analytics.track('colors_scale_changed', { scaleType })
   }, [scaleType])
 
   useEffect(() => {
     setSettings(settings => ({ ...settings, themeMode }))
-    analytics.track('theme_mode_changed', { themeMode })
   }, [themeMode])
 
   useEffect(() => {
     setSettings(settings => ({ ...settings, androidColorScheme }))
-    analytics.track('android_color_scheme_changed', { androidColorScheme })
   }, [androidColorScheme])
 
   const onSelect = useCallback((id) => {

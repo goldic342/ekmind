@@ -15,7 +15,6 @@ import {
 import { v4 as uuidv4 } from "uuid";
 import z from "zod";
 import { AtLeast } from "@/types";
-import { useAnalytics } from '@/shared/hooks/useAnalytics';
 import { useFeedback } from '@/shared/hooks/useFeedback';
 
 export const STORAGE_KEY = "PIXEL_TRACKER_LOGS";
@@ -76,7 +75,7 @@ export interface UpdaterValue {
   import: (data: LogsState) => void;
 }
 
-interface StateValue extends LogsState {}
+interface StateValue extends LogsState { }
 
 const LogStateContext = createContext<StateValue>(undefined as any);
 const LogUpdaterContext = createContext<UpdaterValue>(undefined as any);
@@ -154,7 +153,6 @@ const migrate = (data: LogsState): LogsState => {
 
 function LogsProvider({ children }: { children: React.ReactNode }) {
   const feedback = useFeedback();
-  const analyitcs = useAnalytics();
 
   const INITIAL_STATE: LogsState = {
     loaded: false,
@@ -168,8 +166,6 @@ function LogsProvider({ children }: { children: React.ReactNode }) {
       try {
         const value = await load<LogsState>(STORAGE_KEY, feedback);
         const size = Buffer.byteLength(JSON.stringify(value));
-        const megaBytes = Math.round((size / 1024 / 1024) * 100) / 100;
-        analyitcs.track("loaded_logs", { size: megaBytes, unit: "mb" });
         if (value !== null) {
           dispatch({
             type: "import",

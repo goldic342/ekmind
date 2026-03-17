@@ -3,7 +3,6 @@ import { MONTH_REPORT_SLUG, PromoCardMonth } from "@/shared/ui/PromoCardMonth";
 import { PromoCardYear, YEAR_REPORT_SLUG } from "@/shared/ui/PromoCardYear";
 import { DATE_FORMAT, STATISTIC_MIN_LOGS } from "@/shared/constants/Config";
 import { t } from "@/shared/utils/translation";
-import { useAnalytics } from "@/shared/hooks/useAnalytics";
 import { useSettings } from "@/features/settings/hooks/useSettings";
 import { useNavigation } from "@react-navigation/native";
 import dayjs from "dayjs";
@@ -35,7 +34,6 @@ type RssItem = {
 export const PromoCards = () => {
   const navigation = useNavigation();
   const logState = useLogState();
-  const analytics = useAnalytics();
   const colors = useColors();
   const { hasActionDone } = useSettings()
 
@@ -97,7 +95,6 @@ export const PromoCards = () => {
         subtitle={t('new_feature')}
         title={t('promo_sleep_tracking_title')}
         onPress={() => {
-          analytics.track('promo_sleep_tracking_clicked')
           navigation.navigate("Steps");
         }}
       />
@@ -112,7 +109,6 @@ export const PromoCards = () => {
         subtitle={t('new_release')}
         title={mostRecentRssItem.title}
         onPress={() => {
-          analytics.track('promo_changelog_clicked')
           WebBrowser.openBrowserAsync(mostRecentRssItem.id);
         }}
       />

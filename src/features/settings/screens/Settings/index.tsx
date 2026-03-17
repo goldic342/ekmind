@@ -10,7 +10,6 @@ import MenuListItem from '@/shared/ui/MenuListItem';
 import TextInfo from '@/shared/ui/TextInfo';
 import { CHANGELOG_URL, FEEDBACK_FEATURES_URL } from '@/shared/constants/Config';
 import { t } from '@/shared/utils/translation';
-import { useAnalytics } from '@/shared/hooks/useAnalytics';
 import useColors from '@/shared/hooks/useColors';
 import useFeedbackModal from '@/shared/hooks/useFeedbackModal';
 import pkg from '../../../../../package.json';
@@ -22,16 +21,8 @@ import { Github, Tag } from 'lucide-react-native';
 export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>) => {
   const insets = useSafeAreaInsets();
   const colors = useColors()
-  const analytics = useAnalytics()
 
   const { show: showFeedbackModal, Modal: FeedbackModal } = useFeedbackModal();
-
-  const askToRateApp = async () => {
-    analytics.track('rate_app')
-
-    const storeUrl = StoreReview.storeUrl();
-    if (storeUrl !== null) Linking.openURL(storeUrl)
-  }
 
   // const { settings, setSettings } = useSettings()
   // const passcodeSupported = supportedSecurityLevel > 0;
@@ -161,7 +152,6 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
           <MenuListItem
             title={t('vote_features')}
             onPress={async () => {
-              analytics.track('settings_vote_features')
               await WebBrowser.openBrowserAsync(FEEDBACK_FEATURES_URL);
             }}
             iconLeft={<ArrowUpCircle width={18} color={colors.text} />}
@@ -170,7 +160,6 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
           <MenuListItem
             title={t('changelog')}
             onPress={async () => {
-              analytics.track('settings_changelog')
               await WebBrowser.openBrowserAsync(CHANGELOG_URL);
             }}
             iconLeft={<BookOpen width={18} color={colors.text} />}

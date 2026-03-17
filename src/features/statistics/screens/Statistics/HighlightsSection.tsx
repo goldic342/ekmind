@@ -7,7 +7,6 @@ import dayjs from "dayjs";
 import { useEffect } from "react";
 import { Text, View } from "react-native";
 import { Activity } from "react-native-feather";
-import { useAnalytics } from "@/shared/hooks/useAnalytics";
 import useColors from "@/shared/hooks/useColors";
 import { LogItem, useLogState } from "@/features/logging/hooks/useLogs";
 import { useStatistics } from "@/features/statistics/hooks/useStatistics";
@@ -55,7 +54,6 @@ const EmptryState = () => {
 export const HighlightsSection = ({ items }: { items: LogItem[] }) => {
   const colors = useColors();
   const navigation = useNavigation();
-  const analytics = useAnalytics();
   const statistics = useStatistics();
   const logState = useLogState();
 
@@ -123,10 +121,6 @@ export const HighlightsSection = ({ items }: { items: LogItem[] }) => {
       cards.emotions_distribution_item_count = statistics.state.emotionsDistributionData.emotions.length
     }
 
-    analytics.track('statistics_relevant_highlights', {
-      itemsCount: statistics.state.itemsCount,
-      ...cards
-    })
   }, [JSON.stringify(statistics.state)])
 
   return (

@@ -13,7 +13,6 @@ import LinkButton from "@/shared/ui/LinkButton";
 import ModalHeader from "@/shared/ui/ModalHeader";
 import TextArea from "@/shared/ui/inputs/TextArea";
 import { t } from "@/shared/utils/translation";
-import { useAnalytics } from "../useAnalytics";
 import useColors from "../useColors";
 import { FeedackType, useFeedback } from "../useFeedback";
 import { TypeSelector } from "./TypeSelector";
@@ -21,18 +20,15 @@ import { TypeSelector } from "./TypeSelector";
 export default function useFeedbackModal() {
   const colors = useColors();
   const [visible, setVisible] = useState(false);
-  const analytics = useAnalytics();
   const feedback = useFeedback();
 
   const [defaultType, setDefaultType] = useState<FeedackType>("issue");
 
   const show = ({ type = "issue" }: { type: FeedackType }) => {
-    analytics.track("feedback_open");
     setDefaultType(type);
     setVisible(true);
   };
   const hide = () => {
-    analytics.track("feedback_close");
     setVisible(false);
   };
 
@@ -43,7 +39,6 @@ export default function useFeedbackModal() {
     const [isLoading, setIsLoading] = useState(false);
 
     const setTypeProxy = (type: FeedackType) => {
-      analytics.track("feedback_type_change", { type });
       setType(type);
     };
 

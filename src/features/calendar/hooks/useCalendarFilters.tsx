@@ -1,6 +1,5 @@
 import _ from "lodash";
 import { createContext, useCallback, useContext, useMemo, useState } from "react";
-import { useAnalytics } from '@/shared/hooks/useAnalytics';
 import { LogItem, useLogState } from '@/features/logging/hooks/useLogs';
 import { Tag } from '@/features/tags/hooks/useTags';
 
@@ -42,7 +41,6 @@ function CalendarFiltersProvider({
 }: {
   children: React.ReactNode
 }) {
-  const analytics = useAnalytics()
   const logState = useLogState()
   const [data, setData] = useState<CalendarFiltersData>(initialState)
   const [isOpen, setIsOpen] = useState(false)
@@ -67,12 +65,6 @@ function CalendarFiltersProvider({
   }
 
   const set = useCallback((data: FiltersData) => {
-    analytics.track('calendar_filters_filtered', {
-      textLength: data.text.length,
-      ratings: data.ratings,
-      ratingsCount: data.ratings.length,
-      tagsCount: data.tagIds.length,
-    })
 
     const isFiltering = (
       data.text !== '' ||
@@ -88,20 +80,17 @@ function CalendarFiltersProvider({
       isFiltering,
       filterCount,
     })
-  }, [analytics])
+  }, [])
 
   const reset = useCallback(() => {
-    analytics.track('calendar_filters_reset')
     setData(initialState)
   }, [])
 
   const open = useCallback(() => {
-    analytics.track('calendar_filters_opened')
     setIsOpen(true)
   }, [])
 
   const close = useCallback(() => {
-    analytics.track('calendar_filters_closed')
     setIsOpen(false)
   }, [])
 
