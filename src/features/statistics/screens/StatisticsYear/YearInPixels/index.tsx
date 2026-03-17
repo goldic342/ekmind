@@ -6,12 +6,10 @@ import { BigCard } from "@/shared/ui/BigCard";
 import { DATE_FORMAT } from "@/shared/constants/Config";
 import { t } from "@/shared/utils/translation";
 import { LogItem, RATING_KEYS, useLogState } from "@/features/logging/hooks/useLogs";
-import { CardFeedback } from "@/features/statistics/components/Statistics/CardFeedback";
 import { NotEnoughDataOverlay } from "@/features/statistics/components/Statistics/NotEnoughDataOverlay";
 
 import { Row } from "./Row";
 import { XAxis } from "./XAxis";
-import { useAnonymizer } from "@/shared/hooks/useAnonymizer";
 
 const MIN_ITEMS = 30;
 
@@ -44,7 +42,6 @@ const YearInPixels = ({
   date: Dayjs;
 }) => {
   const logState = useLogState();
-  const { anonymizeItem } = useAnonymizer()
 
   const items = logState.items.filter(item => {
     return date.isSame(item.dateTime, 'year')
@@ -63,9 +60,6 @@ const YearInPixels = ({
       title={t('year_in_pixels')}
       subtitle={t('year_in_pixels_description', { date: date.format('YYYY') })}
       isShareable
-      hasFeedback
-      analyticsId="year-in-pixels"
-      analyticsData={items.map(item => anonymizeItem(item))}
     >
       <>
         <View

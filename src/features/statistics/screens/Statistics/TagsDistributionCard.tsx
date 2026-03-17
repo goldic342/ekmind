@@ -3,13 +3,11 @@ import _ from 'lodash';
 import { Pressable, Text, View } from 'react-native';
 import { Card } from '@/features/statistics/components/Statistics/Card';
 import { t } from '@/shared/utils/translation';
-import { useAnonymizer } from '@/shared/hooks/useAnonymizer';
 import { useCalendarFilters } from '@/features/calendar/hooks/useCalendarFilters';
 import useColors from '@/shared/hooks/useColors';
 import useHaptics from '@/shared/hooks/useHaptics';
 import { TagsDistributionData } from '@/features/statistics/hooks/useStatistics/TagsDistribution';
 import { Tag } from '@/features/tags/hooks/useTags';
-import { CardFeedback } from '@/features/statistics/components/Statistics/CardFeedback';
 
 export const TagDistributionContent = ({
   data,
@@ -95,7 +93,6 @@ export const TagsDistributionCard = ({
 }: {
   data: TagsDistributionData
 }) => {
-  const { anonymizeTag } = useAnonymizer()
 
   return (
     <Card
@@ -103,11 +100,6 @@ export const TagsDistributionCard = ({
       title={t('statistics_tags_distribution_title', { count: data.tags.length })}
     >
       <TagDistributionContent data={data} />
-      <CardFeedback
-        analyticsId='tags_distribution'
-        analyticsData={{
-          tags: data.tags.map(tag => anonymizeTag(tag.details))
-        }} />
     </Card>
   );
 };

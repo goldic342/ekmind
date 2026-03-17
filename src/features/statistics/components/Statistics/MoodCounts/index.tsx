@@ -1,6 +1,5 @@
 import { Dayjs } from "dayjs"
 import { LogItem, RATING_KEYS } from "@/features/logging/hooks/useLogs"
-import { CardFeedback } from "../CardFeedback"
 import { NotEnoughDataOverlay } from "../NotEnoughDataOverlay"
 import { BigCard } from "@/shared/ui/BigCard"
 import { Content } from "./Content"
@@ -50,8 +49,6 @@ export const MoodCounts = ({
       title={title}
       subtitle={subtitle}
       isShareable
-      hasFeedback
-      analyticsId="rating-count"
     >
       {total < MIN_ITEMS && (
         <NotEnoughDataOverlay limit={MIN_ITEMS - total} />

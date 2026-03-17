@@ -3,24 +3,17 @@ import _ from "lodash"
 import { Text, View, ViewStyle } from "react-native"
 import { X } from "react-native-feather"
 import LinkButton from '@/shared/ui/LinkButton'
-import { CardFeedback } from '@/features/statistics/components/Statistics/CardFeedback'
 
 export const Card = ({
   title,
   children,
   style,
   onClose,
-  hasFeedback,
-  analyticsId,
-  analyticsData,
 }: {
   title: string | React.ReactNode,
   children: React.ReactNode
   style?: ViewStyle,
   onClose?: () => void,
-  hasFeedback?: boolean,
-  analyticsId?: string,
-  analyticsData?: any,
 }) => {
   const colors = useColors()
 
@@ -76,16 +69,6 @@ export const Card = ({
       >
         {children}
       </View>
-      {hasFeedback && (
-        <CardFeedback
-          variant="minimal"
-          analyticsId={analyticsId!}
-          analyticsData={analyticsData}
-          style={{
-            borderTopColor: colors.borderStrong,
-          }}
-        />
-      )}
     </View>
   )
 }

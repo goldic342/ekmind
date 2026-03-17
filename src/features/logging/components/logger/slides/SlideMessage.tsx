@@ -115,7 +115,6 @@ const Tips = ({
           marginTop: 16,
         }}
         onClose={onClose}
-        hasFeedback
 
       >
         {questions.map((q, index) => (

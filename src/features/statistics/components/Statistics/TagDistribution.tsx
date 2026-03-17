@@ -1,4 +1,3 @@
-import { useAnonymizer } from '@/shared/hooks/useAnonymizer';
 import { LogItem } from '@/features/logging/hooks/useLogs';
 import { dummyTagsDistributionData, getTagsDistributionData } from '@/features/statistics/hooks/useStatistics/TagsDistribution';
 import { useTagsState } from '@/features/tags/hooks/useTags';
@@ -17,7 +16,6 @@ export const TagDistribution = ({
   subtitle: string
   items: LogItem[],
 }) => {
-  const { anonymizeTag } = useAnonymizer()
   const tagState = useTagsState();
 
   const data = getTagsDistributionData(items, tagState.tags);
@@ -27,14 +25,6 @@ export const TagDistribution = ({
       title={title}
       subtitle={subtitle}
       isShareable
-      hasFeedback
-      analyticsId="tag-distribution"
-      analyticsData={
-        data.tags.map(tag => ({
-          ...tag,
-          details: anonymizeTag(tag.details),
-        }))
-      }
     >
       {data.tags.length < MIN_TAGS && (
         <NotEnoughDataOverlay />

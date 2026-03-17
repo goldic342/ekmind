@@ -3,7 +3,6 @@ import { Card } from "@/features/statistics/components/Statistics/Card";
 import { t } from "@/shared/utils/translation";
 import useColors from "@/shared/hooks/useColors";
 import { TagsDistributionTrendData } from "@/features/statistics/hooks/useStatistics/TagsDistributionTrend";
-import { CardFeedback } from "@/features/statistics/components/Statistics/CardFeedback";
 import { TagBar } from "./TagBar";
 
 export const TagsDistributionTrend = ({
@@ -71,10 +70,7 @@ export const TagsDistributionTrend = ({
           </TagBar>
         </View>
       </View>
-      <CardFeedback
-        analyticsId="tags_distribution_trend"
-        analyticsData={{}}
-      />
+
     </Card>
   );
 };

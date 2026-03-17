@@ -20,11 +20,7 @@ import {
 import Providers from '@/app/providers';
 import { buildTheme } from '@/shared/constants/Colors';
 import { initializeDayjs, t } from '@/shared/utils/translation';
-import { useAnonymizer } from '@/shared/hooks/useAnonymizer';
-import { useLogState } from '@/features/logging/hooks/useLogs';
 import { useSettings } from '@/features/settings/hooks/useSettings';
-import { useTagsState } from '@/features/tags/hooks/useTags';
-import { getItemsCountPerDayAverage, getItemsCoverage } from '@/shared/utils/utils';
 import dayjs from 'dayjs';
 import { enableScreens } from 'react-native-screens';
 import { DevelopmentTools } from '@/app/navigation/screens/DevelopmentTools';

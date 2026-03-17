@@ -5,7 +5,6 @@ import { ActivityIndicator, Image, Text, View, ViewStyle } from "react-native";
 import { Share } from 'react-native-feather';
 import { captureRef } from "react-native-view-shot";
 import LinkButton from './LinkButton';
-import { CardFeedback } from '@/features/statistics/components/Statistics/CardFeedback';
 
 const LOGO = require('../../../assets/images/icon.png')
 
@@ -81,13 +80,11 @@ export const BigCard = ({
   subtitle,
   children,
   isShareable,
-  hasFeedback,
 }: {
   title?: string,
   subtitle?: string,
   children: React.ReactNode,
   isShareable?: boolean,
-  hasFeedback?: boolean,
 }) => {
   const colors = useColors();
   const viewRef = useRef(null)

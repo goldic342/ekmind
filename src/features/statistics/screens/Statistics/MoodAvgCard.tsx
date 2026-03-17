@@ -3,7 +3,6 @@ import { Card } from '@/features/statistics/components/Statistics/Card';
 import { t } from '@/shared/utils/translation';
 import useScale from '@/shared/hooks/useScale';
 import { MoodAvgData } from '@/features/statistics/hooks/useStatistics/MoodAvg';
-import { CardFeedback } from '@/features/statistics/components/Statistics/CardFeedback';
 
 export const MoodAvgCard = ({
   data,
@@ -45,13 +44,7 @@ export const MoodAvgCard = ({
           );
         })}
       </View>
-      <CardFeedback
-        analyticsId='mood_avg'
-        analyticsData={{
-          percentage: data.ratingHighestPercentage,
-          data: data.distribution,
-        }}
-      />
+
     </Card>
   );
 };

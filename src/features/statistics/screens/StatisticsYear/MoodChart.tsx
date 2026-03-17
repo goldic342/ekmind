@@ -7,7 +7,6 @@ import { getRatingDistributionForYear } from '@/features/statistics/hooks/useSta
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
 import { BigCard } from '@/shared/ui/BigCard';
 import { RatingChart } from '@/shared/ui/RatingChart';
-import { CardFeedback } from '@/features/statistics/components/Statistics/CardFeedback';
 import { NotEnoughDataOverlay } from '@/features/statistics/components/Statistics/NotEnoughDataOverlay';
 import { useRef } from 'react';
 import _ from 'lodash';
@@ -44,9 +43,6 @@ export const MoodChart = ({
       title={t('statistics_mood_chart')}
       subtitle={t('statistics_mood_chart_description', { date: date.format('YYYY') })}
       isShareable
-      hasFeedback
-      analyticsId="rating-distribution"
-      analyticsData={data}
     >
       {validatedData.length < MIN_ITEMS && (
         <NotEnoughDataOverlay limit={MIN_ITEMS - validatedData.length} />

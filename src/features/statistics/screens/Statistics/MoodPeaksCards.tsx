@@ -1,5 +1,4 @@
 import { Card } from '@/features/statistics/components/Statistics/Card';
-import { CardFeedback } from '@/features/statistics/components/Statistics/CardFeedback';
 import { DATE_FORMAT } from '@/shared/constants/Config';
 import { t } from '@/shared/utils/translation';
 import { useCalendarNavigation } from '@/features/calendar/hooks/useCalendarNavigation';
@@ -168,12 +167,6 @@ export const MoodPeaksCard = ({
         data={data}
         startDate={startDate}
         endDate={endDate}
-      />
-      <CardFeedback
-        analyticsId={`mood_peaks_${type}`}
-        analyticsData={{
-          days_count: data.days.length,
-        }}
       />
     </Card>
   )

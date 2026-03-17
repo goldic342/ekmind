@@ -1,8 +1,6 @@
-import { useNavigation } from '@react-navigation/native';
 import dayjs, { Dayjs } from 'dayjs';
 import { Pressable, Text, View } from 'react-native';
 import { Card } from '@/features/statistics/components/Statistics/Card';
-import { CardFeedback } from '@/features/statistics/components/Statistics/CardFeedback';
 import { DATE_FORMAT } from '@/shared/constants/Config';
 import { t } from '@/shared/utils/translation';
 import useColors from '@/shared/hooks/useColors';
@@ -173,10 +171,7 @@ export const TagPeaksCard = ({
           )
         })}
       </View>
-      <CardFeedback
-        analyticsId='tags_peaks'
-        analyticsData={{ count: tag.items.length }}
-      />
+
     </Card>
   )
 }

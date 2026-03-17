@@ -3,7 +3,6 @@ import { NotEnoughDataOverlay } from '@/features/statistics/components/Statistic
 import { DATE_FORMAT } from '@/shared/constants/Config';
 import { t } from '@/shared/utils/translation';
 import dayjs from 'dayjs';
-import { useAnonymizer } from '@/shared/hooks/useAnonymizer';
 import { LogDay } from '@/features/logging/hooks/useLogs';
 import { getMoodPeaksNegativeData, getMoodPeaksPositiveData } from '@/features/statistics/hooks/useStatistics/MoodPeaks';
 import { MoodPeaksContent } from '../Statistics/MoodPeaksCards';
@@ -13,7 +12,6 @@ const MIN_ITEMS = 1;
 export const MoodPeaks = ({
   date, items,
 }) => {
-  const { anonymizeDay } = useAnonymizer()
 
   const dataNegative = getMoodPeaksNegativeData(items);
   const dataPositive = getMoodPeaksPositiveData(items);
@@ -58,11 +56,6 @@ export const MoodPeaks = ({
         title={t('statistics_mood_peaks_positive')}
         subtitle={t('statistics_mood_peaks_positive_description', { date: date.format('MMMM, YYYY') })}
         isShareable
-        hasFeedback
-        analyticsId="mood-peaks-positive"
-        analyticsData={
-          dataNegative.days.map(day => anonymizeDay(day))
-        }
       >
         {dataPositive.days.length < MIN_ITEMS && (
           <NotEnoughDataOverlay />
@@ -83,11 +76,6 @@ export const MoodPeaks = ({
         title={t('statistics_mood_peaks_negative')}
         subtitle={t('statistics_mood_peaks_negative_description', { date: date.format('MMMM, YYYY') })}
         isShareable
-        hasFeedback
-        analyticsId="mood-peaks-negative"
-        analyticsData={
-          dataNegative.days.map(day => anonymizeDay(day))
-        }
       >
         {dataNegative.days.length < MIN_ITEMS && (
           <NotEnoughDataOverlay />

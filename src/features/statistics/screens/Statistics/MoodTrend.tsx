@@ -4,7 +4,6 @@ import { Card } from '@/features/statistics/components/Statistics/Card';
 import { t } from '@/shared/utils/translation';
 import useColors from '@/shared/hooks/useColors';
 import { MoodTrendData, SCALE_RANGE, SCALE_TYPE } from '@/features/statistics/hooks/useStatistics/MoodTrend';
-import { CardFeedback } from '@/features/statistics/components/Statistics/CardFeedback';
 import dayjs from 'dayjs';
 
 const Chart = ({
@@ -129,10 +128,6 @@ export const MoodTrend = ({
           }}
         >{SCALE_RANGE}-{SCALE_TYPE} avg</Text>
       </View>
-      <CardFeedback
-        analyticsId='mood_avg'
-        analyticsData={{}}
-      />
     </Card>
   );
 };

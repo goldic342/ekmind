@@ -22,26 +22,25 @@ export const EmotionsDistribution = ({
       title={title}
       subtitle={subtitle}
       isShareable
-      hasFeedback
-      analyticsId="emotions-distribution"
-      analyticsData={{
-        emotions: data.emotions
-      }}
     >
-      {data.emotions.length < MIN_TAGS && (
-        <NotEnoughDataOverlay />
-      )}
-      {data.emotions.length >= MIN_TAGS ? (
-        <EmotionsDistributionContent
-          data={data}
-          limit={10}
-        />
-      ) : (
-        <EmotionsDistributionContent
-          data={dummyEmotionsDistributionData}
-          limit={10}
-        />
-      )}
-    </BigCard>
+      {
+        data.emotions.length < MIN_TAGS && (
+          <NotEnoughDataOverlay />
+        )
+      }
+      {
+        data.emotions.length >= MIN_TAGS ? (
+          <EmotionsDistributionContent
+            data={data}
+            limit={10}
+          />
+        ) : (
+          <EmotionsDistributionContent
+            data={dummyEmotionsDistributionData}
+            limit={10}
+          />
+        )
+      }
+    </BigCard >
   );
 };

@@ -7,7 +7,6 @@ import { getRatingDistributionForXDays } from '@/features/statistics/hooks/useSt
 
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
 import { RatingChart } from '@/shared/ui/RatingChart';
-import { CardFeedback } from '@/features/statistics/components/Statistics/CardFeedback';
 
 dayjs.extend(isSameOrAfter);
 
@@ -44,10 +43,7 @@ export const MoodChart = ({
           height={height}
           width={width}
         />
-        <CardFeedback
-          analyticsId='rating_distribution_two_weeks'
-          analyticsData={data}
-        />
+
       </View>
     </Card>
   );

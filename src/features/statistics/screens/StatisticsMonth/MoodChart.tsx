@@ -6,7 +6,6 @@ import { RatingChart } from '@/shared/ui/RatingChart';
 import { t } from '@/shared/utils/translation';
 import { getRatingDistributionForXDays } from '@/features/statistics/hooks/useStatistics/RatingDistribution';
 import { NotEnoughDataOverlay } from '@/features/statistics/components/Statistics/NotEnoughDataOverlay';
-import { CardFeedback } from '@/features/statistics/components/Statistics/CardFeedback';
 
 const MIN_ITEMS = 5;
 
@@ -31,11 +30,6 @@ export const MoodChart = ({
       title={t('statistics_mood_chart')}
       subtitle={t('statistics_mood_chart_description', { date: date.format('MMMM, YYYY') })}
       isShareable={true}
-      analyticsId="rating-distribution"
-      analyticsData={{
-        date: date.format('YYYY-MM'),
-        data,
-      }}
     >
       {validatedData.length < MIN_ITEMS && (
         <NotEnoughDataOverlay limit={MIN_ITEMS - validatedData.length} />
@@ -53,10 +47,7 @@ export const MoodChart = ({
           height={height}
           width={width} />
       )}
-      <CardFeedback
-        analyticsId='rating_distribution_month_report'
-        analyticsData={data}
-      />
+
     </BigCard>
   );
 };
