@@ -1,7 +1,6 @@
 import Button from '@/shared/ui/Button';
 import { locale, t } from '@/shared/utils/translation';
 import useColors from "@/shared/hooks/useColors";
-import useFeedbackModal from '@/shared/hooks/useFeedbackModal';
 import useHaptics from "@/shared/hooks/useHaptics";
 import { useTemporaryLog } from '@/features/logging/hooks/useTemporaryLog';
 import { getItemDateTitle } from '@/shared/utils/utils';
@@ -87,7 +86,6 @@ export const SlideHeader = ({
   onClose?: () => void;
   onDelete?: () => void;
 }) => {
-  const { Modal, show } = useFeedbackModal()
   const haptics = useHaptics();
   const colors = useColors()
   const tempLog = useTemporaryLog();
@@ -138,7 +136,6 @@ export const SlideHeader = ({
           flex: 1,
         }}
       >
-        <Modal />
         <View
           style={{
             flexDirection: 'row',

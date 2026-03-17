@@ -71,7 +71,6 @@ export const INITIAL_STATE: SettingsState = {
     "emotions",
     "tags",
     "message",
-    "feedback"
   ],
 };
 

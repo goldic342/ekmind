@@ -11,7 +11,6 @@ import TextInfo from '@/shared/ui/TextInfo';
 import { CHANGELOG_URL, FEEDBACK_FEATURES_URL } from '@/shared/constants/Config';
 import { t } from '@/shared/utils/translation';
 import useColors from '@/shared/hooks/useColors';
-import useFeedbackModal from '@/shared/hooks/useFeedbackModal';
 import pkg from '../../../../../package.json';
 import { RootStackScreenProps } from '@/types';
 import { UserDataImportList } from './UserData';
@@ -22,7 +21,6 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
   const insets = useSafeAreaInsets();
   const colors = useColors()
 
-  const { show: showFeedbackModal, Modal: FeedbackModal } = useFeedbackModal();
 
   // const { settings, setSettings } = useSettings()
   // const passcodeSupported = supportedSecurityLevel > 0;
@@ -53,7 +51,6 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
           padding: 20,
         }}
       >
-        <FeedbackModal />
         <Text
           style={{
             fontSize: 32,
@@ -128,21 +125,6 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
           /> */}
 
         </MenuList>
-
-        <MenuListHeadline>{t('settings_feedback')}</MenuListHeadline>
-        <MenuList
-          style={{
-          }}
-        >
-          <MenuListItem
-            title={t('send_feedback')}
-            onPress={() => showFeedbackModal({ type: 'issue' })}
-            iconLeft={<Flag width={18} color={colors.text} />}
-            testID='send_feedback'
-            isLast
-          />
-        </MenuList>
-        <TextInfo>{t('feedback_help')}</TextInfo>
 
         <MenuListHeadline>{t('settings_about')}</MenuListHeadline>
         <MenuList

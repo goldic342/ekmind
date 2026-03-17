@@ -8,7 +8,7 @@ export const store = async <State>(key: string, state: State) => {
   }
 }
 
-export const load = async <ReturnValue>(key: string, feedback: any): Promise<ReturnValue | null> => {
+export const load = async <ReturnValue>(key: string): Promise<ReturnValue | null> => {
   try {
     const data = await AsyncStorage.getItem(key);
     if (!data) {
@@ -17,21 +17,6 @@ export const load = async <ReturnValue>(key: string, feedback: any): Promise<Ret
     return JSON.parse(data);
   } catch (error) {
     console.error(error);
-    feedback
-      .send({
-        type: "issue",
-        message: JSON.stringify({
-          title: "Error loading logs",
-          description: error.message,
-          trace: error.stack,
-        }),
-        email: "team@pixy.day",
-        source: "error",
-        onCancel: () => {
-        },
-        onOk: () => {
-        }
-      })
   }
 
   return null

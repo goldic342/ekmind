@@ -15,7 +15,6 @@ import {
 import { v4 as uuidv4 } from "uuid";
 import z from "zod";
 import { AtLeast } from "@/types";
-import { useFeedback } from '@/shared/hooks/useFeedback';
 
 export const STORAGE_KEY = "PIXEL_TRACKER_LOGS";
 
@@ -152,7 +151,6 @@ const migrate = (data: LogsState): LogsState => {
 };
 
 function LogsProvider({ children }: { children: React.ReactNode }) {
-  const feedback = useFeedback();
 
   const INITIAL_STATE: LogsState = {
     loaded: false,
@@ -164,7 +162,7 @@ function LogsProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     (async () => {
       try {
-        const value = await load<LogsState>(STORAGE_KEY, feedback);
+        const value = await load<LogsState>(STORAGE_KEY);
         const size = Buffer.byteLength(JSON.stringify(value));
         if (value !== null) {
           dispatch({

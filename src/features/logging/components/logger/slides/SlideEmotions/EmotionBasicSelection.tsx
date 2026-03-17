@@ -1,6 +1,3 @@
-import LinkButton from "@/shared/ui/LinkButton";
-import { t } from "@/shared/utils/translation";
-import useFeedbackModal from "@/shared/hooks/useFeedbackModal";
 import { Emotion } from "@/types";
 import _ from "lodash";
 import { View, ViewStyle } from "react-native";
@@ -14,7 +11,6 @@ export const EmotionBasicSelection = ({
   onPress: (emotion: Emotion) => void;
   style?: ViewStyle;
 }) => {
-  const { Modal, show } = useFeedbackModal();
 
   const rows = _.chunk(_.orderBy(emotions, e => {
     return {
@@ -33,7 +29,6 @@ export const EmotionBasicSelection = ({
         ...style,
       }}
     >
-      <Modal />
 
       {rows.map((row, index) => (
         <View
@@ -67,15 +62,6 @@ export const EmotionBasicSelection = ({
         </View>
       ))}
 
-      <LinkButton
-        type="secondary"
-        onPress={() => show({ type: 'idea' })}
-        style={{
-          marginTop: 20,
-        }}
-      >
-        {t('give_feedback')}
-      </LinkButton>
     </View>
   );
 };

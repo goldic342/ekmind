@@ -1,4 +1,3 @@
-import { FeedbackBox } from '@/shared/ui/FeedbackBox';
 import MenuList from '@/shared/ui/MenuList';
 import MenuListHeadline from '@/shared/ui/MenuListHeadline';
 import MenuListItem from '@/shared/ui/MenuListItem';
