@@ -36,9 +36,10 @@ These features will be implemented in first stable release:
 	- [ ] Statistics of last month by default (with full view available)
 - [ ] Customizable week start day
 - [ ] Categorized tags
-- [ ] Updates exports
+- [ ] Updated exports
 - [ ] Community translations
-- [ ] General UI  enhancements
+- [ ] General UI enhancements
+- [x] Removed extensive analytics
 
 ## Development
 
