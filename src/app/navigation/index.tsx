@@ -93,6 +93,12 @@ function NavigationWithTheme() {
       linking={NAVIGATION_LINKING}
       // @ts-ignore
       theme={{
+        fonts: {
+          regular: { fontWeight: '400', fontFamily: Platform.select({ ios: 'System', default: 'sans-serif' }) },
+          medium: { fontWeight: '500', fontFamily: Platform.select({ ios: 'System', default: 'sans-serif' }) },
+          bold: { fontWeight: '700', fontFamily: Platform.select({ ios: 'System', default: 'sans-serif' }) },
+          heavy: { fontWeight: '800', fontFamily: Platform.select({ ios: 'System', default: 'sans-serif' }) },
+        },
         dark: resolvedScheme === 'dark',
         colors: buildTheme({
           scheme: resolvedScheme,
