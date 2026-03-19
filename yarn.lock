@@ -8924,13 +8924,6 @@ react-native-reanimated@^4.2.2:
     react-native-is-edge-to-edge "1.2.1"
     semver "7.7.3"
 
-react-native-rss-parser@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/react-native-rss-parser/-/react-native-rss-parser-1.5.1.tgz#4221d578477dc267e228dd73219b0b29ab3a4148"
-  integrity sha512-47JcRW8utdnA0nhxnj1FNRy5o0UNPQP7UT1OBJKYq0LEkzbQIVi44LlUivazCmGQnxlAKLXo0imepsM39WxwTQ==
-  dependencies:
-    xmldom "^0.3.0"
-
 react-native-safe-area-context@5.7.0:
   version "5.7.0"
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-5.7.0.tgz#035699d5ec17fefb98cc1fa44a9ec852c7d530d0"
@@ -10809,11 +10802,6 @@ xmlchars@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/xmlchars/-/xmlchars-2.2.0.tgz#060fe1bcb7f9c76fe2a17db86a9bc3ab894210cb"
   integrity sha512-JZnDKK8B0RCDw84FNdDAIpZK+JuJw+s7Lz8nksI7SIuU3UXJJslUthsi+uWBUYOwPFwW7W7PRLRfUKpxjtjFCw==
-
-xmldom@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/xmldom/-/xmldom-0.3.0.tgz#e625457f4300b5df9c2e1ecb776147ece47f3e5a"
-  integrity sha512-z9s6k3wxE+aZHgXYxSTpGDo7BYOUfJsIRyoZiX6HTjwpwfS2wpQBQKa2fD+ShLyPkqDYo5ud7KitmLZ2Cd6r0g==
 
 y18n@^5.0.5:
   version "5.0.8"
