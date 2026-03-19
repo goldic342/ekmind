@@ -9,7 +9,7 @@
     "eject": "expo eject",
     "test": "jest --watchAll --env=jsdom",
     "test:ci": "jest --env=jsdom",
-    "disclaimer": "echo \"export default \\`$(yarn licenses generate-disclaimer | sed 's/\\`/\\\\`/g')\\`\" > disclaimer.js",
+    "disclaimer": "echo \"$(yarn licenses generate-disclaimer)\" > THIRD_PARTY_LICENSES.txt",
     "build:ios:dev": "npx eas-cli build -p ios --local --profile=development",
     "build:android:dev": "npx eas-cli build -p android --local --profile=development",
     "build:ios:preview": "npx eas-cli build -p ios --local --profile=preview",
@@ -126,6 +126,7 @@
     "jest-expo": "^55.0.10",
     "mockdate": "^3.0.5",
     "sharp": "^0.34.0",
+    "source-map-explorer": "^2.5.3",
     "typescript": "^5.9.3"
   },
   "private": true

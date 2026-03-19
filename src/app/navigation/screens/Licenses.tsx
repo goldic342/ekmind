@@ -1,16 +1,8 @@
 import { PageWithHeaderLayout } from '@/shared/ui/PageWithHeaderLayout';
 import { Text, View, VirtualizedList } from 'react-native';
-import disclaimer from '../../../../disclaimer';
 import useColors from '@/shared/hooks/useColors';
-
-type Item = {
-  key: string;
-  value: string;
-}
-
 export const LicensesScreen = () => {
   const colors = useColors()
-  const slices = disclaimer.split('-----');
 
   return (
     <PageWithHeaderLayout
@@ -19,30 +11,9 @@ export const LicensesScreen = () => {
         backgroundColor: colors.background,
       }}
     >
-      <VirtualizedList
-        style={{
-          padding: 16,
-        }}
-        data={slices}
-        initialNumToRender={4}
-        renderItem={({ item }: { item: Item }) => (
-          <Text
-            key={item.key}
-            style={{
-              color: colors.text,
-              fontSize: 14,
-            }}
-          >
-            {item.value}
-          </Text>
-        )}
-        keyExtractor={item => item.key}
-        getItemCount={slices => slices.length}
-        getItem={(data, index): Item => ({
-          key: `text-${index}`,
-          value: data[index],
-        })}
-      />
+      <Text>
+        Placeholder
+      </Text>
     </PageWithHeaderLayout>
   );
 }
