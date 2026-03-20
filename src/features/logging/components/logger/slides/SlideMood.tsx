@@ -1,47 +1,45 @@
-import { useNavigation } from "@react-navigation/native";
-import dayjs from "dayjs";
-import { useState } from "react";
-import { Platform, View } from "react-native";
-import DateTimePickerModal from "react-native-modal-datetime-picker";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { DATE_FORMAT } from "@/shared/constants/Config";
-import { getLogEditMarginTop } from "@/shared/utils/responsive";
-import { t } from "@/shared/utils/translation";
-import useColors from "@/shared/hooks/useColors";
-import { LogItem, RATING_KEYS } from "@/features/logging/hooks/useLogs";
-import { useTemporaryLog } from "@/features/logging/hooks/useTemporaryLog";
-import { SlideHeadline } from "../SlideHeadline";
-import { SlideMoodButton } from "../SlideMoodButton";
+import { useNavigation } from "@react-navigation/native"
+import dayjs from "dayjs"
+import { useState } from "react"
+import { Platform, View } from "react-native"
+import DateTimePickerModal from "react-native-modal-datetime-picker"
+import { useSafeAreaInsets } from "react-native-safe-area-context"
+import { DATE_FORMAT } from "@/shared/constants/Config"
+import { getLogEditMarginTop } from "@/shared/utils/responsive"
+import { t } from "@/shared/utils/translation"
+import useColors from "@/shared/hooks/useColors"
+import { LogItem, RATING_KEYS } from "@/features/logging/hooks/useLogs"
+import { useTemporaryLog } from "@/features/logging/hooks/useTemporaryLog"
+import { SlideHeadline } from "../SlideHeadline"
+import { SlideMoodButton } from "../SlideMoodButton"
 
-export const SlideMood = ({
-  onChange,
-}: {
-  onChange: (rating: LogItem['rating']) => void;
-}) => {
-  const colors = useColors();
-  const tempLog = useTemporaryLog();
-  const navigation = useNavigation();
-  const insets = useSafeAreaInsets();
+export const SlideMood = ({ onChange }: { onChange: (rating: LogItem["rating"]) => void }) => {
+  const colors = useColors()
+  const tempLog = useTemporaryLog()
+  const navigation = useNavigation()
+  const insets = useSafeAreaInsets()
 
   const marginTop = getLogEditMarginTop()
-  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false)
 
   return (
-    <View style={{
-      flex: 1,
-      backgroundColor: colors.backgroundSecondary,
-      width: '100%',
-      position: 'relative',
-      paddingHorizontal: 20,
-      paddingBottom: insets.bottom + 20,
-    }}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: colors.backgroundSecondary,
+        width: "100%",
+        position: "relative",
+        paddingHorizontal: 20,
+        paddingBottom: insets.bottom + 20
+      }}
+    >
       <View
         style={{
           flex: 1,
           marginTop
         }}
       >
-        {Platform.OS !== 'web' && (
+        {Platform.OS !== "web" && (
           <DateTimePickerModal
             isVisible={isDatePickerVisible}
             date={tempLog.data.dateTime ? new Date(tempLog.data.dateTime) : new Date()}
@@ -50,10 +48,10 @@ export const SlideMood = ({
               setDatePickerVisibility(false)
               tempLog.update({
                 date: dayjs(date).format(DATE_FORMAT),
-                dateTime: dayjs(date).toISOString(),
+                dateTime: dayjs(date).toISOString()
               })
               navigation.setParams({
-                date: dayjs(date).format(DATE_FORMAT),
+                date: dayjs(date).format(DATE_FORMAT)
               })
             }}
             onCancel={() => setDatePickerVisibility(false)}
@@ -61,25 +59,27 @@ export const SlideMood = ({
         )}
         <SlideHeadline
           style={{
-            justifyContent: 'center',
-            alignItems: 'center',
+            justifyContent: "center",
+            alignItems: "center"
           }}
-        >{t('log_rating_question')}</SlideHeadline>
+        >
+          {t("log_rating_question")}
+        </SlideHeadline>
         <View
           style={{
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
             marginTop: 32,
-            width: '100%',
+            width: "100%"
           }}
         >
           {RATING_KEYS.map((key, index) => (
             <SlideMoodButton
               key={key}
-              rating={key as LogItem['rating']}
+              rating={key as LogItem["rating"]}
               selected={tempLog?.data?.rating === key}
-              onPress={() => onChange(key as LogItem['rating'])}
+              onPress={() => onChange(key as LogItem["rating"])}
             />
           ))}
         </View>

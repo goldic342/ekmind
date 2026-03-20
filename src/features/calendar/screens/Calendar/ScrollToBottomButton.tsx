@@ -1,11 +1,11 @@
-import React from "react";
-import { ChevronDown } from "react-native-feather";
-import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
-import { FloatButton } from "@/shared/ui/FloatButton";
-import useColors from "@/shared/hooks/useColors";
+import React from "react"
+import { ChevronDown } from "react-native-feather"
+import Animated, { FadeIn, FadeOut } from "react-native-reanimated"
+import { FloatButton } from "@/shared/ui/FloatButton"
+import useColors from "@/shared/hooks/useColors"
 
-export const ScrollToBottomButton = ({ onPress }: { onPress: () => void; }) => {
-  const colors = useColors();
+export const ScrollToBottomButton = ({ onPress }: { onPress: () => void }) => {
+  const colors = useColors()
 
   return (
     <Animated.View
@@ -13,7 +13,7 @@ export const ScrollToBottomButton = ({ onPress }: { onPress: () => void; }) => {
         position: "absolute",
         bottom: 20,
         right: 20,
-        zIndex: 100,
+        zIndex: 100
       }}
       entering={FadeIn}
       exiting={FadeOut}
@@ -22,5 +22,5 @@ export const ScrollToBottomButton = ({ onPress }: { onPress: () => void; }) => {
         <ChevronDown color={colors.palette.white} width={22} />
       </FloatButton>
     </Animated.View>
-  );
-};
+  )
+}

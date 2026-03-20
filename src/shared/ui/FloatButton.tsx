@@ -4,7 +4,7 @@ import useColors from "@/shared/hooks/useColors"
 export const FloatButton = ({
   onPress,
   disabled,
-  children,
+  children
 }: {
   onPress: () => void
   disabled?: boolean
@@ -20,9 +20,11 @@ export const FloatButton = ({
         width: 54,
         height: 54,
         borderRadius: 100,
-        backgroundColor: disabled ? colors.primaryButtonBackgroundDisabled : colors.primaryButtonBackground,
-        justifyContent: 'center',
-        alignItems: 'center',
+        backgroundColor: disabled
+          ? colors.primaryButtonBackgroundDisabled
+          : colors.primaryButtonBackground,
+        justifyContent: "center",
+        alignItems: "center"
       }}
     >
       {children}

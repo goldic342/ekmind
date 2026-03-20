@@ -1,45 +1,45 @@
-import Indicator from '@/shared/ui/Indicator';
-import LinkButton from '@/shared/ui/LinkButton';
-import { t } from '@/shared/utils/translation';
-import { useCalendarFilters } from '@/features/calendar/hooks/useCalendarFilters';
-import useColors from '@/shared/hooks/useColors';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useNavigation } from '@react-navigation/native';
-import dayjs from 'dayjs';
-import * as Updates from 'expo-updates';
-import { Platform, Pressable, View } from 'react-native';
-import { SettingsScreen, StatisticsScreen } from '@/app/navigation/screens';
-import CalendarScreen from '@/features/calendar/screens/Calendar';
-import { MyTabBar } from "./MyTabBar";
+import Indicator from "@/shared/ui/Indicator"
+import LinkButton from "@/shared/ui/LinkButton"
+import { t } from "@/shared/utils/translation"
+import { useCalendarFilters } from "@/features/calendar/hooks/useCalendarFilters"
+import useColors from "@/shared/hooks/useColors"
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
+import { useNavigation } from "@react-navigation/native"
+import dayjs from "dayjs"
+import * as Updates from "expo-updates"
+import { Platform, Pressable, View } from "react-native"
+import { SettingsScreen, StatisticsScreen } from "@/app/navigation/screens"
+import CalendarScreen from "@/features/calendar/screens/Calendar"
+import { MyTabBar } from "./MyTabBar"
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator()
 
 export const BottomTabs = () => {
-  const colors = useColors();
-  const calendarFilters = useCalendarFilters();
-  const navigation = useNavigation();
+  const colors = useColors()
+  const calendarFilters = useCalendarFilters()
+  const navigation = useNavigation()
 
   const defaultOptions = {
     headerTintColor: colors.text,
     headerStyle: {
       backgroundColor: colors.background,
-      shadowColor: 'transparent',
+      shadowColor: "transparent",
       borderBottomWidth: 1,
-      borderBottomColor: colors.borderStrong,
+      borderBottomColor: colors.borderStrong
     },
-    headerShadowVisible: Platform.OS !== 'web',
+    headerShadowVisible: Platform.OS !== "web",
     tabBarStyle: {
-      borderTopColor: colors.borderStrong,
-    },
-  };
+      borderTopColor: colors.borderStrong
+    }
+  }
 
   return (
     <Tab.Navigator
       initialRouteName="Calendar"
       screenOptions={({ route }) => ({
         headerStyle: {
-          borderBottomColor: '#fff',
-        },
+          borderBottomColor: "#fff"
+        }
       })}
       tabBar={props => <MyTabBar {...props} />}
     >
@@ -49,9 +49,10 @@ export const BottomTabs = () => {
         options={({ navigation }) => ({
           ...defaultOptions,
           headerShown: false,
-          tabBarTestID: 'statistics',
-          title: t('statistics'),
-        })} />
+          tabBarTestID: "statistics",
+          title: t("statistics")
+        })}
+      />
       <Tab.Screen
         name="Calendar"
         component={CalendarScreen}
@@ -62,31 +63,34 @@ export const BottomTabs = () => {
               <LinkButton
                 onPress={() => {
                   if (calendarFilters.isOpen) {
-                    calendarFilters.close();
+                    calendarFilters.close()
                   } else {
-                    calendarFilters.open();
+                    calendarFilters.open()
                   }
                 }}
                 testID="filters"
-                type='primary'
+                type="primary"
                 icon="Filter"
               >
-                {t('calendar_filters')} {calendarFilters.data.isFiltering ? `(${calendarFilters.data.filterCount})` : ''}
+                {t("calendar_filters")}{" "}
+                {calendarFilters.data.isFiltering ? `(${calendarFilters.data.filterCount})` : ""}
               </LinkButton>
             </View>
           ),
-          tabBarTestID: 'calendar',
-          title: t('calendar'),
-        })} />
+          tabBarTestID: "calendar",
+          title: t("calendar")
+        })}
+      />
       <Tab.Screen
         name="Settings"
         component={SettingsScreen}
         options={({ navigation }) => ({
           ...defaultOptions,
           headerShown: false,
-          tabBarTestID: 'settings',
-          title: t('settings'),
-        })} />
+          tabBarTestID: "settings",
+          title: t("settings")
+        })}
+      />
     </Tab.Navigator>
-  );
-};
+  )
+}

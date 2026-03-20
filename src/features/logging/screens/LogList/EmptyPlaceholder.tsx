@@ -1,40 +1,41 @@
-import { Text, View } from "react-native";
-import { t } from "@/shared/utils/translation";
-import useColors from "@/shared/hooks/useColors";
+import { Text, View } from "react-native"
+import { t } from "@/shared/utils/translation"
+import useColors from "@/shared/hooks/useColors"
 
-
-export const EmptyPlaceholder = ({ }: {}) => {
-  const colors = useColors();
+export const EmptyPlaceholder = ({}: {}) => {
+  const colors = useColors()
 
   return (
     <View
       style={{
-        flex: 1,
+        flex: 1
       }}
     >
       <View
         style={{
           flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center',
+          justifyContent: "center",
+          alignItems: "center",
           borderWidth: 1,
           borderColor: colors.borderStrong,
-          borderStyle: 'dashed',
+          borderStyle: "dashed",
           padding: 16,
           borderRadius: 8,
           minHeight: 120,
-          marginBottom: 16,
+          marginBottom: 16
         }}
       >
         <Text
           style={{
             fontSize: 17,
             color: colors.statisticsNoDataText,
-            textAlign: 'center',
-            lineHeight: 24,
+            textAlign: "center",
+            lineHeight: 24
           }}
-        >{t('entries_no_data')}</Text>
+        >
+          {t("entries_no_data")}
+        </Text>
       </View>
     </View>
-  );
-};
+  )
+}

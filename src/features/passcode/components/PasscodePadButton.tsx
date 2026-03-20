@@ -1,49 +1,52 @@
-import { Pressable, Text, View } from 'react-native';
-import useColors from '@/shared/hooks/useColors';
+import { Pressable, Text, View } from "react-native"
+import useColors from "@/shared/hooks/useColors"
 
 export const PasscodePadButton = ({
-  value, onPress
+  value,
+  onPress
 }: {
-  value: string;
-  onPress: (value: string) => void;
+  value: string
+  onPress: (value: string) => void
 }) => {
-  const colors = useColors();
+  const colors = useColors()
 
   return (
     <Pressable
       onPress={() => onPress(value)}
       style={({ pressed }) => ({
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
         borderRadius: 999,
         width: 80,
         height: 80,
         margin: 10,
-        backgroundColor: pressed ? colors.passcodePadBackgroundActive : colors.surfaceMuted,
+        backgroundColor: pressed ? colors.passcodePadBackgroundActive : colors.surfaceMuted
       })}
     >
-      {typeof value === 'string' ?
+      {typeof value === "string" ? (
         <Text
           style={{
             fontSize: 28,
             color: colors.text,
             marginTop: -3,
-            padding: 25,
+            padding: 25
           }}
         >
           {value}
-        </Text> :
+        </Text>
+      ) : (
         <View
           style={{
-            width: '100%',
-            height: '100%',
-            justifyContent: 'center',
-            alignItems: 'center',
+            width: "100%",
+            height: "100%",
+            justifyContent: "center",
+            alignItems: "center"
           }}
         >
           {value}
-        </View>}
+        </View>
+      )}
     </Pressable>
-  );
-};
+  )
+}

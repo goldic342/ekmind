@@ -1,16 +1,14 @@
-import useColors from '@/shared/hooks/useColors';
-import { SLEEP_QUALITY_KEYS } from '@/features/logging/hooks/useLogs';
-import { Line } from 'react-native-svg';
+import useColors from "@/shared/hooks/useColors"
+import { SLEEP_QUALITY_KEYS } from "@/features/logging/hooks/useLogs"
+import { Line } from "react-native-svg"
 
-export const Grid = ({
-  width, relativeY,
-}) => {
-  const colors = useColors();
+export const Grid = ({ width, relativeY }) => {
+  const colors = useColors()
 
   return (
     <>
       {SLEEP_QUALITY_KEYS.slice(0, SLEEP_QUALITY_KEYS.length - 1).map((rating, index) => {
-        const y = relativeY(index);
+        const y = relativeY(index)
         return (
           <Line
             key={`l-${rating}-${index}`}
@@ -22,8 +20,8 @@ export const Grid = ({
             strokeWidth={1}
             strokeDasharray={[4, 4]}
           />
-        );
+        )
       })}
     </>
   )
-};
+}

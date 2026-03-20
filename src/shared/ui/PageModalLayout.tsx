@@ -1,24 +1,24 @@
-import { Platform, View, ViewStyle } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Platform, View, ViewStyle } from "react-native"
+import { useSafeAreaInsets } from "react-native-safe-area-context"
 
 export const PageModalLayout = ({
   children,
-  style = {},
+  style = {}
 }: {
-  children: React.ReactNode;
-  style?: ViewStyle;
+  children: React.ReactNode
+  style?: ViewStyle
 }) => {
-  const insets = useSafeAreaInsets();
+  const insets = useSafeAreaInsets()
 
   return (
     <View
       style={{
         flex: 1,
-        paddingTop: Platform.OS === 'android' ? insets.top : 0,
-        ...style,
+        paddingTop: Platform.OS === "android" ? insets.top : 0,
+        ...style
       }}
     >
       {children}
     </View>
-  );
-};
+  )
+}

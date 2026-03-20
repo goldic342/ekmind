@@ -1,17 +1,17 @@
-import _ from "lodash";
-import { LogItem } from "@/features/logging/hooks/useLogs";
-import { Tag } from "@/features/tags/hooks/useTags";
+import _ from "lodash"
+import { LogItem } from "@/features/logging/hooks/useLogs"
+import { Tag } from "@/features/tags/hooks/useTags"
 
 export interface TagsDistributionData {
   tags: {
-    id: string;
-    details: Tag;
-    count: number;
-  }[];
+    id: string
+    details: Tag
+    count: number
+  }[]
 }
 
 export const defaultTagsDistributionData: TagsDistributionData = {
-  tags: [],
+  tags: []
 }
 
 export const dummyTagsDistributionData: TagsDistributionData = {
@@ -21,55 +21,53 @@ export const dummyTagsDistributionData: TagsDistributionData = {
       details: {
         id: "1",
         title: "Tag 1",
-        color: 'yellow',
+        color: "yellow"
       },
-      count: 10,
+      count: 10
     },
     {
       id: "2",
       details: {
         id: "2",
         title: "Tag 2",
-        color: 'red',
+        color: "red"
       },
-      count: 5,
+      count: 5
     },
     {
       id: "3",
       details: {
         id: "3",
         title: "Tag 3",
-        color: 'blue',
+        color: "blue"
       },
-      count: 3,
+      count: 3
     },
     {
       id: "4",
       details: {
         id: "4",
         title: "Tag 4",
-        color: 'green',
+        color: "green"
       },
-      count: 2,
-    },
-  ],
+      count: 2
+    }
+  ]
 }
 
 export const getTagsDistributionData = (items: LogItem[], tags: Tag[]): TagsDistributionData => {
-  const distribution = _.countBy(
-    items.flatMap((item) => item?.tags?.map((tag) => tag?.id))
-  );
+  const distribution = _.countBy(items.flatMap(item => item?.tags?.map(tag => tag?.id)))
   const _tags = Object.keys(distribution)
-    .map((key) => ({
-      details: tags.find((tag) => tag.id === key)!,
+    .map(key => ({
+      details: tags.find(tag => tag.id === key)!,
       id: key,
-      count: distribution[key],
+      count: distribution[key]
     }))
-    .filter((tag) => tag.details !== undefined)
-    .filter((tag) => !tag.details.isArchived)
-    .sort((a, b) => b.count - a.count);
+    .filter(tag => tag.details !== undefined)
+    .filter(tag => !tag.details.isArchived)
+    .sort((a, b) => b.count - a.count)
 
   return {
-    tags: _tags,
-  };
-};
+    tags: _tags
+  }
+}

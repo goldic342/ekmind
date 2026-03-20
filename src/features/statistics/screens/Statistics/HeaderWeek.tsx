@@ -1,63 +1,59 @@
-import dayjs, { Dayjs } from 'dayjs';
-import { Text, View } from 'react-native';
-import useColors from '@/shared/hooks/useColors';
+import dayjs, { Dayjs } from "dayjs"
+import { Text, View } from "react-native"
+import useColors from "@/shared/hooks/useColors"
 
-const HeaderDay = ({
-  children
-}: {
-  children: string
-}) => {
+const HeaderDay = ({ children }: { children: string }) => {
   const colors = useColors()
   return (
     <View
       style={{
-        flex: 7,
+        flex: 7
       }}
     >
       <Text
         style={{
           fontSize: 14,
-          fontWeight: '600',
+          fontWeight: "600",
           color: colors.muted,
-          textAlign: 'center',
+          textAlign: "center"
         }}
-      >{children}</Text>
+      >
+        {children}
+      </Text>
     </View>
   )
 }
 
-export const HeaderWeek = ({
-  date,
-}: {
-  date: string,
-}) => {
-  const colors = useColors();
+export const HeaderWeek = ({ date }: { date: string }) => {
+  const colors = useColors()
   const start = dayjs(date)
 
   return (
     <View
       style={{
-        width: '100%',
+        width: "100%"
       }}
     >
-      <View style={{
-        flexDirection: "row",
-        justifyContent: 'space-around',
-        borderTopColor: colors.border,
-        borderTopWidth: 1,
-        borderBottomColor: colors.border,
-        borderBottomWidth: 1,
-        paddingTop: 8,
-        paddingBottom: 8,
-      }}>
-        <HeaderDay>{start.add(0, 'day').format('ddd')}</HeaderDay>
-        <HeaderDay>{start.add(1, 'day').format('ddd')}</HeaderDay>
-        <HeaderDay>{start.add(2, 'day').format('ddd')}</HeaderDay>
-        <HeaderDay>{start.add(3, 'day').format('ddd')}</HeaderDay>
-        <HeaderDay>{start.add(4, 'day').format('ddd')}</HeaderDay>
-        <HeaderDay>{start.add(5, 'day').format('ddd')}</HeaderDay>
-        <HeaderDay>{start.add(6, 'day').format('ddd')}</HeaderDay>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-around",
+          borderTopColor: colors.border,
+          borderTopWidth: 1,
+          borderBottomColor: colors.border,
+          borderBottomWidth: 1,
+          paddingTop: 8,
+          paddingBottom: 8
+        }}
+      >
+        <HeaderDay>{start.add(0, "day").format("ddd")}</HeaderDay>
+        <HeaderDay>{start.add(1, "day").format("ddd")}</HeaderDay>
+        <HeaderDay>{start.add(2, "day").format("ddd")}</HeaderDay>
+        <HeaderDay>{start.add(3, "day").format("ddd")}</HeaderDay>
+        <HeaderDay>{start.add(4, "day").format("ddd")}</HeaderDay>
+        <HeaderDay>{start.add(5, "day").format("ddd")}</HeaderDay>
+        <HeaderDay>{start.add(6, "day").format("ddd")}</HeaderDay>
       </View>
     </View>
-  );
-};
+  )
+}

@@ -1,29 +1,29 @@
-import { uniqueId } from "lodash";
-import { LogItem } from "@/features/logging/hooks/useLogs";
+import { uniqueId } from "lodash"
+import { LogItem } from "@/features/logging/hooks/useLogs"
 
 export const _generateItem = (item: Partial<LogItem>): LogItem => {
   const newItem: LogItem = {
     id: uniqueId(),
-    rating: ('neutral' as LogItem['rating']),
-    message: '🥹',
-    date: '2020-01-01',
+    rating: "neutral" as LogItem["rating"],
+    message: "🥹",
+    date: "2020-01-01",
     sleep: {
-      quality: 'neutral',
+      quality: "neutral"
     },
     createdAt: new Date().toISOString(),
     dateTime: new Date().toISOString(),
     tags: [],
     emotions: [],
     ...item
-  };
+  }
 
   if (item.date && !item.dateTime) {
-    newItem.dateTime = new Date(item.date).toISOString();
+    newItem.dateTime = new Date(item.date).toISOString()
   }
 
   if (item.date && !item.createdAt) {
-    newItem.createdAt = new Date(item.date).toISOString();
+    newItem.createdAt = new Date(item.date).toISOString()
   }
 
-  return newItem;
-};
+  return newItem
+}

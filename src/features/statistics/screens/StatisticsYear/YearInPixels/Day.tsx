@@ -1,32 +1,26 @@
-import dayjs from "dayjs";
-import React from "react";
-import { View } from "react-native";
-import { DATE_FORMAT } from "@/shared/constants/Config";
-import useColors from "@/shared/hooks/useColors";
-import { LogItem } from "@/features/logging/hooks/useLogs";
-import useScale from "@/shared/hooks/useScale";
+import dayjs from "dayjs"
+import React from "react"
+import { View } from "react-native"
+import { DATE_FORMAT } from "@/shared/constants/Config"
+import useColors from "@/shared/hooks/useColors"
+import { LogItem } from "@/features/logging/hooks/useLogs"
+import useScale from "@/shared/hooks/useScale"
 
-export const Day = ({
-  date,
-  rating,
-}: {
-  date: string;
-  rating: LogItem['rating'] | null;
-}) => {
-  const colors = useColors();
-  const scale = useScale();
+export const Day = ({ date, rating }: { date: string; rating: LogItem["rating"] | null }) => {
+  const colors = useColors()
+  const scale = useScale()
 
   return (
     <View
       style={{
         aspectRatio: 1,
-        width: '100%',
+        width: "100%",
         borderRadius: 100,
-        backgroundColor: rating ? scale.colors[rating].background : 'transparent',
+        backgroundColor: rating ? scale.colors[rating].background : "transparent",
         borderWidth: 2,
         borderColor: rating ? scale.colors[rating].background : colors.surfaceMuted,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: "center",
+        alignItems: "center"
       }}
     >
       {/* if date dayjs is today */}
@@ -36,9 +30,10 @@ export const Day = ({
             width: 8,
             height: 8,
             borderRadius: 100,
-            backgroundColor: rating ? colors.cardBackground : colors.surfaceMuted,
-          }} />
+            backgroundColor: rating ? colors.cardBackground : colors.surfaceMuted
+          }}
+        />
       )}
     </View>
-  );
-};
+  )
+}

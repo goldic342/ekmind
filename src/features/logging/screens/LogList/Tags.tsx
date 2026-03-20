@@ -1,38 +1,38 @@
-import useColors from '@/shared/hooks/useColors';
-import { LogItem } from '@/features/logging/hooks/useLogs';
-import { useTagsState } from '@/features/tags/hooks/useTags';
-import { useNavigation } from '@react-navigation/native';
-import { t } from '@/shared/utils/translation';
-import { Text, View, useColorScheme } from 'react-native';
-import { SectionHeader } from './SectionHeader';
+import useColors from "@/shared/hooks/useColors"
+import { LogItem } from "@/features/logging/hooks/useLogs"
+import { useTagsState } from "@/features/tags/hooks/useTags"
+import { useNavigation } from "@react-navigation/native"
+import { t } from "@/shared/utils/translation"
+import { Text, View, useColorScheme } from "react-native"
+import { SectionHeader } from "./SectionHeader"
 
 const Tag = ({
   title,
   colorName,
-  style = {},
+  style = {}
 }: {
-  title: string;
-  colorName: string;
-  style?: any;
+  title: string
+  colorName: string
+  style?: any
 }) => {
-  const colors = useColors();
-  const colorScheme = useColorScheme();
+  const colors = useColors()
+  const colorScheme = useColorScheme()
 
   return (
     <View
       style={{
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'row',
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "row",
         borderRadius: 100,
         marginRight: 8,
         marginBottom: 8,
         backgroundColor: colors.surface,
-        borderColor: colorScheme === 'light' ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)',
+        borderColor: colorScheme === "light" ? "rgba(0,0,0,0.1)" : "rgba(255,255,255,0.1)",
         borderWidth: 1,
         paddingHorizontal: 12,
         paddingVertical: 6,
-        ...style,
+        ...style
       }}
     >
       <View
@@ -41,75 +41,75 @@ const Tag = ({
           height: 8,
           borderRadius: 8,
           marginRight: 10,
-          backgroundColor: colors.tags[colorName]?.dot,
+          backgroundColor: colors.tags[colorName]?.dot
         }}
       />
-      <Text style={{
-        color: colors.tagText,
-        fontSize: 17,
-      }}>{title}</Text>
+      <Text
+        style={{
+          color: colors.tagText,
+          fontSize: 17
+        }}
+      >
+        {title}
+      </Text>
     </View>
   )
-};
+}
 
-export const Tags = ({
-  item,
-}: {
-  item: LogItem;
-}) => {
-  const colors = useColors();
-  const { tags } = useTagsState();
-  const navigation = useNavigation();
+export const Tags = ({ item }: { item: LogItem }) => {
+  const colors = useColors()
+  const { tags } = useTagsState()
+  const navigation = useNavigation()
 
   return (
-    <View
-      style={{
-      }}
-    >
+    <View style={{}}>
       <SectionHeader
-        title={t('tags')}
+        title={t("tags")}
         onEdit={() => {
-          navigation.navigate('LogEdit', {
+          navigation.navigate("LogEdit", {
             id: item.id,
-            step: 'tags',
-          });
+            step: "tags"
+          })
         }}
       />
       <View
         style={{
-          flexDirection: 'row',
-          flexWrap: 'wrap',
+          flexDirection: "row",
+          flexWrap: "wrap"
         }}
       >
-        {item && item.tags.length > 0 ? item.tags.map(tag => {
-          const _tag = tags.find(t => t.id === tag.id);
+        {item && item.tags.length > 0 ? (
+          item.tags.map(tag => {
+            const _tag = tags.find(t => t.id === tag.id)
 
-          if (!_tag)
-            return null;
+            if (!_tag) return null
 
-          return (
-            <Tag
-              key={tag.id}
-              title={_tag.title}
-              colorName={_tag.color}
-              style={{
-                backgroundColor: colors.surfaceMuted,
-                borderColor: colors.borderStrong,
-              }}
-            />
-          );
-        }) : (
+            return (
+              <Tag
+                key={tag.id}
+                title={_tag.title}
+                colorName={_tag.color}
+                style={{
+                  backgroundColor: colors.surfaceMuted,
+                  borderColor: colors.borderStrong
+                }}
+              />
+            )
+          })
+        ) : (
           <View
             style={{
               paddingTop: 4,
               paddingBottom: 8,
-              paddingHorizontal: 8,
+              paddingHorizontal: 8
             }}
           >
-            <Text style={{ color: colors.textSecondary, fontSize: 17 }}>{t('view_log_tags_empty')}</Text>
+            <Text style={{ color: colors.textSecondary, fontSize: 17 }}>
+              {t("view_log_tags_empty")}
+            </Text>
           </View>
         )}
       </View>
     </View>
-  );
-};
+  )
+}

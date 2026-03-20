@@ -1,32 +1,37 @@
-import { DATE_FORMAT } from '@/shared/constants/Config';
-import { askToCancel, askToDisableFeedbackStep, askToDisableStep, askToRemove } from '@/shared/utils/prompts';
-import useColors from '@/shared/hooks/useColors';
-import { LogItem, useLogState, useLogUpdater } from '@/features/logging/hooks/useLogs';
-import { IQuestion, useQuestioner } from '@/shared/hooks/useQuestioner';
-import { useSettings } from '@/features/settings/hooks/useSettings';
-import { TemporaryLogState, useTemporaryLog } from '@/features/logging/hooks/useTemporaryLog';
-import { Emotion, TagReference } from '@/types';
-import { useNavigation } from '@react-navigation/native';
-import dayjs from 'dayjs';
-import { ReactElement, useEffect, useRef, useState } from 'react';
-import { Dimensions, Keyboard, Platform, Text, TextInput, View } from 'react-native';
-import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { v4 as uuidv4 } from "uuid";
-import { SlideAction } from './SlideAction';
-import { SlideHeader } from './SlideHeader';
-import { Stepper } from './Stepper';
-import { LoggerStep } from './config';
-import { SlideEmotions } from './slides/SlideEmotions';
-import { SlideFeedback } from './slides/SlideFeedback';
-import { SlideMessage } from './slides/SlideMessage';
-import { SlideMood } from './slides/SlideMood';
-import { SlideReminder } from './slides/SlideReminder';
-import { SlideTags } from './slides/SlideTags';
-import { SlideSleep } from './slides/SlideSleep';
-import { StackActions } from '@react-navigation/native';
+import { DATE_FORMAT } from "@/shared/constants/Config"
+import {
+  askToCancel,
+  askToDisableFeedbackStep,
+  askToDisableStep,
+  askToRemove
+} from "@/shared/utils/prompts"
+import useColors from "@/shared/hooks/useColors"
+import { LogItem, useLogState, useLogUpdater } from "@/features/logging/hooks/useLogs"
+import { IQuestion, useQuestioner } from "@/shared/hooks/useQuestioner"
+import { useSettings } from "@/features/settings/hooks/useSettings"
+import { TemporaryLogState, useTemporaryLog } from "@/features/logging/hooks/useTemporaryLog"
+import { Emotion, TagReference } from "@/types"
+import { useNavigation } from "@react-navigation/native"
+import dayjs from "dayjs"
+import { ReactElement, useEffect, useRef, useState } from "react"
+import { Dimensions, Keyboard, Platform, Text, TextInput, View } from "react-native"
+import Carousel, { ICarouselInstance } from "react-native-reanimated-carousel"
+import { useSafeAreaInsets } from "react-native-safe-area-context"
+import { v4 as uuidv4 } from "uuid"
+import { SlideAction } from "./SlideAction"
+import { SlideHeader } from "./SlideHeader"
+import { Stepper } from "./Stepper"
+import { LoggerStep } from "./config"
+import { SlideEmotions } from "./slides/SlideEmotions"
+import { SlideFeedback } from "./slides/SlideFeedback"
+import { SlideMessage } from "./slides/SlideMessage"
+import { SlideMood } from "./slides/SlideMood"
+import { SlideReminder } from "./slides/SlideReminder"
+import { SlideTags } from "./slides/SlideTags"
+import { SlideSleep } from "./slides/SlideSleep"
+import { StackActions } from "@react-navigation/native"
 
-export type LoggerMode = 'create' | 'edit'
+export type LoggerMode = "create" | "edit"
 
 const EMOTIONS_INDEX_MAPPING = {
   extremely_bad: 0,
@@ -35,81 +40,58 @@ const EMOTIONS_INDEX_MAPPING = {
   neutral: 2,
   good: 3,
   very_good: 3,
-  extremely_good: 4,
+  extremely_good: 4
 }
 
 const getAvailableStepsForCreate = ({
   date,
-  question,
+  question
 }: {
-  date: string;
-  question: IQuestion | null;
+  date: string
+  question: IQuestion | null
 }) => {
-  const { hasStep, settings } = useSettings();
-  const logState = useLogState();
+  const { hasStep, settings } = useSettings()
+  const logState = useLogState()
 
-  const slides: LoggerStep[] = [
-    'rating'
-  ]
+  const slides: LoggerStep[] = ["rating"]
 
-  const itemsOnDate = logState.items.filter(item => dayjs(item.dateTime).isSame(dayjs(date), 'day'))
+  const itemsOnDate = logState.items.filter(item => dayjs(item.dateTime).isSame(dayjs(date), "day"))
   const hasSleep = itemsOnDate.some(item => item.sleep?.quality !== null)
 
-  if (hasStep('sleep') && !hasSleep) slides.push('sleep')
-  if (hasStep('emotions')) slides.push('emotions')
-  if (hasStep('tags')) slides.push('tags')
-  if (hasStep('message')) slides.push('message')
+  if (hasStep("sleep") && !hasSleep) slides.push("sleep")
+  if (hasStep("emotions")) slides.push("emotions")
+  if (hasStep("tags")) slides.push("tags")
+  if (hasStep("message")) slides.push("message")
 
-  if (
-    logState.items.length === 1 &&
-    !settings.reminderEnabled
-  ) {
-    slides.push('reminder')
+  if (logState.items.length === 1 && !settings.reminderEnabled) {
+    slides.push("reminder")
   }
 
-  if (
-    logState.items.length >= 3 &&
-    question !== null &&
-    hasStep('feedback')
-  ) {
-    slides.push('feedback')
+  if (logState.items.length >= 3 && question !== null && hasStep("feedback")) {
+    slides.push("feedback")
   }
 
-  return slides;
+  return slides
 }
 
-const getAvailableStepsForEdit = ({
-  date,
-  item,
-}: {
-  date: string;
-  item: LogItem;
-}) => {
-  const { hasStep } = useSettings();
-  const logState = useLogState();
+const getAvailableStepsForEdit = ({ date, item }: { date: string; item: LogItem }) => {
+  const { hasStep } = useSettings()
+  const logState = useLogState()
 
-  const slides: LoggerStep[] = [
-    'rating'
-  ]
+  const slides: LoggerStep[] = ["rating"]
 
-  const itemsOnDate = logState.items.filter(item => dayjs(item.dateTime).isSame(dayjs(date), 'day'))
+  const itemsOnDate = logState.items.filter(item => dayjs(item.dateTime).isSame(dayjs(date), "day"))
   const hasSleep = itemsOnDate.some(item => item.sleep?.quality !== null)
 
-  if (item.sleep?.quality || (!hasSleep && hasStep('sleep'))) slides.push('sleep')
-  if (hasStep('emotions') || item.emotions.length > 0) slides.push('emotions')
-  if (hasStep('tags') || item.tags.length > 0) slides.push('tags')
-  if (hasStep('message') || item.message.length > 0) slides.push('message')
+  if (item.sleep?.quality || (!hasSleep && hasStep("sleep"))) slides.push("sleep")
+  if (hasStep("emotions") || item.emotions.length > 0) slides.push("emotions")
+  if (hasStep("tags") || item.tags.length > 0) slides.push("tags")
+  if (hasStep("message") || item.message.length > 0) slides.push("message")
 
-  return slides;
+  return slides
 }
 
-export const LoggerEdit = ({
-  id,
-  initialStep,
-}: {
-  id: string
-  initialStep?: LoggerStep
-}) => {
+export const LoggerEdit = ({ id, initialStep }: { id: string; initialStep?: LoggerStep }) => {
   const logState = useLogState()
   const initialItem = logState?.items.find(item => item.id === id)
 
@@ -123,7 +105,7 @@ export const LoggerEdit = ({
 
   const avaliableSteps = getAvailableStepsForEdit({
     date: dayjs(initialItem.dateTime).format(DATE_FORMAT),
-    item: initialItem,
+    item: initialItem
   })
 
   return (
@@ -139,7 +121,7 @@ export const LoggerEdit = ({
 export const LoggerCreate = ({
   dateTime,
   initialStep,
-  avaliableSteps,
+  avaliableSteps
 }: {
   dateTime: string
   initialStep?: LoggerStep
@@ -154,19 +136,21 @@ export const LoggerCreate = ({
     date: dateTime ? dayjs(dateTime).format(DATE_FORMAT) : dayjs().format(DATE_FORMAT),
     dateTime: dateTime,
     rating: null,
-    message: '',
+    message: "",
     emotions: [],
     tags: [],
     sleep: {
-      quality: null,
+      quality: null
     },
-    createdAt: createdAt.current,
+    createdAt: createdAt.current
   }
 
-  avaliableSteps = avaliableSteps || getAvailableStepsForCreate({
-    date: initialItem.date,
-    question: questioner.question,
-  })
+  avaliableSteps =
+    avaliableSteps ||
+    getAvailableStepsForCreate({
+      date: initialItem.date,
+      question: questioner.question
+    })
 
   return (
     <Logger
@@ -184,28 +168,28 @@ export const Logger = ({
   initialStep,
   avaliableSteps,
   mode,
-  question,
+  question
 }: {
-  initialItem: TemporaryLogState,
-  initialStep?: LoggerStep;
-  avaliableSteps: LoggerStep[];
+  initialItem: TemporaryLogState
+  initialStep?: LoggerStep
+  avaliableSteps: LoggerStep[]
   mode: LoggerMode
   question?: IQuestion | null
 }) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation()
   const colors = useColors()
-  const insets = useSafeAreaInsets();
+  const insets = useSafeAreaInsets()
 
   const logState = useLogState()
   const logUpdater = useLogUpdater()
 
   const { toggleStep } = useSettings()
 
-  const tempLog = useTemporaryLog(initialItem);
+  const tempLog = useTemporaryLog(initialItem)
 
   const texAreaRef = useRef<TextInput>(null)
-  const isEditing = mode === 'edit'
-  const showDisable = logState.items.length <= 3 && !isEditing;
+  const isEditing = mode === "edit"
+  const showDisable = logState.items.length <= 3 && !isEditing
 
   const [touched, setTouched] = useState(false)
 
@@ -215,7 +199,7 @@ export const Logger = ({
 
   const close = async () => {
     tempLog.reset()
-    navigation.goBack();
+    navigation.goBack()
   }
 
   const save = (data: TemporaryLogState) => {
@@ -226,25 +210,26 @@ export const Logger = ({
       rating: data?.rating,
       tagsCount: data?.tags.length,
       emotions: data?.emotions,
-      emotionsCount: data?.emotions.length,
+      emotionsCount: data?.emotions.length
     }
 
     if (data.rating === null) {
-      data.rating = 'neutral'
+      data.rating = "neutral"
     }
 
-
-    if (mode === 'edit') {
+    if (mode === "edit") {
       logUpdater.editLog(data as LogItem)
     } else {
       logUpdater.addLog(data as LogItem)
 
-      const itemsOnDate = logState.items.filter(item => dayjs(item.dateTime).isSame(dayjs(data.dateTime), 'day'))
+      const itemsOnDate = logState.items.filter(item =>
+        dayjs(item.dateTime).isSame(dayjs(data.dateTime), "day")
+      )
 
       if (itemsOnDate.length === 1) {
-        navigation.dispatch(StackActions.popToTop());
+        navigation.dispatch(StackActions.popToTop())
         tempLog.reset()
-        return;
+        return
       }
     }
 
@@ -273,21 +258,21 @@ export const Logger = ({
   }
 
   const content: {
-    key: string;
-    slide: ReactElement,
-    action?: ReactElement,
+    key: string
+    slide: ReactElement
+    action?: ReactElement
   }[] = []
 
   content.push({
-    key: 'rating',
+    key: "rating",
     slide: (
       <SlideMood
-        onChange={(rating) => {
+        onChange={rating => {
           if (tempLog.data.rating !== rating) {
             if (content.length === 1) {
               save({
                 ...tempLog.data,
-                rating,
+                rating
               })
             } else {
               next()
@@ -299,18 +284,24 @@ export const Logger = ({
     ),
     action: (
       <SlideAction
-        type={slideIndex !== 0 || touched || mode === 'edit' ? (content.length === 1 ? 'save' : 'next') : 'hidden'}
+        type={
+          slideIndex !== 0 || touched || mode === "edit"
+            ? content.length === 1
+              ? "save"
+              : "next"
+            : "hidden"
+        }
         onPress={next}
       />
     )
   })
 
-  if (avaliableSteps.includes('sleep')) {
+  if (avaliableSteps.includes("sleep")) {
     content.push({
-      key: 'sleep',
+      key: "sleep",
       slide: (
         <SlideSleep
-          onChange={(value: LogItem['sleep']['quality']) => {
+          onChange={(value: LogItem["sleep"]["quality"]) => {
             if (tempLog.data.sleep.quality === value) {
               tempLog.update({
                 sleep: {
@@ -319,7 +310,6 @@ export const Logger = ({
                 }
               })
             } else {
-
               tempLog.update({
                 sleep: {
                   ...tempLog.data.sleep,
@@ -332,40 +322,40 @@ export const Logger = ({
           showDisable={showDisable}
           onDisableStep={() => {
             askToDisableStep().then(() => {
-              toggleStep('sleep')
+              toggleStep("sleep")
               next()
             })
           }}
         />
-      ),
+      )
     })
   }
 
-  if (avaliableSteps.includes('emotions')) {
+  if (avaliableSteps.includes("emotions")) {
     content.push({
-      key: 'emotions',
+      key: "emotions",
       slide: (
         <View
           style={{
             paddingBottom: insets.bottom + 20,
-            flex: 1,
+            flex: 1
           }}
         >
           <SlideEmotions
-            defaultIndex={EMOTIONS_INDEX_MAPPING[tempLog.data.rating || 'neutral']}
+            defaultIndex={EMOTIONS_INDEX_MAPPING[tempLog.data.rating || "neutral"]}
             onChange={(emotions: Emotion[]) => {
               tempLog.update({ emotions: emotions.map(emotion => emotion.key) })
             }}
             showDisable={showDisable}
           />
         </View>
-      ),
+      )
     })
   }
 
-  if (avaliableSteps.includes('tags')) {
+  if (avaliableSteps.includes("tags")) {
     content.push({
-      key: 'tags',
+      key: "tags",
       slide: (
         <SlideTags
           onChange={(tags: TagReference[]) => {
@@ -373,27 +363,27 @@ export const Logger = ({
           }}
           onDisableStep={() => {
             askToDisableStep().then(() => {
-              toggleStep('tags')
+              toggleStep("tags")
               next()
             })
           }}
           showDisable={showDisable}
         />
-      ),
+      )
     })
   }
 
-  if (avaliableSteps.includes('message')) {
+  if (avaliableSteps.includes("message")) {
     content.push({
-      key: 'message',
+      key: "message",
       slide: (
         <SlideMessage
-          onChange={(message) => {
+          onChange={message => {
             tempLog.update({ message })
           }}
           onDisableStep={() => {
             askToDisableStep().then(() => {
-              toggleStep('message')
+              toggleStep("message")
               next()
             })
           }}
@@ -404,28 +394,24 @@ export const Logger = ({
     })
   }
 
-  if (avaliableSteps.includes('reminder')) {
+  if (avaliableSteps.includes("reminder")) {
     content.push({
-      key: 'reminder',
-      slide: (
-        <SlideReminder
-          onPress={next}
-        />
-      ),
+      key: "reminder",
+      slide: <SlideReminder onPress={next} />,
       action: <SlideAction type="hidden" />
     })
   }
 
-  if (avaliableSteps.includes('feedback') && !!question) {
+  if (avaliableSteps.includes("feedback") && !!question) {
     content.push({
-      key: 'feedback',
+      key: "feedback",
       slide: (
         <SlideFeedback
           question={question}
           onPress={next}
           onDisableStep={() => {
             askToDisableFeedbackStep().then(() => {
-              toggleStep('feedback')
+              toggleStep("feedback")
               next()
             })
           }}
@@ -435,9 +421,9 @@ export const Logger = ({
     })
   }
 
-  const _carousel = useRef<ICarouselInstance>(null);
+  const _carousel = useRef<ICarouselInstance>(null)
 
-  const messageSlideIndex = content.findIndex(item => item.key === 'message')
+  const messageSlideIndex = content.findIndex(item => item.key === "message")
   const hasMessageSlide = messageSlideIndex !== -1
 
   const isMounted = useRef(true)
@@ -451,11 +437,7 @@ export const Logger = ({
   const onScrollEnd = (index: number) => {
     Keyboard.dismiss()
 
-    if (
-      index === messageSlideIndex &&
-      hasMessageSlide &&
-      mode === 'create'
-    ) {
+    if (index === messageSlideIndex && hasMessageSlide && mode === "create") {
       texAreaRef.current?.focus()
     }
   }
@@ -467,20 +449,22 @@ export const Logger = ({
   }, [slideIndex])
 
   return (
-    <View style={{
-      flex: 1,
-      backgroundColor: colors.backgroundSecondary,
-      position: 'relative',
-    }}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: colors.backgroundSecondary,
+        position: "relative"
+      }}
+    >
       <View
         style={{
           flex: 1,
-          paddingTop: Platform.OS === 'android' ? insets.top : 0,
+          paddingTop: Platform.OS === "android" ? insets.top : 0
         }}
       >
         <View
           style={{
-            paddingHorizontal: 20,
+            paddingHorizontal: 20
           }}
         >
           {content.length > 1 ? (
@@ -505,16 +489,15 @@ export const Logger = ({
             isDeleteable={isEditing}
             onClose={() => {
               if (tempLog.isDirty) {
-                askToCancel().then(() => cancel()).catch(() => { })
+                askToCancel()
+                  .then(() => cancel())
+                  .catch(() => {})
               } else {
                 cancel()
               }
             }}
             onDelete={() => {
-              if (
-                tempLog.data.message.length > 0 ||
-                tempLog.data.tags.length > 0
-              ) {
+              if (tempLog.data.message.length > 0 || tempLog.data.tags.length > 0) {
                 askToRemove().then(() => remove())
               } else {
                 remove()
@@ -525,12 +508,12 @@ export const Logger = ({
         <View
           style={{
             flex: 1,
-            flexDirection: 'column',
+            flexDirection: "column"
           }}
         >
           <Carousel
             loop={false}
-            width={Dimensions.get('window').width}
+            width={Dimensions.get("window").width}
             ref={_carousel}
             data={content}
             defaultIndex={Math.min(initialIndex, content.length - 1)}
@@ -545,22 +528,18 @@ export const Logger = ({
             enabled={false}
             renderItem={({ index }) => content[index].slide}
             panGestureHandlerProps={{
-              activeOffsetX: [-10, 10],
+              activeOffsetX: [-10, 10]
             }}
           />
         </View>
       </View>
-      {
-        content[slideIndex] &&
-        (
-          content[slideIndex].action || (
-            slideIndex === content.length - 1 ? (
-              <SlideAction type="save" onPress={next} />
-            ) : (
-              <SlideAction type="next" onPress={next} />
-            )
-          )
-        )}
+      {content[slideIndex] &&
+        (content[slideIndex].action ||
+          (slideIndex === content.length - 1 ? (
+            <SlideAction type="save" onPress={next} />
+          ) : (
+            <SlideAction type="next" onPress={next} />
+          )))}
     </View>
   )
 }

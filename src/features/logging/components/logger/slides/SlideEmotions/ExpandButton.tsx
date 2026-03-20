@@ -1,31 +1,26 @@
-import { t } from "@/shared/utils/translation";
-import useColors from "@/shared/hooks/useColors";
-import useHaptics from "@/shared/hooks/useHaptics";
-import { Pressable, Text, View } from "react-native";
-import { Minus, Plus } from "react-native-feather";
+import { t } from "@/shared/utils/translation"
+import useColors from "@/shared/hooks/useColors"
+import useHaptics from "@/shared/hooks/useHaptics"
+import { Pressable, Text, View } from "react-native"
+import { Minus, Plus } from "react-native-feather"
 
-export const ExpandButton = ({
-  onPress, expanded,
-}: {
-  onPress: () => void;
-  expanded: boolean;
-}) => {
-  const colors = useColors();
-  const haptics = useHaptics();
+export const ExpandButton = ({ onPress, expanded }: { onPress: () => void; expanded: boolean }) => {
+  const colors = useColors()
+  const haptics = useHaptics()
 
   return (
     <Pressable
       onPress={() => {
-        haptics.selection();
-        onPress();
+        haptics.selection()
+        onPress()
       }}
     >
       <View
         style={{
           marginRight: 8,
-          justifyContent: 'center',
-          alignItems: 'center',
-          flexDirection: 'row',
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "row"
         }}
       >
         {expanded ? (
@@ -38,12 +33,12 @@ export const ExpandButton = ({
             marginLeft: 4,
             color: colors.textSecondary,
             fontSize: 17,
-            fontWeight: '500',
+            fontWeight: "500"
           }}
         >
-          {expanded ? t('more') : t('less')}
+          {expanded ? t("more") : t("less")}
         </Text>
       </View>
     </Pressable>
-  );
-};
+  )
+}

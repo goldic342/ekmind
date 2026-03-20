@@ -3,25 +3,25 @@ import { language, locale } from "@/shared/utils/translation"
 import dayjs from "dayjs"
 import { useEffect, useRef, useState } from "react"
 import { Platform } from "react-native"
-import semver from 'semver'
-import pkg from '../../../package.json'
+import semver from "semver"
+import pkg from "../../../package.json"
 import { useSettings } from "@/features/settings/hooks/useSettings"
 
 export interface IQuestion {
-  id: string;
-  appVersion: string;
+  id: string
+  appVersion: string
   text: {
-    en: string;
-    de?: string;
-  };
-  type: 'single' | 'multiple';
+    en: string
+    de?: string
+  }
+  type: "single" | "multiple"
   answers: {
-    id: string;
-    emoji: string;
+    id: string
+    emoji: string
     text: {
-      en: string;
-      de?: string;
-    } | null;
+      en: string
+      de?: string
+    } | null
   }[]
 }
 
@@ -31,65 +31,76 @@ export const useQuestioner = () => {
 
   const [question, setQuestion] = useState<IQuestion | null>(null)
 
-  const questionsDone = settings.actionsDone.filter((action: any) => action?.title?.startsWith('question_slide_'))
+  const questionsDone = settings.actionsDone.filter((action: any) =>
+    action?.title?.startsWith("question_slide_")
+  )
 
   const getQuestion = (): Promise<IQuestion | null> => {
-    const lastQuestionAnsweredToday = questionsDone.length > 0 ? dayjs(questionsDone[questionsDone.length - 1].date).isSame(dayjs(), 'day') : false
+    const lastQuestionAnsweredToday =
+      questionsDone.length > 0
+        ? dayjs(questionsDone[questionsDone.length - 1].date).isSame(dayjs(), "day")
+        : false
 
     if (lastQuestionAnsweredToday) {
-      console.log('Not showing question because one was answered today')
+      console.log("Not showing question because one was answered today")
       return Promise.resolve(null)
     }
 
     return fetch(QUESTIONS_PULL_URL)
       .then(response => response.json())
       .then(data => {
-        if (!data) return null;
+        if (!data) return null
 
         const question = data.find((question: IQuestion) => {
-          const satisfiesVersion = question.appVersion ? semver.satisfies(pkg.version, question.appVersion) : true
+          const satisfiesVersion = question.appVersion
+            ? semver.satisfies(pkg.version, question.appVersion)
+            : true
           const hasBeenAnswered = hasActionDone(`question_slide_${question.id}`)
-          const isInMyLanguage = question.text[language] !== undefined;
+          const isInMyLanguage = question.text[language] !== undefined
 
-          if (!satisfiesVersion) console.log('Question not shown because version does not match', question.appVersion, pkg.version)
-          if (hasBeenAnswered) console.log('Question not shown because it has been answered', question.id)
-          if (!isInMyLanguage) console.log('Question not shown because it is not in my language', question.text)
+          if (!satisfiesVersion)
+            console.log(
+              "Question not shown because version does not match",
+              question.appVersion,
+              pkg.version
+            )
+          if (hasBeenAnswered)
+            console.log("Question not shown because it has been answered", question.id)
+          if (!isInMyLanguage)
+            console.log("Question not shown because it is not in my language", question.text)
 
-          return (
-            satisfiesVersion &&
-            !hasBeenAnswered &&
-            isInMyLanguage
-          )
+          return satisfiesVersion && !hasBeenAnswered && isInMyLanguage
         })
 
         return question || null
       })
       .catch(error => {
-        return null;
+        return null
       })
   }
 
-  const submit = (question: IQuestion, answers: IQuestion['answers']) => {
+  const submit = (question: IQuestion, answers: IQuestion["answers"]) => {
+    const question_text = question.text[language] || question.text["en"]
 
-    const question_text = question.text[language] || question.text['en'];
+    const answer_texts = answers
+      .map(answer => {
+        if (answer.text === null) {
+          return answer.emoji
+        }
 
-    const answer_texts = answers.map(answer => {
-      if (answer.text === null) {
-        return answer.emoji;
-      }
+        if (answer?.text[language]) {
+          return `${answer.emoji} ${answer.text[language]}`
+        }
 
-      if (answer?.text[language]) {
-        return `${answer.emoji} ${answer.text[language]}`
-      }
-
-      return `${answer.emoji} ${answer?.text?.en}`
-    }).join(', ')
+        return `${answer.emoji} ${answer?.text?.en}`
+      })
+      .join(", ")
 
     const metaData = {
       locale: locale,
       version: pkg.version,
       os: Platform.OS,
-      deviceId: settings.deviceId,
+      deviceId: settings.deviceId
     }
 
     const body = {
@@ -97,30 +108,28 @@ export const useQuestioner = () => {
       language,
       question_text,
       answer_texts,
-      answer_ids: answers.map(answer => answer.id).join(', '),
+      answer_ids: answers.map(answer => answer.id).join(", "),
       question,
-      ...metaData,
+      ...metaData
     }
 
-
-    console.log('Sending Question Feedback', body)
+    console.log("Sending Question Feedback", body)
 
     if (__DEV__) {
-      console.log('Not sending Question Feedback in dev mode')
+      console.log("Not sending Question Feedback in dev mode")
       addActionDone(`question_slide_${question.id}`)
       return
     }
 
     return fetch(QUESTION_SUBMIT_URL, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify(body)
+    }).then(() => {
+      addActionDone(`question_slide_${question.id}`)
     })
-      .then(() => {
-        addActionDone(`question_slide_${question.id}`)
-      })
   }
 
   useEffect(() => {

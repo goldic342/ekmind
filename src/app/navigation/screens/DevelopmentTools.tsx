@@ -1,29 +1,29 @@
-import Button from "@/shared/ui/Button";
-import LinkButton from "@/shared/ui/LinkButton";
-import MenuList from "@/shared/ui/MenuList";
-import MenuListHeadline from "@/shared/ui/MenuListHeadline";
-import MenuListItem from "@/shared/ui/MenuListItem";
-import { PageWithHeaderLayout } from "@/shared/ui/PageWithHeaderLayout";
-import TextInfo from "@/shared/ui/TextInfo";
-import { t } from "@/shared/utils/translation";
-import dayjs from "dayjs";
-import { ScrollView, Text, View, ViewStyle } from "react-native";
-import useColors from "@/shared/hooks/useColors";
-import { useLogState } from "@/features/logging/hooks/useLogs";
-import { useSettings } from "@/features/settings/hooks/useSettings";
-import { useTagsState } from "@/features/tags/hooks/useTags";
-import { Trash } from "lucide-react-native";
+import Button from "@/shared/ui/Button"
+import LinkButton from "@/shared/ui/LinkButton"
+import MenuList from "@/shared/ui/MenuList"
+import MenuListHeadline from "@/shared/ui/MenuListHeadline"
+import MenuListItem from "@/shared/ui/MenuListItem"
+import { PageWithHeaderLayout } from "@/shared/ui/PageWithHeaderLayout"
+import TextInfo from "@/shared/ui/TextInfo"
+import { t } from "@/shared/utils/translation"
+import dayjs from "dayjs"
+import { ScrollView, Text, View, ViewStyle } from "react-native"
+import useColors from "@/shared/hooks/useColors"
+import { useLogState } from "@/features/logging/hooks/useLogs"
+import { useSettings } from "@/features/settings/hooks/useSettings"
+import { useTagsState } from "@/features/tags/hooks/useTags"
+import { Trash } from "lucide-react-native"
 
 const Card = ({
   title,
   children,
-  style,
+  style
 }: {
-  title: string;
-  children: React.ReactNode;
-  style?: ViewStyle;
+  title: string
+  children: React.ReactNode
+  style?: ViewStyle
 }) => {
-  const colors = useColors();
+  const colors = useColors()
 
   return (
     <View
@@ -33,7 +33,7 @@ const Card = ({
         padding: 16,
         flex: 1,
         height: "100%",
-        ...style,
+        ...style
       }}
     >
       <Text
@@ -41,7 +41,7 @@ const Card = ({
           fontSize: 20,
           fontWeight: "bold",
           color: colors.text,
-          marginBottom: 8,
+          marginBottom: 8
         }}
       >
         {children}
@@ -50,98 +50,90 @@ const Card = ({
         style={{
           fontSize: 14,
           fontWeight: "bold",
-          color: colors.textSecondary,
+          color: colors.textSecondary
         }}
       >
         {title}
       </Text>
     </View>
-  );
-};
+  )
+}
 
 export const DevelopmentTools = () => {
-  const colors = useColors();
-  const logState = useLogState();
+  const colors = useColors()
+  const logState = useLogState()
   const { tags } = useTagsState()
-  const { settings, setSettings, removeActionDone } = useSettings();
+  const { settings, setSettings, removeActionDone } = useSettings()
 
   const words_total = logState.items
-    .map((d) => d.message.split(" ").length)
-    .reduce((a, b) => a + b, 0);
+    .map(d => d.message.split(" ").length)
+    .reduce((a, b) => a + b, 0)
 
   return (
     <PageWithHeaderLayout
       style={{
-        flex: 1,
+        flex: 1
       }}
     >
       <ScrollView
         style={{
           padding: 16,
-          backgroundColor: colors.background,
+          backgroundColor: colors.background
         }}
       >
         <View
           style={{
             flexDirection: "row",
-            alignItems: "center",
+            alignItems: "center"
           }}
         >
           <Card
             title={t("development_statistics_days_logged")}
             style={{
-              marginRight: 16,
+              marginRight: 16
             }}
           >
             {logState.items.length}
           </Card>
-          <Card title={t("development_statistics_words_total")}>
-            {words_total}
-          </Card>
+          <Card title={t("development_statistics_words_total")}>{words_total}</Card>
         </View>
         <View
           style={{
             flexDirection: "row",
             alignItems: "center",
-            marginTop: 16,
+            marginTop: 16
           }}
         >
           <Card
             title={t("development_statistics_tags_unique")}
             style={{
-              marginRight: 16,
+              marginRight: 16
             }}
           >
             {tags?.length}
           </Card>
           <Card title={t("development_statistics_days_tagged")}>
-            {
-              logState.items.filter((d) => d.tags.length > 0)
-                .length
-            }
+            {logState.items.filter(d => d.tags.length > 0).length}
           </Card>
         </View>
         <MenuListHeadline>Device Information</MenuListHeadline>
         <MenuList>
-          <MenuListItem
-            isLast
-          >
+          <MenuListItem isLast>
             <View>
               <Text
                 style={{
                   color: colors.text,
                   fontSize: 17,
-                  marginTop: 4,
+                  marginTop: 4
                 }}
               >
                 Device ID
-
               </Text>
               <Text
                 style={{
                   color: colors.textSecondary,
                   fontSize: 14,
-                  marginTop: 4,
+                  marginTop: 4
                 }}
               >
                 {settings.deviceId}
@@ -154,7 +146,7 @@ export const DevelopmentTools = () => {
           {settings.actionsDone.map((action, i) => (
             <MenuListItem
               style={{
-                flexDirection: "column",
+                flexDirection: "column"
               }}
               key={i}
               isLast={i === settings.actionsDone.length - 1}
@@ -162,19 +154,19 @@ export const DevelopmentTools = () => {
               <View
                 style={{
                   flexDirection: "row",
-                  justifyContent: "space-between",
+                  justifyContent: "space-between"
                 }}
               >
                 <View
                   style={{
-                    maxWidth: "85%",
+                    maxWidth: "85%"
                   }}
                 >
                   <Text
                     style={{
                       color: colors.text,
                       fontSize: 17,
-                      marginTop: 4,
+                      marginTop: 4
                     }}
                   >
                     {action.title}
@@ -183,7 +175,7 @@ export const DevelopmentTools = () => {
                     style={{
                       color: colors.textSecondary,
                       fontSize: 14,
-                      marginTop: 4,
+                      marginTop: 4
                     }}
                   >
                     {dayjs(action.date).format("L - LT")}
@@ -191,9 +183,11 @@ export const DevelopmentTools = () => {
                 </View>
                 <LinkButton
                   onPress={() => {
-                    removeActionDone(action.title);
+                    removeActionDone(action.title)
                   }}
-                ><Trash size={20} color={colors.tint} /></LinkButton>
+                >
+                  <Trash size={20} color={colors.tint} />
+                </LinkButton>
               </View>
             </MenuListItem>
           ))}
@@ -201,15 +195,15 @@ export const DevelopmentTools = () => {
         <Button
           type="danger"
           style={{
-            marginTop: 16,
+            marginTop: 16
           }}
           onPress={() => {
-            setSettings((settings) => ({
+            setSettings(settings => ({
               ...settings,
               actionsDone: settings.actionsDone.filter(
-                (action) => !action?.title?.startsWith("question_slide_")
-              ),
-            }));
+                action => !action?.title?.startsWith("question_slide_")
+              )
+            }))
           }}
         >
           {t("development_statistics_reset_questions")}
@@ -217,26 +211,24 @@ export const DevelopmentTools = () => {
         <Button
           type="danger"
           style={{
-            marginTop: 12,
+            marginTop: 12
           }}
           onPress={() => {
-            setSettings((settings) => ({
+            setSettings(settings => ({
               ...settings,
-              actionsDone: [],
-            }));
+              actionsDone: []
+            }))
           }}
         >
           {t("development_statistics_reset_actions")}
         </Button>
-        <TextInfo>
-          {t("development_statistics_reset_questions_description")}
-        </TextInfo>
+        <TextInfo>{t("development_statistics_reset_questions_description")}</TextInfo>
         <View
           style={{
-            height: 100,
+            height: 100
           }}
         />
       </ScrollView>
     </PageWithHeaderLayout>
-  );
-};
+  )
+}

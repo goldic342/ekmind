@@ -1,50 +1,44 @@
-import { Card } from '@/features/statistics/components/Statistics/Card';
-import { t } from '@/shared/utils/translation';
-import useColors from '@/shared/hooks/useColors';
-import { EmotionsDistributionData } from '@/features/statistics/hooks/useStatistics/EmotionsDistributuon';
-import { Emotion } from '@/types';
-import { Text, View } from 'react-native';
-import { EmotionItem } from '@/features/logging/screens/LogList/EmotionItem';
+import { Card } from "@/features/statistics/components/Statistics/Card"
+import { t } from "@/shared/utils/translation"
+import useColors from "@/shared/hooks/useColors"
+import { EmotionsDistributionData } from "@/features/statistics/hooks/useStatistics/EmotionsDistributuon"
+import { Emotion } from "@/types"
+import { Text, View } from "react-native"
+import { EmotionItem } from "@/features/logging/screens/LogList/EmotionItem"
 
-const EmotionBar = ({
-  emotion,
-  count,
-}: {
-  emotion: Emotion;
-  count: number;
-}) => {
+const EmotionBar = ({ emotion, count }: { emotion: Emotion; count: number }) => {
   const colors = useColors()
 
   return (
     <View
       style={{
-        position: 'relative',
+        position: "relative",
         marginBottom: 8,
-        flexDirection: 'row',
-        alignItems: 'center',
+        flexDirection: "row",
+        alignItems: "center"
       }}
     >
       <Text
         style={{
           color: colors.textSecondary,
           fontSize: 17,
-          fontWeight: '500',
-          position: 'relative',
+          fontWeight: "500",
+          position: "relative",
           marginRight: 16,
-          textAlign: 'right',
-          marginLeft: 8,
+          textAlign: "right",
+          marginLeft: 8
         }}
-      >{count}x</Text>
+      >
+        {count}x
+      </Text>
       <View
         style={{
           flex: 1,
-          flexDirection: 'row',
-          alignItems: 'center',
+          flexDirection: "row",
+          alignItems: "center"
         }}
       >
-        <EmotionItem
-          emotion={emotion}
-        />
+        <EmotionItem emotion={emotion} />
       </View>
     </View>
   )
@@ -52,41 +46,33 @@ const EmotionBar = ({
 
 export const EmotionsDistributionContent = ({
   data,
-  limit = 5,
+  limit = 5
 }: {
-  data: EmotionsDistributionData,
-  limit?: number,
+  data: EmotionsDistributionData
+  limit?: number
 }) => {
   return (
     <View
       style={{
-        flexDirection: 'column',
+        flexDirection: "column"
       }}
     >
       {data.emotions.slice(0, limit).map(emotion => {
         return (
-          <EmotionBar
-            key={emotion?.details?.key}
-            emotion={emotion.details}
-            count={emotion.count}
-          />
-        );
+          <EmotionBar key={emotion?.details?.key} emotion={emotion.details} count={emotion.count} />
+        )
       })}
     </View>
   )
 }
 
-export const EmotionsDistributionCard = ({
-  data,
-}: {
-  data: EmotionsDistributionData
-}) => {
+export const EmotionsDistributionCard = ({ data }: { data: EmotionsDistributionData }) => {
   return (
     <Card
-      subtitle={t('emotions')}
-      title={t('statistics_emotions_distribution_title', { count: data.emotions.length })}
+      subtitle={t("emotions")}
+      title={t("statistics_emotions_distribution_title", { count: data.emotions.length })}
     >
       <EmotionsDistributionContent data={data} />
     </Card>
-  );
-};
+  )
+}

@@ -1,23 +1,23 @@
-import useColors from "@/shared/hooks/useColors";
-import * as Sharing from 'expo-sharing';
-import { useRef, useState } from "react";
-import { ActivityIndicator, Image, Text, View, ViewStyle } from "react-native";
-import { Share } from 'react-native-feather';
-import { captureRef } from "react-native-view-shot";
-import LinkButton from './LinkButton';
+import useColors from "@/shared/hooks/useColors"
+import * as Sharing from "expo-sharing"
+import { useRef, useState } from "react"
+import { ActivityIndicator, Image, Text, View, ViewStyle } from "react-native"
+import { Share } from "react-native-feather"
+import { captureRef } from "react-native-view-shot"
+import LinkButton from "./LinkButton"
 
-const LOGO = require('../../../assets/images/icon.png')
+const LOGO = require("../../../assets/images/icon.png")
 
 const Title = ({ children }: { children: string }) => {
-  const colors = useColors();
+  const colors = useColors()
 
   return (
     <Text
       style={{
         letterSpacing: -0.1,
         fontSize: 20,
-        fontWeight: 'bold',
-        color: colors.text,
+        fontWeight: "bold",
+        color: colors.text
       }}
     >
       {children}
@@ -26,7 +26,7 @@ const Title = ({ children }: { children: string }) => {
 }
 
 const SubTitle = ({ children }: { children: string }) => {
-  const colors = useColors();
+  const colors = useColors()
 
   return (
     <Text
@@ -34,7 +34,7 @@ const SubTitle = ({ children }: { children: string }) => {
         fontSize: 17,
         color: colors.textSecondary,
         marginTop: 4,
-        marginBottom: 16,
+        marginBottom: 16
       }}
     >
       {children}
@@ -42,31 +42,25 @@ const SubTitle = ({ children }: { children: string }) => {
   )
 }
 
-const Container = ({
-  children,
-  style,
-}: {
-  children: React.ReactNode
-  style?: ViewStyle
-}) => {
-  const colors = useColors();
+const Container = ({ children, style }: { children: React.ReactNode; style?: ViewStyle }) => {
+  const colors = useColors()
 
   return (
     <View
       style={{
-        width: '100%',
+        width: "100%",
         backgroundColor: colors.cardBackground,
         borderRadius: 8,
         paddingHorizontal: 20,
         paddingVertical: 16,
         marginTop: 16,
-        ...style,
+        ...style
       }}
     >
       <View
         style={{
-          flexDirection: 'column',
-          width: '100%',
+          flexDirection: "column",
+          width: "100%"
         }}
       >
         {children}
@@ -79,34 +73,33 @@ export const BigCard = ({
   title,
   subtitle,
   children,
-  isShareable,
+  isShareable
 }: {
-  title?: string,
-  subtitle?: string,
-  children: React.ReactNode,
-  isShareable?: boolean,
+  title?: string
+  subtitle?: string
+  children: React.ReactNode
+  isShareable?: boolean
 }) => {
-  const colors = useColors();
+  const colors = useColors()
   const viewRef = useRef(null)
-  const [shareLoading, setShareLoading] = useState(false);
+  const [shareLoading, setShareLoading] = useState(false)
 
   const share = () => {
-    setShareLoading(true);
+    setShareLoading(true)
 
     captureRef(viewRef)
-      .then((uri) => {
-        setShareLoading(false);
+      .then(uri => {
+        setShareLoading(false)
         Sharing.shareAsync("file://" + uri, {
-          dialogTitle: 'Hey I use this app called "Pixy Mood Tracker" and I wanted to share this with you!',
+          dialogTitle:
+            'Hey I use this app called "Pixy Mood Tracker" and I wanted to share this with you!'
         })
-          .then(() => {
-
-          })
-          .catch((error) => {
+          .then(() => {})
+          .catch(error => {
             console.log(error)
           })
       })
-      .catch((error) => console.error("Oops, snapshot failed", error))
+      .catch(error => console.error("Oops, snapshot failed", error))
   }
 
   return (
@@ -114,15 +107,12 @@ export const BigCard = ({
       <Container>
         <View
           style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center"
           }}
         >
-          {title ?
-            (<Title>{title}</Title>) :
-            (<View />)
-          }
+          {title ? <Title>{title}</Title> : <View />}
           <View
             style={{
               marginTop: -16,
@@ -131,19 +121,13 @@ export const BigCard = ({
               marginBottom: -16,
               width: 48,
               height: 48,
-              justifyContent: 'center',
-              alignItems: 'center',
+              justifyContent: "center",
+              alignItems: "center"
             }}
           >
-            {shareLoading && (
-              <ActivityIndicator size="small" color={colors.textSecondary} />
-            )}
+            {shareLoading && <ActivityIndicator size="small" color={colors.textSecondary} />}
             {!shareLoading && isShareable && (
-              <LinkButton
-                onPress={() => share()}
-                style={{
-                }}
-              >
+              <LinkButton onPress={() => share()} style={{}}>
                 <Share stroke={colors.tint} width={20} />
               </LinkButton>
             )}
@@ -151,20 +135,19 @@ export const BigCard = ({
         </View>
         {subtitle && <SubTitle>{subtitle}</SubTitle>}
         {children}
-
       </Container>
       {/* Share copy */}
       {isShareable && (
         <View
           ref={viewRef}
           style={{
-            position: 'absolute',
-            left: '-100%',
-            top: '-100%',
-            width: '100%',
+            position: "absolute",
+            left: "-100%",
+            top: "-100%",
+            width: "100%",
             backgroundColor: colors.background,
             padding: 16,
-            paddingTop: 0,
+            paddingTop: 0
           }}
         >
           <Container>
@@ -174,11 +157,11 @@ export const BigCard = ({
           </Container>
           <View
             style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
               marginTop: 16,
-              marginLeft: -16,
+              marginLeft: -16
             }}
           >
             <View
@@ -186,22 +169,22 @@ export const BigCard = ({
                 borderRadius: 8,
                 backgroundColor: colors.sharingLogoBackground,
                 marginRight: 8,
-                padding: 2,
+                padding: 2
               }}
             >
               <Image
                 source={LOGO}
                 style={{
                   width: 32,
-                  height: 32,
+                  height: 32
                 }}
               />
             </View>
             <Text
               style={{
                 fontSize: 17,
-                fontWeight: 'bold',
-                color: colors.sharingLogoText,
+                fontWeight: "bold",
+                color: colors.sharingLogoText
               }}
             >
               Pixy Mood Tracker

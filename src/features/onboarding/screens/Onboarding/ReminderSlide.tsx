@@ -1,16 +1,16 @@
-import { Platform, Text, View } from 'react-native';
-import Button from '@/shared/ui/Button';
-import useColors from '@/shared/hooks/useColors';
-import { HeaderImage } from './HeaderImage';
-import { HeaderNavigation } from "./HeaderNavigation";
-import Animated, { FadeIn } from 'react-native-reanimated';
-import Clock from '@/shared/ui/Clock';
-import useNotification from '@/shared/hooks/useNotifications';
-import { useState } from 'react';
-import dayjs from 'dayjs';
-import { SettingsState, useSettings } from '@/features/settings/hooks/useSettings';
-import LinkButton from '@/shared/ui/LinkButton';
-import { t } from '@/shared/utils/translation';
+import { Platform, Text, View } from "react-native"
+import Button from "@/shared/ui/Button"
+import useColors from "@/shared/hooks/useColors"
+import { HeaderImage } from "./HeaderImage"
+import { HeaderNavigation } from "./HeaderNavigation"
+import Animated, { FadeIn } from "react-native-reanimated"
+import Clock from "@/shared/ui/Clock"
+import useNotification from "@/shared/hooks/useNotifications"
+import { useState } from "react"
+import dayjs from "dayjs"
+import { SettingsState, useSettings } from "@/features/settings/hooks/useSettings"
+import LinkButton from "@/shared/ui/LinkButton"
+import { t } from "@/shared/utils/translation"
 
 const Body = ({ index }: { index: number }) => {
   const colors = useColors()
@@ -19,15 +19,15 @@ const Body = ({ index }: { index: number }) => {
     <View
       style={{
         paddingVertical: 16,
-        paddingHorizontal: 32,
+        paddingHorizontal: 32
       }}
     >
       <Text
         style={{
           color: colors.text,
           fontSize: 20,
-          fontWeight: 'bold',
-          marginBottom: 8,
+          fontWeight: "bold",
+          marginBottom: 8
         }}
       >
         {t(`onboarding_step_${index}_title`)}
@@ -36,7 +36,7 @@ const Body = ({ index }: { index: number }) => {
         style={{
           color: colors.onboardingBody,
           fontSize: 17,
-          lineHeight: 24,
+          lineHeight: 24
         }}
       >
         {t(`onboarding_step_${index}_body`)}
@@ -48,23 +48,18 @@ const Body = ({ index }: { index: number }) => {
 export const ReminderSlide = ({
   index,
   setIndex,
-  onSkip,
+  onSkip
 }: {
-  index: number;
-  setIndex: (index: number) => void;
-  onSkip: () => void;
+  index: number
+  setIndex: (index: number) => void
+  onSkip: () => void
 }) => {
   const colors = useColors()
   const { setSettings } = useSettings()
 
-  const {
-    askForPermission,
-    hasPermission,
-    schedule,
-    cancelAll,
-  } = useNotification()
+  const { askForPermission, hasPermission, schedule, cancelAll } = useNotification()
 
-  const [time, setTime] = useState(dayjs().hour(20).minute(0).second(0).toDate());
+  const [time, setTime] = useState(dayjs().hour(20).minute(0).second(0).toDate())
 
   const enable = async () => {
     const has = await hasPermission()
@@ -78,14 +73,14 @@ export const ReminderSlide = ({
         trigger: {
           repeats: true,
           hour: dayjs(time).hour(),
-          minute: dayjs(time).minute(),
-        },
+          minute: dayjs(time).minute()
+        }
       })
 
       setSettings((settings: SettingsState) => ({
         ...settings,
         reminderEnabled: true,
-        reminderTime: dayjs(time).format('HH:mm'),
+        reminderTime: dayjs(time).format("HH:mm")
       }))
     })()
   }
@@ -103,54 +98,52 @@ export const ReminderSlide = ({
     <>
       <Animated.View
         style={{
-          width: '100%',
+          width: "100%",
           backgroundColor: colors.onboardingTopBackground,
-          alignItems: 'center',
-          flex: 1,
+          alignItems: "center",
+          flex: 1
         }}
         entering={FadeIn.duration(800)}
       >
         <HeaderImage
           index={index}
           style={{
-            width: '95%',
-            maxHeight: '100%',
-            maxWidth: 360,
-          }} />
+            width: "95%",
+            maxHeight: "100%",
+            maxWidth: 360
+          }}
+        />
       </Animated.View>
       <View
         style={{
-          flex: 1,
+          flex: 1
         }}
       >
         <View
           style={{
-            flex: 1,
+            flex: 1
           }}
         >
           <HeaderNavigation onSkip={onSkip} index={index} setIndex={setIndex} />
           <Animated.View
             style={{
-              flex: 1,
+              flex: 1
             }}
             entering={FadeIn.duration(800)}
           >
             <Body index={index} />
             <View
               style={{
-                paddingHorizontal: 32,
+                paddingHorizontal: 32
               }}
             >
               <View
                 style={{
-                  maxWidth: Platform.OS === 'ios' ? 80 : 65,
-                  justifyContent: 'center',
+                  maxWidth: Platform.OS === "ios" ? 80 : 65,
+                  justifyContent: "center"
                 }}
               >
-                <Clock
-                  timeDate={time}
-                  onChange={(event, date) => setTime(date)}
-                />
+                <Clock timeDate={time} onChange={(event, date) => setTime(date)} />
               </View>
             </View>
           </Animated.View>
@@ -158,22 +151,22 @@ export const ReminderSlide = ({
         <View
           style={{
             paddingHorizontal: 32,
-            paddingVertical: 16,
+            paddingVertical: 16
           }}
         >
-          <Button
-            onPress={onEnable}
-          >{t('onboarding_step_4_button_1')}</Button>
+          <Button onPress={onEnable}>{t("onboarding_step_4_button_1")}</Button>
           <LinkButton
-            type='secondary'
+            type="secondary"
             onPress={onLater}
             style={{
               paddingTop: 16,
-              paddingBottom: 16,
+              paddingBottom: 16
             }}
-          >{t('onboarding_step_4_button_2')}</LinkButton>
+          >
+            {t("onboarding_step_4_button_2")}
+          </LinkButton>
         </View>
       </View>
     </>
-  );
-};
+  )
+}

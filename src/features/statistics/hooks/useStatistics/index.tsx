@@ -1,9 +1,9 @@
-import dayjs from "dayjs";
-import _ from "lodash";
-import { createContext, useContext, useState } from "react";
-import { LogItem, useLogState } from "@/features/logging/hooks/useLogs";
-import { useTagsState } from "@/features/tags/hooks/useTags";
-import { defaultMoodAvgData, getMoodAvgData, MoodAvgData } from "./MoodAvg";
+import dayjs from "dayjs"
+import _ from "lodash"
+import { createContext, useContext, useState } from "react"
+import { LogItem, useLogState } from "@/features/logging/hooks/useLogs"
+import { useTagsState } from "@/features/tags/hooks/useTags"
+import { defaultMoodAvgData, getMoodAvgData, MoodAvgData } from "./MoodAvg"
 import {
   defaultMoodPeaksNegativeData,
   defaultMoodPeaksPositiveData,
@@ -11,63 +11,67 @@ import {
   getMoodPeaksPositiveData,
   MoodPeaksNegativeData,
   MoodPeaksPositiveData
-} from "./MoodPeaks";
-import { defaultStreaksData, getCurrentStreak, getLongestStreak, StreaksData } from "./Streaks";
+} from "./MoodPeaks"
+import { defaultStreaksData, getCurrentStreak, getLongestStreak, StreaksData } from "./Streaks"
 import {
   defaultTagsDistributionData,
   getTagsDistributionData,
   TagsDistributionData
-} from "./TagsDistribution";
-import { getTagsPeaksData, TagsPeakData } from "./TagsPeaks";
-import { EmotionsDistributionData, defaultEmotionsDistributionData, getEmotionsDistributionData } from "./EmotionsDistributuon";
-import { SleepQualityDistributionData, defaultSleepQualityDistributionDataForXDays, getSleepQualityDistributionForXDays } from "./SleepQualityDistribution";
-import { DATE_FORMAT } from "@/shared/constants/Config";
+} from "./TagsDistribution"
+import { getTagsPeaksData, TagsPeakData } from "./TagsPeaks"
+import {
+  EmotionsDistributionData,
+  defaultEmotionsDistributionData,
+  getEmotionsDistributionData
+} from "./EmotionsDistributuon"
+import {
+  SleepQualityDistributionData,
+  defaultSleepQualityDistributionDataForXDays,
+  getSleepQualityDistributionForXDays
+} from "./SleepQualityDistribution"
+import { DATE_FORMAT } from "@/shared/constants/Config"
 
-const DELAY_LOADING = 1 * 1000;
+const DELAY_LOADING = 1 * 1000
 
 export const STATISTIC_TYPES = [
   "mood_avg",
   "mood_peaks_negative",
   "mood_peaks_positive",
   "tags_peaks",
-  "tags_distribution",
-];
+  "tags_distribution"
+]
 
-type StatisticType = typeof STATISTIC_TYPES[number];
+type StatisticType = (typeof STATISTIC_TYPES)[number]
 
 interface StatisticsState {
-  loaded: boolean;
-  itemsCount: number;
-  moodAvgData: MoodAvgData;
-  moodPeaksPositiveData: MoodPeaksPositiveData;
-  moodPeaksNegativeData: MoodPeaksNegativeData;
-  emotionsDistributionData: EmotionsDistributionData;
-  tagsPeaksData: TagsPeakData;
-  tagsDistributionData: TagsDistributionData;
-  sleepQualityDistributionData: SleepQualityDistributionData;
-  streaks: StreaksData;
+  loaded: boolean
+  itemsCount: number
+  moodAvgData: MoodAvgData
+  moodPeaksPositiveData: MoodPeaksPositiveData
+  moodPeaksNegativeData: MoodPeaksNegativeData
+  emotionsDistributionData: EmotionsDistributionData
+  tagsPeaksData: TagsPeakData
+  tagsDistributionData: TagsDistributionData
+  sleepQualityDistributionData: SleepQualityDistributionData
+  streaks: StreaksData
 }
 
 interface Value {
-  load: ({ force }: { force: boolean }) => void;
-  isAvailable: (type: StatisticType) => boolean;
-  isHighlighted: (type: StatisticType) => boolean;
-  isLoading: boolean;
-  state: StatisticsState;
+  load: ({ force }: { force: boolean }) => void
+  isAvailable: (type: StatisticType) => boolean
+  isHighlighted: (type: StatisticType) => boolean
+  isLoading: boolean
+  state: StatisticsState
 }
 
-const StatisticsContext = createContext({} as Value);
+const StatisticsContext = createContext({} as Value)
 
-export function StatisticsProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function StatisticsProvider({ children }: { children: React.ReactNode }) {
   const logState = useLogState()
   const { tags } = useTagsState()
-  const [isLoading, setIsLoading] = useState(false);
-  const [prevHighlightItems, setPrevHighlightItems] = useState<LogItem[]>([]);
-  const [prevTrendsItems, setPrevTrendsItems] = useState<LogItem[]>([]);
+  const [isLoading, setIsLoading] = useState(false)
+  const [prevHighlightItems, setPrevHighlightItems] = useState<LogItem[]>([])
+  const [prevTrendsItems, setPrevTrendsItems] = useState<LogItem[]>([])
 
   const [state, setState] = useState<StatisticsState>({
     loaded: false,
@@ -80,40 +84,38 @@ export function StatisticsProvider({
     sleepQualityDistributionData: defaultSleepQualityDistributionDataForXDays(),
     streaks: defaultStreaksData,
     tagsPeaksData: {
-      tags: [],
-    },
-  });
+      tags: []
+    }
+  })
 
   const load = ({ force = false }: { force?: boolean }) => {
-    const highlightItems = logState.items.filter((item) => {
-      return dayjs(item.dateTime).isAfter(dayjs().subtract(14, "day"));
-    });
-    const trendsItems = logState.items;
+    const highlightItems = logState.items.filter(item => {
+      return dayjs(item.dateTime).isAfter(dayjs().subtract(14, "day"))
+    })
+    const trendsItems = logState.items
 
-    const highlightItemsChanged = !_.isEqual(
-      prevHighlightItems,
-      highlightItems
-    );
-    const trendsItemsChanged = !_.isEqual(prevTrendsItems, trendsItems);
+    const highlightItemsChanged = !_.isEqual(prevHighlightItems, highlightItems)
+    const trendsItemsChanged = !_.isEqual(prevTrendsItems, trendsItems)
 
     if (!highlightItemsChanged && !trendsItemsChanged && !force) {
-      return;
+      return
     }
 
-    setIsLoading(true);
+    setIsLoading(true)
 
-    const moodAvgData = getMoodAvgData(highlightItems);
-    const moodPeaksPositiveData = getMoodPeaksPositiveData(highlightItems);
-    const moodPeaksNegativeData = getMoodPeaksNegativeData(highlightItems);
-    const tagsPeaksData = getTagsPeaksData(highlightItems, tags);
-    const tagsDistributionData = getTagsDistributionData(
+    const moodAvgData = getMoodAvgData(highlightItems)
+    const moodPeaksPositiveData = getMoodPeaksPositiveData(highlightItems)
+    const moodPeaksNegativeData = getMoodPeaksNegativeData(highlightItems)
+    const tagsPeaksData = getTagsPeaksData(highlightItems, tags)
+    const tagsDistributionData = getTagsDistributionData(highlightItems, tags)
+
+    const emotionsDistributionData = getEmotionsDistributionData(highlightItems)
+
+    const sleepQualityDistributionData = getSleepQualityDistributionForXDays(
       highlightItems,
-      tags
-    );
-
-    const emotionsDistributionData = getEmotionsDistributionData(highlightItems);
-
-    const sleepQualityDistributionData = getSleepQualityDistributionForXDays(highlightItems, dayjs().subtract(14, "day").format(DATE_FORMAT), 30);
+      dayjs().subtract(14, "day").format(DATE_FORMAT),
+      30
+    )
 
     const newState = {
       loaded: true,
@@ -127,89 +129,77 @@ export function StatisticsProvider({
       sleepQualityDistributionData,
       streaks: {
         longest: getLongestStreak(logState.items),
-        current: getCurrentStreak(logState.items),
-      },
-    };
+        current: getCurrentStreak(logState.items)
+      }
+    }
 
-    setPrevHighlightItems(highlightItems);
-    setPrevTrendsItems(trendsItems);
-    setState(newState);
+    setPrevHighlightItems(highlightItems)
+    setPrevTrendsItems(trendsItems)
+    setState(newState)
 
     setTimeout(() => {
-      setIsLoading(false);
-    }, DELAY_LOADING);
+      setIsLoading(false)
+    }, DELAY_LOADING)
 
-    return newState;
-  };
+    return newState
+  }
 
-  const isAvailable = (type: typeof STATISTIC_TYPES[number]) => {
+  const isAvailable = (type: (typeof STATISTIC_TYPES)[number]) => {
     if (type === "mood_avg") {
-      return state.moodAvgData?.itemsCount > 0;
+      return state.moodAvgData?.itemsCount > 0
     }
     if (type === "mood_peaks_positive") {
-      return state.moodPeaksPositiveData?.days.length > 0;
+      return state.moodPeaksPositiveData?.days.length > 0
     }
     if (type === "mood_peaks_negative") {
-      return state.moodPeaksNegativeData?.days.length > 0;
+      return state.moodPeaksNegativeData?.days.length > 0
     }
     if (type === "tags_peaks") {
-      return state.tagsPeaksData?.tags.length > 0;
+      return state.tagsPeaksData?.tags.length > 0
     }
     if (type === "tags_distribution") {
-      return state.tagsDistributionData?.tags.length > 0;
+      return state.tagsDistributionData?.tags.length > 0
     }
     if (type === "emotions_distribution") {
-      return state.emotionsDistributionData?.emotions.length > 3;
+      return state.emotionsDistributionData?.emotions.length > 3
     }
     if (type === "sleep_quality_distribution") {
-      return state.sleepQualityDistributionData?.length > 7;
+      return state.sleepQualityDistributionData?.length > 7
     }
-    return false;
-  };
+    return false
+  }
 
-  const isHighlighted = (type: typeof STATISTIC_TYPES[number]) => {
+  const isHighlighted = (type: (typeof STATISTIC_TYPES)[number]) => {
     if (type === "mood_avg") {
-      return (
-        isAvailable(type) &&
-        state.moodAvgData.ratingHighestPercentage > 60
-      );
+      return isAvailable(type) && state.moodAvgData.ratingHighestPercentage > 60
     }
 
     if (type === "mood_peaks_positive") {
-      return (
-        isAvailable(type) &&
-        state.moodPeaksPositiveData.days.length >= 2
-      );
+      return isAvailable(type) && state.moodPeaksPositiveData.days.length >= 2
     }
 
     if (type === "mood_peaks_negative") {
-      return (
-        isAvailable(type) &&
-        state.moodPeaksNegativeData.days.length >= 2
-      );
+      return isAvailable(type) && state.moodPeaksNegativeData.days.length >= 2
     }
 
     if (type === "tags_peaks") {
       return (
-        isAvailable(type) &&
-        state.tagsPeaksData.tags.filter((tag) => tag.items.length > 5).length > 0
-      );
-    }
-
-    if (type === "tags_distribution") {
-      return (
-        isAvailable(type)
+        isAvailable(type) && state.tagsPeaksData.tags.filter(tag => tag.items.length > 5).length > 0
       )
     }
 
+    if (type === "tags_distribution") {
+      return isAvailable(type)
+    }
+
     if (type === "emotions_distribution") {
       return (
         isAvailable(type) &&
-        state.emotionsDistributionData.emotions.some((emotion) => emotion.count > 5)
-      );
+        state.emotionsDistributionData.emotions.some(emotion => emotion.count > 5)
+      )
     }
 
-    return false;
+    return false
   }
 
   const value: Value = {
@@ -217,20 +207,16 @@ export function StatisticsProvider({
     isAvailable,
     isHighlighted,
     isLoading,
-    state,
-  };
+    state
+  }
 
-  return (
-    <StatisticsContext.Provider value={value}>
-      {children}
-    </StatisticsContext.Provider>
-  );
+  return <StatisticsContext.Provider value={value}>{children}</StatisticsContext.Provider>
 }
 
 export function useStatistics(): Value {
-  const context = useContext(StatisticsContext);
+  const context = useContext(StatisticsContext)
   if (context === undefined) {
-    throw new Error("useStatistics must be used within a StatisticsProvider");
+    throw new Error("useStatistics must be used within a StatisticsProvider")
   }
-  return context;
+  return context
 }

@@ -1,16 +1,16 @@
-import BottomSheet, { BottomSheetBackdrop, BottomSheetScrollView } from '@gorhom/bottom-sheet';
-import { useEffect, useMemo, useRef } from 'react';
-import { Keyboard, View } from 'react-native';
-import { useCalendarFilters } from '@/features/calendar/hooks/useCalendarFilters';
-import useColors from '@/shared/hooks/useColors';
-import { Body } from './Body';
+import BottomSheet, { BottomSheetBackdrop, BottomSheetScrollView } from "@gorhom/bottom-sheet"
+import { useEffect, useMemo, useRef } from "react"
+import { Keyboard, View } from "react-native"
+import { useCalendarFilters } from "@/features/calendar/hooks/useCalendarFilters"
+import useColors from "@/shared/hooks/useColors"
+import { Body } from "./Body"
 
 export const CalendarBottomSheet = () => {
   const colors = useColors()
   const calendarFilters = useCalendarFilters()
 
-  const bottomSheetRef = useRef<BottomSheet>(null);
-  const snapPoints = useMemo(() => ['30%', '50%', '90%'], []);
+  const bottomSheetRef = useRef<BottomSheet>(null)
+  const snapPoints = useMemo(() => ["30%", "50%", "90%"], [])
 
   useEffect(() => {
     if (calendarFilters.isOpen) {
@@ -29,7 +29,7 @@ export const CalendarBottomSheet = () => {
       Keyboard.dismiss()
       calendarFilters.close()
     }
-  };
+  }
 
   return (
     <BottomSheet
@@ -43,40 +43,40 @@ export const CalendarBottomSheet = () => {
         shadowColor: "#000",
         shadowOffset: {
           width: 0,
-          height: 11,
+          height: 11
         },
         shadowOpacity: calendarFilters.isOpen ? 1 : 0,
         shadowRadius: 14.78,
 
-        elevation: 22,
+        elevation: 22
       }}
       backgroundStyle={{
-        backgroundColor: colors.backgroundSecondary,
+        backgroundColor: colors.backgroundSecondary
       }}
       handleComponent={() => (
         <View
           style={{
             flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
+            justifyContent: "center",
+            alignItems: "center"
           }}
         >
           {calendarFilters.isOpen && (
-            <View style={{
-              width: 40,
-              height: 4,
-              marginTop: -16,
-              backgroundColor: colors.bottomSheetHandle,
-              borderRadius: 2,
-            }} />
+            <View
+              style={{
+                width: 40,
+                height: 4,
+                marginTop: -16,
+                backgroundColor: colors.bottomSheetHandle,
+                borderRadius: 2
+              }}
+            />
           )}
         </View>
       )}
       backdropComponent={BottomSheetBackdrop}
     >
-      <BottomSheetScrollView
-        keyboardShouldPersistTaps='handled'
-      >
+      <BottomSheetScrollView keyboardShouldPersistTaps="handled">
         <Body />
       </BottomSheetScrollView>
     </BottomSheet>

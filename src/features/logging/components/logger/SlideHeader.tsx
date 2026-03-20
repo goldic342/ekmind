@@ -1,73 +1,70 @@
-import Button from '@/shared/ui/Button';
-import { locale, t } from '@/shared/utils/translation';
-import useColors from "@/shared/hooks/useColors";
-import useHaptics from "@/shared/hooks/useHaptics";
-import { useTemporaryLog } from '@/features/logging/hooks/useTemporaryLog';
-import { getItemDateTitle } from '@/shared/utils/utils';
-import dayjs from 'dayjs';
-import { useState } from 'react';
-import { Platform, Pressable, Text, View } from 'react-native';
-import { ArrowLeft, Trash, X } from 'react-native-feather';
-import DateTimePickerModal from "react-native-modal-datetime-picker";
+import Button from "@/shared/ui/Button"
+import { locale, t } from "@/shared/utils/translation"
+import useColors from "@/shared/hooks/useColors"
+import useHaptics from "@/shared/hooks/useHaptics"
+import { useTemporaryLog } from "@/features/logging/hooks/useTemporaryLog"
+import { getItemDateTitle } from "@/shared/utils/utils"
+import dayjs from "dayjs"
+import { useState } from "react"
+import { Platform, Pressable, Text, View } from "react-native"
+import { ArrowLeft, Trash, X } from "react-native-feather"
+import DateTimePickerModal from "react-native-modal-datetime-picker"
 
-const DatePickerHeader = ({
-  onChange,
-}: {
-  onChange: (date: Date) => void,
-}) => {
+const DatePickerHeader = ({ onChange }: { onChange: (date: Date) => void }) => {
   const colors = useColors()
-  const tempLog = useTemporaryLog();
+  const tempLog = useTemporaryLog()
 
   return (
-    <View style={{
-      flexDirection: 'column',
-      alignItems: 'center',
-      paddingTop: 16,
-    }}
+    <View
+      style={{
+        flexDirection: "column",
+        alignItems: "center",
+        paddingTop: 16
+      }}
     >
       <Button
-        type='tertiary'
+        type="tertiary"
         onPress={() => {
           onChange(dayjs(tempLog.data.dateTime).hour(8).minute(0).toDate())
         }}
         style={{
-          width: '100%',
+          width: "100%",
           padding: 12,
           maxWidth: 240,
           marginBottom: 8,
-          borderRadius: 8,
+          borderRadius: 8
         }}
       >
-        <Text style={{ fontSize: 17, color: colors.tertiaryButtonText }}>{t('morning')}</Text>
+        <Text style={{ fontSize: 17, color: colors.tertiaryButtonText }}>{t("morning")}</Text>
       </Button>
       <Button
-        type='tertiary'
+        type="tertiary"
         onPress={() => {
           onChange(dayjs(tempLog.data.dateTime).hour(13).minute(0).toDate())
         }}
         style={{
-          width: '100%',
+          width: "100%",
           maxWidth: 240,
           padding: 12,
           marginBottom: 8,
-          borderRadius: 8,
+          borderRadius: 8
         }}
       >
-        <Text style={{ fontSize: 17, color: colors.tertiaryButtonText }}>{t('afternoon')}</Text>
+        <Text style={{ fontSize: 17, color: colors.tertiaryButtonText }}>{t("afternoon")}</Text>
       </Button>
       <Button
-        type='tertiary'
+        type="tertiary"
         onPress={() => {
           onChange(dayjs(tempLog.data.dateTime).hour(20).minute(0).toDate())
         }}
         style={{
-          width: '100%',
+          width: "100%",
           maxWidth: 240,
           padding: 12,
-          borderRadius: 8,
+          borderRadius: 8
         }}
       >
-        <Text style={{ fontSize: 17, color: colors.tertiaryButtonText }}>{t('evening')}</Text>
+        <Text style={{ fontSize: 17, color: colors.tertiaryButtonText }}>{t("evening")}</Text>
       </Button>
     </View>
   )
@@ -78,39 +75,41 @@ export const SlideHeader = ({
   backVisible,
   onBack,
   onClose,
-  onDelete,
+  onDelete
 }: {
-  isDeleteable: boolean;
-  backVisible?: boolean;
-  onBack?: () => void;
-  onClose?: () => void;
-  onDelete?: () => void;
+  isDeleteable: boolean
+  backVisible?: boolean
+  onBack?: () => void
+  onClose?: () => void
+  onDelete?: () => void
 }) => {
-  const haptics = useHaptics();
+  const haptics = useHaptics()
   const colors = useColors()
-  const tempLog = useTemporaryLog();
+  const tempLog = useTemporaryLog()
 
-  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false)
 
   const dateTime = tempLog.data.dateTime ? new Date(tempLog.data.dateTime) : new Date()
-  const dateTimeTitle = tempLog.data.dateTime !== null ? getItemDateTitle(tempLog.data.dateTime) : '?'
+  const dateTimeTitle =
+    tempLog.data.dateTime !== null ? getItemDateTitle(tempLog.data.dateTime) : "?"
 
   return (
-    <View style={{
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginTop: -8,
-      width: '100%',
-    }}
+    <View
+      style={{
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginTop: -8,
+        width: "100%"
+      }}
     >
-      {Platform.OS !== 'web' && (
+      {Platform.OS !== "web" && (
         <DateTimePickerModal
           customHeaderIOS={() => (
             <DatePickerHeader
               onChange={date => {
                 setDatePickerVisibility(false)
                 tempLog.update({
-                  dateTime: dayjs(date).toISOString(),
+                  dateTime: dayjs(date).toISOString()
                 })
               }}
             />
@@ -123,7 +122,7 @@ export const SlideHeader = ({
           onConfirm={date => {
             setDatePickerVisibility(false)
             tempLog.update({
-              dateTime: dayjs(date).toISOString(),
+              dateTime: dayjs(date).toISOString()
             })
           }}
           onCancel={() => setDatePickerVisibility(false)}
@@ -131,31 +130,31 @@ export const SlideHeader = ({
       )}
       <View
         style={{
-          alignItems: 'flex-start',
-          justifyContent: 'center',
-          flex: 1,
+          alignItems: "flex-start",
+          justifyContent: "center",
+          flex: 1
         }}
       >
         <View
           style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            flex: 1,
+            flexDirection: "row",
+            alignItems: "center",
+            flex: 1
           }}
         >
           {backVisible ? (
             <Pressable
               onPress={() => {
-                haptics.selection();
+                haptics.selection()
                 onBack?.()
               }}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.8 : 1,
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'center',
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
                 height: 42,
-                width: 42,
+                width: 42
               })}
             >
               <ArrowLeft color={colors.logHeaderText} width={24} />
@@ -163,50 +162,51 @@ export const SlideHeader = ({
           ) : (
             <Pressable
               onPress={() => {
-                haptics.selection();
+                haptics.selection()
                 setDatePickerVisibility(true)
               }}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.8 : 1,
-                flexDirection: 'row',
-                alignItems: 'center',
+                flexDirection: "row",
+                alignItems: "center",
                 paddingVertical: 6,
                 paddingHorizontal: 12,
                 backgroundColor: colors.border,
-                borderRadius: 8,
+                borderRadius: 8
               })}
             >
               <Text
                 numberOfLines={1}
                 style={{
                   fontSize: 17,
-                  fontWeight: '600',
-                  color: colors.logHeaderText,
+                  fontWeight: "600",
+                  color: colors.logHeaderText
                 }}
-              >{dateTimeTitle}</Text>
+              >
+                {dateTimeTitle}
+              </Text>
             </Pressable>
           )}
         </View>
       </View>
       <View
         style={{
-          alignItems: 'flex-end',
-          justifyContent: 'center',
+          alignItems: "flex-end",
+          justifyContent: "center"
         }}
       >
         <View
           style={{
-            flexDirection: 'row',
+            flexDirection: "row"
           }}
         >
-
           {isDeleteable && (
             <Pressable
               style={{
                 height: 42,
                 width: 42,
-                justifyContent: 'center',
-                alignItems: 'center',
+                justifyContent: "center",
+                alignItems: "center"
               }}
               onPress={async () => {
                 await haptics.selection()
@@ -220,8 +220,8 @@ export const SlideHeader = ({
             style={{
               height: 42,
               width: 42,
-              justifyContent: 'center',
-              alignItems: 'center',
+              justifyContent: "center",
+              alignItems: "center"
             }}
             onPress={async () => {
               await haptics.selection()
@@ -233,5 +233,5 @@ export const SlideHeader = ({
         </View>
       </View>
     </View>
-  );
-};
+  )
+}

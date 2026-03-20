@@ -1,11 +1,9 @@
-import { IScale } from '@/shared/constants/Colors/scales';
-import useColors from "./useColors";
-import { RATING_KEYS } from "@/features/logging/hooks/useLogs";
-import { SettingsState, useSettings } from "@/features/settings/hooks/useSettings";
+import { IScale } from "@/shared/constants/Colors/scales"
+import useColors from "./useColors"
+import { RATING_KEYS } from "@/features/logging/hooks/useLogs"
+import { SettingsState, useSettings } from "@/features/settings/hooks/useSettings"
 
-export default function useScale(
-  type?: SettingsState['scaleType']
-) {
+export default function useScale(type?: SettingsState["scaleType"]) {
   const colors = useColors()
   const { settings } = useSettings()
 

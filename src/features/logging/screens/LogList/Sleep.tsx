@@ -1,37 +1,30 @@
-import { SlideSleepButton } from '@/features/logging/components/logger/slides/SlideSleepButton';
-import { LogItem } from '@/features/logging/hooks/useLogs';
-import { useNavigation } from '@react-navigation/native';
-import { t } from '@/shared/utils/translation';
-import { View } from 'react-native';
-import { SectionHeader } from './SectionHeader';
+import { SlideSleepButton } from "@/features/logging/components/logger/slides/SlideSleepButton"
+import { LogItem } from "@/features/logging/hooks/useLogs"
+import { useNavigation } from "@react-navigation/native"
+import { t } from "@/shared/utils/translation"
+import { View } from "react-native"
+import { SectionHeader } from "./SectionHeader"
 
-export const Sleep = ({
-  item,
-}: {
-  item: LogItem;
-}) => {
-  const navigation = useNavigation();
+export const Sleep = ({ item }: { item: LogItem }) => {
+  const navigation = useNavigation()
 
-  if (!item.sleep?.quality) return null;
+  if (!item.sleep?.quality) return null
 
   return (
-    <View
-      style={{
-      }}
-    >
+    <View style={{}}>
       <SectionHeader
-        title={t('view_log_sleep')}
+        title={t("view_log_sleep")}
         onEdit={() => {
-          navigation.navigate('LogEdit', {
+          navigation.navigate("LogEdit", {
             id: item.id,
-            step: 'sleep',
-          });
+            step: "sleep"
+          })
         }}
       />
       <View
         style={{
-          flexDirection: 'row',
-          flexWrap: 'wrap',
+          flexDirection: "row",
+          flexWrap: "wrap"
         }}
       >
         <SlideSleepButton
@@ -39,10 +32,10 @@ export const Sleep = ({
           style={{
             flex: 0,
             minWidth: 80,
-            margin: -4,
+            margin: -4
           }}
         />
       </View>
     </View>
-  );
-};
+  )
+}

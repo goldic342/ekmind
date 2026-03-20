@@ -1,25 +1,28 @@
-import { Dayjs } from 'dayjs';
-import { View } from 'react-native';
-import { ChevronLeft, ChevronRight } from 'react-native-feather';
-import Button from '@/shared/ui/Button';
-import useColors from '@/shared/hooks/useColors';
+import { Dayjs } from "dayjs"
+import { View } from "react-native"
+import { ChevronLeft, ChevronRight } from "react-native-feather"
+import Button from "@/shared/ui/Button"
+import useColors from "@/shared/hooks/useColors"
 
 export const Navigation = ({
-  onNext, onPrev, nextMonthDisabled, prevMonthDisabled,
+  onNext,
+  onPrev,
+  nextMonthDisabled,
+  prevMonthDisabled
 }: {
-  nextMonth: Dayjs;
-  prevMonth: Dayjs;
-  onNext: () => void;
-  onPrev: () => void;
-  nextMonthDisabled: boolean;
-  prevMonthDisabled: boolean;
+  nextMonth: Dayjs
+  prevMonth: Dayjs
+  onNext: () => void
+  onPrev: () => void
+  nextMonthDisabled: boolean
+  prevMonthDisabled: boolean
 }) => {
-  const colors = useColors();
+  const colors = useColors()
 
   return (
     <View
       style={{
-        flexDirection: 'row',
+        flexDirection: "row"
       }}
     >
       <Button
@@ -28,7 +31,7 @@ export const Navigation = ({
         type="tertiary"
         style={{
           flex: 1,
-          marginRight: 8,
+          marginRight: 8
         }}
       >
         <ChevronLeft width={20} height={20} color={colors.tertiaryButtonText} strokeWidth={3} />
@@ -38,11 +41,11 @@ export const Navigation = ({
         disabled={nextMonthDisabled}
         type="tertiary"
         style={{
-          flex: 1,
+          flex: 1
         }}
       >
         <ChevronRight width={20} height={20} color={colors.tertiaryButtonText} strokeWidth={3} />
       </Button>
     </View>
-  );
-};
+  )
+}

@@ -1,6 +1,6 @@
-import { PageWithHeaderLayout } from '@/shared/ui/PageWithHeaderLayout';
-import { Text, View, VirtualizedList } from 'react-native';
-import useColors from '@/shared/hooks/useColors';
+import { PageWithHeaderLayout } from "@/shared/ui/PageWithHeaderLayout"
+import { Text, View, VirtualizedList } from "react-native"
+import useColors from "@/shared/hooks/useColors"
 export const LicensesScreen = () => {
   const colors = useColors()
 
@@ -8,12 +8,10 @@ export const LicensesScreen = () => {
     <PageWithHeaderLayout
       style={{
         flex: 1,
-        backgroundColor: colors.background,
+        backgroundColor: colors.background
       }}
     >
-      <Text>
-        Placeholder
-      </Text>
+      <Text>Placeholder</Text>
     </PageWithHeaderLayout>
-  );
+  )
 }

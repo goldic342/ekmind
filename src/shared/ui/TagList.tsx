@@ -1,68 +1,72 @@
-import { Text, View } from 'react-native';
-import MenuList from '@/shared/ui/MenuList';
-import { MAX_TAGS } from '@/shared/constants/Config';
-import { t } from '@/shared/utils/translation';
-import useColors from '@/shared/hooks/useColors';
-import { Tag } from '@/features/tags/hooks/useTags';
-import { TagListItem } from '@/shared/ui/TagListItem';
-import { useNavigation } from '@react-navigation/native';
+import { Text, View } from "react-native"
+import MenuList from "@/shared/ui/MenuList"
+import { MAX_TAGS } from "@/shared/constants/Config"
+import { t } from "@/shared/utils/translation"
+import useColors from "@/shared/hooks/useColors"
+import { Tag } from "@/features/tags/hooks/useTags"
+import { TagListItem } from "@/shared/ui/TagListItem"
+import { useNavigation } from "@react-navigation/native"
 
-export const TagList = ({ tags }: { tags: Tag[]; }) => {
-  const colors = useColors();
-  const navigation = useNavigation();
+export const TagList = ({ tags }: { tags: Tag[] }) => {
+  const colors = useColors()
+  const navigation = useNavigation()
 
   const onEdit = async (tag: Tag) => {
-    navigation.navigate('TagEdit', { id: tag.id })
+    navigation.navigate("TagEdit", { id: tag.id })
   }
 
   return (
     <View
       style={{
-        backgroundColor: colors.background,
+        backgroundColor: colors.background
       }}
     >
       {tags.length >= MAX_TAGS && (
         <View
           style={{
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center',
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
             backgroundColor: colors.cardBackground,
             padding: 16,
             marginTop: 16,
             marginHorizontal: 16,
-            borderRadius: 8,
+            borderRadius: 8
           }}
         >
           <Text
             style={{
               color: colors.text,
-              fontSize: 17,
+              fontSize: 17
             }}
-          >{t('tags_reached_max', { max_count: MAX_TAGS })}</Text>
+          >
+            {t("tags_reached_max", { max_count: MAX_TAGS })}
+          </Text>
         </View>
       )}
       <View
         style={{
           paddingTop: 16,
           paddingLeft: 16,
-          paddingRight: 16,
+          paddingRight: 16
         }}
       >
         {tags.length < 1 && (
           <View
             style={{
               padding: 32,
-              justifyContent: 'center',
-              alignItems: 'center',
+              justifyContent: "center",
+              alignItems: "center"
             }}
           >
             <Text
               style={{
                 opacity: 0.5,
-                color: colors.text,
+                color: colors.text
               }}
-            >{t('tags_empty')}. 👻</Text>
+            >
+              {t("tags_empty")}. 👻
+            </Text>
           </View>
         )}
         <MenuList
@@ -75,10 +79,11 @@ export const TagList = ({ tags }: { tags: Tag[]; }) => {
               key={tag.id}
               tag={tag}
               isLast={index === tags.length - 1}
-              onPress={() => onEdit(tag)} />
+              onPress={() => onEdit(tag)}
+            />
           ))}
         </MenuList>
       </View>
     </View>
-  );
-};
+  )
+}

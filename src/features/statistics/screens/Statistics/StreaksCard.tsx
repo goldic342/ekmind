@@ -12,7 +12,7 @@ export const StreaksCard = () => {
   return (
     <View
       style={{
-        flexDirection: 'row',
+        flexDirection: "row"
       }}
     >
       <ActionCard
@@ -21,7 +21,7 @@ export const StreaksCard = () => {
         subtitle={`Current Streak`}
         style={{
           flex: 1,
-          marginRight: 8,
+          marginRight: 8
         }}
       />
       <ActionCard
@@ -29,7 +29,7 @@ export const StreaksCard = () => {
         title={`${statistics.state.streaks.longest} days`}
         subtitle={`Longest Streak`}
         style={{
-          flex: 1,
+          flex: 1
         }}
       />
     </View>

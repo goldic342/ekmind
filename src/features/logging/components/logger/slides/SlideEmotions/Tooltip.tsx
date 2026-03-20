@@ -1,59 +1,53 @@
-import useColors from "@/shared/hooks/useColors";
-import useHaptics from "@/shared/hooks/useHaptics";
-import { Emotion } from "@/types";
-import { Motion } from "@legendapp/motion";
-import { Pressable, Text, View } from "react-native";
-import { X } from "react-native-feather";
+import useColors from "@/shared/hooks/useColors"
+import useHaptics from "@/shared/hooks/useHaptics"
+import { Emotion } from "@/types"
+import { Motion } from "@legendapp/motion"
+import { Pressable, Text, View } from "react-native"
+import { X } from "react-native-feather"
 
-export const Tooltip = ({
-  emotion,
-  onClose,
-}: {
-  emotion: Emotion;
-  onClose: () => void;
-}) => {
-  const colors = useColors();
-  const haptics = useHaptics();
+export const Tooltip = ({ emotion, onClose }: { emotion: Emotion; onClose: () => void }) => {
+  const colors = useColors()
+  const haptics = useHaptics()
 
   return (
     <Motion.View
       style={{
-        justifyContent: 'center',
-        alignItems: 'flex-start',
+        justifyContent: "center",
+        alignItems: "flex-start",
         padding: 12,
         paddingHorizontal: 16,
-        position: 'absolute',
+        position: "absolute",
         bottom: 0,
         backgroundColor: colors.tooltipBackground,
         zIndex: 1,
         right: 16,
         left: 16,
-        borderRadius: 12,
+        borderRadius: 12
       }}
       initial={{
         opacity: 0,
-        translateY: 100,
+        translateY: 100
       }}
       animate={{
         opacity: 1,
-        translateY: 0,
+        translateY: 0
       }}
     >
       {emotion && (
         <>
           <View
             style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              width: '100%',
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "100%"
             }}
           >
             <Text
               style={{
                 color: colors.tooltipTextSecondary,
                 fontSize: 17,
-                marginBottom: 2,
+                marginBottom: 2
               }}
             >
               {emotion.label}
@@ -64,11 +58,11 @@ export const Tooltip = ({
                 marginTop: -8,
                 marginRight: -8,
                 marginBottom: -8,
-                justifyContent: 'center',
-                alignItems: 'center',
+                justifyContent: "center",
+                alignItems: "center"
               }}
               onPress={() => {
-                haptics.selection();
+                haptics.selection()
                 onClose()
               }}
             >
@@ -79,7 +73,7 @@ export const Tooltip = ({
             style={{
               color: colors.tooltipText,
               fontSize: 17,
-              lineHeight: 24,
+              lineHeight: 24
             }}
           >
             {emotion.description}
@@ -87,5 +81,5 @@ export const Tooltip = ({
         </>
       )}
     </Motion.View>
-  );
-};
+  )
+}

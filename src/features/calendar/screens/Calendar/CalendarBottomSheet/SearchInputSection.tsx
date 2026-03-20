@@ -1,42 +1,43 @@
-import { Pressable, TextInput, View } from 'react-native';
-import useColors from '@/shared/hooks/useColors';
-import { Search, XCircle } from 'react-native-feather';
-import { t } from '@/shared/utils/translation';
+import { Pressable, TextInput, View } from "react-native"
+import useColors from "@/shared/hooks/useColors"
+import { Search, XCircle } from "react-native-feather"
+import { t } from "@/shared/utils/translation"
 
 export const SearchInputSection = ({
-  value, onChange,
+  value,
+  onChange
 }: {
-  value: string;
-  onChange: (text: string) => void;
+  value: string
+  onChange: (text: string) => void
 }) => {
-  const colors = useColors();
+  const colors = useColors()
 
   return (
     <View
       style={{
-        marginBottom: 16,
+        marginBottom: 16
       }}
     >
       <View
         style={{
-          flexDirection: 'row',
-          alignItems: 'center',
+          flexDirection: "row",
+          alignItems: "center",
           borderWidth: 1,
           borderColor: colors.textInputBorder,
           backgroundColor: colors.textInputBackground,
           borderRadius: 8,
-          padding: 8,
+          padding: 8
         }}
       >
         <View
           style={{
-            marginLeft: 4,
+            marginLeft: 4
           }}
         >
           <Search color={colors.textInputPlaceholder} width={20} />
         </View>
         <TextInput
-          placeholder={t('calendar_filters_search')}
+          placeholder={t("calendar_filters_search")}
           value={value}
           placeholderTextColor={colors.textInputPlaceholder}
           style={{
@@ -44,23 +45,24 @@ export const SearchInputSection = ({
             color: colors.textInputText,
             marginLeft: 12,
             fontSize: 17,
-            width: '100%',
-            borderRadius: 8,
+            width: "100%",
+            borderRadius: 8
           }}
-          onChangeText={onChange} />
-        {value !== '' && (
+          onChangeText={onChange}
+        />
+        {value !== "" && (
           <Pressable
             style={{
               paddingRight: 8,
               padding: 8,
-              margin: -8,
+              margin: -8
             }}
-            onPress={() => onChange('')}
+            onPress={() => onChange("")}
           >
             <XCircle color={colors.textInputPlaceholder} width={20} />
           </Pressable>
         )}
       </View>
     </View>
-  );
-};
+  )
+}

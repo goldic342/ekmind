@@ -1,28 +1,30 @@
-import { Text, TextStyle } from "react-native";
-import useColors from "@/shared/hooks/useColors";
+import { Text, TextStyle } from "react-native"
+import useColors from "@/shared/hooks/useColors"
 
 export default function MenuListHeadline({
   children,
-  style = {},
+  style = {}
 }: {
-  children: React.ReactNode,
+  children: React.ReactNode
   style?: TextStyle
 }) {
-  const colors = useColors();
+  const colors = useColors()
 
   return (
-    <Text style={{
-      fontSize: 14,
-      textTransform: 'uppercase',
-      color: colors.textSecondary,
-      padding: 0,
-      borderRadius: 8,
-      width: '100%',
-      marginTop: 32,
-      paddingLeft: 16,
-      marginBottom: 8,
-      ...style,
-    }}>
+    <Text
+      style={{
+        fontSize: 14,
+        textTransform: "uppercase",
+        color: colors.textSecondary,
+        padding: 0,
+        borderRadius: 8,
+        width: "100%",
+        marginTop: 32,
+        paddingLeft: 16,
+        marginBottom: 8,
+        ...style
+      }}
+    >
       {children}
     </Text>
   )

@@ -1,5 +1,5 @@
-import { palette } from '../palette';
-import type { SemanticColors } from '../semantic/light';
+import { palette } from "../palette"
+import type { SemanticColors } from "../semantic/light"
 
 export const buildButtonTheme = (c: SemanticColors) => ({
   miniButtonBackground: c.primary,
@@ -41,13 +41,13 @@ export const buildButtonTheme = (c: SemanticColors) => ({
 
   checkboxBackground: c.surface,
   checkboxBorder: c.borderStrong,
-  checkboxText: '#000',
+  checkboxText: "#000",
   checkboxCheckedBackground: c.primary,
   checkboxCheckedBorder: c.primary,
   checkboxCheckedText: c.primaryContrast,
 
-  switchThumbColor: c.text === '#fff' ? '#FFF' : '#333',
+  switchThumbColor: c.text === "#fff" ? "#FFF" : "#333",
   promoBackground: c.primary,
-  promoBorder: 'rgba(255, 255, 255, 0.1)',
-  promoText: palette.white,
-});
+  promoBorder: "rgba(255, 255, 255, 0.1)",
+  promoText: palette.white
+})

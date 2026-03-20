@@ -7,15 +7,15 @@ import useHaptics from "@/shared/hooks/useHaptics"
 import { FloatButton } from "@/shared/ui/FloatButton"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 
-const ON_EVENT_NAME = Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow'
-const OFF_EVENT_NAME = Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide'
+const ON_EVENT_NAME = Platform.OS === "ios" ? "keyboardWillShow" : "keyboardDidShow"
+const OFF_EVENT_NAME = Platform.OS === "ios" ? "keyboardWillHide" : "keyboardDidHide"
 
 export const SlideAction = ({
   type,
   disabled,
-  onPress,
+  onPress
 }: {
-  type: 'next' | 'save' | 'hidden'
+  type: "next" | "save" | "hidden"
   disabled?: boolean
   onPress?: () => void
 }) => {
@@ -36,22 +36,22 @@ export const SlideAction = ({
     }
   }, [])
 
-  if (type === 'hidden') return null
+  if (type === "hidden") return null
 
-  const bottom = Math.round(keyboard.keyboardHeight) - (Platform.OS === 'ios' ? 20 : 0);
+  const bottom = Math.round(keyboard.keyboardHeight) - (Platform.OS === "ios" ? 20 : 0)
 
   return (
     <View
       style={{
         flex: 1,
-        justifyContent: 'flex-end',
-        alignItems: 'flex-end',
+        justifyContent: "flex-end",
+        alignItems: "flex-end",
         paddingBottom: insets.bottom + 16,
         paddingRight: 32,
-        position: 'absolute',
+        position: "absolute",
         bottom: shouldMove ? bottom : 0,
         right: 0,
-        zIndex: 999,
+        zIndex: 999
       }}
     >
       <FloatButton
@@ -62,11 +62,17 @@ export const SlideAction = ({
         }}
         disabled={disabled}
       >
-        {type === 'save' && (
-          <Check color={disabled ? colors.primaryButtonTextDisabled : colors.primaryButtonText} width={24} />
+        {type === "save" && (
+          <Check
+            color={disabled ? colors.primaryButtonTextDisabled : colors.primaryButtonText}
+            width={24}
+          />
         )}
-        {type === 'next' && (
-          <ArrowRight color={disabled ? colors.primaryButtonTextDisabled : colors.primaryButtonText} width={24} />
+        {type === "next" && (
+          <ArrowRight
+            color={disabled ? colors.primaryButtonTextDisabled : colors.primaryButtonText}
+            width={24}
+          />
         )}
       </FloatButton>
     </View>

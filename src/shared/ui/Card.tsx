@@ -2,18 +2,18 @@ import useColors from "@/shared/hooks/useColors"
 import _ from "lodash"
 import { Text, View, ViewStyle } from "react-native"
 import { X } from "react-native-feather"
-import LinkButton from '@/shared/ui/LinkButton'
+import LinkButton from "@/shared/ui/LinkButton"
 
 export const Card = ({
   title,
   children,
   style,
-  onClose,
+  onClose
 }: {
-  title: string | React.ReactNode,
+  title: string | React.ReactNode
   children: React.ReactNode
-  style?: ViewStyle,
-  onClose?: () => void,
+  style?: ViewStyle
+  onClose?: () => void
 }) => {
   const colors = useColors()
 
@@ -25,38 +25,41 @@ export const Card = ({
         paddingVertical: 8,
         paddingBottom: 16,
         padding: 16,
-        ...style,
+        ...style
       }}
     >
       <View
         style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center"
         }}
       >
         <View
           style={{
-            marginTop: 8,
+            marginTop: 8
           }}
         >
-          {_.isString(title) ?
-            (<Text
+          {_.isString(title) ? (
+            <Text
               style={{
                 fontSize: 17,
-                fontWeight: '600',
-                color: colors.text,
+                fontWeight: "600",
+                color: colors.text
               }}
-            >{title}</Text>) :
+            >
+              {title}
+            </Text>
+          ) : (
             title
-          }
+          )}
         </View>
         <LinkButton
           onPress={() => onClose?.()}
           style={{
             marginBottom: -12,
             marginTop: -12,
-            marginRight: -12,
+            marginRight: -12
           }}
         >
           <X width={22} color={colors.textSecondary} />
@@ -64,7 +67,7 @@ export const Card = ({
       </View>
       <View
         style={{
-          marginTop: 8,
+          marginTop: 8
         }}
       >
         {children}

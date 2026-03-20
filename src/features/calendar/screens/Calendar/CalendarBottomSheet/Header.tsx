@@ -12,10 +12,10 @@ export const Header = () => {
     <View
       style={{
         flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        width: '100%',
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        width: "100%",
         paddingLeft: 20,
         paddingRight: 20,
         paddingTop: 8,
@@ -24,39 +24,43 @@ export const Header = () => {
         borderTopStartRadius: 20,
         backgroundColor: colors.surface,
         borderBottomColor: colors.border,
-        borderBottomWidth: 1,
+        borderBottomWidth: 1
       }}
     >
       <Text
         style={{
           flex: 1,
           fontSize: 20,
-          fontWeight: 'bold',
-          color: colors.text,
+          fontWeight: "bold",
+          color: colors.text
         }}
-      >{t('calendar_filters')}</Text>
+      >
+        {t("calendar_filters")}
+      </Text>
       <View
         style={{
-          flexWrap: 'wrap',
+          flexWrap: "wrap"
         }}
       >
         <LinkButton
           disabled={!calendarFilters.data.isFiltering}
-          type='primary'
+          type="primary"
           style={{
             paddingLeft: 8,
             paddingRight: 8,
-            justifyContent: 'flex-end',
+            justifyContent: "flex-end"
           }}
           onPress={() => {
             calendarFilters.set({
               ...calendarFilters.data,
               tagIds: [],
               ratings: [],
-              text: '',
+              text: ""
             })
           }}
-        >{t('calendar_filters_reset')}</LinkButton>
+        >
+          {t("calendar_filters_reset")}
+        </LinkButton>
       </View>
     </View>
   )

@@ -14,9 +14,9 @@ import { RootStackScreenProps } from "@/types"
 import { Entry } from "./Entry"
 import { Header } from "./Header"
 
-const WINDOW_WIDTH = Dimensions.get('window').width
+const WINDOW_WIDTH = Dimensions.get("window").width
 
-export const LogList = ({ route, navigation }: RootStackScreenProps<'LogList'>) => {
+export const LogList = ({ route, navigation }: RootStackScreenProps<"LogList">) => {
   const colors = useColors()
   const { date } = route.params
   const logState = useLogState()
@@ -24,40 +24,34 @@ export const LogList = ({ route, navigation }: RootStackScreenProps<'LogList'>) 
   const logUpdater = useLogUpdater()
 
   const items = logState.items
-    .filter((item) => dayjs(item.dateTime).isSame(dayjs(date), 'day'))
-    .sort((a, b) => dayjs(a.dateTime).isBefore(dayjs(b.dateTime)) ? -1 : 1)
+    .filter(item => dayjs(item.dateTime).isSame(dayjs(date), "day"))
+    .sort((a, b) => (dayjs(a.dateTime).isBefore(dayjs(b.dateTime)) ? -1 : 1))
 
   const close = () => {
     navigation.goBack()
   }
 
   const add = () => {
-    navigation.navigate('LogCreate', {
+    navigation.navigate("LogCreate", {
       dateTime: dayjs(date).hour(dayjs().hour()).minute(dayjs().minute()).toISOString()
     })
   }
 
   const edit = (item: LogItem) => {
-    navigation.navigate('LogEdit', { id: item.id });
-  };
+    navigation.navigate("LogEdit", { id: item.id })
+  }
 
   const remove = (item: LogItem) => {
-    logUpdater.deleteLog(item.id);
+    logUpdater.deleteLog(item.id)
     // navigation.goBack();
-  };
+  }
 
   const _delete = (item: LogItem) => {
-    askToRemove().then(() => remove(item));
-  };
+    askToRemove().then(() => remove(item))
+  }
 
   const _carouselRef = useRef<ICarouselInstance>(null)
-  const pages = items.map((item) => (
-    <Entry
-      item={item}
-      onEdit={edit}
-      onDelete={_delete}
-    />
-  ))
+  const pages = items.map(item => <Entry item={item} onEdit={edit} onDelete={_delete} />)
 
   const PAGE_WIDTH = WINDOW_WIDTH * 0.9
 
@@ -66,16 +60,13 @@ export const LogList = ({ route, navigation }: RootStackScreenProps<'LogList'>) 
       style={{
         flex: 1,
         backgroundColor: colors.backgroundSecondary,
-        paddingBottom: insets.bottom,
+        paddingBottom: insets.bottom
       }}
     >
-      <Header
-        title={getDayDateTitle(date)}
-        onClose={close}
-      />
+      <Header title={getDayDateTitle(date)} onClose={close} />
       <View
         style={{
-          flex: 1,
+          flex: 1
         }}
       >
         <Carousel
@@ -85,31 +76,29 @@ export const LogList = ({ route, navigation }: RootStackScreenProps<'LogList'>) 
           key={pages.length}
           defaultIndex={0}
           renderItem={({ index }) => (
-            <View style={{ flex: 1, marginLeft: '2.5%' }}>
-              {pages[index]}
-            </View>
+            <View style={{ flex: 1, marginLeft: "2.5%" }}>{pages[index]}</View>
           )}
           panGestureHandlerProps={{
-            activeOffsetX: [-10, 10],
+            activeOffsetX: [-10, 10]
           }}
           width={PAGE_WIDTH}
           style={{
             flex: 1,
-            marginLeft: '2.5%',
-            width: '100%',
+            marginLeft: "2.5%",
+            width: "100%"
           }}
         />
       </View>
       <View
         style={{
           paddingHorizontal: 16,
-          paddingBottom: 16,
+          paddingBottom: 16
         }}
       >
         <Button
           type="primary"
           style={{
-            marginTop: 12,
+            marginTop: 12
           }}
           onPress={add}
         >

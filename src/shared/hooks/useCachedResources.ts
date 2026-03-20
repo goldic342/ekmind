@@ -1,10 +1,10 @@
 /* istanbul ignore file */
 
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect, useState } from 'react';
+import * as SplashScreen from "expo-splash-screen"
+import { useEffect, useState } from "react"
 
 export default function useCachedResources() {
-  const [isLoadingComplete, setLoadingComplete] = useState(false);
+  const [isLoadingComplete, setLoadingComplete] = useState(false)
 
   // Load any resources or data that we need prior to rendering the app
   useEffect(() => {
@@ -15,18 +15,18 @@ export default function useCachedResources() {
         //   'sora-bold': require('../assets/fonts/Sora-Bold.ttf'),
         // });
 
-        SplashScreen.preventAutoHideAsync();
+        SplashScreen.preventAutoHideAsync()
       } catch (e) {
         // We might want to provide this error information to an error reporting service
-        console.warn(e);
+        console.warn(e)
       } finally {
-        setLoadingComplete(true);
-        SplashScreen.hideAsync();
+        setLoadingComplete(true)
+        SplashScreen.hideAsync()
       }
     }
 
-    loadResourcesAndDataAsync();
-  }, []);
+    loadResourcesAndDataAsync()
+  }, [])
 
-  return isLoadingComplete;
+  return isLoadingComplete
 }

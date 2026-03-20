@@ -1,57 +1,57 @@
-import MenuList from "@/shared/ui/MenuList";
-import MenuListHeadline from "@/shared/ui/MenuListHeadline";
-import MenuListItem from "@/shared/ui/MenuListItem";
-import { ImportData } from "@/shared/utils/Import";
-import { useEffect, useState } from "react";
-import { ActivityIndicator, View } from "react-native";
-import { CheckCircle, Repeat, UploadCloud } from "react-native-feather";
-import useColors from "@/shared/hooks/useColors";
-import { useDatagate } from "@/shared/hooks/useDatagate";
+import MenuList from "@/shared/ui/MenuList"
+import MenuListHeadline from "@/shared/ui/MenuListHeadline"
+import MenuListItem from "@/shared/ui/MenuListItem"
+import { ImportData } from "@/shared/utils/Import"
+import { useEffect, useState } from "react"
+import { ActivityIndicator, View } from "react-native"
+import { CheckCircle, Repeat, UploadCloud } from "react-native-feather"
+import useColors from "@/shared/hooks/useColors"
+import { useDatagate } from "@/shared/hooks/useDatagate"
 
 interface User {
-  id: string;
-  importData: ImportData;
+  id: string
+  importData: ImportData
 }
 
 export const UserDataImportList = () => {
-  const [users, setUsers] = useState<User[]>([]);
-  const colors = useColors();
-  const datagate = useDatagate();
+  const [users, setUsers] = useState<User[]>([])
+  const colors = useColors()
+  const datagate = useDatagate()
 
-  const [loadedUserIds, setLoadedUserIds] = useState<string[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loadedUserIds, setLoadedUserIds] = useState<string[]>([])
+  const [loading, setLoading] = useState(false)
 
   const loadUsers = () => {
-    setLoading(true);
+    setLoading(true)
 
     fetch("http://192.168.1.254:3000/persons", {
       headers: {
-        "Content-Type": "application/json",
-      },
+        "Content-Type": "application/json"
+      }
     })
-      .then((res) => res.json())
+      .then(res => res.json())
       .then((res: User[]) => {
-        setUsers(res);
-        setLoadedUserIds([]);
+        setUsers(res)
+        setLoadedUserIds([])
       })
       .catch(() => {
-        console.log("Error: Didn't load user list");
+        console.log("Error: Didn't load user list")
       })
       .finally(() => {
-        setLoading(false);
-      });
-  };
+        setLoading(false)
+      })
+  }
 
   useEffect(() => {
-    loadUsers();
-  }, []);
+    loadUsers()
+  }, [])
 
   const onPress = (user: User) => {
     datagate.import(user.importData, {
       muted: true
-    });
-    setLoadedUserIds((loadedUserIds) => [...loadedUserIds, user.id]);
-  };
+    })
+    setLoadedUserIds(loadedUserIds => [...loadedUserIds, user.id])
+  }
 
   return (
     <>
@@ -67,7 +67,7 @@ export const UserDataImportList = () => {
       <MenuList
         style={{
           marginTop: 16,
-          marginBottom: 40,
+          marginBottom: 40
         }}
       >
         {loading && (
@@ -77,7 +77,7 @@ export const UserDataImportList = () => {
               justifyContent: "center",
               alignItems: "center",
               marginBottom: 8,
-              padding: 16,
+              padding: 16
             }}
           >
             <ActivityIndicator size={"small"} color={colors.loadingIndicator} />
@@ -101,5 +101,5 @@ export const UserDataImportList = () => {
           ))}
       </MenuList>
     </>
-  );
-};
+  )
+}

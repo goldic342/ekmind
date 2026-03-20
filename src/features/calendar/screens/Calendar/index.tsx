@@ -1,62 +1,59 @@
-import React, { memo, useEffect, useRef, useState } from "react";
-import { ActivityIndicator, Platform, Text, useWindowDimensions, View } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
-import { useCalendarFilters } from "@/features/calendar/hooks/useCalendarFilters";
-import useColors from "@/shared/hooks/useColors";
-import { useLogState } from "@/features/logging/hooks/useLogs";
-import { useSettings } from "@/features/settings/hooks/useSettings";
-import Calendar from "./Calendar";
-import { CalendarBottomSheet } from "./CalendarBottomSheet";
-import { Body } from "./CalendarBottomSheet/Body";
-import { CalendarFooter } from "./CalendarFooter";
-import CalendarHeader from "./CalendarHeader";
-import { ScrollToBottomButton } from "./ScrollToBottomButton";
-import { t } from "@/shared/utils/translation";
+import React, { memo, useEffect, useRef, useState } from "react"
+import { ActivityIndicator, Platform, Text, useWindowDimensions, View } from "react-native"
+import { ScrollView } from "react-native-gesture-handler"
+import { useCalendarFilters } from "@/features/calendar/hooks/useCalendarFilters"
+import useColors from "@/shared/hooks/useColors"
+import { useLogState } from "@/features/logging/hooks/useLogs"
+import { useSettings } from "@/features/settings/hooks/useSettings"
+import Calendar from "./Calendar"
+import { CalendarBottomSheet } from "./CalendarBottomSheet"
+import { Body } from "./CalendarBottomSheet/Body"
+import { CalendarFooter } from "./CalendarFooter"
+import CalendarHeader from "./CalendarHeader"
+import { ScrollToBottomButton } from "./ScrollToBottomButton"
+import { t } from "@/shared/utils/translation"
 
 const CalendarScreen = memo(function CalendarScreen() {
-  const colors = useColors();
+  const colors = useColors()
 
-  const { settings } = useSettings();
+  const { settings } = useSettings()
   const logState = useLogState()
-  const calendarFilters = useCalendarFilters();
-  const window = useWindowDimensions();
-  const [scrollOffset, setScrollOffset] = useState(0);
+  const calendarFilters = useCalendarFilters()
+  const window = useWindowDimensions()
+  const [scrollOffset, setScrollOffset] = useState(0)
 
-  const calendarRef = useRef<View>(null);
-  const scrollRef = useRef<ScrollView>(null);
-  const calendarHeight = useRef(0);
-
+  const calendarRef = useRef<View>(null)
+  const scrollRef = useRef<ScrollView>(null)
+  const calendarHeight = useRef(0)
 
   useEffect(() => {
     if (scrollRef.current) {
       setTimeout(() => {
         if (scrollRef.current) {
-          scrollRef.current.scrollToEnd({ animated: false });
+          scrollRef.current.scrollToEnd({ animated: false })
         }
       }, 0)
     }
-  }, [calendarRef, scrollRef, settings.loaded, logState.loaded]);
+  }, [calendarRef, scrollRef, settings.loaded, logState.loaded])
 
   useEffect(() => {
     if (calendarRef.current) {
       setTimeout(() => {
         if (calendarRef.current) {
           calendarRef.current.measure((x, y, width, height) => {
-            calendarHeight.current = height;
-          });
+            calendarHeight.current = height
+          })
         }
       }, 0)
     }
-  }, [calendarRef, scrollRef, settings.loaded, logState.loaded]);
+  }, [calendarRef, scrollRef, settings.loaded, logState.loaded])
 
-  const showScrollTopButton = (
-    scrollOffset < calendarHeight.current - window.height &&
-    !calendarFilters.isOpen
-  )
+  const showScrollTopButton =
+    scrollOffset < calendarHeight.current - window.height && !calendarFilters.isOpen
 
   if (!settings.loaded || !logState.loaded) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <ActivityIndicator size="small" color={colors.text} />
       </View>
     )
@@ -65,7 +62,7 @@ const CalendarScreen = memo(function CalendarScreen() {
   return (
     <View
       style={{
-        flex: 1,
+        flex: 1
       }}
     >
       <CalendarHeader />
@@ -73,7 +70,7 @@ const CalendarScreen = memo(function CalendarScreen() {
         <ScrollToBottomButton
           onPress={() => {
             if (scrollRef.current) {
-              scrollRef.current.scrollToEnd({ animated: true });
+              scrollRef.current.scrollToEnd({ animated: true })
             }
           }}
         />
@@ -83,20 +80,20 @@ const CalendarScreen = memo(function CalendarScreen() {
           backgroundColor: colors.background,
           paddingLeft: 16,
           paddingRight: 16,
-          width: "100%",
+          width: "100%"
         }}
         scrollEventThrottle={100}
-        onMomentumScrollEnd={(e) => {
-          setScrollOffset(e.nativeEvent.contentOffset.y);
+        onMomentumScrollEnd={e => {
+          setScrollOffset(e.nativeEvent.contentOffset.y)
         }}
-        onScrollEndDrag={(e) => {
-          setScrollOffset(e.nativeEvent.contentOffset.y);
+        onScrollEndDrag={e => {
+          setScrollOffset(e.nativeEvent.contentOffset.y)
         }}
         ref={scrollRef}
       >
         <View
           style={{
-            paddingBottom: 32,
+            paddingBottom: 32
           }}
         >
           {Platform.OS === "web" && calendarFilters.isOpen && <Body />}
@@ -104,24 +101,23 @@ const CalendarScreen = memo(function CalendarScreen() {
           <CalendarFooter />
         </View>
 
-        <View
-          style={{
-          }}
-        >
+        <View style={{}}>
           <Text
             style={{
               fontSize: 14,
               color: colors.textSecondary,
               marginTop: 20,
-              textAlign: 'center',
-              marginBottom: -60,
+              textAlign: "center",
+              marginBottom: -60
             }}
-          >🙏 {t('calendar_foot_note')}</Text>
+          >
+            🙏 {t("calendar_foot_note")}
+          </Text>
         </View>
       </ScrollView>
       {Platform.OS !== "web" && <CalendarBottomSheet />}
     </View>
-  );
-});
+  )
+})
 
-export default CalendarScreen;
+export default CalendarScreen

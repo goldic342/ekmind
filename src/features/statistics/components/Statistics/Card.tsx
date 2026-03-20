@@ -5,7 +5,7 @@ import useColors from "@/shared/hooks/useColors"
 export const Card = ({
   subtitle,
   title,
-  children,
+  children
 }: {
   subtitle?: string
   title: string | JSX.Element
@@ -14,27 +14,29 @@ export const Card = ({
   const colors = useColors()
 
   return (
-    <View style={{
-      paddingTop: 16,
-      paddingBottom: 16,
-      paddingLeft: 16,
-      paddingRight: 16,
-      borderRadius: 8,
-      backgroundColor: colors.cardBackground,
-      marginTop: 16,
-    }}>
+    <View
+      style={{
+        paddingTop: 16,
+        paddingBottom: 16,
+        paddingLeft: 16,
+        paddingRight: 16,
+        borderRadius: 8,
+        backgroundColor: colors.cardBackground,
+        marginTop: 16
+      }}
+    >
       <View
         style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          marginBottom: 8,
+          flexDirection: "row",
+          alignItems: "center",
+          marginBottom: 8
         }}
       >
         <Text
           style={{
             fontSize: 14,
-            fontWeight: 'bold',
-            color: colors.statisticsCardSubtitle,
+            fontWeight: "bold",
+            color: colors.statisticsCardSubtitle
           }}
         >
           {subtitle}
@@ -42,9 +44,9 @@ export const Card = ({
       </View>
       <View
         style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          marginBottom: 16,
+          flexDirection: "row",
+          alignItems: "center",
+          marginBottom: 16
         }}
       >
         {_.isString(title) ? (
@@ -53,18 +55,22 @@ export const Card = ({
               letterSpacing: -0.1,
               lineHeight: 24,
               fontSize: 17,
-              fontWeight: 'bold',
-              color: colors.text,
+              fontWeight: "bold",
+              color: colors.text
             }}
           >
             {title}
           </Text>
-        ) : title}
+        ) : (
+          title
+        )}
       </View>
-      <View style={{
-        flexDirection: 'column',
-        justifyContent: 'center',
-      }}>
+      <View
+        style={{
+          flexDirection: "column",
+          justifyContent: "center"
+        }}
+      >
         {children}
       </View>
     </View>

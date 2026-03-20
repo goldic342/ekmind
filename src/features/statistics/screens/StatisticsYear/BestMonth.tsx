@@ -4,35 +4,32 @@ import { t } from "@/shared/utils/translation"
 import useColors from "@/shared/hooks/useColors"
 import { RATING_MAPPING, useLogState } from "@/features/logging/hooks/useLogs"
 import dayjs, { Dayjs } from "dayjs"
-import _ from 'lodash'
+import _ from "lodash"
 import { Text, View } from "react-native"
 
-export const BestMonth = ({
-  date,
-}: {
-  date: Dayjs,
-}) => {
+export const BestMonth = ({ date }: { date: Dayjs }) => {
   const colors = useColors()
   const logState = useLogState()
 
-  const items = logState.items.filter((item) => dayjs(item.dateTime).isSame(date, 'year'))
-    .map((item) => ({
+  const items = logState.items
+    .filter(item => dayjs(item.dateTime).isSame(date, "year"))
+    .map(item => ({
       ...item,
-      month: dayjs(item.dateTime).format('YYYY-MM'),
-      ratingValue: RATING_MAPPING[item.rating],
+      month: dayjs(item.dateTime).format("YYYY-MM"),
+      ratingValue: RATING_MAPPING[item.rating]
     }))
 
   const bestMonthByRatingValue = _.chain(items)
-    .groupBy('month')
+    .groupBy("month")
     .map((items, month) => ({
       month,
-      ratingValue: _.sumBy(items, 'ratingValue'),
+      ratingValue: _.sumBy(items, "ratingValue")
     }))
-    .orderBy('ratingValue', 'desc')
+    .orderBy("ratingValue", "desc")
     .first()
     .value()
 
-  const month = bestMonthByRatingValue ? dayjs(bestMonthByRatingValue.month).format('MMMM') : null;
+  const month = bestMonthByRatingValue ? dayjs(bestMonthByRatingValue.month).format("MMMM") : null
 
   return (
     <View
@@ -42,7 +39,7 @@ export const BestMonth = ({
         borderRadius: 8,
         padding: 16,
         marginTop: 16,
-        position: 'relative',
+        position: "relative"
       }}
     >
       {!month && <NotEnoughDataOverlay showSubtitle={false} />}
@@ -50,17 +47,17 @@ export const BestMonth = ({
         style={{
           fontSize: 17,
           color: colors.textSecondary,
-          fontWeight: '600',
-          marginBottom: 8,
+          fontWeight: "600",
+          marginBottom: 8
         }}
       >
-        {t('statistics_best_month')}
+        {t("statistics_best_month")}
       </Text>
       <Text
         style={{
           fontSize: 24,
           color: colors.text,
-          fontWeight: 'bold',
+          fontWeight: "bold"
         }}
       >
         {month}

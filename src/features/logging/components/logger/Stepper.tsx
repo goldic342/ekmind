@@ -1,47 +1,53 @@
-import { Pressable, View } from 'react-native';
-import useColors from '@/shared/hooks/useColors';
+import { Pressable, View } from "react-native"
+import useColors from "@/shared/hooks/useColors"
 
 export const Stepper = ({
-  count, index, scrollTo,
+  count,
+  index,
+  scrollTo
 }: {
-  count: number;
-  index: number;
-  scrollTo: ({ index }) => void;
+  count: number
+  index: number
+  scrollTo: ({ index }) => void
 }) => {
-  const colors = useColors();
-  const steps = [...Array(count).keys()];
+  const colors = useColors()
+  const steps = [...Array(count).keys()]
 
   return (
-    <View style={{
-      flexDirection: 'row',
-      alignItems: 'center',
-      width: '100%',
-    }}>
-      {steps.map((step) => (
+    <View
+      style={{
+        flexDirection: "row",
+        alignItems: "center",
+        width: "100%"
+      }}
+    >
+      {steps.map(step => (
         <Pressable
           key={step}
           style={{
             paddingTop: 20,
-            flexDirection: 'row',
-            alignItems: 'center',
+            flexDirection: "row",
+            alignItems: "center",
             flex: 4,
             paddingLeft: step === 0 ? 0 : 8,
             paddingRight: step === steps.length - 1 ? 0 : 8,
             paddingBottom: 16,
-            overflow: 'hidden',
+            overflow: "hidden"
           }}
           onPress={() => {
-            scrollTo({ index: step });
+            scrollTo({ index: step })
           }}
         >
-          <View style={{
-            width: '100%',
-            height: 8,
-            borderRadius: 100,
-            backgroundColor: step === index ? colors.stepperBackgroundActive : colors.surfaceMuted,
-          }} />
+          <View
+            style={{
+              width: "100%",
+              height: 8,
+              borderRadius: 100,
+              backgroundColor: step === index ? colors.stepperBackgroundActive : colors.surfaceMuted
+            }}
+          />
         </Pressable>
       ))}
     </View>
-  );
-};
+  )
+}

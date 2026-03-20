@@ -1,4 +1,4 @@
-import { Keyboard, TouchableWithoutFeedback } from "react-native";
+import { Keyboard, TouchableWithoutFeedback } from "react-native"
 
 export default function DismissKeyboard({ children }) {
   return (
@@ -6,4 +6,4 @@ export default function DismissKeyboard({ children }) {
       {children}
     </TouchableWithoutFeedback>
   )
-};
+}

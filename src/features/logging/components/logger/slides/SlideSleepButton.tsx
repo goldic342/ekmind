@@ -1,41 +1,45 @@
-import useColors from "@/shared/hooks/useColors";
-import { LogItem, SLEEP_QUALITY_MAPPING } from "@/features/logging/hooks/useLogs";
-import { Pressable, View, ViewStyle, useColorScheme } from "react-native";
-import useHaptics from "@/shared/hooks/useHaptics";
+import useColors from "@/shared/hooks/useColors"
+import { LogItem, SLEEP_QUALITY_MAPPING } from "@/features/logging/hooks/useLogs"
+import { Pressable, View, ViewStyle, useColorScheme } from "react-native"
+import useHaptics from "@/shared/hooks/useHaptics"
 
 export const SlideSleepButton = ({
   value,
   selected,
   onPress,
-  style = {},
+  style = {}
 }: {
-  value: LogItem['sleep']['quality'];
-  selected?: boolean;
-  onPress?: () => void;
-  style?: ViewStyle;
+  value: LogItem["sleep"]["quality"]
+  selected?: boolean
+  onPress?: () => void
+  style?: ViewStyle
 }) => {
-  const colors = useColors();
-  const colorScheme = useColorScheme();
-  const haptics = useHaptics();
+  const colors = useColors()
+  const colorScheme = useColorScheme()
+  const haptics = useHaptics()
 
-  const _value = SLEEP_QUALITY_MAPPING[value];
+  const _value = SLEEP_QUALITY_MAPPING[value]
 
-  const HEIGHT = 32;
+  const HEIGHT = 32
 
   return (
     <View
       style={{
         flex: 5,
-        ...style,
+        ...style
       }}
     >
       <Pressable
         style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'center',
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
           backgroundColor: colors.surfaceMuted,
-          borderColor: selected ? colors.tint : colorScheme === 'light' ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)',
+          borderColor: selected
+            ? colors.tint
+            : colorScheme === "light"
+              ? "rgba(0,0,0,0.1)"
+              : "rgba(255,255,255,0.1)",
           borderWidth: selected ? 2 : 1,
           borderRadius: 8,
           paddingLeft: selected ? 7 : 8,
@@ -43,22 +47,22 @@ export const SlideSleepButton = ({
           paddingVertical: 16,
           height: HEIGHT + 32,
           margin: 4,
-          aspectRatio: 1,
+          aspectRatio: 1
         }}
         onPress={() => {
-          if (!onPress) return;
-          haptics.selection();
-          onPress?.();
+          if (!onPress) return
+          haptics.selection()
+          onPress?.()
         }}
       >
         <View
           style={{
-            justifyContent: 'center',
-            alignItems: 'center',
+            justifyContent: "center",
+            alignItems: "center",
             height: HEIGHT,
             width: 16,
             borderRadius: 8,
-            overflow: 'hidden',
+            overflow: "hidden"
           }}
         >
           <View
@@ -66,21 +70,23 @@ export const SlideSleepButton = ({
               width: 16,
               height: HEIGHT,
               backgroundColor: colors.sleepQualityEmpty,
-              position: 'absolute',
+              position: "absolute",
               bottom: 0,
-              zIndex: 1,
-            }} />
+              zIndex: 1
+            }}
+          />
           <View
             style={{
               width: 16,
               height: _value * 8,
               backgroundColor: colors.sleepQualityFull,
-              position: 'absolute',
+              position: "absolute",
               bottom: 0,
-              zIndex: 1,
-            }} />
+              zIndex: 1
+            }}
+          />
         </View>
       </Pressable>
     </View>
-  );
-};
+  )
+}

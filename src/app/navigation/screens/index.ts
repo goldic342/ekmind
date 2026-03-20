@@ -1,13 +1,13 @@
-export * from './Colors';
-export * from './Data';
-export * from './Licenses';
-export * from './NotFound';
-export * from './Privacy';
-export * from './Reminder';
-export * from './Steps';
-export * from './DevelopmentTools';
+export * from "./Colors"
+export * from "./Data"
+export * from "./Licenses"
+export * from "./NotFound"
+export * from "./Privacy"
+export * from "./Reminder"
+export * from "./Steps"
+export * from "./DevelopmentTools"
 
-export { LogCreate, LogEdit, LogList } from '@/features/logging';
-export { SettingsScreen, SettingsTags, SettingsTagsArchive } from '@/features/settings';
-export { StatisticsScreen, StatisticsHighlights } from '@/features/statistics';
-export { TagCreate, TagEdit } from '@/features/tags';
+export { LogCreate, LogEdit, LogList } from "@/features/logging"
+export { SettingsScreen, SettingsTags, SettingsTagsArchive } from "@/features/settings"
+export { StatisticsScreen, StatisticsHighlights } from "@/features/statistics"
+export { TagCreate, TagEdit } from "@/features/tags"

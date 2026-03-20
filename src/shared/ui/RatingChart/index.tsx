@@ -1,82 +1,86 @@
-import Svg, { Line, Polyline } from 'react-native-svg';
-import useColors from '@/shared/hooks/useColors';
-import { RATING_KEYS } from '@/features/logging/hooks/useLogs';
-import { Grid } from './Grid';
-import { XLabels } from './XLabels';
-import { YLabels } from './YLabels';
+import Svg, { Line, Polyline } from "react-native-svg"
+import useColors from "@/shared/hooks/useColors"
+import { RATING_KEYS } from "@/features/logging/hooks/useLogs"
+import { Grid } from "./Grid"
+import { XLabels } from "./XLabels"
+import { YLabels } from "./YLabels"
 
 export interface ScaleItem {
-  key: string;
-  count: number;
-  value: number | null;
+  key: string
+  count: number
+  value: number | null
 }
 
 export const RatingChart = ({
   data,
   height,
   width,
-  showAverage = false,
+  showAverage = false
 }: {
-  height: number;
-  width: number;
-  data: ScaleItem[];
-  showAverage?: boolean;
+  height: number
+  width: number
+  data: ScaleItem[]
+  showAverage?: boolean
 }) => {
-  const colors = useColors();
+  const colors = useColors()
 
-  const paddingRight = 8;
-  const paddingLeft = 8;
-  const maxY = 6;
+  const paddingRight = 8
+  const paddingLeft = 8
+  const maxY = 6
 
-  const scaleItemCount = data.length;
+  const scaleItemCount = data.length
   const scaleItems = data.map(d => ({
     ...d,
-    value: d.value !== null ? Math.round(d.value) : null,
-  }));
+    value: d.value !== null ? Math.round(d.value) : null
+  }))
 
-  const XLegendHeight = 32;
-  const YLegendWidth = 32;
+  const XLegendHeight = 32
+  const YLegendWidth = 32
 
-  const _height = Math.round(height / RATING_KEYS.length) * RATING_KEYS.length;
-  const _width = width - YLegendWidth - paddingRight - paddingLeft;
+  const _height = Math.round(height / RATING_KEYS.length) * RATING_KEYS.length
+  const _width = width - YLegendWidth - paddingRight - paddingLeft
 
-  const rowHeight = Math.round(height / RATING_KEYS.length);
-  const outerHeight = _height + XLegendHeight + rowHeight * 1;
-  const outerWidth = width;
+  const rowHeight = Math.round(height / RATING_KEYS.length)
+  const outerHeight = _height + XLegendHeight + rowHeight * 1
+  const outerWidth = width
 
-  const itemWidth = _width / (scaleItemCount);
+  const itemWidth = _width / scaleItemCount
 
   const relativeY = (value: number) => {
-    return Math.floor(((_height) - (value / maxY) * (_height)))
-  };
+    return Math.floor(_height - (value / maxY) * _height)
+  }
 
   const relativeX = (index: number) => {
-    return Math.floor(index * itemWidth + itemWidth / 2) + YLegendWidth + paddingLeft;
-  };
+    return Math.floor(index * itemWidth + itemWidth / 2) + YLegendWidth + paddingLeft
+  }
 
-  const polygonPoints = scaleItems.map((item, index) => {
-    if (item.value === null) {
-      return null;
-    }
+  const polygonPoints = scaleItems
+    .map((item, index) => {
+      if (item.value === null) {
+        return null
+      }
 
-    const x = Math.round(relativeX(index));
-    const y = Math.round(relativeY(item.value || 0)) + rowHeight / 2;
+      const x = Math.round(relativeX(index))
+      const y = Math.round(relativeY(item.value || 0)) + rowHeight / 2
 
-    return `${x},${y}`;
-  }).filter(Boolean).join(' ');
+      return `${x},${y}`
+    })
+    .filter(Boolean)
+    .join(" ")
 
-  const nonNullItems = scaleItems.filter(item => item.value !== null);
-  const average = nonNullItems.reduce((acc, item) => {
-    if (item.value === null) {
-      return acc;
-    }
+  const nonNullItems = scaleItems.filter(item => item.value !== null)
+  const average =
+    nonNullItems.reduce((acc, item) => {
+      if (item.value === null) {
+        return acc
+      }
 
-    return acc + item.value;
-  }, 0) / nonNullItems.length;
+      return acc + item.value
+    }, 0) / nonNullItems.length
 
   return (
     <Svg
-      width={'100%'}
+      width={"100%"}
       height={outerHeight}
       viewBox={`0 0 ${outerWidth} ${outerHeight}`}
       style={{}}
@@ -117,16 +121,13 @@ export const RatingChart = ({
         y={outerHeight - XLegendHeight / 2}
       />
 
-      <Grid
-        width={width}
-        relativeY={relativeY}
-      />
+      <Grid width={width} relativeY={relativeY} />
 
       <Polyline
         fill="none"
         stroke={colors.statisticsLinePrimary}
         strokeWidth="2"
-        strokeLinejoin='round'
+        strokeLinejoin="round"
         points={polygonPoints}
       />
 
@@ -162,5 +163,5 @@ export const RatingChart = ({
         />
       )}
     </Svg>
-  );
-};
+  )
+}

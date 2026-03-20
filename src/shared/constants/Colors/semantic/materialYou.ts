@@ -1,11 +1,11 @@
-import type { SemanticColors } from './light';
-import { Material3Scheme } from '@pchmn/expo-material3-theme';
+import type { SemanticColors } from "./light"
+import { Material3Scheme } from "@pchmn/expo-material3-theme"
 
 export const buildMaterialYouSemanticColors = (
   base: SemanticColors,
-  m: Material3Scheme,
+  m: Material3Scheme
 ): SemanticColors => {
-  const e = m.elevation ?? {};
+  const e = m.elevation ?? {}
 
   return {
     ...base,
@@ -19,6 +19,6 @@ export const buildMaterialYouSemanticColors = (
     text: m.onBackground,
     textSecondary: m.onSurfaceVariant,
     border: m.outlineVariant,
-    danger: m.error,
-  };
-};
+    danger: m.error
+  }
+}

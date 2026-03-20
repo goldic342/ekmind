@@ -1,36 +1,36 @@
-import { Text, View } from "react-native";
-import { TAG_COLOR_NAMES } from "@/shared/constants/Config";
-import useColors from "@/shared/hooks/useColors";
+import { Text, View } from "react-native"
+import { TAG_COLOR_NAMES } from "@/shared/constants/Config"
+import useColors from "@/shared/hooks/useColors"
 
 export const TagBar = ({
   children,
   width,
-  colorName = 'red',
+  colorName = "red",
   muted,
   size,
   label
 }: {
-  children: any;
-  width: string;
-  muted?: boolean;
-  colorName?: typeof TAG_COLOR_NAMES[number];
-  size: 'small' | 'large';
-  label: string;
+  children: any
+  width: string
+  muted?: boolean
+  colorName?: (typeof TAG_COLOR_NAMES)[number]
+  size: "small" | "large"
+  label: string
 }) => {
-  const colors = useColors();
+  const colors = useColors()
 
-  const textColor = muted ? colors.statisticsTagsTrendMutedText : colors.tags[colorName]?.text;
-  const backgroundColor = muted ? colors.surfaceMuted : colors.tags[colorName]?.background;
+  const textColor = muted ? colors.statisticsTagsTrendMutedText : colors.tags[colorName]?.text
+  const backgroundColor = muted ? colors.surfaceMuted : colors.tags[colorName]?.background
 
-  const height = size === 'small' ? 24 : 32;
+  const height = size === "small" ? 24 : 32
 
   return (
     <View
       style={{
-        position: 'relative',
+        position: "relative",
         height,
-        justifyContent: 'center',
-        paddingLeft: 8,
+        justifyContent: "center",
+        paddingLeft: 8
       }}
     >
       <View
@@ -39,7 +39,7 @@ export const TagBar = ({
           height,
           width,
           borderRadius: 4,
-          position: 'absolute',
+          position: "absolute"
         }}
       />
       <Text
@@ -47,8 +47,8 @@ export const TagBar = ({
           marginTop: 4,
           fontSize: 14,
           color: colors.textSecondary,
-          position: 'absolute',
-          right: 8,
+          position: "absolute",
+          right: 8
         }}
       >
         {label}
@@ -57,9 +57,11 @@ export const TagBar = ({
         style={{
           color: textColor,
           fontSize: 14,
-          fontWeight: '600',
+          fontWeight: "600"
         }}
-      >{children}</Text>
+      >
+        {children}
+      </Text>
     </View>
   )
 }

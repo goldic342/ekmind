@@ -1,25 +1,25 @@
-import { useState } from 'react';
-import { View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import useColors from '@/shared/hooks/useColors';
-import { useSettings } from '@/features/settings/hooks/useSettings';
-import { RootStackScreenProps } from '@/types';
-import { ExplainerSlide } from './ExplainerSlide';
-import { IndexSlide } from './IndexSlide';
-import { PrivacySlide } from './PrivacySlide';
-import { ReminderSlide } from './ReminderSlide';
+import { useState } from "react"
+import { View } from "react-native"
+import { useSafeAreaInsets } from "react-native-safe-area-context"
+import useColors from "@/shared/hooks/useColors"
+import { useSettings } from "@/features/settings/hooks/useSettings"
+import { RootStackScreenProps } from "@/types"
+import { ExplainerSlide } from "./ExplainerSlide"
+import { IndexSlide } from "./IndexSlide"
+import { PrivacySlide } from "./PrivacySlide"
+import { ReminderSlide } from "./ReminderSlide"
 
 type SlideProps = {
-  index: number;
-  setIndex: (index: number) => void;
-  onSkip: () => void;
-};
+  index: number
+  setIndex: (index: number) => void
+  onSkip: () => void
+}
 
-const CalendarSlide = ({ ...props }: SlideProps) => <ExplainerSlide {...props} />;
-const StatisticsSlide = ({ ...props }: SlideProps) => <ExplainerSlide {...props} />;
-const FiltersSlide = ({ ...props }: SlideProps) => <ExplainerSlide {...props} />;
+const CalendarSlide = ({ ...props }: SlideProps) => <ExplainerSlide {...props} />
+const StatisticsSlide = ({ ...props }: SlideProps) => <ExplainerSlide {...props} />
+const FiltersSlide = ({ ...props }: SlideProps) => <ExplainerSlide {...props} />
 
-export const Onboarding = ({ navigation }: RootStackScreenProps<'Onboarding'>) => {
+export const Onboarding = ({ navigation }: RootStackScreenProps<"Onboarding">) => {
   const { addActionDone } = useSettings()
   const colors = useColors()
   const insets = useSafeAreaInsets()
@@ -31,18 +31,18 @@ export const Onboarding = ({ navigation }: RootStackScreenProps<'Onboarding'>) =
   }
 
   const finish = () => {
-    addActionDone('onboarding')
+    addActionDone("onboarding")
     navigation.popToTop()
   }
 
   const skip = () => {
-    addActionDone('onboarding')
+    addActionDone("onboarding")
     navigation.popToTop()
   }
 
   const slides = [
     <IndexSlide
-      onPress={(answer) => {
+      onPress={answer => {
         setIndex(1)
       }}
     />,
@@ -50,16 +50,18 @@ export const Onboarding = ({ navigation }: RootStackScreenProps<'Onboarding'>) =
     <StatisticsSlide onSkip={skip} index={2} setIndex={setIndex} />,
     <FiltersSlide onSkip={skip} index={3} setIndex={setIndex} />,
     <ReminderSlide onSkip={skip} index={4} setIndex={setIndex} />,
-    <PrivacySlide onPress={finish} />,
+    <PrivacySlide onPress={finish} />
   ]
 
   return (
-    <View style={{
-      flex: 1,
-      backgroundColor: colors.onboardingBottomBackground,
-      paddingBottom: insets.bottom,
-    }}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: colors.onboardingBottomBackground,
+        paddingBottom: insets.bottom
+      }}
+    >
       {slides[index]}
     </View>
-  );
+  )
 }

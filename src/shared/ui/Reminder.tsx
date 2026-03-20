@@ -1,29 +1,24 @@
-import dayjs from 'dayjs';
-import { useEffect, useState } from 'react';
-import { Platform, Switch, Text, View } from 'react-native';
-import Clock from '@/shared/ui/Clock';
-import MenuList from '@/shared/ui/MenuList';
-import MenuListItem from '@/shared/ui/MenuListItem';
-import NotificationPreview from '@/shared/ui/NotificationPreview';
-import { t } from '@/shared/utils/translation';
-import useColors from '@/shared/hooks/useColors';
-import useNotification from '@/shared/hooks/useNotifications';
-import { SettingsState, useSettings } from '@/features/settings/hooks/useSettings';
+import dayjs from "dayjs"
+import { useEffect, useState } from "react"
+import { Platform, Switch, Text, View } from "react-native"
+import Clock from "@/shared/ui/Clock"
+import MenuList from "@/shared/ui/MenuList"
+import MenuListItem from "@/shared/ui/MenuListItem"
+import NotificationPreview from "@/shared/ui/NotificationPreview"
+import { t } from "@/shared/utils/translation"
+import useColors from "@/shared/hooks/useColors"
+import useNotification from "@/shared/hooks/useNotifications"
+import { SettingsState, useSettings } from "@/features/settings/hooks/useSettings"
 
 const Reminder = () => {
   const { setSettings, settings } = useSettings()
-  const {
-    askForPermission,
-    hasPermission,
-    schedule,
-    cancelAll,
-  } = useNotification()
+  const { askForPermission, hasPermission, schedule, cancelAll } = useNotification()
 
-  const [reminderEnabled, setReminderEnabled] = useState(settings.reminderEnabled);
-  const [reminderTime, setReminderTime] = useState(settings.reminderTime);
+  const [reminderEnabled, setReminderEnabled] = useState(settings.reminderEnabled)
+  const [reminderTime, setReminderTime] = useState(settings.reminderTime)
   const colors = useColors()
 
-  const hourAndMinute = reminderTime.split(':')
+  const hourAndMinute = reminderTime.split(":")
   const hour = parseInt(hourAndMinute[0])
   const minute = parseInt(hourAndMinute[1])
   const timeDate = dayjs().hour(hour).minute(minute).toDate()
@@ -43,87 +38,88 @@ const Reminder = () => {
   }
 
   useEffect(() => {
-    (async () => {
+    ;(async () => {
       await cancelAll()
       if (reminderEnabled) {
         await schedule({
           trigger: {
             repeats: true,
             hour: hour,
-            minute: minute,
-          },
+            minute: minute
+          }
         })
       }
 
       setSettings((settings: SettingsState) => ({
         ...settings,
         reminderEnabled,
-        reminderTime,
+        reminderTime
       }))
     })()
   }, [reminderEnabled, reminderTime])
 
   const onTimeChange = async (event: any, selectedDate: any) => {
-    setReminderTime(dayjs(selectedDate).format('HH:mm'))
+    setReminderTime(dayjs(selectedDate).format("HH:mm"))
   }
 
   return (
     <View>
-      <View style={{
-        opacity: reminderEnabled ? 1 : 0.5,
-        marginBottom: 20,
-      }}>
+      <View
+        style={{
+          opacity: reminderEnabled ? 1 : 0.5,
+          marginBottom: 20
+        }}
+      >
         <NotificationPreview />
       </View>
       <MenuList>
         <MenuListItem
-          title={t('reminder')}
+          title={t("reminder")}
           iconRight={
             <Switch
               onValueChange={() => onEnabledChange(!reminderEnabled)}
               // @ts-ignore
               value={reminderEnabled}
-              testID='reminder-enabled'
+              testID="reminder-enabled"
             />
           }
           isLast={!reminderEnabled}
         ></MenuListItem>
-        {reminderEnabled &&
+        {reminderEnabled && (
           <View
             style={{
               padding: 16,
-              flexDirection: 'row',
-              alignItems: 'center',
-              width: '100%',
+              flexDirection: "row",
+              alignItems: "center",
+              width: "100%"
             }}
           >
             <View
               style={{
-                flex: 1,
+                flex: 1
               }}
             >
               <Text
                 style={{
                   color: colors.text,
-                  fontSize: 17,
+                  fontSize: 17
                 }}
-              >{t('time')}</Text>
+              >
+                {t("time")}
+              </Text>
             </View>
             <View
               style={{
-                flex: Platform.OS === 'ios' ? 1 : 0,
+                flex: Platform.OS === "ios" ? 1 : 0
               }}
             >
-              <Clock
-                onChange={onTimeChange}
-                timeDate={timeDate}
-              />
+              <Clock onChange={onTimeChange} timeDate={timeDate} />
             </View>
           </View>
-        }
+        )}
       </MenuList>
     </View>
   )
 }
 
-export default Reminder;
+export default Reminder

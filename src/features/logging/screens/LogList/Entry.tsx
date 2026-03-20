@@ -1,64 +1,64 @@
-import LinkButton from "@/shared/ui/LinkButton";
-import useColors from "@/shared/hooks/useColors";
-import { LogItem } from "@/features/logging/hooks/useLogs";
-import dayjs from "dayjs";
-import { LinearGradient } from "expo-linear-gradient";
-import { Edit, Trash } from "lucide-react-native";
-import { ScrollView, Text, View } from "react-native";
-import { Emotions } from "./Emotions";
-import { Message } from "./Message";
-import { RatingDot } from "./RatingDot";
-import { Sleep } from "./Sleep";
-import { Tags } from "./Tags";
+import LinkButton from "@/shared/ui/LinkButton"
+import useColors from "@/shared/hooks/useColors"
+import { LogItem } from "@/features/logging/hooks/useLogs"
+import dayjs from "dayjs"
+import { LinearGradient } from "expo-linear-gradient"
+import { Edit, Trash } from "lucide-react-native"
+import { ScrollView, Text, View } from "react-native"
+import { Emotions } from "./Emotions"
+import { Message } from "./Message"
+import { RatingDot } from "./RatingDot"
+import { Sleep } from "./Sleep"
+import { Tags } from "./Tags"
 
 const EntryHeader = ({
   item,
   onEdit,
-  onDelete,
+  onDelete
 }: {
-  item: LogItem;
-  onEdit: (item: LogItem) => void;
-  onDelete: (item: LogItem) => void;
+  item: LogItem
+  onEdit: (item: LogItem) => void
+  onDelete: (item: LogItem) => void
 }) => {
-  const colors = useColors();
+  const colors = useColors()
 
   return (
     <View
       style={{
-        flexDirection: 'row',
-        alignItems: 'center',
+        flexDirection: "row",
+        alignItems: "center",
         borderBottomColor: colors.borderStrong,
         borderBottomWidth: 1,
-        paddingBottom: 12,
+        paddingBottom: 12
       }}
     >
-      <RatingDot
-        rating={item.rating}
-      />
+      <RatingDot rating={item.rating} />
       <View
         style={{
           marginLeft: 12,
-          justifyContent: 'center',
+          justifyContent: "center"
         }}
       >
         <Text
           style={{
             fontSize: 20,
-            fontWeight: 'bold',
-            color: colors.text,
+            fontWeight: "bold",
+            color: colors.text
           }}
-        >{dayjs(item.dateTime).format('LT')}</Text>
+        >
+          {dayjs(item.dateTime).format("LT")}
+        </Text>
       </View>
       <View
         style={{
           flex: 1,
-          flexDirection: 'row',
-          justifyContent: 'flex-end',
+          flexDirection: "row",
+          justifyContent: "flex-end"
         }}
       >
         <LinkButton
           onPress={() => {
-            onEdit(item);
+            onEdit(item)
           }}
           style={{
             marginLeft: -8,
@@ -68,7 +68,7 @@ const EntryHeader = ({
             paddingTop: 16,
             paddingBottom: 16,
             paddingLeft: 16,
-            paddingRight: 16,
+            paddingRight: 16
           }}
         >
           <Edit color={colors.tint} size={22} />
@@ -82,34 +82,34 @@ const EntryHeader = ({
             paddingTop: 16,
             paddingBottom: 16,
             paddingLeft: 16,
-            paddingRight: 16,
+            paddingRight: 16
           }}
           onPress={() => {
-            onDelete(item);
+            onDelete(item)
           }}
         >
           <Trash color={colors.tint} size={22} />
         </LinkButton>
       </View>
     </View>
-  );
-};
+  )
+}
 
 export const Entry = ({
   item,
   onEdit,
-  onDelete,
+  onDelete
 }: {
-  item: LogItem;
-  onEdit: (item: LogItem) => void;
-  onDelete: (item: LogItem) => void;
+  item: LogItem
+  onEdit: (item: LogItem) => void
+  onDelete: (item: LogItem) => void
 }) => {
-  const colors = useColors();
+  const colors = useColors()
 
   return (
     <View
       style={{
-        flex: 1,
+        flex: 1
       }}
     >
       <View
@@ -121,44 +121,40 @@ export const Entry = ({
           borderWidth: 1,
           borderColor: colors.borderStrong,
           backgroundColor: colors.surfaceMuted,
-          position: 'relative',
+          position: "relative"
         }}
       >
-        <EntryHeader
-          item={item}
-          onEdit={onEdit}
-          onDelete={onDelete}
-        />
+        <EntryHeader item={item} onEdit={onEdit} onDelete={onDelete} />
         <ScrollView>
           <View
             style={{
-              paddingBottom: 24,
+              paddingBottom: 24
             }}
           >
             <View
               style={{
-                marginTop: 8,
+                marginTop: 8
               }}
             >
               <Sleep item={item} />
             </View>
             <View
               style={{
-                marginTop: 8,
+                marginTop: 8
               }}
             >
               <Emotions item={item} />
             </View>
             <View
               style={{
-                marginTop: 8,
+                marginTop: 8
               }}
             >
               <Tags item={item} />
             </View>
             <View
               style={{
-                marginTop: 8,
+                marginTop: 8
               }}
             >
               <Message item={item} />
@@ -168,26 +164,28 @@ export const Entry = ({
         <LinearGradient
           colors={[colors.surfaceMuted, colors.logCardBackgroundTransparent]}
           style={{
-            position: 'absolute',
+            position: "absolute",
             height: 24,
             top: 67,
             left: 16,
             right: 16,
-            zIndex: 999,
+            zIndex: 999
           }}
-          pointerEvents="none" />
+          pointerEvents="none"
+        />
         <LinearGradient
           colors={[colors.logCardBackgroundTransparent, colors.surfaceMuted]}
           style={{
-            position: 'absolute',
+            position: "absolute",
             height: 24,
             bottom: 0,
             left: 16,
             right: 16,
-            zIndex: 999,
+            zIndex: 999
           }}
-          pointerEvents="none" />
+          pointerEvents="none"
+        />
       </View>
     </View>
-  );
-};
+  )
+}

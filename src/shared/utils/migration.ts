@@ -1,45 +1,45 @@
-import _ from "lodash";
-import { LogItem } from "@/features/logging/hooks/useLogs";
-import { ImportData } from "./Import";
+import _ from "lodash"
+import { LogItem } from "@/features/logging/hooks/useLogs"
+import { ImportData } from "./Import"
 
 interface MigratedData extends ImportData {
-  items: LogItem[];
+  items: LogItem[]
 }
 
 export const migrateImportData = (data: ImportData): MigratedData => {
-  let { items, settings, tags, version } = data;
+  let { items, settings, tags, version } = data
 
-  let newItems = _.clone(items);
+  let newItems = _.clone(items)
 
   if (!_.isArray(newItems)) {
-    newItems = _.values(newItems);
+    newItems = _.values(newItems)
   }
 
-  newItems = newItems.map((item) => {
-    const newItem = { ...item };
+  newItems = newItems.map(item => {
+    const newItem = { ...item }
 
     if (!item?.tags) {
-      newItem.tags = [];
+      newItem.tags = []
     }
 
-    return newItem;
-  });
+    return newItem
+  })
 
-  let _tags = (tags || settings?.tags || []).map((tag) => {
+  let _tags = (tags || settings?.tags || []).map(tag => {
     if (tag.color === "stone") {
-      tag.color = "slate";
+      tag.color = "slate"
     }
-    return tag;
-  });
+    return tag
+  })
 
-  let _settings = _.omit(settings, 'tags');
+  let _settings = _.omit(settings, "tags")
 
-  if (!_settings.actionsDone) _settings.actionsDone = [];
+  if (!_settings.actionsDone) _settings.actionsDone = []
 
   return {
     version: version || "1.0.0",
     items: newItems,
     settings: _settings,
     tags: _tags
-  };
-};
+  }
+}

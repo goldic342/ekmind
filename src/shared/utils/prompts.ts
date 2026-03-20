@@ -1,47 +1,47 @@
-import Alert from "@/shared/ui/Alert";
-import { t } from "./translation";
+import Alert from "@/shared/ui/Alert"
+import { t } from "./translation"
 
 export const askToCancel = () => {
   return new Promise((resolve, reject) => {
     Alert.alert(
-      t('cancel_confirm_title'),
-      t('cancel_confirm_message'),
+      t("cancel_confirm_title"),
+      t("cancel_confirm_message"),
       [
         {
-          text: t('discard_changes'),
+          text: t("discard_changes"),
           onPress: () => resolve({}),
           style: "destructive"
         },
         {
-          text: t('keep_editing'),
+          text: t("keep_editing"),
           onPress: () => reject(),
           style: "cancel"
         }
       ],
       { cancelable: true }
-    );
+    )
   })
 }
 
 export const askToRemove = () => {
   return new Promise((resolve, reject) => {
     Alert.alert(
-      t('delete_confirm_title'),
-      t('delete_confirm_message'),
+      t("delete_confirm_title"),
+      t("delete_confirm_message"),
       [
         {
-          text: t('delete'),
+          text: t("delete"),
           onPress: () => resolve({}),
           style: "destructive"
         },
         {
-          text: t('cancel'),
+          text: t("cancel"),
           onPress: () => reject(),
           style: "cancel"
         }
       ],
       { cancelable: true }
-    );
+    )
   })
 }
 
@@ -54,18 +54,18 @@ export const askToImport = () => {
         {
           text: t("import_confirm_ok"),
           onPress: () => resolve({}),
-          style: "destructive",
+          style: "destructive"
         },
         {
           text: t("cancel"),
           onPress: () => reject(),
-          style: "cancel",
-        },
+          style: "cancel"
+        }
       ],
       { cancelable: true }
-    );
-  });
-};
+    )
+  })
+}
 
 export const askToReset = <Type>(type: Type) => {
   return new Promise((resolve, reject) => {
@@ -76,17 +76,17 @@ export const askToReset = <Type>(type: Type) => {
         {
           text: t("reset"),
           onPress: () => resolve({}),
-          style: "destructive",
+          style: "destructive"
         },
         {
           text: t("cancel"),
           onPress: () => reject(),
-          style: "cancel",
-        },
+          style: "cancel"
+        }
       ],
       { cancelable: true }
-    );
-  });
+    )
+  })
 }
 
 export const showImportSuccess = () => {
@@ -95,20 +95,20 @@ export const showImportSuccess = () => {
     t("import_success_message"),
     [
       {
-        text: t("ok"),
-      },
+        text: t("ok")
+      }
     ],
     { cancelable: false }
-  );
+  )
 }
 
 export const showImportError = () => {
   Alert.alert(
     t("import_error_title"),
     t("import_error_message"),
-    [{ text: t("ok"), onPress: () => { } }],
+    [{ text: t("ok"), onPress: () => {} }],
     { cancelable: false }
-  );
+  )
 }
 
 export const showResetSuccess = <Type>(type: Type) => {
@@ -118,11 +118,11 @@ export const showResetSuccess = <Type>(type: Type) => {
     [
       {
         text: t("ok"),
-        onPress: () => { },
-      },
+        onPress: () => {}
+      }
     ],
     { cancelable: false }
-  );
+  )
 }
 
 export const askToDisableStep = () => {
@@ -134,17 +134,17 @@ export const askToDisableStep = () => {
         {
           text: t("disable"),
           onPress: () => resolve({}),
-          style: "destructive",
+          style: "destructive"
         },
         {
           text: t("cancel"),
           onPress: () => reject(),
-          style: "cancel",
-        },
+          style: "cancel"
+        }
       ],
       { cancelable: true }
-    );
-  });
+    )
+  })
 }
 
 export const askToDisableFeedbackStep = () => {
@@ -156,15 +156,15 @@ export const askToDisableFeedbackStep = () => {
         {
           text: t("disable"),
           onPress: () => resolve({}),
-          style: "destructive",
+          style: "destructive"
         },
         {
           text: t("cancel"),
           onPress: () => reject(),
-          style: "cancel",
-        },
+          style: "cancel"
+        }
       ],
       { cancelable: true }
-    );
-  });
+    )
+  })
 }

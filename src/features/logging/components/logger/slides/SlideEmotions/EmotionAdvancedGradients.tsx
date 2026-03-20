@@ -1,19 +1,20 @@
-import useColors from "@/shared/hooks/useColors";
-import { LinearGradient } from "expo-linear-gradient";
+import useColors from "@/shared/hooks/useColors"
+import { LinearGradient } from "expo-linear-gradient"
 
 export const EmotionAdvancedGradients = () => {
-  const colors = useColors();
+  const colors = useColors()
 
   return (
     <LinearGradient
       colors={[colors.logBackgroundTransparent, colors.backgroundSecondary]}
       style={{
-        position: 'absolute',
+        position: "absolute",
         height: 32,
         bottom: 0,
         zIndex: 1,
-        width: '100%',
+        width: "100%"
       }}
-      pointerEvents="none" />
-  );
-};
+      pointerEvents="none"
+    />
+  )
+}

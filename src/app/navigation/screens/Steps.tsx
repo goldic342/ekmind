@@ -1,43 +1,45 @@
-import Indicator from '@/shared/ui/Indicator';
-import { LoggerStep, STEP_OPTIONS } from '@/features/logging/components/logger/config';
-import MenuList from '@/shared/ui/MenuList';
-import MenuListItem from '@/shared/ui/MenuListItem';
-import { PageWithHeaderLayout } from '@/shared/ui/PageWithHeaderLayout';
-import { t } from '@/shared/utils/translation';
-import { BedDouble } from 'lucide-react-native';
-import { ReactElement } from 'react';
-import { ScrollView, Switch, Text, View } from 'react-native';
-import { Bell, FileText, Heart, MessageSquare, Sun, Tag } from 'react-native-feather';
-import { RootStackScreenProps } from '@/types';
-import useColors from '@/shared/hooks/useColors';
-import { useSettings } from '@/features/settings/hooks/useSettings';
+import Indicator from "@/shared/ui/Indicator"
+import { LoggerStep, STEP_OPTIONS } from "@/features/logging/components/logger/config"
+import MenuList from "@/shared/ui/MenuList"
+import MenuListItem from "@/shared/ui/MenuListItem"
+import { PageWithHeaderLayout } from "@/shared/ui/PageWithHeaderLayout"
+import { t } from "@/shared/utils/translation"
+import { BedDouble } from "lucide-react-native"
+import { ReactElement } from "react"
+import { ScrollView, Switch, Text, View } from "react-native"
+import { Bell, FileText, Heart, MessageSquare, Sun, Tag } from "react-native-feather"
+import { RootStackScreenProps } from "@/types"
+import useColors from "@/shared/hooks/useColors"
+import { useSettings } from "@/features/settings/hooks/useSettings"
 
-export const StepsScreen = ({ navigation }: RootStackScreenProps<'Steps'>) => {
+export const StepsScreen = ({ navigation }: RootStackScreenProps<"Steps">) => {
   const colors = useColors()
 
   const ICONS_MAP: {
-    [key in LoggerStep]: ReactElement;
+    [key in LoggerStep]: ReactElement
   } = {
-    'rating': <Sun width={20} height={20} stroke={colors.text} />,
-    'message': <FileText width={20} height={20} color={colors.text} />,
-    'sleep': <BedDouble size={20} color={colors.text} />,
-    'tags': <Tag width={20} height={20} color={colors.text} />,
-    'emotions': <Heart width={20} height={20} color={colors.text} />,
-    'feedback': <MessageSquare width={20} height={20} color={colors.text} />,
-    'reminder': <Bell width={20} height={20} color={colors.text} />,
+    rating: <Sun width={20} height={20} stroke={colors.text} />,
+    message: <FileText width={20} height={20} color={colors.text} />,
+    sleep: <BedDouble size={20} color={colors.text} />,
+    tags: <Tag width={20} height={20} color={colors.text} />,
+    emotions: <Heart width={20} height={20} color={colors.text} />,
+    feedback: <MessageSquare width={20} height={20} color={colors.text} />,
+    reminder: <Bell width={20} height={20} color={colors.text} />
   }
 
   const { settings, setSettings } = useSettings()
 
   return (
-    <PageWithHeaderLayout style={{
-      flex: 1,
-      backgroundColor: colors.background,
-    }}>
+    <PageWithHeaderLayout
+      style={{
+        flex: 1,
+        backgroundColor: colors.background
+      }}
+    >
       <ScrollView
         style={{
           padding: 20,
-          flex: 1,
+          flex: 1
         }}
       >
         <View
@@ -45,61 +47,70 @@ export const StepsScreen = ({ navigation }: RootStackScreenProps<'Steps'>) => {
             paddingTop: 0,
             paddingBottom: 0,
             paddingLeft: 16,
-            paddingRight: 16,
+            paddingRight: 16
           }}
         >
           <Text
             style={{
               fontSize: 17,
-              color: colors.textSecondary,
+              color: colors.textSecondary
             }}
-          >{t('steps_introduction')}</Text>
+          >
+            {t("steps_introduction")}
+          </Text>
         </View>
-        <MenuList style={{ marginTop: 16, }}>
-          {STEP_OPTIONS.map((option) => (
+        <MenuList style={{ marginTop: 16 }}>
+          {STEP_OPTIONS.map(option => (
             <MenuListItem
               key={option}
               title={
                 <View
                   style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
+                    flexDirection: "row",
+                    alignItems: "center"
                   }}
                 >
                   <Text
                     style={{
                       fontSize: 17,
-                      color: colors.text,
+                      color: colors.text
                     }}
-                  >{t(`logger_step_${option}`)}</Text>
-                  {option === 'sleep' && (
+                  >
+                    {t(`logger_step_${option}`)}
+                  </Text>
+                  {option === "sleep" && (
                     <Indicator
-                      colorName='purple'
+                      colorName="purple"
                       style={{
-                        marginLeft: 8,
+                        marginLeft: 8
                       }}
-                    >{t('new')}</Indicator>
+                    >
+                      {t("new")}
+                    </Indicator>
                   )}
                 </View>
-
               }
               iconLeft={ICONS_MAP[option]}
-              iconRight={option === 'rating' ? undefined : (
-                <Switch
-                  onValueChange={() => {
-                    setSettings(settings => ({
-                      ...settings,
-                      steps: settings.steps.includes(option) ? settings.steps.filter(s => s !== option) : [...settings.steps, option] as LoggerStep[]
-                    }))
-                  }}
-                  value={settings.steps.includes(option)}
-                />
-              )}
+              iconRight={
+                option === "rating" ? undefined : (
+                  <Switch
+                    onValueChange={() => {
+                      setSettings(settings => ({
+                        ...settings,
+                        steps: settings.steps.includes(option)
+                          ? settings.steps.filter(s => s !== option)
+                          : ([...settings.steps, option] as LoggerStep[])
+                      }))
+                    }}
+                    value={settings.steps.includes(option)}
+                  />
+                )
+              }
               isLast={option === STEP_OPTIONS[STEP_OPTIONS.length - 1]}
             />
           ))}
         </MenuList>
       </ScrollView>
     </PageWithHeaderLayout>
-  );
+  )
 }

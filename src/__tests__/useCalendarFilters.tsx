@@ -1,16 +1,17 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import { act, renderHook } from '@testing-library/react-hooks'
-import { CalendarFiltersProvider, useCalendarFilters } from '../features/calendar/hooks/useCalendarFilters'
-import { LogsProvider, LogsState, STORAGE_KEY } from '@/features/logging/hooks/useLogs'
-import { SettingsProvider } from '@/features/settings/hooks/useSettings'
-import { _generateItem } from './utils'
+import AsyncStorage from "@react-native-async-storage/async-storage"
+import { act, renderHook } from "@testing-library/react-hooks"
+import {
+  CalendarFiltersProvider,
+  useCalendarFilters
+} from "../features/calendar/hooks/useCalendarFilters"
+import { LogsProvider, LogsState, STORAGE_KEY } from "@/features/logging/hooks/useLogs"
+import { SettingsProvider } from "@/features/settings/hooks/useSettings"
+import { _generateItem } from "./utils"
 
 const wrapper = ({ children }) => (
   <SettingsProvider>
     <LogsProvider>
-      <CalendarFiltersProvider>
-        {children}
-      </CalendarFiltersProvider>
+      <CalendarFiltersProvider>{children}</CalendarFiltersProvider>
     </LogsProvider>
   </SettingsProvider>
 )
@@ -19,43 +20,48 @@ const _renderHook = () => {
   return renderHook(() => useCalendarFilters(), { wrapper })
 }
 
-const testItems: LogsState['items'] = [
+const testItems: LogsState["items"] = [
   _generateItem({
-    date: '2022-01-01',
-    rating: 'neutral',
-    message: 'test message 🐶',
+    date: "2022-01-01",
+    rating: "neutral",
+    message: "test message 🐶",
     tags: []
   }),
   _generateItem({
-    date: '2022-01-02',
-    rating: 'good',
-    message: '🦄🐶',
-    tags: [{
-      id: 't1',
-    }, {
-      id: 't4',
-    }]
+    date: "2022-01-02",
+    rating: "good",
+    message: "🦄🐶",
+    tags: [
+      {
+        id: "t1"
+      },
+      {
+        id: "t4"
+      }
+    ]
   }),
   _generateItem({
-    date: '2022-01-02',
-    rating: 'bad',
-    message: '🕹',
-    tags: [{
-      id: 't1',
-    }, {
-      id: 't3',
-    }]
+    date: "2022-01-02",
+    rating: "bad",
+    message: "🕹",
+    tags: [
+      {
+        id: "t1"
+      },
+      {
+        id: "t3"
+      }
+    ]
   })
 ]
 
-xdescribe('useCalendarFilters()', () => {
-
+xdescribe("useCalendarFilters()", () => {
   afterEach(async () => {
     const keys = await AsyncStorage.getAllKeys()
     await AsyncStorage.multiRemove(keys)
   })
 
-  test('should `set`', async () => {
+  test("should `set`", async () => {
     const hook = _renderHook()
     await hook.waitForNextUpdate()
 
@@ -63,20 +69,20 @@ xdescribe('useCalendarFilters()', () => {
 
     await act(() => {
       set({
-        text: 'test',
-        ratings: ['neutral'],
-        tagIds: ['1'],
+        text: "test",
+        ratings: ["neutral"],
+        tagIds: ["1"]
       })
     })
 
-    expect(hook.result.current.data.text).toBe('test')
-    expect(hook.result.current.data.ratings).toEqual(['neutral'])
-    expect(hook.result.current.data.tagIds).toEqual(['1'])
+    expect(hook.result.current.data.text).toBe("test")
+    expect(hook.result.current.data.ratings).toEqual(["neutral"])
+    expect(hook.result.current.data.tagIds).toEqual(["1"])
     expect(hook.result.current.data.filterCount).toBe(3)
     expect(hook.result.current.data.isFiltering).toBe(true)
   })
 
-  test('should `reset`', async () => {
+  test("should `reset`", async () => {
     const hook = _renderHook()
     await hook.waitForNextUpdate()
 
@@ -84,9 +90,9 @@ xdescribe('useCalendarFilters()', () => {
 
     await act(() => {
       set({
-        text: 'test',
-        ratings: ['neutral'],
-        tagIds: ['1'],
+        text: "test",
+        ratings: ["neutral"],
+        tagIds: ["1"]
       })
     })
 
@@ -94,14 +100,14 @@ xdescribe('useCalendarFilters()', () => {
       reset()
     })
 
-    expect(hook.result.current.data.text).toBe('')
+    expect(hook.result.current.data.text).toBe("")
     expect(hook.result.current.data.ratings).toEqual([])
     expect(hook.result.current.data.tagIds).toEqual([])
     expect(hook.result.current.data.filterCount).toBe(0)
     expect(hook.result.current.data.isFiltering).toBe(false)
   })
 
-  test('should `open`', async () => {
+  test("should `open`", async () => {
     const hook = _renderHook()
     await hook.waitForNextUpdate()
 
@@ -114,7 +120,7 @@ xdescribe('useCalendarFilters()', () => {
     expect(hook.result.current.isOpen).toBe(true)
   })
 
-  test('should `close`', async () => {
+  test("should `close`", async () => {
     const hook = _renderHook()
     await hook.waitForNextUpdate()
 
@@ -131,7 +137,7 @@ xdescribe('useCalendarFilters()', () => {
     expect(hook.result.current.isOpen).toBe(false)
   })
 
-  test('should filter for `ratings`', async () => {
+  test("should filter for `ratings`", async () => {
     AsyncStorage.setItem(STORAGE_KEY, JSON.stringify({ items: testItems }))
 
     const hook = _renderHook()
@@ -141,18 +147,16 @@ xdescribe('useCalendarFilters()', () => {
 
     await act(() => {
       set({
-        text: '',
-        ratings: ['good'],
-        tagIds: [],
+        text: "",
+        ratings: ["good"],
+        tagIds: []
       })
     })
 
-    expect(hook.result.current.data.filteredItems).toEqual([
-      testItems[1]
-    ])
+    expect(hook.result.current.data.filteredItems).toEqual([testItems[1]])
   })
 
-  test('should filter for `tags`', async () => {
+  test("should filter for `tags`", async () => {
     AsyncStorage.setItem(STORAGE_KEY, JSON.stringify({ items: testItems }))
 
     const hook = _renderHook()
@@ -162,31 +166,26 @@ xdescribe('useCalendarFilters()', () => {
 
     await act(() => {
       set({
-        text: '',
+        text: "",
         ratings: [],
-        tagIds: ['t3'],
+        tagIds: ["t3"]
       })
     })
 
-    expect(hook.result.current.data.filteredItems).toEqual([
-      testItems[2]
-    ])
+    expect(hook.result.current.data.filteredItems).toEqual([testItems[2]])
 
     await act(() => {
       set({
-        text: '',
+        text: "",
         ratings: [],
-        tagIds: ['t1'],
+        tagIds: ["t1"]
       })
     })
 
-    expect(hook.result.current.data.filteredItems).toEqual([
-      testItems[1],
-      testItems[2]
-    ])
+    expect(hook.result.current.data.filteredItems).toEqual([testItems[1], testItems[2]])
   })
 
-  test('should filter for `text`', async () => {
+  test("should filter for `text`", async () => {
     AsyncStorage.setItem(STORAGE_KEY, JSON.stringify({ items: testItems }))
 
     const hook = _renderHook()
@@ -196,31 +195,26 @@ xdescribe('useCalendarFilters()', () => {
 
     await act(() => {
       set({
-        text: '🐶',
+        text: "🐶",
         ratings: [],
-        tagIds: [],
+        tagIds: []
       })
     })
 
-    expect(hook.result.current.data.filteredItems).toEqual([
-      testItems[0],
-      testItems[1]
-    ])
+    expect(hook.result.current.data.filteredItems).toEqual([testItems[0], testItems[1]])
 
     await act(() => {
       set({
-        text: '🦄',
+        text: "🦄",
         ratings: [],
-        tagIds: [],
+        tagIds: []
       })
     })
 
-    expect(hook.result.current.data.filteredItems).toEqual([
-      testItems[1]
-    ])
+    expect(hook.result.current.data.filteredItems).toEqual([testItems[1]])
   })
 
-  test('should filter for `text` and `ratings`', async () => {
+  test("should filter for `text` and `ratings`", async () => {
     AsyncStorage.setItem(STORAGE_KEY, JSON.stringify({ items: testItems }))
 
     const hook = _renderHook()
@@ -230,18 +224,16 @@ xdescribe('useCalendarFilters()', () => {
 
     await act(() => {
       set({
-        text: '🐶',
-        ratings: ['good'],
-        tagIds: [],
+        text: "🐶",
+        ratings: ["good"],
+        tagIds: []
       })
     })
 
-    expect(hook.result.current.data.filteredItems).toEqual([
-      testItems[1]
-    ])
+    expect(hook.result.current.data.filteredItems).toEqual([testItems[1]])
   })
 
-  test('should filter for `text` and `tags`', async () => {
+  test("should filter for `text` and `tags`", async () => {
     AsyncStorage.setItem(STORAGE_KEY, JSON.stringify({ items: testItems }))
 
     const hook = _renderHook()
@@ -251,15 +243,12 @@ xdescribe('useCalendarFilters()', () => {
 
     await act(() => {
       set({
-        text: '🐶',
+        text: "🐶",
         ratings: [],
-        tagIds: ['t1'],
+        tagIds: ["t1"]
       })
     })
 
-    expect(hook.result.current.data.filteredItems).toEqual([
-      testItems[1]
-    ])
+    expect(hook.result.current.data.filteredItems).toEqual([testItems[1]])
   })
-
 })

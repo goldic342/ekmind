@@ -1,48 +1,41 @@
-import useColors from '@/shared/hooks/useColors';
-import { LogItem } from '@/features/logging/hooks/useLogs';
-import { useNavigation } from '@react-navigation/native';
+import useColors from "@/shared/hooks/useColors"
+import { LogItem } from "@/features/logging/hooks/useLogs"
+import { useNavigation } from "@react-navigation/native"
 import { t } from "@/shared/utils/translation"
-import { Text, View } from 'react-native';
-import { SectionHeader } from './SectionHeader';
+import { Text, View } from "react-native"
+import { SectionHeader } from "./SectionHeader"
 
-export const Message = ({
-  item,
-}: {
-  item: LogItem;
-}) => {
-  const navigation = useNavigation();
-  const colors = useColors();
+export const Message = ({ item }: { item: LogItem }) => {
+  const navigation = useNavigation()
+  const colors = useColors()
 
   return (
-    <View
-      style={{
-      }}
-    >
+    <View style={{}}>
       <SectionHeader
-        title={t('view_log_message')}
+        title={t("view_log_message")}
         onEdit={() => {
-          navigation.navigate('LogEdit', {
+          navigation.navigate("LogEdit", {
             id: item.id,
-            step: 'message',
-          });
+            step: "message"
+          })
         }}
       />
       <View
         style={{
-          flexDirection: 'row',
+          flexDirection: "row"
         }}
       >
         {item?.message?.length > 0 ? (
           <View
             style={{
-              width: '100%',
+              width: "100%"
             }}
           >
             <View
               style={{
                 borderRadius: 8,
                 paddingHorizontal: 8,
-                width: '100%',
+                width: "100%"
               }}
             >
               <Text
@@ -50,9 +43,11 @@ export const Message = ({
                   fontSize: 17,
                   color: colors.text,
                   lineHeight: 23,
-                  width: '100%',
+                  width: "100%"
                 }}
-              >{item.message}</Text>
+              >
+                {item.message}
+              </Text>
             </View>
           </View>
         ) : (
@@ -61,17 +56,21 @@ export const Message = ({
               paddingTop: 4,
               paddingBottom: 8,
               paddingHorizontal: 8,
-              width: '100%',
+              width: "100%"
             }}
           >
-            <Text style={{
-              color: colors.textSecondary,
-              fontSize: 17,
-              lineHeight: 24,
-            }}>{t('view_log_message_empty')}</Text>
+            <Text
+              style={{
+                color: colors.textSecondary,
+                fontSize: 17,
+                lineHeight: 24
+              }}
+            >
+              {t("view_log_message_empty")}
+            </Text>
           </View>
         )}
       </View>
     </View>
-  );
-};
+  )
+}

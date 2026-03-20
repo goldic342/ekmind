@@ -1,14 +1,10 @@
-import { EmotionIndicator } from '@/features/logging/components/logger/slides/SlideEmotions/EmotionsIndicator';
-import useColors from '@/shared/hooks/useColors';
-import { t } from '@/shared/utils/translation';
-import { Text, View } from 'react-native';
+import { EmotionIndicator } from "@/features/logging/components/logger/slides/SlideEmotions/EmotionsIndicator"
+import useColors from "@/shared/hooks/useColors"
+import { t } from "@/shared/utils/translation"
+import { Text, View } from "react-native"
 
-export const EmotionItem = ({
-  emotion,
-}: {
-  emotion: any;
-}) => {
-  const colors = useColors();
+export const EmotionItem = ({ emotion }: { emotion: any }) => {
+  const colors = useColors()
 
   return (
     <View>
@@ -21,18 +17,20 @@ export const EmotionItem = ({
           borderWidth: 1,
           borderColor: colors.borderStrong,
           flex: 1,
-          flexDirection: 'row',
-          alignItems: 'center',
+          flexDirection: "row",
+          alignItems: "center"
         }}
       >
         <EmotionIndicator category={emotion.category} />
         <Text
           style={{
             color: colors.text,
-            fontSize: 17,
+            fontSize: 17
           }}
-        >{t(`log_emotion_${emotion.key}`)}</Text>
+        >
+          {t(`log_emotion_${emotion.key}`)}
+        </Text>
       </View>
     </View>
-  );
-};
+  )
+}

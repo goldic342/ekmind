@@ -1,24 +1,35 @@
-import * as Linking from 'expo-linking';
-import * as WebBrowser from 'expo-web-browser';
-import { ScrollView, Text, View } from 'react-native';
-import { ArrowUpCircle, Award, Bell, BookOpen, CheckCircle, Database, Droplet, PieChart, Shield, Smartphone, Star } from 'react-native-feather';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import MenuList from '@/shared/ui/MenuList';
-import MenuListHeadline from '@/shared/ui/MenuListHeadline';
-import MenuListItem from '@/shared/ui/MenuListItem';
-import { CHANGELOG_URL, FEEDBACK_FEATURES_URL } from '@/shared/constants/Config';
-import { t } from '@/shared/utils/translation';
-import useColors from '@/shared/hooks/useColors';
-import pkg from '../../../../../package.json';
-import { RootStackScreenProps } from '@/types';
-import { UserDataImportList } from './UserData';
-import * as Updates from 'expo-updates';
-import { Github, Tag } from 'lucide-react-native';
+import * as Linking from "expo-linking"
+import * as WebBrowser from "expo-web-browser"
+import { ScrollView, Text, View } from "react-native"
+import {
+  ArrowUpCircle,
+  Award,
+  Bell,
+  BookOpen,
+  CheckCircle,
+  Database,
+  Droplet,
+  PieChart,
+  Shield,
+  Smartphone,
+  Star
+} from "react-native-feather"
+import { useSafeAreaInsets } from "react-native-safe-area-context"
+import MenuList from "@/shared/ui/MenuList"
+import MenuListHeadline from "@/shared/ui/MenuListHeadline"
+import MenuListItem from "@/shared/ui/MenuListItem"
+import { CHANGELOG_URL, FEEDBACK_FEATURES_URL } from "@/shared/constants/Config"
+import { t } from "@/shared/utils/translation"
+import useColors from "@/shared/hooks/useColors"
+import pkg from "../../../../../package.json"
+import { RootStackScreenProps } from "@/types"
+import { UserDataImportList } from "./UserData"
+import * as Updates from "expo-updates"
+import { Github, Tag } from "lucide-react-native"
 
-export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>) => {
-  const insets = useSafeAreaInsets();
+export const SettingsScreen = ({ navigation }: RootStackScreenProps<"Settings">) => {
+  const insets = useSafeAreaInsets()
   const colors = useColors()
-
 
   // const { settings, setSettings } = useSettings()
   // const passcodeSupported = supportedSecurityLevel > 0;
@@ -39,56 +50,60 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
   // })
 
   return (
-    <View style={{
-      paddingTop: insets.top,
-      flex: 1,
-      backgroundColor: colors.background,
-    }}>
+    <View
+      style={{
+        paddingTop: insets.top,
+        flex: 1,
+        backgroundColor: colors.background
+      }}
+    >
       <ScrollView
         style={{
-          padding: 20,
+          padding: 20
         }}
       >
         <Text
           style={{
             fontSize: 32,
             color: colors.text,
-            fontWeight: 'bold',
+            fontWeight: "bold",
             marginTop: 32,
-            marginBottom: 18,
+            marginBottom: 18
           }}
-        >{t('settings')}</Text>
+        >
+          {t("settings")}
+        </Text>
         <MenuList>
           <MenuListItem
-            title={t('data')}
+            title={t("data")}
             iconLeft={<Database width={18} color={colors.text} />}
-            onPress={() => navigation.navigate('Data')}
-            testID='data'
+            onPress={() => navigation.navigate("Data")}
+            testID="data"
             isLink
           />
           <MenuListItem
-            title={t('reminder')}
+            title={t("reminder")}
             iconLeft={<Bell width={18} color={colors.text} />}
-            onPress={() => navigation.navigate('Reminder')}
-            testID='reminder'
+            onPress={() => navigation.navigate("Reminder")}
+            testID="reminder"
             isLink
           />
           <MenuListItem
-            title={t('colors')}
+            title={t("colors")}
             iconLeft={<Droplet width={18} color={colors.text} />}
-            onPress={() => navigation.navigate('Colors')}
+            onPress={() => navigation.navigate("Colors")}
             isLink
           />
           <MenuListItem
-            title={t('tags')}
+            title={t("tags")}
             iconLeft={<Tag width={18} color={colors.text} />}
-            onPress={() => navigation.navigate('SettingsTags')}
+            onPress={() => navigation.navigate("SettingsTags")}
             isLink
           />
           <MenuListItem
-            title={t('steps')}
+            title={t("steps")}
             iconLeft={<CheckCircle width={18} color={colors.text} />}
-            onPress={() => navigation.navigate('Steps')}
+            onPress={() => navigation.navigate("Steps")}
             isLink
             isLast
           />
@@ -121,65 +136,58 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
             testID='passcode'
             isLast
           /> */}
-
         </MenuList>
 
-        <MenuListHeadline>{t('settings_about')}</MenuListHeadline>
-        <MenuList
-          style={{
-          }}
-        >
+        <MenuListHeadline>{t("settings_about")}</MenuListHeadline>
+        <MenuList style={{}}>
           <MenuListItem
-            title={t('vote_features')}
+            title={t("vote_features")}
             onPress={async () => {
-              await WebBrowser.openBrowserAsync(FEEDBACK_FEATURES_URL);
+              await WebBrowser.openBrowserAsync(FEEDBACK_FEATURES_URL)
             }}
             iconLeft={<ArrowUpCircle width={18} color={colors.text} />}
-            testID='vote_features'
+            testID="vote_features"
           />
           <MenuListItem
-            title={t('changelog')}
+            title={t("changelog")}
             onPress={async () => {
-              await WebBrowser.openBrowserAsync(CHANGELOG_URL);
+              await WebBrowser.openBrowserAsync(CHANGELOG_URL)
             }}
             iconLeft={<BookOpen width={18} color={colors.text} />}
-            testID='changelog'
+            testID="changelog"
           />
           <MenuListItem
-            title={t('privacy')}
-            onPress={() => navigation.navigate('Privacy')}
+            title={t("privacy")}
+            onPress={() => navigation.navigate("Privacy")}
             iconLeft={<Shield width={18} color={colors.text} />}
             isLink
           />
         </MenuList>
 
-        <MenuListHeadline>{t('settings_development')}</MenuListHeadline>
-        <MenuList
-          style={{
-          }}
-        >
+        <MenuListHeadline>{t("settings_development")}</MenuListHeadline>
+        <MenuList style={{}}>
           <MenuListItem
-            title={`${t('onboarding')}`}
+            title={`${t("onboarding")}`}
             iconLeft={<Smartphone width={18} color={colors.text} />}
-            onPress={() => navigation.navigate('Onboarding')}
+            onPress={() => navigation.navigate("Onboarding")}
           />
           <MenuListItem
-            title={`${t('settings_development_statistics')}`}
+            title={`${t("settings_development_statistics")}`}
             iconLeft={<PieChart width={18} color={colors.text} />}
-            onPress={() => navigation.navigate('DevelopmentTools')}
+            onPress={() => navigation.navigate("DevelopmentTools")}
             isLink
           />
           <MenuListItem
-            title={t('app_is_open_source')}
+            title={t("app_is_open_source")}
             onPress={() => {
-              Linking.openURL('https://github.com/mrzmyr/pixy-mood-tracker-app')
+              Linking.openURL("https://github.com/mrzmyr/pixy-mood-tracker-app")
             }}
             iconLeft={<Github width={18} color={colors.text} />}
           />
           <MenuListItem
-            title={t('licenses')}
+            title={t("licenses")}
             iconLeft={<Award width={18} color={colors.text} />}
-            onPress={() => navigation.navigate('Licenses')}
+            onPress={() => navigation.navigate("Licenses")}
             isLink
             isLast
           />
@@ -188,17 +196,23 @@ export const SettingsScreen = ({ navigation }: RootStackScreenProps<'Settings'>)
           style={{
             marginTop: 20,
             flex: 1,
-            justifyContent: 'flex-end',
-            alignItems: 'center',
-            marginBottom: 40,
+            justifyContent: "flex-end",
+            alignItems: "center",
+            marginBottom: 40
           }}
         >
-          <Text style={{ fontSize: 14, marginTop: 5, color: colors.textSecondary }}>Ekmind v{pkg.version}</Text>
-          {Updates.channel && <Text style={{ fontSize: 14, marginTop: 5, color: colors.textSecondary }}>{Updates.channel}</Text>}
+          <Text style={{ fontSize: 14, marginTop: 5, color: colors.textSecondary }}>
+            Ekmind v{pkg.version}
+          </Text>
+          {Updates.channel && (
+            <Text style={{ fontSize: 14, marginTop: 5, color: colors.textSecondary }}>
+              {Updates.channel}
+            </Text>
+          )}
         </View>
 
         {__DEV__ && <UserDataImportList />}
       </ScrollView>
     </View>
-  );
+  )
 }

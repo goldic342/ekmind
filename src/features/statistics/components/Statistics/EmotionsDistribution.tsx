@@ -1,46 +1,33 @@
-import { LogItem } from '@/features/logging/hooks/useLogs';
-import { dummyEmotionsDistributionData, getEmotionsDistributionData } from '@/features/statistics/hooks/useStatistics/EmotionsDistributuon';
-import { EmotionsDistributionContent } from '@/features/statistics/screens/Statistics/EmotionsDistributionCard';
-import { BigCard } from '@/shared/ui/BigCard';
-import { NotEnoughDataOverlay } from './NotEnoughDataOverlay';
+import { LogItem } from "@/features/logging/hooks/useLogs"
+import {
+  dummyEmotionsDistributionData,
+  getEmotionsDistributionData
+} from "@/features/statistics/hooks/useStatistics/EmotionsDistributuon"
+import { EmotionsDistributionContent } from "@/features/statistics/screens/Statistics/EmotionsDistributionCard"
+import { BigCard } from "@/shared/ui/BigCard"
+import { NotEnoughDataOverlay } from "./NotEnoughDataOverlay"
 
-const MIN_TAGS = 5;
+const MIN_TAGS = 5
 
 export const EmotionsDistribution = ({
   title,
   subtitle,
-  items,
+  items
 }: {
   title: string
   subtitle: string
-  items: LogItem[],
+  items: LogItem[]
 }) => {
-  const data = getEmotionsDistributionData(items);
+  const data = getEmotionsDistributionData(items)
 
   return (
-    <BigCard
-      title={title}
-      subtitle={subtitle}
-      isShareable
-    >
-      {
-        data.emotions.length < MIN_TAGS && (
-          <NotEnoughDataOverlay />
-        )
-      }
-      {
-        data.emotions.length >= MIN_TAGS ? (
-          <EmotionsDistributionContent
-            data={data}
-            limit={10}
-          />
-        ) : (
-          <EmotionsDistributionContent
-            data={dummyEmotionsDistributionData}
-            limit={10}
-          />
-        )
-      }
-    </BigCard >
-  );
-};
+    <BigCard title={title} subtitle={subtitle} isShareable>
+      {data.emotions.length < MIN_TAGS && <NotEnoughDataOverlay />}
+      {data.emotions.length >= MIN_TAGS ? (
+        <EmotionsDistributionContent data={data} limit={10} />
+      ) : (
+        <EmotionsDistributionContent data={dummyEmotionsDistributionData} limit={10} />
+      )}
+    </BigCard>
+  )
+}

@@ -2,9 +2,7 @@ import { View } from "react-native"
 import { Check } from "react-native-feather"
 import useColors from "@/shared/hooks/useColors"
 
-export const Checkbox = ({
-  checked
-}) => {
+export const Checkbox = ({ checked }) => {
   const colors = useColors()
 
   return (
@@ -15,10 +13,10 @@ export const Checkbox = ({
         borderColor: checked ? colors.checkboxCheckedBorder : colors.checkboxBorder,
         width: 22,
         height: 22,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: "center",
+        alignItems: "center",
         borderRadius: 4,
-        backgroundColor: checked ? colors.checkboxCheckedBackground : colors.checkboxBackground,
+        backgroundColor: checked ? colors.checkboxCheckedBackground : colors.checkboxBackground
       }}
     >
       {checked && <Check strokeWidth={3} width={12} color={colors.checkboxCheckedText} />}

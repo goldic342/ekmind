@@ -1,27 +1,31 @@
-import { Text, View, ViewStyle } from 'react-native';
-import useColors from '@/shared/hooks/useColors';
+import { Text, View, ViewStyle } from "react-native"
+import useColors from "@/shared/hooks/useColors"
 
 export const SlideHeadline = ({
   children,
-  style = {},
+  style = {}
 }: {
-  children: string;
-  style?: ViewStyle;
+  children: string
+  style?: ViewStyle
 }) => {
-  const colors = useColors();
+  const colors = useColors()
 
   return (
     <View
       style={{
         flexDirection: "row",
-        ...style,
+        ...style
       }}
     >
-      <Text style={{
-        color: colors.text,
-        fontSize: 20,
-        fontWeight: 'bold',
-      }}>{children}</Text>
+      <Text
+        style={{
+          color: colors.text,
+          fontSize: 20,
+          fontWeight: "bold"
+        }}
+      >
+        {children}
+      </Text>
     </View>
-  );
-};
+  )
+}

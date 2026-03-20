@@ -1,10 +1,10 @@
-import { Text, View } from 'react-native';
-import Button from '@/shared/ui/Button';
-import useColors from '@/shared/hooks/useColors';
-import { HeaderImage } from './HeaderImage';
-import { HeaderNavigation } from "./HeaderNavigation";
-import Animated, { FadeIn } from 'react-native-reanimated';
-import { t } from '@/shared/utils/translation';
+import { Text, View } from "react-native"
+import Button from "@/shared/ui/Button"
+import useColors from "@/shared/hooks/useColors"
+import { HeaderImage } from "./HeaderImage"
+import { HeaderNavigation } from "./HeaderNavigation"
+import Animated, { FadeIn } from "react-native-reanimated"
+import { t } from "@/shared/utils/translation"
 
 const Body = ({ index }: { index: number }) => {
   const colors = useColors()
@@ -14,15 +14,15 @@ const Body = ({ index }: { index: number }) => {
       style={{
         flex: 1,
         paddingVertical: 32,
-        paddingHorizontal: 32,
+        paddingHorizontal: 32
       }}
     >
       <Text
         style={{
           color: colors.text,
           fontSize: 20,
-          fontWeight: 'bold',
-          marginBottom: 8,
+          fontWeight: "bold",
+          marginBottom: 8
         }}
       >
         {t(`onboarding_step_${index}_title`)}
@@ -31,7 +31,7 @@ const Body = ({ index }: { index: number }) => {
         style={{
           color: colors.onboardingBody,
           fontSize: 17,
-          lineHeight: 24,
+          lineHeight: 24
         }}
       >
         {t(`onboarding_step_${index}_body`)}
@@ -43,11 +43,11 @@ const Body = ({ index }: { index: number }) => {
 export const ExplainerSlide = ({
   index,
   setIndex,
-  onSkip,
+  onSkip
 }: {
-  index: number;
-  setIndex: (index: number) => void;
-  onSkip: () => void;
+  index: number
+  setIndex: (index: number) => void
+  onSkip: () => void
 }) => {
   const colors = useColors()
 
@@ -55,47 +55,52 @@ export const ExplainerSlide = ({
     <>
       <View
         style={{
-          width: '100%',
+          width: "100%",
           backgroundColor: colors.onboardingTopBackground,
-          justifyContent: 'flex-end',
-          alignItems: 'center',
-          flex: 1,
+          justifyContent: "flex-end",
+          alignItems: "center",
+          flex: 1
         }}
       >
         <Animated.View
           style={{
-            width: '100%',
-            alignItems: 'center',
-            flex: 1,
+            width: "100%",
+            alignItems: "center",
+            flex: 1
           }}
           entering={FadeIn.duration(800)}
         >
           <HeaderImage
             index={index}
-            style={index === 3 ? {
-              width: '90%',
-              maxWidth: 340,
-              flex: 1,
-            } : {
-              width: '90%',
-              flex: 1,
-            }} />
+            style={
+              index === 3
+                ? {
+                    width: "90%",
+                    maxWidth: 340,
+                    flex: 1
+                  }
+                : {
+                    width: "90%",
+                    flex: 1
+                  }
+            }
+          />
         </Animated.View>
       </View>
       <View
         style={{
-          flex: 1,
+          flex: 1
         }}
       >
         <View
           style={{
-            flex: 1,
+            flex: 1
           }}
         >
           <HeaderNavigation onSkip={onSkip} index={index} setIndex={setIndex} />
           <Animated.View
             style={{
-              flex: 1,
+              flex: 1
             }}
             entering={FadeIn.duration(800)}
           >
@@ -104,14 +109,12 @@ export const ExplainerSlide = ({
         </View>
         <View
           style={{
-            padding: 32,
+            padding: 32
           }}
         >
-          <Button
-            onPress={() => setIndex(index + 1)}
-          >{t('onboarding_next')}</Button>
+          <Button onPress={() => setIndex(index + 1)}>{t("onboarding_next")}</Button>
         </View>
       </View>
     </>
-  );
-};
+  )
+}

@@ -1,7 +1,7 @@
-import { createContext, useContext, useEffect, useRef, useState } from "react";
-import { AppState } from "react-native";
-import { useSettings } from '@/features/settings/hooks/useSettings';
-import * as LocalAuthentication from 'expo-local-authentication';
+import { createContext, useContext, useEffect, useRef, useState } from "react"
+import { AppState } from "react-native"
+import { useSettings } from "@/features/settings/hooks/useSettings"
+import * as LocalAuthentication from "expo-local-authentication"
 
 interface PasscodeState {
   isAuthenticated: boolean
@@ -11,21 +11,17 @@ interface PasscodeState {
 
 const PasscodeContext = createContext({} as PasscodeState)
 
-function PasscodeProvider({
-  children
-}: {
-  children: React.ReactNode
-}) {
+function PasscodeProvider({ children }: { children: React.ReactNode }) {
   const { settings } = useSettings()
-  const [isAuthenticated, setIsAuthenticated] = useState<PasscodeState['isAuthenticated']>(false)
-  const [isEnabled, setIsEnabled] = useState<PasscodeState['isEnabled']>(null)
+  const [isAuthenticated, setIsAuthenticated] = useState<PasscodeState["isAuthenticated"]>(false)
+  const [isEnabled, setIsEnabled] = useState<PasscodeState["isEnabled"]>(null)
 
-  const appState = useRef(AppState.currentState);
-  const [appStateVisible, setAppStateVisible] = useState(appState.current);
+  const appState = useRef(AppState.currentState)
+  const [appStateVisible, setAppStateVisible] = useState(appState.current)
 
   useEffect(() => {
     if (isEnabled && !isAuthenticated) {
-      LocalAuthentication.authenticateAsync().then((result) => {
+      LocalAuthentication.authenticateAsync().then(result => {
         setIsAuthenticated(result.success)
       })
     }
@@ -33,21 +29,18 @@ function PasscodeProvider({
 
   useEffect(() => {
     const subscription = AppState.addEventListener("change", nextAppState => {
-      if (
-        appState.current.match(/background/) &&
-        nextAppState === "active"
-      ) {
+      if (appState.current.match(/background/) && nextAppState === "active") {
         setIsAuthenticated(false)
       }
 
-      appState.current = nextAppState;
-      setAppStateVisible(appState.current);
-    });
+      appState.current = nextAppState
+      setAppStateVisible(appState.current)
+    })
 
     return () => {
-      if (subscription && subscription.remove) subscription.remove();
-    };
-  }, []);
+      if (subscription && subscription.remove) subscription.remove()
+    }
+  }, [])
 
   useEffect(() => {
     setIsEnabled(settings.passcodeEnabled)
@@ -56,22 +49,18 @@ function PasscodeProvider({
   const value: PasscodeState = {
     isAuthenticated,
     isEnabled,
-    setIsAuthenticated,
-  };
+    setIsAuthenticated
+  }
 
-  return (
-    <PasscodeContext.Provider value={value}>
-      {children}
-    </PasscodeContext.Provider>
-  )
+  return <PasscodeContext.Provider value={value}>{children}</PasscodeContext.Provider>
 }
 
 function usePasscode(): PasscodeState {
   const context = useContext(PasscodeContext)
   if (context === undefined) {
-    throw new Error('usePasscode must be used within a PasscodeProvider')
+    throw new Error("usePasscode must be used within a PasscodeProvider")
   }
   return context
 }
 
-export { PasscodeProvider, usePasscode };
+export { PasscodeProvider, usePasscode }

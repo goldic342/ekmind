@@ -1,48 +1,44 @@
-import { Text, TouchableOpacity, View } from 'react-native';
-import { ArrowLeft } from 'react-native-feather';
-import { t } from '@/shared/utils/translation';
-import useColors from '@/shared/hooks/useColors';
-import useHaptics from '@/shared/hooks/useHaptics';
-import { HeaderPagination } from "./HeaderPagination";
+import { Text, TouchableOpacity, View } from "react-native"
+import { ArrowLeft } from "react-native-feather"
+import { t } from "@/shared/utils/translation"
+import useColors from "@/shared/hooks/useColors"
+import useHaptics from "@/shared/hooks/useHaptics"
+import { HeaderPagination } from "./HeaderPagination"
 
 export const HeaderNavigation = ({
   index,
   setIndex,
-  onSkip,
+  onSkip
 }: {
-  index: number;
-  setIndex: (index: number) => void;
-  onSkip: () => void;
+  index: number
+  setIndex: (index: number) => void
+  onSkip: () => void
 }) => {
   const haptics = useHaptics()
-  const colors = useColors();
+  const colors = useColors()
 
   return (
     <View
       style={{
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
         paddingHorizontal: 32,
         borderBottomColor: colors.onboardingBottomBorder,
-        borderBottomWidth: 1,
+        borderBottomWidth: 1
       }}
     >
       <TouchableOpacity
         style={{
           padding: 16,
-          marginLeft: -16,
+          marginLeft: -16
         }}
         onPress={async () => {
           await haptics.selection()
           setIndex(index - 1)
         }}
       >
-        <ArrowLeft
-          width={24}
-          height={24}
-          color={colors.onboardingPaginationText}
-        />
+        <ArrowLeft width={24} height={24} color={colors.onboardingPaginationText} />
       </TouchableOpacity>
       <HeaderPagination index={index} />
       <TouchableOpacity
@@ -50,23 +46,23 @@ export const HeaderNavigation = ({
         style={{
           paddingVertical: 16,
           paddingHorizontal: 16,
-          marginRight: -16,
+          marginRight: -16
         }}
       >
         <Text
           style={{
             color: colors.onboardingPaginationText,
             fontSize: 17,
-            fontWeight: '600',
+            fontWeight: "600"
           }}
           onPress={async () => {
             await haptics.selection()
             onSkip()
           }}
         >
-          {t('onboarding_skip')}
+          {t("onboarding_skip")}
         </Text>
       </TouchableOpacity>
     </View>
-  );
-};
+  )
+}

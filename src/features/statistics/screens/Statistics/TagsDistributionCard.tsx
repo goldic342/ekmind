@@ -1,39 +1,39 @@
-import { useNavigation } from '@react-navigation/native';
-import _ from 'lodash';
-import { Pressable, Text, View } from 'react-native';
-import { Card } from '@/features/statistics/components/Statistics/Card';
-import { t } from '@/shared/utils/translation';
-import { useCalendarFilters } from '@/features/calendar/hooks/useCalendarFilters';
-import useColors from '@/shared/hooks/useColors';
-import useHaptics from '@/shared/hooks/useHaptics';
-import { TagsDistributionData } from '@/features/statistics/hooks/useStatistics/TagsDistribution';
-import { Tag } from '@/features/tags/hooks/useTags';
+import { useNavigation } from "@react-navigation/native"
+import _ from "lodash"
+import { Pressable, Text, View } from "react-native"
+import { Card } from "@/features/statistics/components/Statistics/Card"
+import { t } from "@/shared/utils/translation"
+import { useCalendarFilters } from "@/features/calendar/hooks/useCalendarFilters"
+import useColors from "@/shared/hooks/useColors"
+import useHaptics from "@/shared/hooks/useHaptics"
+import { TagsDistributionData } from "@/features/statistics/hooks/useStatistics/TagsDistribution"
+import { Tag } from "@/features/tags/hooks/useTags"
 
 export const TagDistributionContent = ({
   data,
-  limit = 5,
+  limit = 5
 }: {
-  data: TagsDistributionData,
-  limit?: number,
+  data: TagsDistributionData
+  limit?: number
 }) => {
   const colors = useColors()
   const haptic = useHaptics()
   const calendarFilters = useCalendarFilters()
   const navigation = useNavigation()
 
-  const onPress = (tagId: Tag['id']) => {
+  const onPress = (tagId: Tag["id"]) => {
     haptic.selection()
     calendarFilters.set({
       ...calendarFilters.data,
-      tagIds: [tagId],
+      tagIds: [tagId]
     })
-    navigation.navigate('Calendar')
+    navigation.navigate("Calendar")
   }
 
   return (
     <View
       style={{
-        flexDirection: 'column',
+        flexDirection: "column"
       }}
     >
       {data.tags.slice(0, limit).map(tag => {
@@ -42,64 +42,62 @@ export const TagDistributionContent = ({
             key={tag?.details?.id}
             onPress={() => onPress(tag.id)}
             style={{
-              position: 'relative',
+              position: "relative",
               height: 32,
               marginBottom: 8,
-              justifyContent: 'center',
+              justifyContent: "center"
             }}
           >
             <View
               style={{
                 backgroundColor: colors.tags[tag?.details?.color]?.background,
                 height: 32,
-                width: tag.count / data.tags[0].count * 100 + '%',
+                width: (tag.count / data.tags[0].count) * 100 + "%",
                 borderRadius: 4,
-                position: 'absolute',
+                position: "absolute"
               }}
-            >
-            </View>
+            ></View>
             <Text
               style={{
                 color: colors.tags[tag?.details?.color]?.text,
                 fontSize: 14,
-                fontWeight: '600',
-                position: 'relative',
-                marginLeft: 8,
+                fontWeight: "600",
+                position: "relative",
+                marginLeft: 8
               }}
-            >{tag.count}x {tag?.details?.title}</Text>
+            >
+              {tag.count}x {tag?.details?.title}
+            </Text>
           </Pressable>
-        );
+        )
       })}
       {data.tags.length > limit && (
         <View
           style={{
-            marginTop: 8,
+            marginTop: 8
           }}
         >
           <Text
             style={{
               fontSize: 14,
-              color: colors.textSecondary,
+              color: colors.textSecondary
             }}
-          >And {data.tags.length - limit} more</Text>
+          >
+            And {data.tags.length - limit} more
+          </Text>
         </View>
       )}
     </View>
   )
 }
 
-export const TagsDistributionCard = ({
-  data,
-}: {
-  data: TagsDistributionData
-}) => {
-
+export const TagsDistributionCard = ({ data }: { data: TagsDistributionData }) => {
   return (
     <Card
-      subtitle={t('tags')}
-      title={t('statistics_tags_distribution_title', { count: data.tags.length })}
+      subtitle={t("tags")}
+      title={t("statistics_tags_distribution_title", { count: data.tags.length })}
     >
       <TagDistributionContent data={data} />
     </Card>
-  );
-};
+  )
+}

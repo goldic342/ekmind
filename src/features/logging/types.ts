@@ -1,6 +1,5 @@
 import { z } from "zod"
-import { TagSchema } from "../tags/types";
-
+import { TagSchema } from "../tags/types"
 
 export const LogSchema = z.object({
   id: z.uuidv4(),
@@ -12,6 +11,4 @@ export const LogSchema = z.object({
   // emotions, tags lists
 })
 
-
-export type Log = z.infer<typeof LogSchema>;
-
+export type Log = z.infer<typeof LogSchema>

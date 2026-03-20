@@ -1,66 +1,66 @@
-import { DATE_FORMAT } from "@/shared/constants/Config";
-import dayjs, { Dayjs } from "dayjs";
-import React, { memo } from "react";
-import { Platform, StyleSheet, Text, View } from "react-native";
-import { useStyle } from "react-native-style-utilities";
-import useColors from "@/shared/hooks/useColors";
-import { LogItem } from "@/features/logging/hooks/useLogs";
-import CalendarWeek from "./CalendarWeek";
+import { DATE_FORMAT } from "@/shared/constants/Config"
+import dayjs, { Dayjs } from "dayjs"
+import React, { memo } from "react"
+import { Platform, StyleSheet, Text, View } from "react-native"
+import { useStyle } from "react-native-style-utilities"
+import useColors from "@/shared/hooks/useColors"
+import { LogItem } from "@/features/logging/hooks/useLogs"
+import CalendarWeek from "./CalendarWeek"
 
 const CalendarMonth = memo(function CalendarMonth({
   dateString,
-  itemMap,
+  itemMap
 }: {
-  dateString: string;
+  dateString: string
   itemMap: {
-    [key: string]: LogItem[];
+    [key: string]: LogItem[]
   }
 }) {
-  const colors = useColors();
+  const colors = useColors()
 
-  const date = dayjs(dateString);
+  const date = dayjs(dateString)
 
-  const WEEK_DATES: { start: Dayjs; end: Dayjs }[] = [];
+  const WEEK_DATES: { start: Dayjs; end: Dayjs }[] = []
 
   // count the weeks in the month and create an array with start and end dates for each week
-  const monthStart = date.startOf("month");
-  const monthEnd = date.endOf("month");
+  const monthStart = date.startOf("month")
+  const monthEnd = date.endOf("month")
 
-  const weekStart = monthStart.startOf("week");
-  const weekEnd = monthEnd.endOf("week");
+  const weekStart = monthStart.startOf("week")
+  const weekEnd = monthEnd.endOf("week")
 
-  const weeks = weekEnd.diff(weekStart, "week") + 1;
+  const weeks = weekEnd.diff(weekStart, "week") + 1
 
   for (let i = 0; i < weeks; i++) {
-    let start = weekStart.add(i, "week");
-    let end = start.endOf("week");
+    let start = weekStart.add(i, "week")
+    let end = start.endOf("week")
 
     if (start.isBefore(monthStart)) {
-      start = monthStart;
+      start = monthStart
     }
 
     if (end.isAfter(monthEnd)) {
-      end = monthEnd;
+      end = monthEnd
     }
 
-    WEEK_DATES.push({ start, end });
+    WEEK_DATES.push({ start, end })
   }
 
   const textStyles = useStyle(
     () => [
       styles.textStyles,
       {
-        color: colors.muted,
-      },
+        color: colors.muted
+      }
     ],
     [colors]
-  );
+  )
 
   return (
     <View
       style={{
         flex: 1,
-        paddingHorizontal: Platform.OS === "android" ? 1 : 0,
+        paddingHorizontal: Platform.OS === "android" ? 1 : 0
       }}
     >
       <Text style={textStyles}>{dayjs(dateString).format("MMMM YYYY")}</Text>
@@ -75,16 +75,16 @@ const CalendarMonth = memo(function CalendarMonth({
         />
       ))}
     </View>
-  );
-});
+  )
+})
 
 const styles = StyleSheet.create({
   textStyles: {
     margin: 12,
     marginTop: 16,
     textAlign: "center",
-    fontSize: 17,
-  },
-});
+    fontSize: 17
+  }
+})
 
-export default CalendarMonth;
+export default CalendarMonth

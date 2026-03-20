@@ -1,13 +1,13 @@
-import { useCallback, useEffect, useState } from 'react';
-import { Platform, ScrollView, Text, View } from 'react-native';
-import MenuListHeadline from '@/shared/ui/MenuListHeadline';
-import TextInfo from '@/shared/ui/TextInfo';
-import { t } from '@/shared/utils/translation';
-import useColors from '@/shared/hooks/useColors';
-import { useSettings } from '@/features/settings/hooks/useSettings';
-import { Radio } from './Radio';
-import { Scale } from './Scale';
-import { PageWithHeaderLayout } from '@/shared/ui/PageWithHeaderLayout';
+import { useCallback, useEffect, useState } from "react"
+import { Platform, ScrollView, Text, View } from "react-native"
+import MenuListHeadline from "@/shared/ui/MenuListHeadline"
+import TextInfo from "@/shared/ui/TextInfo"
+import { t } from "@/shared/utils/translation"
+import useColors from "@/shared/hooks/useColors"
+import { useSettings } from "@/features/settings/hooks/useSettings"
+import { Radio } from "./Radio"
+import { Scale } from "./Scale"
+import { PageWithHeaderLayout } from "@/shared/ui/PageWithHeaderLayout"
 
 export const ColorsScreen = () => {
   const { setSettings, settings } = useSettings()
@@ -17,22 +17,28 @@ export const ColorsScreen = () => {
   const [themeMode, setThemeMode] = useState(settings.themeMode)
   const [androidColorScheme, setAndroidColorScheme] = useState(settings.androidColorScheme)
 
-  const typesNames = [{
-    id: `ColorBrew-RdYlGn`,
-    disabled: false,
-  }, {
-    id: `ColorBrew-PuOr`,
-    disabled: true,
-  }, {
-    id: `ColorBrew-BrBG`,
-    disabled: true,
-  }, {
-    id: `ColorBrew-RdYG`,
-    disabled: false,
-  }, {
-    id: `ColorBrew-RdYlGn-old`,
-    disabled: false,
-  }]
+  const typesNames = [
+    {
+      id: `ColorBrew-RdYlGn`,
+      disabled: false
+    },
+    {
+      id: `ColorBrew-PuOr`,
+      disabled: true
+    },
+    {
+      id: `ColorBrew-BrBG`,
+      disabled: true
+    },
+    {
+      id: `ColorBrew-RdYG`,
+      disabled: false
+    },
+    {
+      id: `ColorBrew-RdYlGn-old`,
+      disabled: false
+    }
+  ]
 
   useEffect(() => {
     setSettings(settings => ({ ...settings, scaleType }))
@@ -46,113 +52,106 @@ export const ColorsScreen = () => {
     setSettings(settings => ({ ...settings, androidColorScheme }))
   }, [androidColorScheme])
 
-  const onSelect = useCallback((id) => {
+  const onSelect = useCallback(id => {
     setScaleType(id)
   }, [])
 
-  const onThemeModeSelect = useCallback((id) => {
+  const onThemeModeSelect = useCallback(id => {
     setThemeMode(id)
   }, [])
 
-  const onAndroidColorSchemeSelect = useCallback((id) => {
+  const onAndroidColorSchemeSelect = useCallback(id => {
     setAndroidColorScheme(id)
   }, [])
 
   return (
-    <PageWithHeaderLayout style={{
-      flex: 1,
-      backgroundColor: colors.background,
-    }}>
+    <PageWithHeaderLayout
+      style={{
+        flex: 1,
+        backgroundColor: colors.background
+      }}
+    >
       <ScrollView
         style={{
-          padding: 20,
+          padding: 20
         }}
       >
-
-        <MenuListHeadline>{t('theme')}</MenuListHeadline>
-        <Radio
-          isSelected={themeMode === 'auto'}
-          onPress={() => onThemeModeSelect('auto')}
-        >
-          <Text style={{ color: colors.text }}>{t('theme_auto')}</Text>
+        <MenuListHeadline>{t("theme")}</MenuListHeadline>
+        <Radio isSelected={themeMode === "auto"} onPress={() => onThemeModeSelect("auto")}>
+          <Text style={{ color: colors.text }}>{t("theme_auto")}</Text>
         </Radio>
-        <Radio
-          isSelected={themeMode === 'light'}
-          onPress={() => onThemeModeSelect('light')}
-        >
-          <Text style={{ color: colors.text }}>{t('theme_light')}</Text>
+        <Radio isSelected={themeMode === "light"} onPress={() => onThemeModeSelect("light")}>
+          <Text style={{ color: colors.text }}>{t("theme_light")}</Text>
         </Radio>
-        <Radio
-          isSelected={themeMode === 'dark'}
-          onPress={() => onThemeModeSelect('dark')}
-        >
-          <Text style={{ color: colors.text }}>{t('theme_dark')}</Text>
+        <Radio isSelected={themeMode === "dark"} onPress={() => onThemeModeSelect("dark")}>
+          <Text style={{ color: colors.text }}>{t("theme_dark")}</Text>
         </Radio>
 
-        {Platform.OS === 'android' && (
+        {Platform.OS === "android" && (
           <>
-            <MenuListHeadline>{t('android_color_style')}</MenuListHeadline>
+            <MenuListHeadline>{t("android_color_style")}</MenuListHeadline>
             <Radio
-              isSelected={androidColorScheme === 'materialYou'}
-              onPress={() => onAndroidColorSchemeSelect('materialYou')}
+              isSelected={androidColorScheme === "materialYou"}
+              onPress={() => onAndroidColorSchemeSelect("materialYou")}
             >
-              <Text style={{ color: colors.text }}>{t('android_color_style_material_you')}</Text>
+              <Text style={{ color: colors.text }}>{t("android_color_style_material_you")}</Text>
             </Radio>
             <Radio
-              isSelected={androidColorScheme === 'basic'}
-              onPress={() => onAndroidColorSchemeSelect('basic')}
+              isSelected={androidColorScheme === "basic"}
+              onPress={() => onAndroidColorSchemeSelect("basic")}
             >
-              <Text style={{ color: colors.text }}>{t('android_color_style_basic')}</Text>
+              <Text style={{ color: colors.text }}>{t("android_color_style_basic")}</Text>
             </Radio>
           </>
         )}
 
-        <MenuListHeadline>{t('colors')}</MenuListHeadline>
-        {typesNames.filter(d => !d.disabled).map(type => (
-          <>
-            <Radio
-              key={type.id}
-              isSelected={type.id === scaleType}
-              onPress={() => onSelect(type.id)}
-              isDisabled={type.disabled}
-            >
-              <Scale type={type.id} />
-            </Radio>
-            {type.id === 'ColorBrew-RdYlGn-old' && (
-              <TextInfo
-                style={{
-                  marginTop: 0,
-                }}
-              >{t('colorblind_disclaimer')}</TextInfo>
-            )}
-          </>
-        )
-        )}
-        <MenuListHeadline>Coming Soon…</MenuListHeadline>
-        <View
-          style={{
-          }}
-        >
-          {typesNames.filter(d => d.disabled).map(type => (
-            <Radio
-              key={type.id}
-              isSelected={type.id === scaleType}
-              onPress={() => onSelect(type.id)}
-              isDisabled={type.disabled}
-            >
-              <Scale type={type.id} />
-            </Radio>
+        <MenuListHeadline>{t("colors")}</MenuListHeadline>
+        {typesNames
+          .filter(d => !d.disabled)
+          .map(type => (
+            <>
+              <Radio
+                key={type.id}
+                isSelected={type.id === scaleType}
+                onPress={() => onSelect(type.id)}
+                isDisabled={type.disabled}
+              >
+                <Scale type={type.id} />
+              </Radio>
+              {type.id === "ColorBrew-RdYlGn-old" && (
+                <TextInfo
+                  style={{
+                    marginTop: 0
+                  }}
+                >
+                  {t("colorblind_disclaimer")}
+                </TextInfo>
+              )}
+            </>
           ))}
+        <MenuListHeadline>Coming Soon…</MenuListHeadline>
+        <View style={{}}>
+          {typesNames
+            .filter(d => d.disabled)
+            .map(type => (
+              <Radio
+                key={type.id}
+                isSelected={type.id === scaleType}
+                onPress={() => onSelect(type.id)}
+                isDisabled={type.disabled}
+              >
+                <Scale type={type.id} />
+              </Radio>
+            ))}
         </View>
         <View
           style={{
             marginBottom: 8,
-            justifyContent: 'center',
-            alignItems: 'center',
+            justifyContent: "center",
+            alignItems: "center"
           }}
-        >
-        </View>
+        ></View>
       </ScrollView>
     </PageWithHeaderLayout>
-  );
+  )
 }

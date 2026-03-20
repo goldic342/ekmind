@@ -1,17 +1,19 @@
-import { Text } from 'react-native';
-import useColors from '@/shared/hooks/useColors';
+import { Text } from "react-native"
+import useColors from "@/shared/hooks/useColors"
 
-export const Title = ({ children }: { children: string; }) => {
-  const colors = useColors();
+export const Title = ({ children }: { children: string }) => {
+  const colors = useColors()
 
   return (
     <Text
       style={{
         fontSize: 20,
         color: colors.text,
-        fontWeight: 'bold',
-        marginTop: 16,
+        fontWeight: "bold",
+        marginTop: 16
       }}
-    >{children}</Text>
-  );
-};
+    >
+      {children}
+    </Text>
+  )
+}

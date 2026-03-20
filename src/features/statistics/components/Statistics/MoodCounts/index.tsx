@@ -10,10 +10,10 @@ export const MoodCounts = ({
   title,
   subtitle,
   date,
-  items,
+  items
 }: {
-  title: string,
-  subtitle: string,
+  title: string
+  subtitle: string
   date: Dayjs
   items: LogItem[]
 }) => {
@@ -24,11 +24,12 @@ export const MoodCounts = ({
     return acc
   }, {})
 
-  const total = Object.values(ratingCounts).reduce((acc: number, count: number) => acc + count, 0) || 0
+  const total =
+    Object.values(ratingCounts).reduce((acc: number, count: number) => acc + count, 0) || 0
 
   const data = {
     values: ratingCounts,
-    total,
+    total
   }
 
   const dummyData = {
@@ -39,29 +40,15 @@ export const MoodCounts = ({
       neutral: 4,
       good: 3,
       very_good: 5,
-      extremely_good: 1,
+      extremely_good: 1
     },
-    total: 18,
+    total: 18
   }
 
   return (
-    <BigCard
-      title={title}
-      subtitle={subtitle}
-      isShareable
-    >
-      {total < MIN_ITEMS && (
-        <NotEnoughDataOverlay limit={MIN_ITEMS - total} />
-      )}
-      {total >= MIN_ITEMS ? (
-        <Content
-          data={data}
-        />
-      ) : (
-        <Content
-          data={dummyData}
-        />
-      )}
+    <BigCard title={title} subtitle={subtitle} isShareable>
+      {total < MIN_ITEMS && <NotEnoughDataOverlay limit={MIN_ITEMS - total} />}
+      {total >= MIN_ITEMS ? <Content data={data} /> : <Content data={dummyData} />}
     </BigCard>
   )
 }

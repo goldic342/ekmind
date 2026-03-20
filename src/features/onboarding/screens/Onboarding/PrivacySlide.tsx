@@ -1,20 +1,20 @@
-import { Text, View } from 'react-native';
-import { Lock } from 'react-native-feather';
-import Animated, { FadeInRight } from 'react-native-reanimated';
-import Button from '@/shared/ui/Button';
-import { t } from '@/shared/utils/translation';
-import useColors from '@/shared/hooks/useColors';
+import { Text, View } from "react-native"
+import { Lock } from "react-native-feather"
+import Animated, { FadeInRight } from "react-native-reanimated"
+import Button from "@/shared/ui/Button"
+import { t } from "@/shared/utils/translation"
+import useColors from "@/shared/hooks/useColors"
 
 const ListItem = ({ children, delay }) => {
-  const colors = useColors();
+  const colors = useColors()
 
   return (
     <Animated.View
       style={{
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
-        marginBottom: 8,
+        flexDirection: "row",
+        justifyContent: "flex-start",
+        alignItems: "flex-start",
+        marginBottom: 8
       }}
       entering={FadeInRight.delay(delay)}
     >
@@ -25,7 +25,7 @@ const ListItem = ({ children, delay }) => {
           borderRadius: 4,
           backgroundColor: colors.onboardingListItemDot,
           marginRight: 12,
-          marginTop: 9,
+          marginTop: 9
         }}
       />
       <Text
@@ -33,42 +33,38 @@ const ListItem = ({ children, delay }) => {
           color: colors.onboardingListItemText,
           lineHeight: 24,
           fontSize: 17,
-          flex: 1,
+          flex: 1
         }}
       >
         {children}
       </Text>
     </Animated.View>
-  );
-};
+  )
+}
 
-export const PrivacySlide = ({
-  onPress
-}: {
-  onPress: () => void;
-}) => {
-  const colors = useColors();
+export const PrivacySlide = ({ onPress }: { onPress: () => void }) => {
+  const colors = useColors()
 
   return (
     <>
       <View
         style={{
-          flex: 1,
+          flex: 1
         }}
       >
         <View
           style={{
             flex: 1,
             paddingVertical: 32,
-            paddingHorizontal: 32,
+            paddingHorizontal: 32
           }}
         >
           <View
             style={{
               flex: 1,
               paddingTop: 32,
-              justifyContent: 'flex-start',
-              alignItems: 'center',
+              justifyContent: "flex-start",
+              alignItems: "center"
             }}
           >
             <View
@@ -77,9 +73,9 @@ export const PrivacySlide = ({
                 height: 56,
                 borderRadius: 28,
                 backgroundColor: colors.onboardingPrivacyBadgeBackground,
-                justifyContent: 'center',
-                alignItems: 'center',
-                marginBottom: 12,
+                justifyContent: "center",
+                alignItems: "center",
+                marginBottom: 12
               }}
             >
               <Lock width={24} height={24} color={colors.onboardingPrivacyBadgeVector} />
@@ -89,9 +85,9 @@ export const PrivacySlide = ({
                 color: colors.text,
                 fontSize: 24,
                 lineHeight: 32,
-                fontWeight: 'bold',
+                fontWeight: "bold",
                 marginBottom: 20,
-                textAlign: 'center',
+                textAlign: "center"
               }}
             >
               {t(`onboarding_step_5_title`)}
@@ -104,15 +100,13 @@ export const PrivacySlide = ({
           </View>
           <View
             style={{
-              width: '100%',
+              width: "100%"
             }}
           >
-            <Button
-              onPress={onPress}
-            >{t('onboarding_step_5_button')}</Button>
+            <Button onPress={onPress}>{t("onboarding_step_5_button")}</Button>
           </View>
         </View>
       </View>
     </>
-  );
-};
+  )
+}

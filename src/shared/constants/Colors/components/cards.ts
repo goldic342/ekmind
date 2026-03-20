@@ -1,4 +1,4 @@
-import type { SemanticColors } from '../semantic/light';
+import type { SemanticColors } from "../semantic/light"
 
 export const buildCardTheme = (c: SemanticColors) => ({
   cardBackground: c.surface,
@@ -6,5 +6,5 @@ export const buildCardTheme = (c: SemanticColors) => ({
   promoCardBackground: c.surface,
   promoCardText: c.text,
   promoCardTextSecondary: c.textSecondary,
-  promoCardBorder: c.border,
-});
+  promoCardBorder: c.border
+})
