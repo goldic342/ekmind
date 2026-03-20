@@ -1,0 +1,17 @@
+node_modules
+dist
+build
+coverage
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+android
+ios
+.github
+.expo-shared
+
+*.md
+*.json
+
+docs/
+assets/
