@@ -8,7 +8,7 @@ interface TagsState {
   tags: Tag[]
   createTag: (tag: Omit<Tag, "id">) => void
   deleteTag: (id: UUIDTypes) => void
-  updateTag: (id: UUIDTypes, update: Omit<Tag, "id">) => void
+  updateTag: (id: UUIDTypes, payload: Omit<Tag, "id">) => void
 }
 
 export const useTags = create<TagsState>()(
@@ -28,18 +28,20 @@ export const useTags = create<TagsState>()(
       deleteTag: id => {
         set(state => ({ tags: state.tags.filter(t => t.id !== id) }))
       },
-      updateTag: (id, update) => {
-        const found = get().tags.find(t => t.id === id)
+      updateTag: (id, payload) => {
+        set(state => {
+          let updated: Tag | undefined
 
-        if (!found) return
+          const tags = state.tags.map(t => {
+            if (t.id !== id) return t
 
-        const updated = {
-          ...found,
-          ...update
-        }
-        TagSchema.parse(updated)
-
-        set(state => ({ tags: state.tags.map(t => (t.id === id ? updated : t)) }))
+            updated = { ...t, ...payload }
+            TagSchema.parse(updated)
+            return updated
+          })
+          if (!updated) return state
+          return { tags }
+        })
       }
     }),
     {
